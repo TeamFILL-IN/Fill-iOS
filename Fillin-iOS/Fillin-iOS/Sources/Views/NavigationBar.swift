@@ -18,11 +18,62 @@ import Then
 */
 
 class NavigationBar: UIView {
+    
+    // MARK: - Properties
+    
     private let backButton = UIButton().then {
         $0.setImage(Asset.btnBack.image, for: .normal)
+        $0.addTarget(self, action: #selector(touchBackButton(_:)), for: .touchUpInside)
     }
     
     private let logoButton = UIButton().then {
         $0.setImage(Asset.btnHome.image, for: .normal)
+        $0.addTarget(self, action: #selector(touchLogoButton(_:)), for: .touchUpInside)
+    }
+    
+    // MARK: - Init
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        configUI()
+        setupAutoLayout()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        configUI()
+        setupAutoLayout()
+    }
+    
+    // MARK: - Custom Method
+    
+    private func configUI() {
+        backgroundColor = .fillinBlack
+    }
+    
+    private func setupAutoLayout() {
+        addSubviews([backButton, logoButton])
+        
+        backButton.snp.makeConstraints { make in
+            make.leading.equalToSuperview().inset(18)
+            make.centerY.equalToSuperview()
+        }
+        
+        logoButton.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview()
+            make.width.equalTo(86)
+            make.height.equalTo(32)
+        }
+    }
+    
+    // MARK: - @objc
+    
+    @objc func touchBackButton(_ sender: UIButton) {
+        print("touchBackButton")
+    }
+    
+    @objc func touchLogoButton(_ sender: UIButton) {
+        print("touchLogoButton")
     }
 }
