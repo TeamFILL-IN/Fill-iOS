@@ -1,5 +1,5 @@
 //
-//  NavigationBar.swift
+//  FillinNavigationBar.swift
 //  Fillin-iOS
 //
 //  Created by Yi Joon Choi on 2022/01/10.
@@ -12,9 +12,9 @@ import Then
 /*
  공통으로 사용할 수 있도록 만들어둔 네비게이션 바 입니다.
  
- 1) NavigationBar에는 공통으로 필요한 요소들을 구현해둔 상태
- 2) NavigationBar를 상속받은 뷰 생성
-
+ 1) FillinNavigationBar에는 공통으로 필요한 요소들을 구현해둔 상태에요.
+ 2) 해당 ViewController로 가서 FillinNavigationBar를 상속받은 UIView 생성 (ex: navigationBar)
+ 3) navigationBar.popViewController = { self.navigationController?.popViewController(animated: true) } 를 추가해요.
 */
 
 class FilinNavigationBar: UIView {
