@@ -7,6 +7,8 @@
 
 import UIKit
 
+import NMapsMap
+
 class StudioMapViewController: UIViewController {
 
     override func viewDidLoad() {
