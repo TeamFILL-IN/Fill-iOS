@@ -16,6 +16,7 @@ class StudioMapViewController: UIViewController, CLLocationManagerDelegate {
   
   // MARK: - Properties
   private let mapView = NMFNaverMapView(frame: .zero)
+  private let myLocationButton = UIButton()
   
   var locationManager = CLLocationManager()
   
@@ -25,6 +26,7 @@ class StudioMapViewController: UIViewController, CLLocationManagerDelegate {
     setUpMapView()
     layoutMapView()
     setUpLocation()
+    layoutMyLocationButton()
   }
 }
 
@@ -45,11 +47,21 @@ extension StudioMapViewController {
   }
   
   private func setUpLocation() {
-    mapView.showLocationButton = true
     mapView.mapView.positionMode = .direction
     
     locationManager.delegate = self
     locationManager.desiredAccuracy = kCLLocationAccuracyBest
     locationManager.requestWhenInUseAuthorization()
+  }
+  
+  private func layoutMyLocationButton() {
+    view.addSubview(myLocationButton)
+    myLocationButton.setImage(UIImage(named: "icnMyLocation"), for: .normal)
+    myLocationButton.snp.makeConstraints {
+      $0.top.equalTo(self.view).inset(708)
+      $0.left.equalTo(self.view).inset(299)
+      $0.right.equalTo(self.view).inset(20)
+      $0.bottom.equalTo(self.view).inset(48)
+    }
   }
 }
