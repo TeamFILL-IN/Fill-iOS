@@ -1,0 +1,719 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		04B97123887FA5E744F501C8 /* Pods_Fillin_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F0F0BFE7B3A240D8CC7C935 /* Pods_Fillin_iOS.framework */; };
+		775C9649278ACBEA00A9BEA0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775C9648278ACBEA00A9BEA0 /* AppDelegate.swift */; };
+		775C964B278ACBEA00A9BEA0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775C964A278ACBEA00A9BEA0 /* SceneDelegate.swift */; };
+		775C9652278ACBEB00A9BEA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 775C9651278ACBEB00A9BEA0 /* Assets.xcassets */; };
+		775C9655278ACBEB00A9BEA0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 775C9653278ACBEB00A9BEA0 /* LaunchScreen.storyboard */; };
+		775C965E278ACDE200A9BEA0 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 775C965D278ACDE200A9BEA0 /* .swiftlint.yml */; };
+		775C9667278ACF0300A9BEA0 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775C9666278ACF0300A9BEA0 /* Const.swift */; };
+		775C9672278ACF5D00A9BEA0 /* TempClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775C9671278ACF5D00A9BEA0 /* TempClass.swift */; };
+		775C9674278ACF6600A9BEA0 /* TempModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775C9673278ACF6600A9BEA0 /* TempModel.swift */; };
+		775C9677278ACF8B00A9BEA0 /* MoyaLoggerPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775C9676278ACF8B00A9BEA0 /* MoyaLoggerPlugin.swift */; };
+		775C9679278ACFB600A9BEA0 /* TempProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775C9678278ACFB600A9BEA0 /* TempProtocol.swift */; };
+		775C967B278ACFBD00A9BEA0 /* TempView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775C967A278ACFBD00A9BEA0 /* TempView.swift */; };
+		775C967D278ACFDD00A9BEA0 /* Xib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775C967C278ACFDD00A9BEA0 /* Xib.swift */; };
+		775C967F278ACFFD00A9BEA0 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775C967E278ACFFD00A9BEA0 /* UIColor+Extension.swift */; };
+		775C9681278AD00100A9BEA0 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775C9680278AD00100A9BEA0 /* UIFont+Extension.swift */; };
+		775C9683278AD0AC00A9BEA0 /* NotoSansKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 775C9682278AD0AC00A9BEA0 /* NotoSansKR-Bold.otf */; };
+		775C9685278AD0B500A9BEA0 /* NotoSansKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 775C9684278AD0B500A9BEA0 /* NotoSansKR-Regular.otf */; };
+		775C9687278AD0C300A9BEA0 /* FuturaStdBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 775C9686278AD0C300A9BEA0 /* FuturaStdBold.otf */; };
+		775C9689278AD0D200A9BEA0 /* FuturaStdBook.otf in Resources */ = {isa = PBXBuildFile; fileRef = 775C9688278AD0D200A9BEA0 /* FuturaStdBook.otf */; };
+		775C9690278AD87900A9BEA0 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775C968E278AD87900A9BEA0 /* HomeViewController.swift */; };
+		775C9691278AD87900A9BEA0 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 775C968F278AD87900A9BEA0 /* HomeViewController.xib */; };
+		775C9696278AD89200A9BEA0 /* StudioMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775C9694278AD89200A9BEA0 /* StudioMapViewController.swift */; };
+		775C9697278AD89200A9BEA0 /* StudioMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 775C9695278AD89200A9BEA0 /* StudioMapViewController.xib */; };
+		775C969A278AD89F00A9BEA0 /* FilmRollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775C9698278AD89F00A9BEA0 /* FilmRollViewController.swift */; };
+		775C969B278AD89F00A9BEA0 /* FilmRollViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 775C9699278AD89F00A9BEA0 /* FilmRollViewController.xib */; };
+		775C969E278AD8A900A9BEA0 /* AddPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775C969C278AD8A900A9BEA0 /* AddPhotoViewController.swift */; };
+		775C969F278AD8A900A9BEA0 /* AddPhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 775C969D278AD8A900A9BEA0 /* AddPhotoViewController.xib */; };
+		775C96A2278AD8BB00A9BEA0 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775C96A0278AD8BB00A9BEA0 /* MyPageViewController.swift */; };
+		775C96A3278AD8BB00A9BEA0 /* MyPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 775C96A1278AD8BB00A9BEA0 /* MyPageViewController.xib */; };
+		775C96A7278AD8E600A9BEA0 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775C96A5278AD8E600A9BEA0 /* SplashViewController.swift */; };
+		775C96A8278AD8E600A9BEA0 /* SplashViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 775C96A6278AD8E600A9BEA0 /* SplashViewController.xib */; };
+		775C96AA278B2E1100A9BEA0 /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = 775C96A9278B2E1100A9BEA0 /* swiftgen.yml */; };
+		775C96B0278B33E200A9BEA0 /* Assets+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775C96AF278B33E200A9BEA0 /* Assets+Generated.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		6F0F0BFE7B3A240D8CC7C935 /* Pods_Fillin_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fillin_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		775C9645278ACBEA00A9BEA0 /* Fillin-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fillin-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		775C9648278ACBEA00A9BEA0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		775C964A278ACBEA00A9BEA0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		775C9651278ACBEB00A9BEA0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		775C9654278ACBEB00A9BEA0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		775C9656278ACBEB00A9BEA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		775C965D278ACDE200A9BEA0 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		775C9666278ACF0300A9BEA0 /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
+		775C9671278ACF5D00A9BEA0 /* TempClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempClass.swift; sourceTree = "<group>"; };
+		775C9673278ACF6600A9BEA0 /* TempModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempModel.swift; sourceTree = "<group>"; };
+		775C9676278ACF8B00A9BEA0 /* MoyaLoggerPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaLoggerPlugin.swift; sourceTree = "<group>"; };
+		775C9678278ACFB600A9BEA0 /* TempProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempProtocol.swift; sourceTree = "<group>"; };
+		775C967A278ACFBD00A9BEA0 /* TempView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempView.swift; sourceTree = "<group>"; };
+		775C967C278ACFDD00A9BEA0 /* Xib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Xib.swift; sourceTree = "<group>"; };
+		775C967E278ACFFD00A9BEA0 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		775C9680278AD00100A9BEA0 /* UIFont+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
+		775C9682278AD0AC00A9BEA0 /* NotoSansKR-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.otf"; sourceTree = "<group>"; };
+		775C9684278AD0B500A9BEA0 /* NotoSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.otf"; sourceTree = "<group>"; };
+		775C9686278AD0C300A9BEA0 /* FuturaStdBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FuturaStdBold.otf; sourceTree = "<group>"; };
+		775C9688278AD0D200A9BEA0 /* FuturaStdBook.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FuturaStdBook.otf; sourceTree = "<group>"; };
+		775C968E278AD87900A9BEA0 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		775C968F278AD87900A9BEA0 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
+		775C9694278AD89200A9BEA0 /* StudioMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudioMapViewController.swift; sourceTree = "<group>"; };
+		775C9695278AD89200A9BEA0 /* StudioMapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StudioMapViewController.xib; sourceTree = "<group>"; };
+		775C9698278AD89F00A9BEA0 /* FilmRollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmRollViewController.swift; sourceTree = "<group>"; };
+		775C9699278AD89F00A9BEA0 /* FilmRollViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilmRollViewController.xib; sourceTree = "<group>"; };
+		775C969C278AD8A900A9BEA0 /* AddPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoViewController.swift; sourceTree = "<group>"; };
+		775C969D278AD8A900A9BEA0 /* AddPhotoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddPhotoViewController.xib; sourceTree = "<group>"; };
+		775C96A0278AD8BB00A9BEA0 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
+		775C96A1278AD8BB00A9BEA0 /* MyPageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyPageViewController.xib; sourceTree = "<group>"; };
+		775C96A5278AD8E600A9BEA0 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		775C96A6278AD8E600A9BEA0 /* SplashViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SplashViewController.xib; sourceTree = "<group>"; };
+		775C96A9278B2E1100A9BEA0 /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
+		775C96AF278B33E200A9BEA0 /* Assets+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Assets+Generated.swift"; sourceTree = "<group>"; };
+		A23EAA42105DDEFDBD25F680 /* Pods-Fillin-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fillin-iOS.debug.xcconfig"; path = "Target Support Files/Pods-Fillin-iOS/Pods-Fillin-iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		EB6BBBE71164715C5939F205 /* Pods-Fillin-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fillin-iOS.release.xcconfig"; path = "Target Support Files/Pods-Fillin-iOS/Pods-Fillin-iOS.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		775C9642278ACBEA00A9BEA0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04B97123887FA5E744F501C8 /* Pods_Fillin_iOS.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		395998FF8B0904B6BF7C4A7B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A23EAA42105DDEFDBD25F680 /* Pods-Fillin-iOS.debug.xcconfig */,
+				EB6BBBE71164715C5939F205 /* Pods-Fillin-iOS.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		5AE76B527A63C8330A55DFB9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6F0F0BFE7B3A240D8CC7C935 /* Pods_Fillin_iOS.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		775C963C278ACBEA00A9BEA0 = {
+			isa = PBXGroup;
+			children = (
+				775C96A9278B2E1100A9BEA0 /* swiftgen.yml */,
+				775C965D278ACDE200A9BEA0 /* .swiftlint.yml */,
+				775C9647278ACBEA00A9BEA0 /* Fillin-iOS */,
+				775C9646278ACBEA00A9BEA0 /* Products */,
+				395998FF8B0904B6BF7C4A7B /* Pods */,
+				5AE76B527A63C8330A55DFB9 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		775C9646278ACBEA00A9BEA0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				775C9645278ACBEA00A9BEA0 /* Fillin-iOS.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		775C9647278ACBEA00A9BEA0 /* Fillin-iOS */ = {
+			isa = PBXGroup;
+			children = (
+				775C9656278ACBEB00A9BEA0 /* Info.plist */,
+				775C9660278ACE6A00A9BEA0 /* Resources */,
+				775C965F278ACE5B00A9BEA0 /* Sources */,
+			);
+			path = "Fillin-iOS";
+			sourceTree = "<group>";
+		};
+		775C965F278ACE5B00A9BEA0 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				775C9648278ACBEA00A9BEA0 /* AppDelegate.swift */,
+				775C964A278ACBEA00A9BEA0 /* SceneDelegate.swift */,
+				775C966C278ACF3800A9BEA0 /* Classes */,
+				775C966B278ACF3200A9BEA0 /* Models */,
+				775C966A278ACF2800A9BEA0 /* NetworkService */,
+				775C9669278ACF2100A9BEA0 /* Protocols */,
+				775C9668278ACF1B00A9BEA0 /* Views */,
+				775C9661278ACEB700A9BEA0 /* ViewControllers */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		775C9660278ACE6A00A9BEA0 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				775C9662278ACEC900A9BEA0 /* Assets */,
+				775C9663278ACED600A9BEA0 /* Constants */,
+				775C9664278ACEDD00A9BEA0 /* Extensions */,
+				775C9665278ACEE100A9BEA0 /* Fonts */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		775C9661278ACEB700A9BEA0 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				775C96A4278AD8D800A9BEA0 /* SplashViewController */,
+				775C968D278AD1AB00A9BEA0 /* HomeViewController */,
+				775C968B278AD1A700A9BEA0 /* FilmRollViewController */,
+				775C968C278AD1A900A9BEA0 /* StudioMapViewController */,
+				775C968A278AD1A500A9BEA0 /* AddPhotoViewController */,
+				775C9670278ACF5400A9BEA0 /* MyPageViewController */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		775C9662278ACEC900A9BEA0 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				775C9653278ACBEB00A9BEA0 /* LaunchScreen.storyboard */,
+				775C9651278ACBEB00A9BEA0 /* Assets.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		775C9663278ACED600A9BEA0 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				775C96AF278B33E200A9BEA0 /* Assets+Generated.swift */,
+				775C9666278ACF0300A9BEA0 /* Const.swift */,
+				775C967C278ACFDD00A9BEA0 /* Xib.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		775C9664278ACEDD00A9BEA0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				775C967E278ACFFD00A9BEA0 /* UIColor+Extension.swift */,
+				775C9680278AD00100A9BEA0 /* UIFont+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		775C9665278ACEE100A9BEA0 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				775C9682278AD0AC00A9BEA0 /* NotoSansKR-Bold.otf */,
+				775C9684278AD0B500A9BEA0 /* NotoSansKR-Regular.otf */,
+				775C9686278AD0C300A9BEA0 /* FuturaStdBold.otf */,
+				775C9688278AD0D200A9BEA0 /* FuturaStdBook.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		775C9668278ACF1B00A9BEA0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				775C967A278ACFBD00A9BEA0 /* TempView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		775C9669278ACF2100A9BEA0 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				775C9678278ACFB600A9BEA0 /* TempProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		775C966A278ACF2800A9BEA0 /* NetworkService */ = {
+			isa = PBXGroup;
+			children = (
+				775C9675278ACF6B00A9BEA0 /* Plugin */,
+			);
+			path = NetworkService;
+			sourceTree = "<group>";
+		};
+		775C966B278ACF3200A9BEA0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				775C9673278ACF6600A9BEA0 /* TempModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		775C966C278ACF3800A9BEA0 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				775C9671278ACF5D00A9BEA0 /* TempClass.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		775C9670278ACF5400A9BEA0 /* MyPageViewController */ = {
+			isa = PBXGroup;
+			children = (
+				775C96A0278AD8BB00A9BEA0 /* MyPageViewController.swift */,
+				775C96A1278AD8BB00A9BEA0 /* MyPageViewController.xib */,
+			);
+			path = MyPageViewController;
+			sourceTree = "<group>";
+		};
+		775C9675278ACF6B00A9BEA0 /* Plugin */ = {
+			isa = PBXGroup;
+			children = (
+				775C9676278ACF8B00A9BEA0 /* MoyaLoggerPlugin.swift */,
+			);
+			path = Plugin;
+			sourceTree = "<group>";
+		};
+		775C968A278AD1A500A9BEA0 /* AddPhotoViewController */ = {
+			isa = PBXGroup;
+			children = (
+				775C969C278AD8A900A9BEA0 /* AddPhotoViewController.swift */,
+				775C969D278AD8A900A9BEA0 /* AddPhotoViewController.xib */,
+			);
+			path = AddPhotoViewController;
+			sourceTree = "<group>";
+		};
+		775C968B278AD1A700A9BEA0 /* FilmRollViewController */ = {
+			isa = PBXGroup;
+			children = (
+				775C9698278AD89F00A9BEA0 /* FilmRollViewController.swift */,
+				775C9699278AD89F00A9BEA0 /* FilmRollViewController.xib */,
+			);
+			path = FilmRollViewController;
+			sourceTree = "<group>";
+		};
+		775C968C278AD1A900A9BEA0 /* StudioMapViewController */ = {
+			isa = PBXGroup;
+			children = (
+				775C9694278AD89200A9BEA0 /* StudioMapViewController.swift */,
+				775C9695278AD89200A9BEA0 /* StudioMapViewController.xib */,
+			);
+			path = StudioMapViewController;
+			sourceTree = "<group>";
+		};
+		775C968D278AD1AB00A9BEA0 /* HomeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				775C968E278AD87900A9BEA0 /* HomeViewController.swift */,
+				775C968F278AD87900A9BEA0 /* HomeViewController.xib */,
+			);
+			path = HomeViewController;
+			sourceTree = "<group>";
+		};
+		775C96A4278AD8D800A9BEA0 /* SplashViewController */ = {
+			isa = PBXGroup;
+			children = (
+				775C96A5278AD8E600A9BEA0 /* SplashViewController.swift */,
+				775C96A6278AD8E600A9BEA0 /* SplashViewController.xib */,
+			);
+			path = SplashViewController;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		775C9644278ACBEA00A9BEA0 /* Fillin-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 775C9659278ACBEB00A9BEA0 /* Build configuration list for PBXNativeTarget "Fillin-iOS" */;
+			buildPhases = (
+				E94EE2D832D687FBBF467EDE /* [CP] Check Pods Manifest.lock */,
+				775C96AE278B317100A9BEA0 /* SwiftGen Script */,
+				775C9641278ACBEA00A9BEA0 /* Sources */,
+				775C9642278ACBEA00A9BEA0 /* Frameworks */,
+				775C9643278ACBEA00A9BEA0 /* Resources */,
+				0E8BCE2C00878E95D9BBAD88 /* [CP] Embed Pods Frameworks */,
+				775C965C278ACCFD00A9BEA0 /* SwiftLint Script */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Fillin-iOS";
+			productName = "Fillin-iOS";
+			productReference = 775C9645278ACBEA00A9BEA0 /* Fillin-iOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		775C963D278ACBEA00A9BEA0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1310;
+				LastUpgradeCheck = 1310;
+				TargetAttributes = {
+					775C9644278ACBEA00A9BEA0 = {
+						CreatedOnToolsVersion = 13.1;
+					};
+				};
+			};
+			buildConfigurationList = 775C9640278ACBEA00A9BEA0 /* Build configuration list for PBXProject "Fillin-iOS" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 775C963C278ACBEA00A9BEA0;
+			productRefGroup = 775C9646278ACBEA00A9BEA0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				775C9644278ACBEA00A9BEA0 /* Fillin-iOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		775C9643278ACBEA00A9BEA0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				775C965E278ACDE200A9BEA0 /* .swiftlint.yml in Resources */,
+				775C96AA278B2E1100A9BEA0 /* swiftgen.yml in Resources */,
+				775C96A8278AD8E600A9BEA0 /* SplashViewController.xib in Resources */,
+				775C9697278AD89200A9BEA0 /* StudioMapViewController.xib in Resources */,
+				775C9655278ACBEB00A9BEA0 /* LaunchScreen.storyboard in Resources */,
+				775C9683278AD0AC00A9BEA0 /* NotoSansKR-Bold.otf in Resources */,
+				775C9689278AD0D200A9BEA0 /* FuturaStdBook.otf in Resources */,
+				775C9687278AD0C300A9BEA0 /* FuturaStdBold.otf in Resources */,
+				775C9652278ACBEB00A9BEA0 /* Assets.xcassets in Resources */,
+				775C969B278AD89F00A9BEA0 /* FilmRollViewController.xib in Resources */,
+				775C969F278AD8A900A9BEA0 /* AddPhotoViewController.xib in Resources */,
+				775C9685278AD0B500A9BEA0 /* NotoSansKR-Regular.otf in Resources */,
+				775C9691278AD87900A9BEA0 /* HomeViewController.xib in Resources */,
+				775C96A3278AD8BB00A9BEA0 /* MyPageViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0E8BCE2C00878E95D9BBAD88 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Fillin-iOS/Pods-Fillin-iOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Fillin-iOS/Pods-Fillin-iOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Fillin-iOS/Pods-Fillin-iOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		775C965C278ACCFD00A9BEA0 /* SwiftLint Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "SwiftLint Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint\n";
+		};
+		775C96AE278B317100A9BEA0 /* SwiftGen Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "SwiftGen Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [[ -f \"${PODS_ROOT}/SwiftGen/bin/swiftgen\" ]]; then\n  \"${PODS_ROOT}/SwiftGen/bin/swiftgen\"\nelse\n  echo \"warning: SwiftGen is not installed. Run 'pod install --repo-update' to install it.\"\nfi\n";
+		};
+		E94EE2D832D687FBBF467EDE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Fillin-iOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		775C9641278ACBEA00A9BEA0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				775C967D278ACFDD00A9BEA0 /* Xib.swift in Sources */,
+				775C9679278ACFB600A9BEA0 /* TempProtocol.swift in Sources */,
+				775C9649278ACBEA00A9BEA0 /* AppDelegate.swift in Sources */,
+				775C96A7278AD8E600A9BEA0 /* SplashViewController.swift in Sources */,
+				775C967B278ACFBD00A9BEA0 /* TempView.swift in Sources */,
+				775C9696278AD89200A9BEA0 /* StudioMapViewController.swift in Sources */,
+				775C969A278AD89F00A9BEA0 /* FilmRollViewController.swift in Sources */,
+				775C9674278ACF6600A9BEA0 /* TempModel.swift in Sources */,
+				775C96A2278AD8BB00A9BEA0 /* MyPageViewController.swift in Sources */,
+				775C969E278AD8A900A9BEA0 /* AddPhotoViewController.swift in Sources */,
+				775C964B278ACBEA00A9BEA0 /* SceneDelegate.swift in Sources */,
+				775C9672278ACF5D00A9BEA0 /* TempClass.swift in Sources */,
+				775C9677278ACF8B00A9BEA0 /* MoyaLoggerPlugin.swift in Sources */,
+				775C9667278ACF0300A9BEA0 /* Const.swift in Sources */,
+				775C96B0278B33E200A9BEA0 /* Assets+Generated.swift in Sources */,
+				775C967F278ACFFD00A9BEA0 /* UIColor+Extension.swift in Sources */,
+				775C9681278AD00100A9BEA0 /* UIFont+Extension.swift in Sources */,
+				775C9690278AD87900A9BEA0 /* HomeViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		775C9653278ACBEB00A9BEA0 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				775C9654278ACBEB00A9BEA0 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		775C9657278ACBEB00A9BEA0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		775C9658278ACBEB00A9BEA0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		775C965A278ACBEB00A9BEA0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A23EAA42105DDEFDBD25F680 /* Pods-Fillin-iOS.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = T3VFJ764ZC;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Fillin-iOS/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "YJC.Fillin-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		775C965B278ACBEB00A9BEA0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EB6BBBE71164715C5939F205 /* Pods-Fillin-iOS.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = T3VFJ764ZC;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Fillin-iOS/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "YJC.Fillin-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		775C9640278ACBEA00A9BEA0 /* Build configuration list for PBXProject "Fillin-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				775C9657278ACBEB00A9BEA0 /* Debug */,
+				775C9658278ACBEB00A9BEA0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		775C9659278ACBEB00A9BEA0 /* Build configuration list for PBXNativeTarget "Fillin-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				775C965A278ACBEB00A9BEA0 /* Debug */,
+				775C965B278ACBEB00A9BEA0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 775C963D278ACBEA00A9BEA0 /* Project object */;
+}
