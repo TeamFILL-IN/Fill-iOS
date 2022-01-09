@@ -8,19 +8,23 @@
 import UIKit
 
 import NMapsMap
+import CoreLocation
 import SnapKit
 import Then
 
-class StudioMapViewController: UIViewController {
+class StudioMapViewController: UIViewController, CLLocationManagerDelegate {
   
   // MARK: - Properties
   private let mapView = NMFNaverMapView(frame: .zero)
+  
+  var locationManager = CLLocationManager()
   
   // MARK: - View Life Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
     setUpMapView()
     layoutMapView()
+    setUpLocation()
   }
 }
 
@@ -38,5 +42,14 @@ extension StudioMapViewController {
       $0.trailing.equalTo(self.view.safeAreaLayoutGuide.snp.trailing)
       $0.bottom.equalTo(self.view.snp.bottom)
     }
+  }
+  
+  private func setUpLocation() {
+    mapView.showLocationButton = true
+    mapView.mapView.positionMode = .direction
+    
+    locationManager.delegate = self
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest
+    locationManager.requestWhenInUseAuthorization()
   }
 }
