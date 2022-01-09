@@ -17,9 +17,11 @@ import Then
 
 */
 
-class NavigationBar: UIView {
+class FilinNavigationBar: UIView {
     
     // MARK: - Properties
+    
+    var popViewController: (() -> Void)?
     
     private let backButton = UIButton().then {
         $0.setImage(Asset.btnBack.image, for: .normal)
@@ -70,7 +72,7 @@ class NavigationBar: UIView {
     // MARK: - @objc
     
     @objc func touchBackButton(_ sender: UIButton) {
-        print("touchBackButton")
+        popViewController?()
     }
     
     @objc func touchLogoButton(_ sender: UIButton) {

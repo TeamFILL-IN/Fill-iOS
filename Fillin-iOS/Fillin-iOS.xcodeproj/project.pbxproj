@@ -39,7 +39,7 @@
 		775C96A8278AD8E600A9BEA0 /* SplashViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 775C96A6278AD8E600A9BEA0 /* SplashViewController.xib */; };
 		775C96AA278B2E1100A9BEA0 /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = 775C96A9278B2E1100A9BEA0 /* swiftgen.yml */; };
 		775C96B0278B33E200A9BEA0 /* Assets+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775C96AF278B33E200A9BEA0 /* Assets+Generated.swift */; };
-		775C96B2278B5B3800A9BEA0 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775C96B1278B5B3800A9BEA0 /* NavigationBar.swift */; };
+		775C96B2278B5B3800A9BEA0 /* FillinNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775C96B1278B5B3800A9BEA0 /* FillinNavigationBar.swift */; };
 		775C96B4278B61D100A9BEA0 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775C96B3278B61D100A9BEA0 /* UIView+Extension.swift */; };
 /* End PBXBuildFile section */
 
@@ -78,7 +78,7 @@
 		775C96A6278AD8E600A9BEA0 /* SplashViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SplashViewController.xib; sourceTree = "<group>"; };
 		775C96A9278B2E1100A9BEA0 /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
 		775C96AF278B33E200A9BEA0 /* Assets+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Assets+Generated.swift"; sourceTree = "<group>"; };
-		775C96B1278B5B3800A9BEA0 /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
+		775C96B1278B5B3800A9BEA0 /* FillinNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillinNavigationBar.swift; sourceTree = "<group>"; };
 		775C96B3278B61D100A9BEA0 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		A23EAA42105DDEFDBD25F680 /* Pods-Fillin-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fillin-iOS.debug.xcconfig"; path = "Target Support Files/Pods-Fillin-iOS/Pods-Fillin-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		EB6BBBE71164715C5939F205 /* Pods-Fillin-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fillin-iOS.release.xcconfig"; path = "Target Support Files/Pods-Fillin-iOS/Pods-Fillin-iOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -225,7 +225,7 @@
 		775C9668278ACF1B00A9BEA0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				775C96B1278B5B3800A9BEA0 /* NavigationBar.swift */,
+				775C96B1278B5B3800A9BEA0 /* FillinNavigationBar.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -493,7 +493,7 @@
 				775C9649278ACBEA00A9BEA0 /* AppDelegate.swift in Sources */,
 				775C96A7278AD8E600A9BEA0 /* SplashViewController.swift in Sources */,
 				775C9696278AD89200A9BEA0 /* StudioMapViewController.swift in Sources */,
-				775C96B2278B5B3800A9BEA0 /* NavigationBar.swift in Sources */,
+				775C96B2278B5B3800A9BEA0 /* FillinNavigationBar.swift in Sources */,
 				775C969A278AD89F00A9BEA0 /* FilmRollViewController.swift in Sources */,
 				775C9674278ACF6600A9BEA0 /* TempModel.swift in Sources */,
 				775C96A2278AD8BB00A9BEA0 /* MyPageViewController.swift in Sources */,
