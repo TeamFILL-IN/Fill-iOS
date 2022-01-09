@@ -8,23 +8,35 @@
 import UIKit
 
 import NMapsMap
+import SnapKit
+import Then
 
 class StudioMapViewController: UIViewController {
+  
+  // MARK: - Properties
+  private let mapView = NMFNaverMapView(frame: .zero)
+  
+  // MARK: - View Life Cycle
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    setUpMapView()
+    layoutMapView()
+  }
+}
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+// MARK: - Extensions
+extension StudioMapViewController {
+  
+  private func setUpMapView() {
+    view.addSubview(mapView)
+  }
+  
+  private func layoutMapView() {
+    mapView.snp.makeConstraints {
+      $0.leading.equalTo(self.view.safeAreaLayoutGuide.snp.leading)
+      $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
+      $0.trailing.equalTo(self.view.safeAreaLayoutGuide.snp.trailing)
+      $0.bottom.equalTo(self.view.snp.bottom)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+  }
 }
