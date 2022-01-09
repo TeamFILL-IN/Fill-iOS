@@ -25,7 +25,6 @@ class StudioMapViewController: UIViewController, CLLocationManagerDelegate {
     super.viewDidLoad()
     setUpMapView()
     layoutMapView()
-    setUpLocation()
     layoutMyLocationButton()
   }
 }
@@ -35,6 +34,10 @@ extension StudioMapViewController {
   
   private func setUpMapView() {
     view.addSubview(mapView)
+    mapView.mapView.mapType = .navi
+    mapView.mapView.isNightModeEnabled = true
+    mapView.showZoomControls = false
+    mapView.showScaleBar = false
   }
   
   private func layoutMapView() {
@@ -46,14 +49,6 @@ extension StudioMapViewController {
     }
   }
   
-  private func setUpLocation() {
-    mapView.mapView.positionMode = .direction
-    
-    locationManager.delegate = self
-    locationManager.desiredAccuracy = kCLLocationAccuracyBest
-    locationManager.requestWhenInUseAuthorization()
-  }
-  
   private func layoutMyLocationButton() {
     view.addSubview(myLocationButton)
     myLocationButton.setImage(UIImage(named: "icnMyLocation"), for: .normal)
@@ -62,6 +57,18 @@ extension StudioMapViewController {
       $0.left.equalTo(self.view).inset(299)
       $0.right.equalTo(self.view).inset(20)
       $0.bottom.equalTo(self.view).inset(48)
+    }
+    myLocationButton.addTarget(self, action: #selector(locationTapped), for: .touchUpInside)
+  }
+  
+  // 버튼 기능 구현
+  @objc func locationTapped(_ sender: UIButton) {
+    if sender.isSelected == true {
+      sender.isSelected = false
+      mapView.mapView.positionMode = .direction
+    } else {
+      sender.isSelected = true
+      mapView.mapView.positionMode = .disabled
     }
   }
 }
