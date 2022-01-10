@@ -2,14 +2,13 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>위치정보 권한이 필요합니다.</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>위치정보 권한이 필요합니다.</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>위치정보 권한이 필요합니다.</string>
-	<key>NMFClientId</key>
-	<string>tha4qcgyyp</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>NotoSansKR-Bold.otf</string>
+		<string>NotoSansKR-Regular.otf</string>
+		<string>FuturaStdBold.otf</string>
+		<string>FuturaStdBook.otf</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
