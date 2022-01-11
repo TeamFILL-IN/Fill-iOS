@@ -33,6 +33,12 @@ class FilmRollClickViewController: UIViewController {
         })
     }
     
+    @IBAction func touchLikeButton(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+        // TODO: 23 실제 값+1 으로 채워넣기
+        sender.setTitle("23", for: .selected)
+    }
+    
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
