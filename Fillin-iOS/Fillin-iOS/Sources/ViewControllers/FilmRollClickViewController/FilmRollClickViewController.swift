@@ -10,7 +10,7 @@ import UIKit
 class FilmRollClickViewController: UIViewController {
 
     // MARK: - @IBOutlet Properties
-    @IBOutlet weak var dimmedBackview: UIView!
+    @IBOutlet weak var dimmedBackView: UIView!
     @IBOutlet weak var popUpView: UIView!
     
     @IBOutlet weak var profileImage: UIImageView!
@@ -22,15 +22,7 @@ class FilmRollClickViewController: UIViewController {
     
     // MARK: - @IBAction Properties
     @IBAction func touchDismissButton(_ sender: Any) {
-        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
-            self.dimmedBackview.alpha = 0.0
-            self.view.layoutIfNeeded()
-            self.popUpView.isHidden = true
-        }, completion: { _ in
-            if self.presentingViewController != nil {
-                self.dismiss(animated: false, completion: nil)
-            }
-        })
+        dismissPopUp()
     }
     
     @IBAction func touchLikeButton(_ sender: UIButton) {
@@ -43,6 +35,7 @@ class FilmRollClickViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
+        setupGestureRecognizer()
     }
 
 }
@@ -58,4 +51,26 @@ extension FilmRollClickViewController {
         likeButton.setInsets(forContentPadding: UIEdgeInsets(top: 0, left: 7, bottom: 0, right: 7), imageTitlePadding: CGFloat(6))
     }
     
+    private func setupGestureRecognizer() {
+        // 흐린 부분 탭할 때, 바텀시트를 내리는 TapGesture
+        let dimmedTap = UITapGestureRecognizer(target: self, action: #selector(tappedDimmedView(_:)))
+        dimmedBackView.addGestureRecognizer(dimmedTap)
+        dimmedBackView.isUserInteractionEnabled = true
+    }
+    
+    private func dismissPopUp() {
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
+            self.dimmedBackView.alpha = 0.0
+            self.view.layoutIfNeeded()
+            self.popUpView.isHidden = true
+        }, completion: { _ in
+            if self.presentingViewController != nil {
+                self.dismiss(animated: false, completion: nil)
+            }
+        })
+    }
+    
+    @objc private func tappedDimmedView(_ tapRecognizer: UITapGestureRecognizer) {
+        dismissPopUp()
+    }
 }

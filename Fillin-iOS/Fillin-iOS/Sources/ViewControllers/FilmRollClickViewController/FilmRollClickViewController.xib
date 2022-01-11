@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FilmRollClickViewController" customModule="Fillin_iOS" customModuleProvider="target">
             <connections>
-                <outlet property="dimmedBackview" destination="FOb-m5-hix" id="y5O-17-nII"/>
+                <outlet property="dimmedBackView" destination="FOb-m5-hix" id="NzF-bS-sdC"/>
                 <outlet property="filmNameLabel" destination="Oyc-tG-e7V" id="3fc-SF-tFZ"/>
                 <outlet property="likeButton" destination="2gL-42-HrB" id="zBR-yd-17I"/>
                 <outlet property="photoImageView" destination="1pI-xM-Q3D" id="xGD-Is-lCp"/>
