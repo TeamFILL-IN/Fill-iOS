@@ -37,6 +37,7 @@ internal enum Asset {
   internal static let icnClose = ImageAsset(name: "icnClose")
   internal static let icnEdit = ImageAsset(name: "icnEdit")
   internal static let icnHeart = ImageAsset(name: "icnHeart")
+  internal static let icnHeartFilled = ImageAsset(name: "icnHeartFilled")
   internal static let icnLink = ImageAsset(name: "icnLink")
   internal static let icnLocation = ImageAsset(name: "icnLocation")
   internal static let icnMap = ImageAsset(name: "icnMap")
@@ -59,6 +60,7 @@ internal enum Asset {
   internal static let iosPhotoRectangle = ImageAsset(name: "iosPhotoRectangle")
   internal static let iosStatusbar = ImageAsset(name: "iosStatusbar")
   internal static let profile = ImageAsset(name: "profile")
+  internal static let vector34 = ImageAsset(name: "vector34")
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
 
