@@ -6,9 +6,9 @@
       "scale" : "1x"
     },
     {
-      "filename" : "icnTime@2x.png",
       "idiom" : "universal",
-      "scale" : "2x"
+      "scale" : "2x",
+      "filename" : "icnTime@2x.png"
     },
     {
       "filename" : "icnTime@3x.png",

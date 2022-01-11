@@ -2,8 +2,8 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "icnEdit.png",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "icnEdit.png"
     },
     {
       "idiom" : "universal",
@@ -11,9 +11,9 @@
       "scale" : "2x"
     },
     {
-      "filename" : "icnEdit@3x.png",
       "scale" : "3x",
-      "idiom" : "universal"
+      "idiom" : "universal",
+      "filename" : "icnEdit@3x.png"
     }
   ],
   "info" : {

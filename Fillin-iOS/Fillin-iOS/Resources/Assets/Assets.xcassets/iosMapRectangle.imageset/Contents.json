@@ -2,18 +2,18 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "btnLike.png",
+      "filename" : "iosMapRectangle.png",
       "scale" : "1x"
     },
     {
       "scale" : "2x",
-      "idiom" : "universal",
-      "filename" : "btnLike@2x.png"
+      "filename" : "iosMapRectangle@2x.png",
+      "idiom" : "universal"
     },
     {
       "scale" : "3x",
       "idiom" : "universal",
-      "filename" : "btnLike@3x.png"
+      "filename" : "iosMapRectangle@3x.png"
     }
   ],
   "info" : {

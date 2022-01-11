@@ -1,19 +1,19 @@
 {
   "images" : [
     {
-      "idiom" : "universal",
       "filename" : "icnLocation.png",
-      "scale" : "1x"
+      "scale" : "1x",
+      "idiom" : "universal"
     },
     {
-      "scale" : "2x",
       "idiom" : "universal",
+      "scale" : "2x",
       "filename" : "icnLocation@2x.png"
     },
     {
-      "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "icnLocation@3x.png"
+      "filename" : "icnLocation@3x.png",
+      "idiom" : "universal"
     }
   ],
   "info" : {
