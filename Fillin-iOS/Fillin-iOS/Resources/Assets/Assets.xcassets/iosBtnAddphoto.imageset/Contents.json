@@ -1,13 +1,13 @@
 {
   "images" : [
     {
-      "filename" : "iosBtnAddphoto.png",
+      "idiom" : "universal",
       "scale" : "1x",
-      "idiom" : "universal"
+      "filename" : "iosBtnAddphoto.png"
     },
     {
-      "filename" : "iosBtnAddphoto@2x.png",
       "idiom" : "universal",
+      "filename" : "iosBtnAddphoto@2x.png",
       "scale" : "2x"
     },
     {

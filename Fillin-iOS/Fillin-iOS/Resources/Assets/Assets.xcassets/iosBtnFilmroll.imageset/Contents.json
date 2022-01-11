@@ -1,14 +1,14 @@
 {
   "images" : [
     {
-      "scale" : "1x",
       "idiom" : "universal",
-      "filename" : "iosBtnFilmroll.png"
+      "filename" : "iosBtnFilmroll.png",
+      "scale" : "1x"
     },
     {
       "filename" : "iosBtnFilmroll@2x.png",
-      "idiom" : "universal",
-      "scale" : "2x"
+      "scale" : "2x",
+      "idiom" : "universal"
     },
     {
       "scale" : "3x",

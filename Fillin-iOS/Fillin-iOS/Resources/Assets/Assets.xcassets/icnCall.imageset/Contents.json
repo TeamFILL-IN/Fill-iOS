@@ -2,8 +2,8 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "icnCall.png",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "icnCall.png"
     },
     {
       "idiom" : "universal",
@@ -11,8 +11,8 @@
       "scale" : "2x"
     },
     {
-      "scale" : "3x",
       "filename" : "icnCall@3x.png",
+      "scale" : "3x",
       "idiom" : "universal"
     }
   ],
