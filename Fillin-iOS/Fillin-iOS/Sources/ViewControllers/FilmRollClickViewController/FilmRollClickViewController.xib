@@ -135,7 +135,7 @@
                             <state key="normal" title="22" image="icnHeart">
                                 <color key="titleColor" name="Grey 1"/>
                             </state>
-                            <state key="selected" image="icnHeart">
+                            <state key="selected" image="icnHeartFilled">
                                 <color key="titleColor" name="Fillin_red_btn_press"/>
                             </state>
                             <connections>
@@ -178,6 +178,7 @@
         <image name="basicProfile" width="25.333333969116211" height="25.333333969116211"/>
         <image name="icnClearGrey" width="37" height="38"/>
         <image name="icnHeart" width="17.333333969116211" height="16"/>
+        <image name="icnHeartFilled" width="16" height="14"/>
         <image name="iconFilmroll" width="24" height="24"/>
         <namedColor name="Dark grey 3">
             <color red="0.10980392156862745" green="0.10588235294117647" blue="0.10588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
