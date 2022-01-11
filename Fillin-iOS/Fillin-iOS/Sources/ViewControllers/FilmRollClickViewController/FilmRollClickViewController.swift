@@ -49,8 +49,7 @@ extension FilmRollClickViewController {
         likeButton.titleLabel?.font = .body2
         likeButton.layer.borderWidth = 1
         likeButton.layer.borderColor = UIColor.darkGrey1.cgColor
-//        likeButton.alignTextBelow()
-//        likeButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        likeButton.setInsets(forContentPadding: UIEdgeInsets(top: 0, left: 7, bottom: 0, right: 7), imageTitlePadding: CGFloat(6))
     }
     
 }
