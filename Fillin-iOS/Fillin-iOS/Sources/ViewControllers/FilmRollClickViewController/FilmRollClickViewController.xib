@@ -10,7 +10,18 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FilmRollClickViewController" customModule="Fillin_iOS" customModuleProvider="target">
             <connections>
+                <outlet property="dimmedBackview" destination="FOb-m5-hix" id="y5O-17-nII"/>
+                <outlet property="filmNameLabel" destination="Oyc-tG-e7V" id="3fc-SF-tFZ"/>
+                <outlet property="filmTouchArea" destination="U3K-dI-wYl" id="y3q-6E-Gpz"/>
+                <outlet property="likeButton" destination="2gL-42-HrB" id="zBR-yd-17I"/>
+                <outlet property="photoImageView" destination="1pI-xM-Q3D" id="xGD-Is-lCp"/>
+                <outlet property="popUpView" destination="Spp-Vh-Aaq" id="w2t-nE-pV2"/>
+                <outlet property="profileImage" destination="U5j-oS-AGp" id="L6C-Bh-FXw"/>
+                <outlet property="profileNameLabel" destination="uZJ-Sg-hqQ" id="kgc-yR-11R"/>
+                <outlet property="profileTouchArea" destination="vBc-GP-kUd" id="Gcx-MI-6bJ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outletCollection property="dividerViews" destination="lwP-8F-iVr" collectionClass="NSMutableArray" id="x4M-Re-nrH"/>
+                <outletCollection property="dividerViews" destination="Zy2-Di-0ie" collectionClass="NSMutableArray" id="qd5-IN-7oT"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -33,6 +44,9 @@
                             </constraints>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                             <state key="normal" image="icnClearGrey"/>
+                            <connections>
+                                <action selector="touchDismissButton:" destination="-1" eventType="touchUpInside" id="JJb-VD-PE2"/>
+                            </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vBc-GP-kUd">
                             <rect key="frame" x="8" y="10" width="108.33333333333333" height="40"/>
