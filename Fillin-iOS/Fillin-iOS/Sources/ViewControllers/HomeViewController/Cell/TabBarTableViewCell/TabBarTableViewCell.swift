@@ -9,6 +9,29 @@ import UIKit
 
 class TabBarTableViewCell: UITableViewCell {
 
+    // MARK: - Properties
+    var pushToAddPhotoViewController: (() -> Void)?
+    var pushToFilmRollViewController: (() -> Void)?
+    var pushToStudioMapViewController: (() -> Void)?
+    var pushToMyPageViewController: (() -> Void)?
+    
+    // MARK: - @IBAction Properties
+    @IBAction func touchAddPhoto(_ sender: Any) {
+        pushToAddPhotoViewController?()
+    }
+    
+    @IBAction func touchFilmRoll(_ sender: Any) {
+        pushToFilmRollViewController?()
+    }
+    
+    @IBAction func touchStudioMap(_ sender: Any) {
+        pushToStudioMapViewController?()
+    }
+    
+    @IBAction func touchMyPage(_ sender: Any) {
+        pushToMyPageViewController?()
+    }
+    
     // MARK: - View Life Cycle
     override func awakeFromNib() {
         super.awakeFromNib()

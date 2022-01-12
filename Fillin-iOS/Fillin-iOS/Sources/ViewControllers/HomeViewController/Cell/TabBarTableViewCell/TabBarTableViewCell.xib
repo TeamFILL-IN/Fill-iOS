@@ -3,8 +3,8 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,15 +16,74 @@
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                 <autoresizingMask key="autoresizingMask"/>
-                <color key="backgroundColor" systemColor="systemGreenColor"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="zFv-Gj-WZr">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ByS-4T-PaQ">
+                                <rect key="frame" x="0.0" y="0.0" width="94" height="80"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="iosBtnAddphoto"/>
+                                <connections>
+                                    <action selector="touchAddPhoto:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="ovg-HA-aQU"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L74-Jk-3d8">
+                                <rect key="frame" x="94" y="0.0" width="1" height="80"/>
+                                <color key="backgroundColor" name="Dark grey 2"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="1" id="gF8-GC-VVa"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LwA-LS-YrT">
+                                <rect key="frame" x="95" y="0.0" width="94" height="80"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="iosBtnFilmroll"/>
+                                <connections>
+                                    <action selector="touchFilmRoll:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="2cK-xN-zP6"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RWW-ke-h3W">
+                                <rect key="frame" x="189" y="0.0" width="92" height="80"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="iosBtnStudiomap"/>
+                                <connections>
+                                    <action selector="touchStudioMap:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="l5S-Kc-E7H"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vrm-uL-Gmv">
+                                <rect key="frame" x="281" y="0.0" width="94" height="80"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="iosBtnMypage"/>
+                                <connections>
+                                    <action selector="touchMyPage:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="0Xy-V9-emF"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <color key="backgroundColor" name="Fillin_black"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="zFv-Gj-WZr" secondAttribute="trailing" id="0D6-nQ-gca"/>
+                    <constraint firstItem="zFv-Gj-WZr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="1kM-08-EiY"/>
+                    <constraint firstItem="zFv-Gj-WZr" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="RGm-yN-LWl"/>
+                    <constraint firstAttribute="bottom" secondItem="zFv-Gj-WZr" secondAttribute="bottom" id="atb-V4-0aX"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
-            <point key="canvasLocation" x="139" y="114"/>
+            <point key="canvasLocation" x="138.40579710144928" y="113.83928571428571"/>
         </tableViewCell>
     </objects>
     <resources>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
+        <image name="iosBtnAddphoto" width="70" height="80"/>
+        <image name="iosBtnFilmroll" width="70" height="80"/>
+        <image name="iosBtnMypage" width="70" height="80"/>
+        <image name="iosBtnStudiomap" width="70" height="80"/>
+        <namedColor name="Dark grey 2">
+            <color red="0.13725490196078433" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Fillin_black">
+            <color red="0.0039215686274509803" green="0.0039215686274509803" blue="0.0039215686274509803" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

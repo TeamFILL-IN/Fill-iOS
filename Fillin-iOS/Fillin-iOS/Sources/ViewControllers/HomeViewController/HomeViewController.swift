@@ -72,7 +72,25 @@ extension HomeViewController: UITableViewDataSource {
             guard let tabBarCell = tableView.dequeueReusableCell(withIdentifier: Const.Xib.tabBarTableViewCell, for: indexPath) as? TabBarTableViewCell else {
                 return UITableViewCell()
             }
+            tabBarCell.pushToAddPhotoViewController = {
+                let nextVC = AddPhotoViewController()
+                self.navigationController?.pushViewController(nextVC, animated: true)
+            }
             
+            tabBarCell.pushToFilmRollViewController = {
+                let nextVC = FilmRollViewController()
+                self.navigationController?.pushViewController(nextVC, animated: true)
+            }
+            
+            tabBarCell.pushToStudioMapViewController = {
+                let nextVC = StudioMapViewController()
+                self.navigationController?.pushViewController(nextVC, animated: true)
+            }
+            
+            tabBarCell.pushToMyPageViewController = {
+                let nextVC = MyPageViewController()
+                self.navigationController?.pushViewController(nextVC, animated: true)
+            }
             return tabBarCell
         case 2 :
             guard let mapCell = tableView.dequeueReusableCell(withIdentifier: Const.Xib.mapTableViewCell, for: indexPath) as? MapTableViewCell else {
