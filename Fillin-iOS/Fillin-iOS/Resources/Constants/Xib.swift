@@ -9,5 +9,6 @@ import Foundation
 extension Const {
     struct Xib {
         static let welcomeTableViewCell = "WelcomeTableViewCell"
+        static let tabBarTableViewCell = "TabBarTableViewCell"
     }
 }

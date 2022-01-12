@@ -9,6 +9,7 @@ import UIKit
 
 class TabBarTableViewCell: UITableViewCell {
 
+    // MARK: - View Life Cycle
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -18,6 +19,11 @@ class TabBarTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    // MARK: - Functions
+    static func nib() -> UINib {
+        return UINib(nibName: Const.Xib.tabBarTableViewCell, bundle: Bundle(for: TabBarTableViewCell.self))
     }
     
 }
