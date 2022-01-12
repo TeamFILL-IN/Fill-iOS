@@ -10,5 +10,6 @@ extension Const {
     struct Xib {
         static let welcomeTableViewCell = "WelcomeTableViewCell"
         static let tabBarTableViewCell = "TabBarTableViewCell"
+        static let mapTableViewCell = "MapTableViewCell"
     }
 }

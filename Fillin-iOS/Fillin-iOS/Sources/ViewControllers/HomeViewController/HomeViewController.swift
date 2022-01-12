@@ -36,6 +36,7 @@ extension HomeViewController {
     private func registerXib() {
         homeTableView.register(WelcomeTableViewCell.nib(), forCellReuseIdentifier: Const.Xib.welcomeTableViewCell)
         homeTableView.register(TabBarTableViewCell.nib(), forCellReuseIdentifier: Const.Xib.tabBarTableViewCell)
+        homeTableView.register(MapTableViewCell.nib(), forCellReuseIdentifier: Const.Xib.mapTableViewCell)
     }
 }
 
@@ -74,8 +75,12 @@ extension HomeViewController: UITableViewDataSource {
             }
             
             return tabBarCell
-//        case 2 :
-//            return 248
+        case 2 :
+            guard let mapCell = tableView.dequeueReusableCell(withIdentifier: Const.Xib.mapTableViewCell, for: indexPath) as? MapTableViewCell else {
+                return UITableViewCell()
+            }
+            
+            return mapCell
 //        case 3 :
 //            return 209
         default:
