@@ -73,23 +73,19 @@ extension HomeViewController: UITableViewDataSource {
                 return UITableViewCell()
             }
             tabBarCell.pushToAddPhotoViewController = {
-                let nextVC = AddPhotoViewController()
-                self.navigationController?.pushViewController(nextVC, animated: true)
+                self.navigationController?.pushViewController(AddPhotoViewController(), animated: true)
             }
             
             tabBarCell.pushToFilmRollViewController = {
-                let nextVC = FilmRollViewController()
-                self.navigationController?.pushViewController(nextVC, animated: true)
+                self.navigationController?.pushViewController(FilmRollViewController(), animated: true)
             }
             
             tabBarCell.pushToStudioMapViewController = {
-                let nextVC = StudioMapViewController()
-                self.navigationController?.pushViewController(nextVC, animated: true)
+                self.navigationController?.pushViewController(StudioMapViewController(), animated: true)
             }
             
             tabBarCell.pushToMyPageViewController = {
-                let nextVC = MyPageViewController()
-                self.navigationController?.pushViewController(nextVC, animated: true)
+                self.navigationController?.pushViewController(MyPageViewController(), animated: true)
             }
             return tabBarCell
         case 2 :
