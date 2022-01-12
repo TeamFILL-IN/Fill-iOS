@@ -18,7 +18,6 @@ class HomeViewController: UIViewController {
         setUI()
         registerXib()
     }
-
 }
 
 // MARK: - Extensions
@@ -30,7 +29,6 @@ extension HomeViewController {
         if #available(iOS 15, *) {
             homeTableView.sectionHeaderTopPadding = 0
         }
-        
     }
     
     private func registerXib() {

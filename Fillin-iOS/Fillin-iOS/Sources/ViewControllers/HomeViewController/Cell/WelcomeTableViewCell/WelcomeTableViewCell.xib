@@ -16,15 +16,45 @@
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="375" height="136"/>
                 <autoresizingMask key="autoresizingMask"/>
-                <color key="backgroundColor" name="Fillin_yellow"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="미나님, 좋은 아침이에요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gPT-Wf-6S6">
+                        <rect key="frame" x="20" y="16" width="165.5" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" name="Grey 2"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="서랍 속 잠자는 필름을 깨워볼까요?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q42-Am-3H7">
+                        <rect key="frame" x="18" y="43" width="232" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" name="Fillin_white"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" name="Fillin_black"/>
+                <constraints>
+                    <constraint firstItem="gPT-Wf-6S6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="dXJ-Pf-35b"/>
+                    <constraint firstItem="Q42-Am-3H7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="18" id="eZ3-LV-byk"/>
+                    <constraint firstItem="gPT-Wf-6S6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="n0b-1K-DuT"/>
+                    <constraint firstItem="Q42-Am-3H7" firstAttribute="top" secondItem="gPT-Wf-6S6" secondAttribute="bottom" constant="6" id="wuK-s3-k93"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="descriptionLabel" destination="Q42-Am-3H7" id="APF-AP-bMy"/>
+                <outlet property="nickNameLabel" destination="gPT-Wf-6S6" id="ubO-ud-KTj"/>
+            </connections>
             <point key="canvasLocation" x="139" y="114"/>
         </tableViewCell>
     </objects>
     <resources>
-        <namedColor name="Fillin_yellow">
-            <color red="0.98039215686274506" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="Fillin_black">
+            <color red="0.0039215686274509803" green="0.0039215686274509803" blue="0.0039215686274509803" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Fillin_white">
+            <color red="0.99215686274509807" green="0.98039215686274506" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Grey 2">
+            <color red="0.54509803921568623" green="0.54509803921568623" blue="0.54509803921568623" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
