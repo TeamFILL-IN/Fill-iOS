@@ -51,6 +51,8 @@
 		77CC072D278F0DC10020F34A /* TabBarTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77CC072B278F0DC10020F34A /* TabBarTableViewCell.xib */; };
 		77CC0733278F10890020F34A /* MapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CC0731278F10890020F34A /* MapTableViewCell.swift */; };
 		77CC0734278F10890020F34A /* MapTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77CC0732278F10890020F34A /* MapTableViewCell.xib */; };
+		77CC0738278F11DA0020F34A /* PhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CC0736278F11DA0020F34A /* PhotosTableViewCell.swift */; };
+		77CC0739278F11DA0020F34A /* PhotosTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77CC0737278F11DA0020F34A /* PhotosTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -100,6 +102,8 @@
 		77CC072B278F0DC10020F34A /* TabBarTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabBarTableViewCell.xib; sourceTree = "<group>"; };
 		77CC0731278F10890020F34A /* MapTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTableViewCell.swift; sourceTree = "<group>"; };
 		77CC0732278F10890020F34A /* MapTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapTableViewCell.xib; sourceTree = "<group>"; };
+		77CC0736278F11DA0020F34A /* PhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosTableViewCell.swift; sourceTree = "<group>"; };
+		77CC0737278F11DA0020F34A /* PhotosTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotosTableViewCell.xib; sourceTree = "<group>"; };
 		A23EAA42105DDEFDBD25F680 /* Pods-Fillin-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fillin-iOS.debug.xcconfig"; path = "Target Support Files/Pods-Fillin-iOS/Pods-Fillin-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		EB6BBBE71164715C5939F205 /* Pods-Fillin-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fillin-iOS.release.xcconfig"; path = "Target Support Files/Pods-Fillin-iOS/Pods-Fillin-iOS.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -363,6 +367,7 @@
 				77CC072E278F0DCF0020F34A /* WelcomeTableViewCell */,
 				77CC072F278F0DDD0020F34A /* TabBarTableViewCell */,
 				77CC0730278F10750020F34A /* MapTableViewCell */,
+				77CC0735278F11AD0020F34A /* PhotosTableViewCell */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -392,6 +397,15 @@
 				77CC0732278F10890020F34A /* MapTableViewCell.xib */,
 			);
 			path = MapTableViewCell;
+			sourceTree = "<group>";
+		};
+		77CC0735278F11AD0020F34A /* PhotosTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				77CC0736278F11DA0020F34A /* PhotosTableViewCell.swift */,
+				77CC0737278F11DA0020F34A /* PhotosTableViewCell.xib */,
+			);
+			path = PhotosTableViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -460,6 +474,7 @@
 				77CC0734278F10890020F34A /* MapTableViewCell.xib in Resources */,
 				775C96AA278B2E1100A9BEA0 /* swiftgen.yml in Resources */,
 				775C96A8278AD8E600A9BEA0 /* SplashViewController.xib in Resources */,
+				77CC0739278F11DA0020F34A /* PhotosTableViewCell.xib in Resources */,
 				77CC072D278F0DC10020F34A /* TabBarTableViewCell.xib in Resources */,
 				77CC0729278F02B80020F34A /* WelcomeTableViewCell.xib in Resources */,
 				775C9697278AD89200A9BEA0 /* StudioMapViewController.xib in Resources */,
@@ -568,6 +583,7 @@
 				77CC0733278F10890020F34A /* MapTableViewCell.swift in Sources */,
 				775C9649278ACBEA00A9BEA0 /* AppDelegate.swift in Sources */,
 				775C96A7278AD8E600A9BEA0 /* SplashViewController.swift in Sources */,
+				77CC0738278F11DA0020F34A /* PhotosTableViewCell.swift in Sources */,
 				77CC072C278F0DC10020F34A /* TabBarTableViewCell.swift in Sources */,
 				775C9696278AD89200A9BEA0 /* StudioMapViewController.swift in Sources */,
 				775C96B2278B5B3800A9BEA0 /* FillinNavigationBar.swift in Sources */,

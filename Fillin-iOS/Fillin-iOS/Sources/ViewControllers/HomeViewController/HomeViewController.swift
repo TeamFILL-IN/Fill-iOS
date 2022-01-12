@@ -37,6 +37,7 @@ extension HomeViewController {
         homeTableView.register(WelcomeTableViewCell.nib(), forCellReuseIdentifier: Const.Xib.welcomeTableViewCell)
         homeTableView.register(TabBarTableViewCell.nib(), forCellReuseIdentifier: Const.Xib.tabBarTableViewCell)
         homeTableView.register(MapTableViewCell.nib(), forCellReuseIdentifier: Const.Xib.mapTableViewCell)
+        homeTableView.register(PhotosTableViewCell.nib(), forCellReuseIdentifier: Const.Xib.photosTableViewCell)
     }
 }
 
@@ -81,8 +82,12 @@ extension HomeViewController: UITableViewDataSource {
             }
             
             return mapCell
-//        case 3 :
-//            return 209
+        case 3 :
+            guard let photosCell = tableView.dequeueReusableCell(withIdentifier: Const.Xib.photosTableViewCell, for: indexPath) as? PhotosTableViewCell else {
+                return UITableViewCell()
+            }
+            
+            return photosCell
         default:
             return UITableViewCell()
         }
