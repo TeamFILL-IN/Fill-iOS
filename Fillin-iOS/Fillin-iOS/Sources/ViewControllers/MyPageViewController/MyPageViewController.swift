@@ -11,16 +11,16 @@ import SnapKit
 import Then
 
 // MARK: - MyPageViewController
-class MyPageViewController: UIViewController {
+class MyPageViewController: UIViewController, UICollectionViewDelegate {
   
   // MARK: - Components
   let navigationBar = FilinNavigationBar()
   let mypageScrollview = UIScrollView()
   let mypageScrollContainverView = UIView()
-//  let navigationBar : UIView = {
-//    let view = FilinNavigationBar()
-//    return view
-//  }()
+  //  let navigationBar : UIView = {
+  //    let view = FilinNavigationBar()
+  //    return view
+  //  }()
   let userImageview = UIImageView()
   let userNameLabel = UILabel()
   let userCameraIcon = UIButton()
@@ -46,12 +46,23 @@ class MyPageViewController: UIViewController {
     super.viewDidLoad()
     view.backgroundColor = .fillinBlack
     self.navigationController?.navigationBar.isHidden = true
+    register()
     layout()
+    self.myphotoCollectionview.delegate = self
+    self.myphotoCollectionview.dataSource = self
+  }
+  
+  override func viewDidLayoutSubviews() {
+    /// subview들이 자리 잡은 후 레이아웃 조정 필요할 때 (ex. radius 값)
+    self.userImageview.layer.cornerRadius = self.userImageview.frame.width/2
   }
 }
 
 // MARK: - Extension
 extension MyPageViewController {
+  func register() {
+    self.myphotoCollectionview.register(MyPagePhotoCollectionViewCell.self, forCellWithReuseIdentifier: MyPagePhotoCollectionViewCell.identifier)
+  }
   func layout() {
     layoutNavigaionBar()
     layoutMyPageScrollView()
@@ -106,6 +117,7 @@ extension MyPageViewController {
   func layoutUserImageView() {
     mypageScrollContainverView.add(userImageview) {
       $0.image = Asset.profile.image
+      //      $0.backgroundColor = .white
       $0.snp.makeConstraints {
         $0.top.equalTo(self.mypageScrollContainverView.snp.top).offset(14)
         $0.leading.equalToSuperview().offset(18)
@@ -165,7 +177,7 @@ extension MyPageViewController {
       $0.snp.makeConstraints {
         $0.top.equalTo(self.userCameraLabel.snp.bottom).offset(28)
         $0.centerX.equalToSuperview()
-        $0.width.equalTo(339)
+        $0.leading.equalToSuperview().offset(18)
         $0.height.equalTo(80)
       }
     }
@@ -201,8 +213,7 @@ extension MyPageViewController {
       $0.snp.makeConstraints {
         $0.top.equalTo(self.orangeBackgroundview.snp.bottom).offset(12)
         $0.centerX.equalToSuperview()
-        $0.width.equalTo(375)
-        $0.height.equalTo(2)
+        $0.width.equalToSuperview()
       }
     }
   }
@@ -224,10 +235,36 @@ extension MyPageViewController {
       $0.snp.makeConstraints {
         $0.top.equalTo(self.myphotosLabel.snp.bottom).offset(12)
         $0.centerX.equalToSuperview()
-        $0.width.equalTo(342)
+        $0.leading.equalToSuperview().offset(18)
         $0.height.equalTo(600)
         $0.bottom.equalTo(self.mypageScrollContainverView.snp.bottom)
       }
     }
+  }
+}
+// MARK: - UICollectionView
+extension MyPageViewController : UICollectionViewDataSource {
+  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    return 30
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    guard let myphotoCell = collectionView.dequeueReusableCell(withReuseIdentifier: MyPagePhotoCollectionViewCell.identifier, for: indexPath) as? MyPagePhotoCollectionViewCell else {return UICollectionViewCell() }
+    myphotoCell.awakeFromNib()
+    return myphotoCell
+  }
+}
+extension MyPageViewController : UICollectionViewDelegateFlowLayout {
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    let cellWidth = (collectionView.frame.width-18)/3
+    let cellHeight = (collectionView.frame.width-18)/3
+    
+    return CGSize(width: cellWidth, height: cellHeight)
+  }
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+    return UIEdgeInsets.zero
+  }
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+    return 0
   }
 }
