@@ -17,6 +17,11 @@ class MyPageViewController: UIViewController {
   // MARK: - Components
   let mypageScrollview = UIScrollView()
   let mypageScrollContainverView = UIView()
+//  let navigationBar : UIView = {
+//    let view = FilinNavigationBar()
+//    return view
+//  }()
+  let navigationBar = FilinNavigationBar()
   let userImageview = UIImageView()
   let userNameLabel = UILabel()
   let userCameraIcon = UIButton()
@@ -40,7 +45,8 @@ class MyPageViewController: UIViewController {
   // MARK: - LifeCycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    view.backgroundColor = .white
+    view.backgroundColor = .fillinBlack
+    self.navigationController?.navigationBar.isHidden = true
     layout()
   }
 }
@@ -48,8 +54,9 @@ class MyPageViewController: UIViewController {
 // MARK: - Extension
 extension MyPageViewController {
   func layout() {
-    layoutMyPageScrollView()
-    layoutMyPageScrollContainerView()
+    layoutNavigaionBar()
+//    layoutMyPageScrollView()
+//    layoutMyPageScrollContainerView()
     layoutUserImageView()
     layoutUserNameLabel()
     layoutUserCameraIcon()
@@ -62,7 +69,18 @@ extension MyPageViewController {
     layoutMyphotosLabel()
     layoutMyPhotoCollectionView()
   }
-  /// Custom Tab Bar 들어갈 자리
+  func layoutNavigaionBar() {
+    view.add(navigationBar) {
+      self.navigationBar.popViewController = {
+        self.navigationController?.popViewController(animated: true)
+      }
+      $0.snp.makeConstraints {
+        $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
+        $0.leading.trailing.equalToSuperview()
+        $0.height.equalTo(50)
+      }
+    }
+  }
   func layoutMyPageScrollView() {
     view.add(mypageScrollview) {
       $0.backgroundColor = .white

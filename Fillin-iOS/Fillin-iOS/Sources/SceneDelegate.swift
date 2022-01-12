@@ -23,7 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                let homeNavigationController = UINavigationController(rootViewController: HomeViewController())
+                let homeNavigationController = UINavigationController(rootViewController: MyPageViewController())
                 self.window?.rootViewController = homeNavigationController
                 self.window?.makeKeyAndVisible()
             }
