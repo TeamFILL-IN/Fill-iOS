@@ -45,6 +45,7 @@
 		77628EAD278D7ADB00CB5919 /* FilmRollClickViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77628EAB278D7ADB00CB5919 /* FilmRollClickViewController.xib */; };
 		77878AC7278D947900137D30 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77878AC6278D947900137D30 /* Colors.xcassets */; };
 		77878AC9278D9FDB00137D30 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77878AC8278D9FDB00137D30 /* UIButton+Extension.swift */; };
+		E878EC2A278D0E9400135FB9 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E878EC29278D0E9400135FB9 /* UILabel+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,6 +90,7 @@
 		77878AC6278D947900137D30 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		77878AC8278D9FDB00137D30 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		A23EAA42105DDEFDBD25F680 /* Pods-Fillin-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fillin-iOS.debug.xcconfig"; path = "Target Support Files/Pods-Fillin-iOS/Pods-Fillin-iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		E878EC29278D0E9400135FB9 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		EB6BBBE71164715C5939F205 /* Pods-Fillin-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fillin-iOS.release.xcconfig"; path = "Target Support Files/Pods-Fillin-iOS/Pods-Fillin-iOS.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -217,6 +219,7 @@
 				775C967E278ACFFD00A9BEA0 /* UIColor+Extension.swift */,
 				775C9680278AD00100A9BEA0 /* UIFont+Extension.swift */,
 				775C96B3278B61D100A9BEA0 /* UIView+Extension.swift */,
+				E878EC29278D0E9400135FB9 /* UILabel+Extension.swift */,
 				77878AC8278D9FDB00137D30 /* UIButton+Extension.swift */,
 			);
 			path = Extensions;
@@ -523,6 +526,7 @@
 				77628EAC278D7ADB00CB5919 /* FilmRollClickViewController.swift in Sources */,
 				775C964B278ACBEA00A9BEA0 /* SceneDelegate.swift in Sources */,
 				775C9672278ACF5D00A9BEA0 /* TempClass.swift in Sources */,
+				E878EC2A278D0E9400135FB9 /* UILabel+Extension.swift in Sources */,
 				775C96B4278B61D100A9BEA0 /* UIView+Extension.swift in Sources */,
 				775C9677278ACF8B00A9BEA0 /* MoyaLoggerPlugin.swift in Sources */,
 				775C9667278ACF0300A9BEA0 /* Const.swift in Sources */,
@@ -672,7 +676,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = T3VFJ764ZC;
+				DEVELOPMENT_TEAM = 4QG3GC35LA;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Fillin-iOS/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -684,6 +688,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "YJC.Fillin-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -700,7 +705,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = T3VFJ764ZC;
+				DEVELOPMENT_TEAM = 4QG3GC35LA;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Fillin-iOS/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -712,6 +717,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "YJC.Fillin-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
