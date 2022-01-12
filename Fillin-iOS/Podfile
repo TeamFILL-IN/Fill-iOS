@@ -12,4 +12,5 @@ pod 'Kingfisher', '~> 7.0'
 pod 'SnapKit', '~> 5.0.0'
 pod 'Then'
 pod 'SwiftGen', '~> 6.0'
+pod 'NMapsMap'
 end
