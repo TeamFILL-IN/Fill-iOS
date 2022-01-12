@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ArrowCollectionViewCell" id="gTV-IL-0wX" customClass="ArrowCollectionViewCell" customModule="Fillin_iOS" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="65" height="107"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="65" height="107"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="THV-90-AaY">
+                        <rect key="frame" x="0.0" y="0.0" width="65" height="107"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xh3-Rm-GcY">
+                                <rect key="frame" x="9" y="34.5" width="38" height="38"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="btnMore"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" name="Fillin_black"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="xh3-Rm-GcY" secondAttribute="trailing" constant="18" id="PpN-8w-F2v"/>
+                            <constraint firstItem="xh3-Rm-GcY" firstAttribute="centerY" secondItem="THV-90-AaY" secondAttribute="centerY" id="cfE-6X-RnE"/>
+                            <constraint firstItem="xh3-Rm-GcY" firstAttribute="leading" secondItem="THV-90-AaY" secondAttribute="leading" constant="9" id="pTQ-gL-Pk0"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="THV-90-AaY" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="2ym-Cx-M7g"/>
+                <constraint firstAttribute="bottom" secondItem="THV-90-AaY" secondAttribute="bottom" id="Dy9-yG-aIl"/>
+                <constraint firstAttribute="trailing" secondItem="THV-90-AaY" secondAttribute="trailing" id="eFT-Yr-fus"/>
+                <constraint firstItem="THV-90-AaY" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="nCx-Qt-FXz"/>
+            </constraints>
+            <size key="customSize" width="74" height="233"/>
+            <point key="canvasLocation" x="-22.463768115942031" y="53.236607142857139"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="btnMore" width="38" height="38"/>
+        <namedColor name="Fillin_black">
+            <color red="0.0039215686274509803" green="0.0039215686274509803" blue="0.0039215686274509803" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

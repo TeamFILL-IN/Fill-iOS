@@ -13,5 +13,6 @@ extension Const {
         static let mapTableViewCell = "MapTableViewCell"
         static let photosTableViewCell = "PhotosTableViewCell"
         static let photosCollectionViewCell = "PhotosCollectionViewCell"
+        static let arrowCollectionViewCell = "ArrowCollectionViewCell"
     }
 }

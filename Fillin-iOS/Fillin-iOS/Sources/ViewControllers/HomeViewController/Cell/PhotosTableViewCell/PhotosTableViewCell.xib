@@ -25,7 +25,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="2fH-sC-1yu">
-                        <rect key="frame" x="18" y="57" width="339" height="108"/>
+                        <rect key="frame" x="18" y="57" width="357" height="108"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="YLf-pz-VlD">
                             <size key="itemSize" width="128" height="128"/>
@@ -37,8 +37,8 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="vhg-hI-APg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="24" id="0Ug-CB-7OB"/>
-                    <constraint firstItem="2fH-sC-1yu" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="4hk-Zd-V3R"/>
                     <constraint firstItem="2fH-sC-1yu" firstAttribute="top" secondItem="vhg-hI-APg" secondAttribute="bottom" constant="12" id="59M-L3-Zfq"/>
+                    <constraint firstAttribute="trailing" secondItem="2fH-sC-1yu" secondAttribute="trailing" id="83V-V3-TyU"/>
                     <constraint firstAttribute="bottom" secondItem="2fH-sC-1yu" secondAttribute="bottom" constant="44" id="GcB-1K-Ldz"/>
                     <constraint firstItem="vhg-hI-APg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="19" id="N0M-5f-d5W"/>
                     <constraint firstItem="2fH-sC-1yu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="18" id="sqS-8q-rxl"/>
