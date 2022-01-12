@@ -45,6 +45,8 @@
 		77628EAD278D7ADB00CB5919 /* FilmRollClickViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77628EAB278D7ADB00CB5919 /* FilmRollClickViewController.xib */; };
 		77878AC7278D947900137D30 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77878AC6278D947900137D30 /* Colors.xcassets */; };
 		77878AC9278D9FDB00137D30 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77878AC8278D9FDB00137D30 /* UIButton+Extension.swift */; };
+		77CC0728278F02B80020F34A /* WelcomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CC0726278F02B80020F34A /* WelcomeTableViewCell.swift */; };
+		77CC0729278F02B80020F34A /* WelcomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77CC0727278F02B80020F34A /* WelcomeTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,6 +90,8 @@
 		77628EAB278D7ADB00CB5919 /* FilmRollClickViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilmRollClickViewController.xib; sourceTree = "<group>"; };
 		77878AC6278D947900137D30 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		77878AC8278D9FDB00137D30 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		77CC0726278F02B80020F34A /* WelcomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeTableViewCell.swift; sourceTree = "<group>"; };
+		77CC0727278F02B80020F34A /* WelcomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WelcomeTableViewCell.xib; sourceTree = "<group>"; };
 		A23EAA42105DDEFDBD25F680 /* Pods-Fillin-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fillin-iOS.debug.xcconfig"; path = "Target Support Files/Pods-Fillin-iOS/Pods-Fillin-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		EB6BBBE71164715C5939F205 /* Pods-Fillin-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fillin-iOS.release.xcconfig"; path = "Target Support Files/Pods-Fillin-iOS/Pods-Fillin-iOS.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -320,6 +324,7 @@
 		775C968D278AD1AB00A9BEA0 /* HomeViewController */ = {
 			isa = PBXGroup;
 			children = (
+				77CC0725278F02900020F34A /* Cell */,
 				775C968E278AD87900A9BEA0 /* HomeViewController.swift */,
 				775C968F278AD87900A9BEA0 /* HomeViewController.xib */,
 			);
@@ -342,6 +347,15 @@
 				77628EAB278D7ADB00CB5919 /* FilmRollClickViewController.xib */,
 			);
 			path = FilmRollClickViewController;
+			sourceTree = "<group>";
+		};
+		77CC0725278F02900020F34A /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				77CC0726278F02B80020F34A /* WelcomeTableViewCell.swift */,
+				77CC0727278F02B80020F34A /* WelcomeTableViewCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -409,6 +423,7 @@
 				775C965E278ACDE200A9BEA0 /* .swiftlint.yml in Resources */,
 				775C96AA278B2E1100A9BEA0 /* swiftgen.yml in Resources */,
 				775C96A8278AD8E600A9BEA0 /* SplashViewController.xib in Resources */,
+				77CC0729278F02B80020F34A /* WelcomeTableViewCell.xib in Resources */,
 				775C9697278AD89200A9BEA0 /* StudioMapViewController.xib in Resources */,
 				775C9655278ACBEB00A9BEA0 /* LaunchScreen.storyboard in Resources */,
 				775C9683278AD0AC00A9BEA0 /* NotoSansKR-Bold.otf in Resources */,
@@ -516,6 +531,7 @@
 				775C96A7278AD8E600A9BEA0 /* SplashViewController.swift in Sources */,
 				775C9696278AD89200A9BEA0 /* StudioMapViewController.swift in Sources */,
 				775C96B2278B5B3800A9BEA0 /* FillinNavigationBar.swift in Sources */,
+				77CC0728278F02B80020F34A /* WelcomeTableViewCell.swift in Sources */,
 				775C969A278AD89F00A9BEA0 /* FilmRollViewController.swift in Sources */,
 				775C9674278ACF6600A9BEA0 /* TempModel.swift in Sources */,
 				775C96A2278AD8BB00A9BEA0 /* MyPageViewController.swift in Sources */,
