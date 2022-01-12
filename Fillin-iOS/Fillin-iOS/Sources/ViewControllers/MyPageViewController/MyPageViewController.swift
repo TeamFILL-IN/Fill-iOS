@@ -10,18 +10,17 @@ import UIKit
 import SnapKit
 import Then
 
-
 // MARK: - MyPageViewController
 class MyPageViewController: UIViewController {
   
   // MARK: - Components
+  let navigationBar = FilinNavigationBar()
   let mypageScrollview = UIScrollView()
   let mypageScrollContainverView = UIView()
 //  let navigationBar : UIView = {
 //    let view = FilinNavigationBar()
 //    return view
 //  }()
-  let navigationBar = FilinNavigationBar()
   let userImageview = UIImageView()
   let userNameLabel = UILabel()
   let userCameraIcon = UIButton()
@@ -55,8 +54,8 @@ class MyPageViewController: UIViewController {
 extension MyPageViewController {
   func layout() {
     layoutNavigaionBar()
-//    layoutMyPageScrollView()
-//    layoutMyPageScrollContainerView()
+    layoutMyPageScrollView()
+    layoutMyPageScrollContainerView()
     layoutUserImageView()
     layoutUserNameLabel()
     layoutUserCameraIcon()
@@ -83,18 +82,20 @@ extension MyPageViewController {
   }
   func layoutMyPageScrollView() {
     view.add(mypageScrollview) {
-      $0.backgroundColor = .white
+      $0.backgroundColor = .fillinBlack
       $0.translatesAutoresizingMaskIntoConstraints = false
       $0.showsVerticalScrollIndicator = false
+      $0.isScrollEnabled = true
       $0.snp.makeConstraints {
-        $0.center.top.leading.trailing.bottom.equalToSuperview()
+        $0.top.equalTo(self.navigationBar.snp.bottom)
+        $0.centerX.leading.trailing.bottom.equalToSuperview()
       }
     }
   }
   func layoutMyPageScrollContainerView() {
     mypageScrollview.add(mypageScrollContainverView) {
       $0.translatesAutoresizingMaskIntoConstraints = false
-      $0.backgroundColor = .clear
+      $0.backgroundColor = .fillinBlack
       $0.contentMode = .scaleToFill
       $0.snp.makeConstraints {
         $0.centerX.top.leading.equalToSuperview()
@@ -102,13 +103,11 @@ extension MyPageViewController {
       }
     }
   }
-  /// Custom TabBar 자리
   func layoutUserImageView() {
     mypageScrollContainverView.add(userImageview) {
       $0.image = Asset.profile.image
       $0.snp.makeConstraints {
-        /// TabBar 들어오면 변경
-        $0.top.equalToSuperview().offset(107)
+        $0.top.equalTo(self.mypageScrollContainverView.snp.top).offset(14)
         $0.leading.equalToSuperview().offset(18)
         $0.width.equalTo(55)
         $0.height.equalTo(55)
@@ -121,8 +120,7 @@ extension MyPageViewController {
                     color: .fillinWhite,
                     font: .headline)
       $0.snp.makeConstraints {
-        /// 커스텀 들어오면 변경
-        $0.top.equalToSuperview().offset(107)
+        $0.top.equalTo(self.mypageScrollContainverView.snp.top).offset(14)
         $0.leading.equalTo(self.userImageview.snp.trailing).offset(12)
       }
     }
@@ -191,7 +189,10 @@ extension MyPageViewController {
   func layoutGotoNoticePageButton() {
     orangeBackgroundview.add(gotonoticepageButton) {
       $0.setImage(UIImage(asset: Asset.icnEdit), for: .normal)
-      /// 에셋 나오면 constraint 작셩하기
+      $0.snp.makeConstraints {
+        $0.centerY.equalToSuperview()
+        $0.trailing.equalToSuperview().offset(-16)
+      }
     }
   }
   func layoutGrayLineView() {
@@ -218,12 +219,13 @@ extension MyPageViewController {
   }
   func layoutMyPhotoCollectionView() {
     mypageScrollContainverView.add(myphotoCollectionview) {
-      $0.backgroundColor = .clear
+      $0.backgroundColor = .orange
       $0.isUserInteractionEnabled = true
       $0.snp.makeConstraints {
         $0.top.equalTo(self.myphotosLabel.snp.bottom).offset(12)
         $0.centerX.equalToSuperview()
         $0.width.equalTo(342)
+        $0.height.equalTo(600)
         $0.bottom.equalTo(self.mypageScrollContainverView.snp.bottom)
       }
     }
