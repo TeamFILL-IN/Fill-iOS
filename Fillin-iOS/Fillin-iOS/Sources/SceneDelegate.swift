@@ -22,11 +22,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.makeKeyAndVisible()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                let homeNavigationController = UINavigationController(rootViewController: HomeViewController())
-                self.window?.rootViewController = homeNavigationController
-                self.window?.makeKeyAndVisible()
-            }
+            let homeNavigationController = UINavigationController(rootViewController: HomeViewController())
+            self.window?.rootViewController = homeNavigationController
+            self.window?.makeKeyAndVisible()
         }
     }
 
