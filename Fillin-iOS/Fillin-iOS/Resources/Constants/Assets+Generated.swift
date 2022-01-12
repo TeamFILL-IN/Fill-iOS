@@ -37,6 +37,7 @@ internal enum Asset {
   internal static let icnClose = ImageAsset(name: "icnClose")
   internal static let icnEdit = ImageAsset(name: "icnEdit")
   internal static let icnHeart = ImageAsset(name: "icnHeart")
+  internal static let icnHeartFilled = ImageAsset(name: "icnHeartFilled")
   internal static let icnLink = ImageAsset(name: "icnLink")
   internal static let icnLocation = ImageAsset(name: "icnLocation")
   internal static let icnMap = ImageAsset(name: "icnMap")

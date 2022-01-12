@@ -42,6 +42,10 @@
 		775C96B2278B5B3800A9BEA0 /* FillinNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775C96B1278B5B3800A9BEA0 /* FillinNavigationBar.swift */; };
 		775C96B4278B61D100A9BEA0 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775C96B3278B61D100A9BEA0 /* UIView+Extension.swift */; };
 		E878EC2A278D0E9400135FB9 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E878EC29278D0E9400135FB9 /* UILabel+Extension.swift */; };
+		77628EAC278D7ADB00CB5919 /* FilmRollClickViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77628EAA278D7ADB00CB5919 /* FilmRollClickViewController.swift */; };
+		77628EAD278D7ADB00CB5919 /* FilmRollClickViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77628EAB278D7ADB00CB5919 /* FilmRollClickViewController.xib */; };
+		77878AC7278D947900137D30 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77878AC6278D947900137D30 /* Colors.xcassets */; };
+		77878AC9278D9FDB00137D30 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77878AC8278D9FDB00137D30 /* UIButton+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,6 +85,10 @@
 		775C96AF278B33E200A9BEA0 /* Assets+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Assets+Generated.swift"; sourceTree = "<group>"; };
 		775C96B1278B5B3800A9BEA0 /* FillinNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillinNavigationBar.swift; sourceTree = "<group>"; };
 		775C96B3278B61D100A9BEA0 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		77628EAA278D7ADB00CB5919 /* FilmRollClickViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmRollClickViewController.swift; sourceTree = "<group>"; };
+		77628EAB278D7ADB00CB5919 /* FilmRollClickViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilmRollClickViewController.xib; sourceTree = "<group>"; };
+		77878AC6278D947900137D30 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		77878AC8278D9FDB00137D30 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		A23EAA42105DDEFDBD25F680 /* Pods-Fillin-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fillin-iOS.debug.xcconfig"; path = "Target Support Files/Pods-Fillin-iOS/Pods-Fillin-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		E878EC29278D0E9400135FB9 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		EB6BBBE71164715C5939F205 /* Pods-Fillin-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fillin-iOS.release.xcconfig"; path = "Target Support Files/Pods-Fillin-iOS/Pods-Fillin-iOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -177,6 +185,7 @@
 				775C96A4278AD8D800A9BEA0 /* SplashViewController */,
 				775C968D278AD1AB00A9BEA0 /* HomeViewController */,
 				775C968B278AD1A700A9BEA0 /* FilmRollViewController */,
+				77628EA9278D7AC400CB5919 /* FilmRollClickViewController */,
 				775C968C278AD1A900A9BEA0 /* StudioMapViewController */,
 				775C968A278AD1A500A9BEA0 /* AddPhotoViewController */,
 				775C9670278ACF5400A9BEA0 /* MyPageViewController */,
@@ -189,6 +198,7 @@
 			children = (
 				775C9653278ACBEB00A9BEA0 /* LaunchScreen.storyboard */,
 				775C9651278ACBEB00A9BEA0 /* Assets.xcassets */,
+				77878AC6278D947900137D30 /* Colors.xcassets */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -210,6 +220,7 @@
 				775C9680278AD00100A9BEA0 /* UIFont+Extension.swift */,
 				775C96B3278B61D100A9BEA0 /* UIView+Extension.swift */,
 				E878EC29278D0E9400135FB9 /* UILabel+Extension.swift */,
+				77878AC8278D9FDB00137D30 /* UIButton+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -327,6 +338,15 @@
 			path = SplashViewController;
 			sourceTree = "<group>";
 		};
+		77628EA9278D7AC400CB5919 /* FilmRollClickViewController */ = {
+			isa = PBXGroup;
+			children = (
+				77628EAA278D7ADB00CB5919 /* FilmRollClickViewController.swift */,
+				77628EAB278D7ADB00CB5919 /* FilmRollClickViewController.xib */,
+			);
+			path = FilmRollClickViewController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -402,6 +422,8 @@
 				775C969F278AD8A900A9BEA0 /* AddPhotoViewController.xib in Resources */,
 				775C9685278AD0B500A9BEA0 /* NotoSansKR-Regular.otf in Resources */,
 				775C9691278AD87900A9BEA0 /* HomeViewController.xib in Resources */,
+				77878AC7278D947900137D30 /* Colors.xcassets in Resources */,
+				77628EAD278D7ADB00CB5919 /* FilmRollClickViewController.xib in Resources */,
 				775C96A3278AD8BB00A9BEA0 /* MyPageViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -501,6 +523,7 @@
 				775C9674278ACF6600A9BEA0 /* TempModel.swift in Sources */,
 				775C96A2278AD8BB00A9BEA0 /* MyPageViewController.swift in Sources */,
 				775C969E278AD8A900A9BEA0 /* AddPhotoViewController.swift in Sources */,
+				77628EAC278D7ADB00CB5919 /* FilmRollClickViewController.swift in Sources */,
 				775C964B278ACBEA00A9BEA0 /* SceneDelegate.swift in Sources */,
 				775C9672278ACF5D00A9BEA0 /* TempClass.swift in Sources */,
 				E878EC2A278D0E9400135FB9 /* UILabel+Extension.swift in Sources */,
@@ -511,6 +534,7 @@
 				775C967F278ACFFD00A9BEA0 /* UIColor+Extension.swift in Sources */,
 				775C9681278AD00100A9BEA0 /* UIFont+Extension.swift in Sources */,
 				775C9690278AD87900A9BEA0 /* HomeViewController.swift in Sources */,
+				77878AC9278D9FDB00137D30 /* UIButton+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
