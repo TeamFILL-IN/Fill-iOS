@@ -32,6 +32,7 @@ class MapTableViewCell: UITableViewCell {
     }
     
     private func setUI() {
+        naverMapView.isUserInteractionEnabled = false
         naverMapView.mapType = .navi
         naverMapView.isNightModeEnabled = true
         locationManager.delegate = self
