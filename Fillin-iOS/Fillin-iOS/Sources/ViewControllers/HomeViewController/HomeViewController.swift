@@ -111,12 +111,14 @@ extension HomeViewController: UITableViewDataSource {
                 return UITableViewCell()
             }
             
+            mapCell.selectionStyle = .none
             return mapCell
         case 3 :
             guard let photosCell = tableView.dequeueReusableCell(withIdentifier: Const.Xib.photosTableViewCell, for: indexPath) as? PhotosTableViewCell else {
                 return UITableViewCell()
             }
             
+            photosCell.selectionStyle = .none
             return photosCell
         default:
             return UITableViewCell()
