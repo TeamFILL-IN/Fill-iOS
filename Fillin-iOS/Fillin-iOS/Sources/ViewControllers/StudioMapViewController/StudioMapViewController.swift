@@ -33,6 +33,7 @@ class StudioMapViewController: UIViewController {
   }
   
   var locationManager = CLLocationManager()
+  let navigationBar = FilinNavigationBar()
   
   // MARK: - View Life Cycle
   override func viewDidLoad() {
@@ -40,9 +41,11 @@ class StudioMapViewController: UIViewController {
     self.navigationController?.navigationBar.isHidden = true
     setUpMapView()
     setUpMarker()
+    setUpNavigationBar()
     layoutMapView()
     layoutMyLocationButton()
     layoutSearchView()
+    layoutNavigaionBar()
   }
   
   // MARK: - Custom Func
@@ -56,14 +59,21 @@ extension StudioMapViewController {
   
   private func setUpMapView() {
     view.addSubview(mapView)
+    let locationOverlay = mapView.mapView.locationOverlay
     mapView.mapView.positionMode = .direction
     mapView.mapView.mapType = .navi
     mapView.mapView.isNightModeEnabled = true
     mapView.showZoomControls = false
     mapView.showScaleBar = false
+    locationOverlay.hidden = true
+    locationOverlay.icon = NMFOverlayImage(image: Asset.icnPlaceBig.image)
     
     locationManager.delegate = self
     self.locationManager.requestWhenInUseAuthorization()
+  }
+  
+  private func setUpNavigationBar() {
+    navigationBar.popViewController = { self.navigationController?.popViewController(animated: true) }
   }
   
   private func setUpMarker() {
@@ -107,6 +117,19 @@ extension StudioMapViewController {
       $0.size.height.equalTo(48)
     }
     searchPlaceTextField.addTarget(self, action: #selector(textFieldDidBeginEditing(_:)), for: .touchDown)
+  }
+  
+  func layoutNavigaionBar() {
+    view.add(navigationBar) {
+      self.navigationBar.popViewController = {
+        self.navigationController?.popViewController(animated: true)
+      }
+      $0.snp.makeConstraints {
+        $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
+        $0.leading.trailing.equalToSuperview()
+        $0.height.equalTo(50)
+      }
+    }
   }
   
   @objc func textFieldDidBeginEditing(_ textField: UITextField) {

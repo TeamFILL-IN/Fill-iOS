@@ -26,10 +26,13 @@ class StudioMapSearchViewController: UIViewController {
     $0.addLeftPadding()
   }
   
+  let navigationBar = FilinNavigationBar()
+  
   // MARK: - View Life Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
     layoutSeachView()
+    layoutNavigaionBar()
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -64,6 +67,20 @@ class StudioMapSearchViewController: UIViewController {
   
   private func setUpTextField() {
     searchPlaceTextField.becomeFirstResponder()
+  }
+  
+  private func layoutNavigaionBar() {
+    view.add(navigationBar) {
+      self.navigationBar.popViewController = {
+        print("go")
+        self.dismiss(animated: true, completion: nil)
+      }
+      $0.snp.makeConstraints {
+        $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
+        $0.leading.trailing.equalToSuperview()
+        $0.height.equalTo(50)
+      }
+    }
   }
   
   @objc func touchSearchButton(_ sender: UIButton) {
