@@ -26,6 +26,10 @@ class HomeViewController: UIViewController {
         registerXib()
         setNotification()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        floatingButton.isHidden = false
+    }
 }
 
 // MARK: - Extensions
