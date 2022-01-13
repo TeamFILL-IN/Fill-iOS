@@ -11,6 +11,13 @@ class HomeViewController: UIViewController {
 
     // MARK: - @IBOutlet Properties
     @IBOutlet weak var homeTableView: UITableView!
+    @IBOutlet weak var floatingButton: UIView!
+    @IBOutlet weak var floatingButtonLabel: UILabel!
+    
+    // MARK: - @IBAction Properties
+    @IBAction func touchDismissFloatingButton(_ sender: Any) {
+        floatingButton.isHidden = true
+    }
     
     // MARK: - View Life Cycle
     override func viewDidLoad() {
@@ -25,6 +32,7 @@ class HomeViewController: UIViewController {
 extension HomeViewController {
     private func setUI() {
         self.navigationController?.navigationBar.isHidden = true
+        floatingButtonLabel.font = .subhead2
         homeTableView.dataSource = self
         homeTableView.delegate = self
         if #available(iOS 15, *) {
