@@ -8,7 +8,11 @@
 import Foundation
 extension Const {
     struct Xib {
-        // 예시
-        // static let EmptyCardListTableViewCell = "EmptyCardListTableViewCell"
+        static let welcomeTableViewCell = "WelcomeTableViewCell"
+        static let tabBarTableViewCell = "TabBarTableViewCell"
+        static let mapTableViewCell = "MapTableViewCell"
+        static let photosTableViewCell = "PhotosTableViewCell"
+        static let photosCollectionViewCell = "PhotosCollectionViewCell"
+        static let arrowCollectionViewCell = "ArrowCollectionViewCell"
     }
 }
