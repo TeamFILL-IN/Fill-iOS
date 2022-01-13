@@ -119,5 +119,13 @@ extension HomeViewController: UITableViewDataSource {
 
 // MARK: - UITableViewDelegate
 extension HomeViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.row {
+        case 2 :
+            self.navigationController?.pushViewController(StudioMapViewController(), animated: true)
+        default:
+            return 
+        }
+    }
     
 }
