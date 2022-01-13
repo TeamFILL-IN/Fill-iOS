@@ -17,6 +17,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         setUI()
         registerXib()
+        setNotification()
     }
 }
 
@@ -36,6 +37,16 @@ extension HomeViewController {
         homeTableView.register(TabBarTableViewCell.nib(), forCellReuseIdentifier: Const.Xib.tabBarTableViewCell)
         homeTableView.register(MapTableViewCell.nib(), forCellReuseIdentifier: Const.Xib.mapTableViewCell)
         homeTableView.register(PhotosTableViewCell.nib(), forCellReuseIdentifier: Const.Xib.photosTableViewCell)
+    }
+    
+    private func setNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(pushToFilmRollViewController(_:)), name: .pushToFilmRollViewController, object: nil)
+    }
+    
+    // MARK: - @objc Methods
+    @objc func pushToFilmRollViewController(_ notification: Notification) {
+        print("hihjopihio")
+        self.navigationController?.pushViewController(FilmRollViewController(), animated: true)
     }
 }
 
