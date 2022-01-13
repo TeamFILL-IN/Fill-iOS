@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6FC9A4232790458000B94CFB /* StudioMapSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC9A4212790458000B94CFB /* StudioMapSearchViewController.swift */; };
+		6FC9A4242790458000B94CFB /* StudioMapSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FC9A4222790458000B94CFB /* StudioMapSearchViewController.xib */; };
 		775C9649278ACBEA00A9BEA0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775C9648278ACBEA00A9BEA0 /* AppDelegate.swift */; };
 		775C964B278ACBEA00A9BEA0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775C964A278ACBEA00A9BEA0 /* SceneDelegate.swift */; };
 		775C9652278ACBEB00A9BEA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 775C9651278ACBEB00A9BEA0 /* Assets.xcassets */; };
@@ -63,6 +65,8 @@
 
 /* Begin PBXFileReference section */
 		18FC9C8D02E669D0F43E8733 /* Pods-Fillin-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fillin-iOS.release.xcconfig"; path = "Target Support Files/Pods-Fillin-iOS/Pods-Fillin-iOS.release.xcconfig"; sourceTree = "<group>"; };
+		6FC9A4212790458000B94CFB /* StudioMapSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudioMapSearchViewController.swift; sourceTree = "<group>"; };
+		6FC9A4222790458000B94CFB /* StudioMapSearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StudioMapSearchViewController.xib; sourceTree = "<group>"; };
 		775C9645278ACBEA00A9BEA0 /* Fillin-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fillin-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		775C9648278ACBEA00A9BEA0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		775C964A278ACBEA00A9BEA0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -149,6 +153,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		6FC9A42527904C6500B94CFB /* StudioMapSearchViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6FC9A4212790458000B94CFB /* StudioMapSearchViewController.swift */,
+				6FC9A4222790458000B94CFB /* StudioMapSearchViewController.xib */,
+			);
+			path = StudioMapSearchViewController;
+			sourceTree = "<group>";
+		};
 		775C963C278ACBEA00A9BEA0 = {
 			isa = PBXGroup;
 			children = (
@@ -212,9 +225,10 @@
 				775C968D278AD1AB00A9BEA0 /* HomeViewController */,
 				775C968B278AD1A700A9BEA0 /* FilmRollViewController */,
 				77628EA9278D7AC400CB5919 /* FilmRollClickViewController */,
-				775C968C278AD1A900A9BEA0 /* StudioMapViewController */,
 				775C968A278AD1A500A9BEA0 /* AddPhotoViewController */,
 				775C9670278ACF5400A9BEA0 /* MyPageViewController */,
+				775C968C278AD1A900A9BEA0 /* StudioMapViewController */,
+				6FC9A42527904C6500B94CFB /* StudioMapSearchViewController */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -489,6 +503,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7769EC5A278F5F6500618EEF /* ArrowCollectionViewCell.xib in Resources */,
+				6FC9A4242790458000B94CFB /* StudioMapSearchViewController.xib in Resources */,
 				7769EC56278F515700618EEF /* PhotosCollectionViewCell.xib in Resources */,
 				775C965E278ACDE200A9BEA0 /* .swiftlint.yml in Resources */,
 				77CC0734278F10890020F34A /* MapTableViewCell.xib in Resources */,
@@ -617,6 +632,7 @@
 				775C964B278ACBEA00A9BEA0 /* SceneDelegate.swift in Sources */,
 				E83AEF9F278F376300B3F42E /* identifiable.swift in Sources */,
 				775C9672278ACF5D00A9BEA0 /* TempClass.swift in Sources */,
+				6FC9A4232790458000B94CFB /* StudioMapSearchViewController.swift in Sources */,
 				E878EC2A278D0E9400135FB9 /* UILabel+Extension.swift in Sources */,
 				7769EC55278F515700618EEF /* PhotosCollectionViewCell.swift in Sources */,
 				775C96B4278B61D100A9BEA0 /* UIView+Extension.swift in Sources */,
@@ -768,7 +784,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = T3VFJ764ZC;
+				DEVELOPMENT_TEAM = 3FAK98S72C;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Fillin-iOS/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -797,7 +813,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = T3VFJ764ZC;
+				DEVELOPMENT_TEAM = 3FAK98S72C;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Fillin-iOS/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

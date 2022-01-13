@@ -37,11 +37,12 @@ class StudioMapViewController: UIViewController {
   // MARK: - View Life Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.navigationController?.navigationBar.isHidden = true
     setUpMapView()
+    setUpMarker()
     layoutMapView()
     layoutMyLocationButton()
-    layoutSeachView()
-    setUpMarker()
+    layoutSearchView()
   }
   
   // MARK: - Custom Func
@@ -90,22 +91,29 @@ extension StudioMapViewController {
     myLocationButton.addTarget(self, action: #selector(touchLocationButton), for: .touchUpInside)
   }
   
-  private func layoutSeachView() {
+  private func layoutSearchView() {
     view.addSubview(searchPlaceTextField)
     view.addSubview(magnifyingGlassButton)
-    searchPlaceTextField.snp.makeConstraints {
-      $0.top.equalTo(self.view).inset(111)
-      $0.leading.equalTo(self.view).inset(18)
-      $0.trailing.equalTo(self.view).inset(18)
-      $0.size.height.equalTo(48)
-    }
     magnifyingGlassButton.snp.makeConstraints {
       $0.top.equalTo(searchPlaceTextField).inset(11)
       $0.leading.equalTo(searchPlaceTextField).inset(295)
       $0.bottom.equalTo(searchPlaceTextField).inset(11)
       $0.trailing.equalTo(searchPlaceTextField).inset(18)
     }
-    magnifyingGlassButton.addTarget(self, action: #selector(touchSearchButton), for: .touchUpInside)
+    searchPlaceTextField.snp.makeConstraints {
+      $0.top.equalTo(self.view.safeAreaLayoutGuide).inset(68)
+      $0.leading.equalTo(self.view).inset(18)
+      $0.trailing.equalTo(self.view).inset(18)
+      $0.size.height.equalTo(48)
+    }
+    searchPlaceTextField.addTarget(self, action: #selector(textFieldDidBeginEditing(_:)), for: .touchDown)
+  }
+  
+  @objc func textFieldDidBeginEditing(_ textField: UITextField) {
+    let newVC = StudioMapSearchViewController()
+    newVC.modalTransitionStyle = .crossDissolve
+    newVC.modalPresentationStyle = .fullScreen
+    self.present(newVC, animated: true, completion: nil)
   }
 }
 
@@ -115,9 +123,6 @@ extension StudioMapViewController {
   @objc func touchLocationButton(_ sender: UIButton) {
     sender.isSelected = !sender.isSelected
     mapView.mapView.positionMode = .direction
-  }
-  
-  @objc func touchSearchButton(_ sender: UIButton) {
   }
 }
 
@@ -134,7 +139,6 @@ extension UITextField {
     let attributes = [
       NSAttributedString.Key.foregroundColor: UIColor.grey2,
       NSAttributedString.Key.font: UIFont(name: "NotoSansKR-Regular", size: 14)!
-      //NSAttributedString.Key.font: .body2
     ]
     self.attributedPlaceholder = NSAttributedString(string: "추억을 현상할 현상소를 검색해보세요", attributes: attributes)
   }
