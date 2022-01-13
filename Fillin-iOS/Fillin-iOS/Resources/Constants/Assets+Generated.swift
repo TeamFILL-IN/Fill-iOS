@@ -25,6 +25,7 @@ internal enum Asset {
   internal static let basicProfile = ImageAsset(name: "basicProfile")
   internal static let btnBack = ImageAsset(name: "btnBack")
   internal static let btnHome = ImageAsset(name: "btnHome")
+  internal static let btnHomeFloating = ImageAsset(name: "btnHomeFloating")
   internal static let btnLike = ImageAsset(name: "btnLike")
   internal static let btnMore = ImageAsset(name: "btnMore")
   internal static let btnScrap = ImageAsset(name: "btnScrap")
