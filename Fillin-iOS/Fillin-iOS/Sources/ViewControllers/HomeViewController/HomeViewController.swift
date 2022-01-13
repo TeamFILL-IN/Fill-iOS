@@ -45,7 +45,6 @@ extension HomeViewController {
     
     // MARK: - @objc Methods
     @objc func pushToFilmRollViewController(_ notification: Notification) {
-        print("hihjopihio")
         self.navigationController?.pushViewController(FilmRollViewController(), animated: true)
     }
 }
