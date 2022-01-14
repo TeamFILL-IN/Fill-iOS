@@ -41,4 +41,22 @@ final class FilmRollViewControllerDataSource: NSObject, UICollectionViewDataSour
             return curationCell
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        switch FilmRollSection.allCases[indexPath.section] {
+        case .filmCuration:
+            guard let view = collectionView.dequeueReusableSupplementaryView(
+                ofKind: UICollectionView.elementKindSectionHeader,
+                withReuseIdentifier: Const.Xib.filmCurationCollectionReusableView,
+                for: indexPath
+            ) as? FilmCurationCollectionReusableView else {
+                return UICollectionReusableView()
+            }
+            
+            return view
+        default: return UICollectionReusableView()
+        }
+        
+    }
 }

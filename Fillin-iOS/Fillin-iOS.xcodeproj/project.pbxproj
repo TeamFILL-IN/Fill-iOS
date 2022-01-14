@@ -54,6 +54,8 @@
 		77B352182791C029001718DE /* FilmRollViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B352172791C029001718DE /* FilmRollViewController+Layout.swift */; };
 		77B3521A2791C052001718DE /* FilmRollSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B352192791C052001718DE /* FilmRollSection.swift */; };
 		77B3521C2791C2D0001718DE /* FilmRollViewController+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B3521B2791C2D0001718DE /* FilmRollViewController+DataSource.swift */; };
+		77B3522727920C0A001718DE /* FilmCurationCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B3522527920C0A001718DE /* FilmCurationCollectionReusableView.swift */; };
+		77B3522827920C0A001718DE /* FilmCurationCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77B3522627920C0A001718DE /* FilmCurationCollectionReusableView.xib */; };
 		77CC0728278F02B80020F34A /* WelcomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CC0726278F02B80020F34A /* WelcomeTableViewCell.swift */; };
 		77CC0729278F02B80020F34A /* WelcomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77CC0727278F02B80020F34A /* WelcomeTableViewCell.xib */; };
 		77CC072C278F0DC10020F34A /* TabBarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CC072A278F0DC10020F34A /* TabBarTableViewCell.swift */; };
@@ -120,6 +122,8 @@
 		77B352172791C029001718DE /* FilmRollViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FilmRollViewController+Layout.swift"; sourceTree = "<group>"; };
 		77B352192791C052001718DE /* FilmRollSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmRollSection.swift; sourceTree = "<group>"; };
 		77B3521B2791C2D0001718DE /* FilmRollViewController+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FilmRollViewController+DataSource.swift"; sourceTree = "<group>"; };
+		77B3522527920C0A001718DE /* FilmCurationCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmCurationCollectionReusableView.swift; sourceTree = "<group>"; };
+		77B3522627920C0A001718DE /* FilmCurationCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilmCurationCollectionReusableView.xib; sourceTree = "<group>"; };
 		77CC0726278F02B80020F34A /* WelcomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeTableViewCell.swift; sourceTree = "<group>"; };
 		77CC0727278F02B80020F34A /* WelcomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WelcomeTableViewCell.xib; sourceTree = "<group>"; };
 		77CC072A278F0DC10020F34A /* TabBarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarTableViewCell.swift; sourceTree = "<group>"; };
@@ -172,6 +176,8 @@
 				77337B5427911EE600933DBD /* FilmCurationCollectionViewCell.xib */,
 				77B352132791A34A001718DE /* FilmTypeCollectionViewCell.swift */,
 				77B352142791A34A001718DE /* FilmTypeCollectionViewCell.xib */,
+				77B3522527920C0A001718DE /* FilmCurationCollectionReusableView.swift */,
+				77B3522627920C0A001718DE /* FilmCurationCollectionReusableView.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -522,6 +528,7 @@
 			files = (
 				77B352162791A34A001718DE /* FilmTypeCollectionViewCell.xib in Resources */,
 				7769EC5A278F5F6500618EEF /* ArrowCollectionViewCell.xib in Resources */,
+				77B3522827920C0A001718DE /* FilmCurationCollectionReusableView.xib in Resources */,
 				77337B5627911EE600933DBD /* FilmCurationCollectionViewCell.xib in Resources */,
 				7769EC56278F515700618EEF /* PhotosCollectionViewCell.xib in Resources */,
 				775C965E278ACDE200A9BEA0 /* .swiftlint.yml in Resources */,
@@ -662,6 +669,7 @@
 				77B352152791A34A001718DE /* FilmTypeCollectionViewCell.swift in Sources */,
 				775C9667278ACF0300A9BEA0 /* Const.swift in Sources */,
 				775C96B0278B33E200A9BEA0 /* Assets+Generated.swift in Sources */,
+				77B3522727920C0A001718DE /* FilmCurationCollectionReusableView.swift in Sources */,
 				775C967F278ACFFD00A9BEA0 /* UIColor+Extension.swift in Sources */,
 				77D7CD52278FF02D00FE7F58 /* Notification.swift in Sources */,
 				775C9681278AD00100A9BEA0 /* UIFont+Extension.swift in Sources */,

@@ -44,15 +44,9 @@ extension FilmRollViewController {
     private func registerXib() {
         filmRollCollectionView.register(FilmCurationCollectionViewCell.nib(), forCellWithReuseIdentifier: Const.Xib.filmCurationCollectionViewCell)
         filmRollCollectionView.register(FilmTypeCollectionViewCell.nib(), forCellWithReuseIdentifier: Const.Xib.filmTypeCollectionViewCell)
+        filmRollCollectionView.register(
+            FilmCurationCollectionReusableView.nib(),
+            forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+            withReuseIdentifier: Const.Xib.filmCurationCollectionReusableView)
     }
-}
-
-// MARK: - UICollectionViewDelegateFlowLayout
-extension FilmRollViewController: UICollectionViewDelegateFlowLayout {
-    
-}
-
-// MARK: - UICollectionViewDelegate
-extension FilmRollViewController: UICollectionViewDelegate {
-    
 }
