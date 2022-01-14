@@ -19,6 +19,7 @@ class StudioMapViewController: UIViewController {
   private let mapView = NMFNaverMapView(frame: .zero)
   private let myLocationButton = UIButton()
   private let marker = NMFMarker()
+  private let bottomSheet = StudioMapBottomSheetViewController()
   private let magnifyingGlassButton = UIButton().then {
     $0.setImage(Asset.icnSearch.image, for: .normal)
   }
@@ -66,7 +67,8 @@ extension StudioMapViewController {
   }
   
   private func setUpMarker() {
-    marker.position = NMGLatLng(lat: 37.45201087366944, lng: 126.65536562781361)
+    marker.position = NMGLatLng(lat: 37.56383740177333, lng: 126.92093672692367) /// 홍대
+    marker.position = NMGLatLng(lat: 37.45201087366944, lng: 126.65536562781361) /// 인천
     marker.iconImage = NMFOverlayImage(image: Asset.icnPlaceBig.image)
     marker.mapView = self.mapView.mapView
   }
@@ -107,6 +109,7 @@ extension StudioMapViewController {
     }
     magnifyingGlassButton.addTarget(self, action: #selector(touchSearchButton), for: .touchUpInside)
   }
+
 }
 
 // MARK: - @objc
@@ -134,7 +137,6 @@ extension UITextField {
     let attributes = [
       NSAttributedString.Key.foregroundColor: UIColor.grey2,
       NSAttributedString.Key.font: UIFont(name: "NotoSansKR-Regular", size: 14)!
-      //NSAttributedString.Key.font: .body2
     ]
     self.attributedPlaceholder = NSAttributedString(string: "추억을 현상할 현상소를 검색해보세요", attributes: attributes)
   }
