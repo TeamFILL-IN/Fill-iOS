@@ -16,14 +16,15 @@ import MapKit
 class StudioMapViewController: UIViewController {
   
   // MARK: - Properties
-  private let mapView = NMFNaverMapView(frame: .zero)
-  private let myLocationButton = UIButton()
-  private let marker = NMFMarker()
-  private let bottomSheet = StudioMapBottomSheetViewController()
-  private let magnifyingGlassButton = UIButton().then {
+  let mapView = NMFNaverMapView(frame: .zero)
+  let myLocationButton = UIButton()
+  let marker = NMFMarker()
+  let bottomSheet = StudioMapBottomSheetViewController()
+  let dataSource = NMFInfoWindowDefaultTextSource.data()
+  let magnifyingGlassButton = UIButton().then {
     $0.setImage(Asset.icnSearch.image, for: .normal)
   }
-  private let searchPlaceTextField = UITextField().then {
+  let searchPlaceTextField = UITextField().then {
     $0.backgroundColor = .darkGrey2
     $0.layer.borderColor = UIColor.fillinRed.cgColor
     $0.layer.borderWidth = 1
@@ -34,6 +35,8 @@ class StudioMapViewController: UIViewController {
   }
   
   var locationManager = CLLocationManager()
+  var infoWindow = NMFInfoWindow()
+  var defaultInfoWindowImage = NMFInfoWindowDefaultTextSource.data()
   
   // MARK: - View Life Cycle
   override func viewDidLoad() {
@@ -45,10 +48,13 @@ class StudioMapViewController: UIViewController {
     setUpMarker()
   }
   
-  // MARK: - Custom Func
+  // MARK: - Func
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
     self.view.endEditing(true)
   }
+  
+  // MARK: - 마커 클릭 시 정보창
+ 
 }
 
 // MARK: - Extensions
@@ -71,6 +77,38 @@ extension StudioMapViewController {
     marker.position = NMGLatLng(lat: 37.45201087366944, lng: 126.65536562781361) /// 인천
     marker.iconImage = NMFOverlayImage(image: Asset.icnPlaceBig.image)
     marker.mapView = self.mapView.mapView
+    setUpInfo()
+  }
+  
+  private func setUpInfo() {
+    self.mapView.mapView.touchDelegate = self
+    infoWindow.dataSource = defaultInfoWindowImage
+    
+    let marker1 = NMFMarker(position: NMGLatLng(lat: 37.57000, lng: 126.97618))
+    marker1.touchHandler = { [weak self] (overlay: NMFOverlay) -> Bool in
+      self?.infoWindow.close()
+      self?.defaultInfoWindowImage.title = marker1.userInfo["tag"] as? String ?? ""
+      self?.infoWindow.open(with: marker1)
+      
+      let nextVC = StudioMapBottomSheetViewController()
+//      nextVC.modalPresentationStyle = .overCurrentContext
+//      nextVC.modalTransitionStyle = .crossDissolve
+      nextVC.modalPresentationStyle = .overFullScreen
+      self?.present(nextVC, animated: false, completion: nil)
+      return true
+    }
+    marker1.userInfo = ["tag": "Marker 1"]
+    marker1.mapView = self.mapView.mapView
+    
+    let marker2 = NMFMarker(position: NMGLatLng(lat: 37.56138, lng: 126.97970))
+    marker2.touchHandler = { [weak self] (overlay: NMFOverlay) -> Bool in
+      self?.infoWindow.close()
+      self?.defaultInfoWindowImage.title = marker2.userInfo["tag"] as? String ?? ""
+      self?.infoWindow.open(with: marker2, alignType: NMFAlignType.left)
+      return true
+    }
+    marker2.userInfo = ["tag": "Marker 2"]
+    marker2.mapView = self.mapView.mapView
   }
   
   private func layoutMapView() {
@@ -109,7 +147,6 @@ extension StudioMapViewController {
     }
     magnifyingGlassButton.addTarget(self, action: #selector(touchSearchButton), for: .touchUpInside)
   }
-
 }
 
 // MARK: - @objc
@@ -163,5 +200,16 @@ extension StudioMapViewController: CLLocationManagerDelegate {
     default:
       print("GPS: Default")
     }
+  }
+}
+
+extension StudioMapViewController: NMFMapViewTouchDelegate {
+  func mapView(_ mapView: NMFMapView, didTapMap latlng: NMGLatLng, point: CGPoint) {
+    infoWindow.close()
+    
+    let latlngStr = String(format: "좌표:(%.5f, %.5f)", latlng.lat, latlng.lng)
+    defaultInfoWindowImage.title = latlngStr
+    infoWindow.position = latlng
+    infoWindow.open(with: mapView)
   }
 }
