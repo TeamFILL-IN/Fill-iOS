@@ -29,8 +29,8 @@ extension UIView {
   }
   func setRounded(radius: CGFloat?){
     // UIView 의 모서리가 둥근 정도를 설정
-    if let cornerRadius_ = radius {
-      self.layer.cornerRadius = cornerRadius_
+    if let cornerRadius = radius {
+      self.layer.cornerRadius = cornerRadius
     }  else {
       // cornerRadius 가 nil 일 경우의 default
       self.layer.cornerRadius = self.layer.frame.height / 2
@@ -44,8 +44,8 @@ extension UIView {
                  borderWidth : CGFloat?) {
     
     /// UIView 의 테두리 색상 설정
-    if let borderColor_ = borderColor {
-      self.layer.borderColor = borderColor_.cgColor
+    if let borderColor = borderColor {
+      self.layer.borderColor = borderColor.cgColor
     } else {
       /// borderColor 변수가 nil 일 경우의 default
       self.layer.borderColor = UIColor(red: 205/255,
@@ -55,8 +55,8 @@ extension UIView {
     }
     
     /// UIView 의 테두리 두께 설정
-    if let borderWidth_ = borderWidth {
-      self.layer.borderWidth = borderWidth_
+    if let borderWidth = borderWidth {
+      self.layer.borderWidth = borderWidth
     } else {
       /// borderWidth 변수가 nil 일 경우의 default
       self.layer.borderWidth = 1.0

@@ -200,7 +200,7 @@ extension MyPageViewController {
   }
   func layoutGotoNoticePageButton() {
     orangeBackgroundview.add(gotonoticepageButton) {
-      $0.setImage(UIImage(asset: Asset.icnEdit), for: .normal)
+      $0.setImage(UIImage(asset: Asset.icnGo), for: .normal)
       $0.snp.makeConstraints {
         $0.centerY.equalToSuperview()
         $0.trailing.equalToSuperview().offset(-16)

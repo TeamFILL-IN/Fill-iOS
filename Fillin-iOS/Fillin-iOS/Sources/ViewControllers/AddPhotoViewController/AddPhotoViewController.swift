@@ -25,10 +25,12 @@ class AddPhotoViewController: UIViewController {
   let addphotoButton = UIButton()
   
   // MARK: - LifeCycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-      layout()
-    }
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    view.backgroundColor = .fillinBlack
+    self.navigationController?.navigationBar.isHidden = true
+    layout()
+  }
 }
 // MARK: - Extension
 extension AddPhotoViewController {
@@ -67,7 +69,8 @@ extension AddPhotoViewController {
   }
   func layoutPhotoIcon() {
     photobackgroundView.add(photoIcon) {
-      $0.setImage(UIImage(asset: Asset.icnEdit), for: .normal)
+      $0.setImage(UIImage(asset: Asset.icnAddPhotoBig), for: .normal)
+      $0.addTarget(self, action: #selector(self.touchphotoIconButton), for: .touchUpInside)
       $0.snp.makeConstraints {
         $0.centerX.equalToSuperview()
         $0.centerY.equalToSuperview()
@@ -96,6 +99,9 @@ extension AddPhotoViewController {
                      state: .normal,
                      radius: 0)
       $0.setBorder(borderColor: .fillinRed, borderWidth: 1)
+      $0.contentHorizontalAlignment = .left
+      $0.contentEdgeInsets = UIEdgeInsets(top: 0, left: 18, bottom: 0, right: 0)
+      $0.addTarget(self, action: #selector(self.touchfilmChooseButton), for: .touchUpInside)
       $0.snp.makeConstraints {
         $0.top.equalTo(self.filmLabel.snp.bottom).offset(9)
         $0.centerX.equalToSuperview()
@@ -124,6 +130,9 @@ extension AddPhotoViewController {
                      state: .normal,
                      radius: 0)
       $0.setBorder(borderColor: .fillinRed, borderWidth: 1)
+      $0.contentHorizontalAlignment = .left
+      $0.contentEdgeInsets = UIEdgeInsets(top: 0, left: 18, bottom: 0, right: 0)
+      $0.addTarget(self, action: #selector(self.touchstudioChooseButton), for: .touchUpInside)
       $0.snp.makeConstraints {
         $0.top.equalTo(self.studioLabel.snp.bottom).offset(9)
         $0.centerX.equalToSuperview()
@@ -147,10 +156,23 @@ extension AddPhotoViewController {
       $0.setTitle("Add Photo", for: .normal)
       $0.titleLabel?.font = .engBighead
       $0.setTitleColor(.fillinBlack, for: .normal)
+      $0.addTarget(self, action: #selector(self.touchaddPhotoButton), for: .touchUpInside)
       $0.snp.makeConstraints {
         $0.top.equalToSuperview().offset(15)
         $0.centerX.equalToSuperview()
       }
     }
+  }
+  @objc func touchphotoIconButton() {
+   
+  }
+  @objc func touchfilmChooseButton() {
+    
+  }
+  @objc func touchstudioChooseButton() {
+    
+  }
+  @objc func touchaddPhotoButton() {
+   
   }
 }
