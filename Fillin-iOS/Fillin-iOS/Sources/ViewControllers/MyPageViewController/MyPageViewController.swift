@@ -11,7 +11,7 @@ import SnapKit
 import Then
 
 // MARK: - MyPageViewController
-class MyPageViewController: UIViewController, UICollectionViewDelegate {
+class MyPageViewController: UIViewController {
   
   // MARK: - Components
   let navigationBar = FilinNavigationBar()
@@ -243,6 +243,10 @@ extension MyPageViewController {
   }
 }
 // MARK: - UICollectionView
+extension MyPageViewController : UICollectionViewDelegate {
+  
+}
+
 extension MyPageViewController : UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return 30
@@ -254,6 +258,7 @@ extension MyPageViewController : UICollectionViewDataSource {
     return myphotoCell
   }
 }
+
 extension MyPageViewController : UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     let cellWidth = (collectionView.frame.width-18)/3
