@@ -25,7 +25,7 @@ class FilmTypeCollectionViewCell: UICollectionViewCell {
     }
     
     private func setUI() {
-        filmTypeButtons.forEach{
+        filmTypeButtons.forEach {
             $0.titleLabel?.font = .subhead2
         }
         chooseFilmLabel.font = .body2

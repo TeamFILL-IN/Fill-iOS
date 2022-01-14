@@ -11,9 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FilmRollViewController" customModule="Fillin_iOS" customModuleProvider="target">
             <connections>
-                <outlet property="filmCurationCollectionView" destination="DwW-71-eKy" id="Gxw-St-cZD"/>
-                <outlet property="filmCurationLabel" destination="UuP-ot-hTj" id="W8Z-1g-Jv8"/>
-                <outlet property="filmRollCollectionView" destination="Lfl-j5-y7g" id="eWE-Cl-4wA"/>
+                <outlet property="filmRollCollectionView" destination="JEJ-6a-B7L" id="oil-Vr-dJ6"/>
                 <outlet property="navigationBar" destination="jxQ-8W-5tL" id="Phf-9t-MVf"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -30,102 +28,40 @@
                         <constraint firstAttribute="height" constant="50" id="u8v-1C-1yx"/>
                     </constraints>
                 </view>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sSO-IX-klh">
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="JEJ-6a-B7L">
                     <rect key="frame" x="0.0" y="94" width="414" height="802"/>
-                    <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vLF-YJ-UMh">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="794"/>
-                            <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FILM CURATION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UuP-ot-hTj">
-                                    <rect key="frame" x="19" y="14" width="125" height="21"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" name="Fillin_white"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="DwW-71-eKy">
-                                    <rect key="frame" x="18" y="47" width="396" height="128"/>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="128" id="Wbf-59-aJK"/>
-                                    </constraints>
-                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="YBe-CM-MUJ">
-                                        <size key="itemSize" width="128" height="128"/>
-                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                    </collectionViewFlowLayout>
-                                </collectionView>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="noj-JZ-o4y">
-                                    <rect key="frame" x="0.0" y="198" width="414" height="1"/>
-                                    <color key="backgroundColor" name="Dark grey 1"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="1" id="nTa-Te-ukh"/>
-                                    </constraints>
-                                </view>
-                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Lfl-j5-y7g">
-                                    <rect key="frame" x="0.0" y="199" width="414" height="595"/>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="uTi-Ma-iLu">
-                                        <size key="itemSize" width="128" height="128"/>
-                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                    </collectionViewFlowLayout>
-                                </collectionView>
-                            </subviews>
-                            <color key="backgroundColor" name="Fillin_black"/>
-                            <constraints>
-                                <constraint firstAttribute="trailing" secondItem="noj-JZ-o4y" secondAttribute="trailing" id="0Ra-nN-O2n"/>
-                                <constraint firstItem="noj-JZ-o4y" firstAttribute="leading" secondItem="vLF-YJ-UMh" secondAttribute="leading" id="A0F-XC-hng"/>
-                                <constraint firstAttribute="bottom" secondItem="Lfl-j5-y7g" secondAttribute="bottom" id="ADf-QC-7WU"/>
-                                <constraint firstItem="noj-JZ-o4y" firstAttribute="top" secondItem="DwW-71-eKy" secondAttribute="bottom" constant="23" id="AG9-58-cpu"/>
-                                <constraint firstItem="DwW-71-eKy" firstAttribute="leading" secondItem="vLF-YJ-UMh" secondAttribute="leading" constant="18" id="Lk3-xq-rsY"/>
-                                <constraint firstAttribute="trailing" secondItem="Lfl-j5-y7g" secondAttribute="trailing" id="O6A-SQ-NuX"/>
-                                <constraint firstItem="Lfl-j5-y7g" firstAttribute="leading" secondItem="vLF-YJ-UMh" secondAttribute="leading" id="ToW-gh-35E"/>
-                                <constraint firstAttribute="trailing" secondItem="DwW-71-eKy" secondAttribute="trailing" id="ZSG-Ne-y6p"/>
-                                <constraint firstItem="Lfl-j5-y7g" firstAttribute="top" secondItem="noj-JZ-o4y" secondAttribute="bottom" id="aOd-eY-UI9"/>
-                                <constraint firstItem="UuP-ot-hTj" firstAttribute="leading" secondItem="vLF-YJ-UMh" secondAttribute="leading" constant="19" id="p5p-q8-WsO"/>
-                                <constraint firstItem="DwW-71-eKy" firstAttribute="top" secondItem="UuP-ot-hTj" secondAttribute="bottom" constant="12" id="wcF-dm-To9"/>
-                                <constraint firstItem="UuP-ot-hTj" firstAttribute="top" secondItem="vLF-YJ-UMh" secondAttribute="top" constant="14" id="yGd-T9-1lt"/>
-                            </constraints>
-                        </view>
-                    </subviews>
-                    <constraints>
-                        <constraint firstItem="vLF-YJ-UMh" firstAttribute="top" secondItem="sSO-IX-klh" secondAttribute="top" id="7TD-n1-g5F"/>
-                        <constraint firstAttribute="bottom" secondItem="vLF-YJ-UMh" secondAttribute="bottom" id="Bkj-no-uxi"/>
-                        <constraint firstItem="vLF-YJ-UMh" firstAttribute="height" secondItem="sSO-IX-klh" secondAttribute="height" multiplier="0.990025" priority="250" id="DBd-id-duN"/>
-                        <constraint firstAttribute="trailing" secondItem="vLF-YJ-UMh" secondAttribute="trailing" id="pIh-XS-LCZ"/>
-                        <constraint firstItem="vLF-YJ-UMh" firstAttribute="leading" secondItem="sSO-IX-klh" secondAttribute="leading" id="u7c-dL-lIY"/>
-                    </constraints>
-                </scrollView>
+                    <color key="backgroundColor" systemColor="systemPurpleColor"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="RAQ-yr-UOn">
+                        <size key="itemSize" width="128" height="128"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" name="Fillin_black"/>
             <constraints>
-                <constraint firstItem="sSO-IX-klh" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="1Uw-93-fjh"/>
-                <constraint firstAttribute="bottom" secondItem="sSO-IX-klh" secondAttribute="bottom" id="NKO-cU-sgt"/>
+                <constraint firstItem="JEJ-6a-B7L" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="2aF-hE-GwK"/>
+                <constraint firstItem="JEJ-6a-B7L" firstAttribute="top" secondItem="jxQ-8W-5tL" secondAttribute="bottom" id="32Z-jr-XtK"/>
+                <constraint firstItem="JEJ-6a-B7L" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="EeE-Tx-caX"/>
+                <constraint firstAttribute="bottom" secondItem="JEJ-6a-B7L" secondAttribute="bottom" id="Vxv-0c-4U0"/>
                 <constraint firstItem="jxQ-8W-5tL" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="e9p-Mj-4Nb"/>
                 <constraint firstItem="jxQ-8W-5tL" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="nAv-kC-rsh"/>
                 <constraint firstItem="jxQ-8W-5tL" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="nC7-EN-OTw"/>
-                <constraint firstItem="sSO-IX-klh" firstAttribute="top" secondItem="jxQ-8W-5tL" secondAttribute="bottom" id="nQu-dN-UKM"/>
-                <constraint firstItem="vLF-YJ-UMh" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="nwb-jC-epa"/>
-                <constraint firstItem="sSO-IX-klh" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="rLR-4q-MDL"/>
             </constraints>
             <point key="canvasLocation" x="137.68115942028987" y="100.44642857142857"/>
         </view>
     </objects>
     <resources>
-        <namedColor name="Dark grey 1">
-            <color red="0.27843137254901962" green="0.27450980392156865" blue="0.27058823529411763" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="Fillin_black">
             <color red="0.0039215686274509803" green="0.0039215686274509803" blue="0.0039215686274509803" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="Fillin_white">
-            <color red="0.99215686274509807" green="0.98039215686274506" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemPurpleColor">
+            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

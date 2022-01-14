@@ -9,11 +9,11 @@ import UIKit
 
 class FilmRollViewController: UIViewController {
     
+    // MARK: - Properties
+    private let dataSource = FilmRollViewControllerDataSource()
+    
     // MARK: - @IBOutlet Properties
     @IBOutlet weak var navigationBar: FilinNavigationBar!
-    @IBOutlet weak var filmCurationLabel: UILabel!
-    
-    @IBOutlet weak var filmCurationCollectionView: UICollectionView!
     @IBOutlet weak var filmRollCollectionView: UICollectionView!
     
     // MARK: - View Life Cycle
@@ -30,9 +30,8 @@ class FilmRollViewController: UIViewController {
 // MARK: - Extensions
 extension FilmRollViewController {
     private func setUI() {
-        filmCurationLabel.font = .engHead
-        filmRollCollectionView.delegate = self
-//        filmRollCollectionView.dataSource = self
+        filmRollCollectionView.dataSource = dataSource
+        filmRollCollectionView.collectionViewLayout = createLayout()
     }
     
     private func setNavigationBar() {
@@ -57,16 +56,3 @@ extension FilmRollViewController: UICollectionViewDelegateFlowLayout {
 extension FilmRollViewController: UICollectionViewDelegate {
     
 }
-
-// MARK: - UICollectionViewDataSource
-//extension FilmRollViewController: UICollectionViewDataSource {
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        <#code#>
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        <#code#>
-//    }
-    
-    
-//}

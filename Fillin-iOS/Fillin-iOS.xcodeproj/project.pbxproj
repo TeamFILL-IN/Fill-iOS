@@ -51,6 +51,9 @@
 		77878AC9278D9FDB00137D30 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77878AC8278D9FDB00137D30 /* UIButton+Extension.swift */; };
 		77B352152791A34A001718DE /* FilmTypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B352132791A34A001718DE /* FilmTypeCollectionViewCell.swift */; };
 		77B352162791A34A001718DE /* FilmTypeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77B352142791A34A001718DE /* FilmTypeCollectionViewCell.xib */; };
+		77B352182791C029001718DE /* FilmRollViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B352172791C029001718DE /* FilmRollViewController+Layout.swift */; };
+		77B3521A2791C052001718DE /* FilmRollSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B352192791C052001718DE /* FilmRollSection.swift */; };
+		77B3521C2791C2D0001718DE /* FilmRollViewController+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B3521B2791C2D0001718DE /* FilmRollViewController+DataSource.swift */; };
 		77CC0728278F02B80020F34A /* WelcomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CC0726278F02B80020F34A /* WelcomeTableViewCell.swift */; };
 		77CC0729278F02B80020F34A /* WelcomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77CC0727278F02B80020F34A /* WelcomeTableViewCell.xib */; };
 		77CC072C278F0DC10020F34A /* TabBarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CC072A278F0DC10020F34A /* TabBarTableViewCell.swift */; };
@@ -114,6 +117,9 @@
 		77878AC8278D9FDB00137D30 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		77B352132791A34A001718DE /* FilmTypeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmTypeCollectionViewCell.swift; sourceTree = "<group>"; };
 		77B352142791A34A001718DE /* FilmTypeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilmTypeCollectionViewCell.xib; sourceTree = "<group>"; };
+		77B352172791C029001718DE /* FilmRollViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FilmRollViewController+Layout.swift"; sourceTree = "<group>"; };
+		77B352192791C052001718DE /* FilmRollSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmRollSection.swift; sourceTree = "<group>"; };
+		77B3521B2791C2D0001718DE /* FilmRollViewController+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FilmRollViewController+DataSource.swift"; sourceTree = "<group>"; };
 		77CC0726278F02B80020F34A /* WelcomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeTableViewCell.swift; sourceTree = "<group>"; };
 		77CC0727278F02B80020F34A /* WelcomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WelcomeTableViewCell.xib; sourceTree = "<group>"; };
 		77CC072A278F0DC10020F34A /* TabBarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarTableViewCell.swift; sourceTree = "<group>"; };
@@ -166,6 +172,7 @@
 				77337B5427911EE600933DBD /* FilmCurationCollectionViewCell.xib */,
 				77B352132791A34A001718DE /* FilmTypeCollectionViewCell.swift */,
 				77B352142791A34A001718DE /* FilmTypeCollectionViewCell.xib */,
+				77B3521B2791C2D0001718DE /* FilmRollViewController+DataSource.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -357,6 +364,8 @@
 				77337B4E27911E8100933DBD /* Cell */,
 				775C9698278AD89F00A9BEA0 /* FilmRollViewController.swift */,
 				775C9699278AD89F00A9BEA0 /* FilmRollViewController.xib */,
+				77B352172791C029001718DE /* FilmRollViewController+Layout.swift */,
+				77B352192791C052001718DE /* FilmRollSection.swift */,
 			);
 			path = FilmRollViewController;
 			sourceTree = "<group>";
@@ -626,6 +635,7 @@
 				775C967D278ACFDD00A9BEA0 /* Xib.swift in Sources */,
 				77CC0733278F10890020F34A /* MapTableViewCell.swift in Sources */,
 				775C9649278ACBEA00A9BEA0 /* AppDelegate.swift in Sources */,
+				77B3521C2791C2D0001718DE /* FilmRollViewController+DataSource.swift in Sources */,
 				775C96A7278AD8E600A9BEA0 /* SplashViewController.swift in Sources */,
 				7769EC59278F5F6500618EEF /* ArrowCollectionViewCell.swift in Sources */,
 				77CC0738278F11DA0020F34A /* PhotosTableViewCell.swift in Sources */,
@@ -637,6 +647,7 @@
 				775C9674278ACF6600A9BEA0 /* TempModel.swift in Sources */,
 				77337B5527911EE600933DBD /* FilmCurationCollectionViewCell.swift in Sources */,
 				775C96A2278AD8BB00A9BEA0 /* MyPageViewController.swift in Sources */,
+				77B3521A2791C052001718DE /* FilmRollSection.swift in Sources */,
 				E83AEF9D278F313100B3F42E /* MyPagePhotoCollectionViewCell.swift in Sources */,
 				775C969E278AD8A900A9BEA0 /* AddPhotoViewController.swift in Sources */,
 				77628EAC278D7ADB00CB5919 /* FilmRollClickViewController.swift in Sources */,
@@ -645,6 +656,7 @@
 				775C9672278ACF5D00A9BEA0 /* TempClass.swift in Sources */,
 				E878EC2A278D0E9400135FB9 /* UILabel+Extension.swift in Sources */,
 				7769EC55278F515700618EEF /* PhotosCollectionViewCell.swift in Sources */,
+				77B352182791C029001718DE /* FilmRollViewController+Layout.swift in Sources */,
 				775C96B4278B61D100A9BEA0 /* UIView+Extension.swift in Sources */,
 				775C9677278ACF8B00A9BEA0 /* MoyaLoggerPlugin.swift in Sources */,
 				77B352152791A34A001718DE /* FilmTypeCollectionViewCell.swift in Sources */,
