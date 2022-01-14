@@ -49,6 +49,8 @@
 		7769EC5A278F5F6500618EEF /* ArrowCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7769EC58278F5F6500618EEF /* ArrowCollectionViewCell.xib */; };
 		77878AC7278D947900137D30 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77878AC6278D947900137D30 /* Colors.xcassets */; };
 		77878AC9278D9FDB00137D30 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77878AC8278D9FDB00137D30 /* UIButton+Extension.swift */; };
+		77B352152791A34A001718DE /* FilmTypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B352132791A34A001718DE /* FilmTypeCollectionViewCell.swift */; };
+		77B352162791A34A001718DE /* FilmTypeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77B352142791A34A001718DE /* FilmTypeCollectionViewCell.xib */; };
 		77CC0728278F02B80020F34A /* WelcomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CC0726278F02B80020F34A /* WelcomeTableViewCell.swift */; };
 		77CC0729278F02B80020F34A /* WelcomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77CC0727278F02B80020F34A /* WelcomeTableViewCell.xib */; };
 		77CC072C278F0DC10020F34A /* TabBarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CC072A278F0DC10020F34A /* TabBarTableViewCell.swift */; };
@@ -110,6 +112,8 @@
 		7769EC58278F5F6500618EEF /* ArrowCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArrowCollectionViewCell.xib; sourceTree = "<group>"; };
 		77878AC6278D947900137D30 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		77878AC8278D9FDB00137D30 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		77B352132791A34A001718DE /* FilmTypeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmTypeCollectionViewCell.swift; sourceTree = "<group>"; };
+		77B352142791A34A001718DE /* FilmTypeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilmTypeCollectionViewCell.xib; sourceTree = "<group>"; };
 		77CC0726278F02B80020F34A /* WelcomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeTableViewCell.swift; sourceTree = "<group>"; };
 		77CC0727278F02B80020F34A /* WelcomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WelcomeTableViewCell.xib; sourceTree = "<group>"; };
 		77CC072A278F0DC10020F34A /* TabBarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarTableViewCell.swift; sourceTree = "<group>"; };
@@ -160,6 +164,8 @@
 			children = (
 				77337B5327911EE600933DBD /* FilmCurationCollectionViewCell.swift */,
 				77337B5427911EE600933DBD /* FilmCurationCollectionViewCell.xib */,
+				77B352132791A34A001718DE /* FilmTypeCollectionViewCell.swift */,
+				77B352142791A34A001718DE /* FilmTypeCollectionViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -505,6 +511,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77B352162791A34A001718DE /* FilmTypeCollectionViewCell.xib in Resources */,
 				7769EC5A278F5F6500618EEF /* ArrowCollectionViewCell.xib in Resources */,
 				77337B5627911EE600933DBD /* FilmCurationCollectionViewCell.xib in Resources */,
 				7769EC56278F515700618EEF /* PhotosCollectionViewCell.xib in Resources */,
@@ -640,6 +647,7 @@
 				7769EC55278F515700618EEF /* PhotosCollectionViewCell.swift in Sources */,
 				775C96B4278B61D100A9BEA0 /* UIView+Extension.swift in Sources */,
 				775C9677278ACF8B00A9BEA0 /* MoyaLoggerPlugin.swift in Sources */,
+				77B352152791A34A001718DE /* FilmTypeCollectionViewCell.swift in Sources */,
 				775C9667278ACF0300A9BEA0 /* Const.swift in Sources */,
 				775C96B0278B33E200A9BEA0 /* Assets+Generated.swift in Sources */,
 				775C967F278ACFFD00A9BEA0 /* UIColor+Extension.swift in Sources */,

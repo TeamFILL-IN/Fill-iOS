@@ -32,7 +32,7 @@ internal enum Asset {
   internal static let icnAddPhotoBig = ImageAsset(name: "icnAddPhotoBig")
   internal static let icnCall = ImageAsset(name: "icnCall")
   internal static let icnCamera = ImageAsset(name: "icnCamera")
-  internal static let icnCategroy = ImageAsset(name: "icnCategroy")
+  internal static let icnCategory = ImageAsset(name: "icnCategory")
   internal static let icnClear = ImageAsset(name: "icnClear")
   internal static let icnClearGrey = ImageAsset(name: "icnClearGrey")
   internal static let icnClose = ImageAsset(name: "icnClose")
