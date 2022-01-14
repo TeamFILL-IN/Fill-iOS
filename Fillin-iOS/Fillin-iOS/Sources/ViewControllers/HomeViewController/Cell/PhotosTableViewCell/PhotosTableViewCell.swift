@@ -88,6 +88,15 @@ extension PhotosTableViewCell: UICollectionViewDataSource {
         
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch indexPath.row {
+        case 7:
+            NotificationCenter.default.post(name: .pushToFilmRollViewController, object: nil)
+        default:
+            return
+        }
+    }
+    
 }
 
 // MARK: - UICollectionViewDelegate
