@@ -32,7 +32,7 @@ extension FilmRollViewController {
     private func setUI() {
         filmCurationLabel.font = .engHead
         filmRollCollectionView.delegate = self
-        filmRollCollectionView.dataSource = self
+//        filmRollCollectionView.dataSource = self
     }
     
     private func setNavigationBar() {
@@ -59,14 +59,14 @@ extension FilmRollViewController: UICollectionViewDelegate {
 }
 
 // MARK: - UICollectionViewDataSource
-extension FilmRollViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        <#code#>
-    }
+//extension FilmRollViewController: UICollectionViewDataSource {
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        <#code#>
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        <#code#>
+//    }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        <#code#>
-    }
     
-    
-}
+//}
