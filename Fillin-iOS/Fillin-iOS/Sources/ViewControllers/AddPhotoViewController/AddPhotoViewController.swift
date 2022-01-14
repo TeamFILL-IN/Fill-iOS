@@ -33,6 +33,15 @@ class AddPhotoViewController: UIViewController {
 // MARK: - Extension
 extension AddPhotoViewController {
   func layout() {
+    layoutNavigationBar()
+    layoutPhotoBackgroundView()
+    layoutPhotoIcon()
+    layoutFilmLabel()
+    layoutFilmChooseButton()
+    layoutStudioLabel()
+    layoutStudioChooseButton()
+    layoutAddPhotoBackground()
+    layoutAddphotoButton()
   }
   func layoutNavigationBar() {
     view.add(navigationBar) {
@@ -87,6 +96,61 @@ extension AddPhotoViewController {
                      state: .normal,
                      radius: 0)
       $0.setBorder(borderColor: .fillinRed, borderWidth: 1)
+      $0.snp.makeConstraints {
+        $0.top.equalTo(self.filmLabel.snp.bottom).offset(9)
+        $0.centerX.equalToSuperview()
+        $0.leading.equalToSuperview().offset(18)
+        $0.height.equalTo(48)
+      }
+    }
+  }
+  func layoutStudioLabel() {
+    view.add(studioLabel) {
+      $0.setupLabel(text: "Studio",
+                    color: .fillinWhite,
+                    font: .body3)
+      $0.snp.makeConstraints {
+        $0.top.equalTo(self.filmchooseButton.snp.bottom).offset(18)
+        $0.leading.equalTo(self.filmLabel.snp.leading)
+      }
+    }
+  }
+  func layoutStudioChooseButton() {
+    view.add(studiochooseButton) {
+      $0.setupButton(title: "어떤 현상소에서 현상했나요?",
+                     color: .grey1,
+                     font: .body2,
+                     backgroundColor: .darkGrey2,
+                     state: .normal,
+                     radius: 0)
+      $0.setBorder(borderColor: .fillinRed, borderWidth: 1)
+      $0.snp.makeConstraints {
+        $0.top.equalTo(self.studioLabel.snp.bottom).offset(9)
+        $0.centerX.equalToSuperview()
+        $0.leading.equalToSuperview().offset(18)
+        $0.height.equalTo(48)
+      }
+    }
+  }
+  func layoutAddPhotoBackground() {
+    view.add(addphotoBackground) {
+      $0.backgroundColor = .fillinRed
+      $0.snp.makeConstraints {
+        $0.leading.trailing.equalToSuperview()
+        $0.bottom.equalToSuperview()
+        $0.height.equalTo(74)
+      }
+    }
+  }
+  func layoutAddphotoButton() {
+    addphotoBackground.add(addphotoButton) {
+      $0.setTitle("Add Photo", for: .normal)
+      $0.titleLabel?.font = .engBighead
+      $0.setTitleColor(.fillinBlack, for: .normal)
+      $0.snp.makeConstraints {
+        $0.top.equalToSuperview().offset(15)
+        $0.centerX.equalToSuperview()
+      }
     }
   }
 }
