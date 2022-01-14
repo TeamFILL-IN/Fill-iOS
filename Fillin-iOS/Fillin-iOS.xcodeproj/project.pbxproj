@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		77337B5527911EE600933DBD /* FilmCurationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77337B5327911EE600933DBD /* FilmCurationCollectionViewCell.swift */; };
+		77337B5627911EE600933DBD /* FilmCurationCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77337B5427911EE600933DBD /* FilmCurationCollectionViewCell.xib */; };
 		775C9649278ACBEA00A9BEA0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775C9648278ACBEA00A9BEA0 /* AppDelegate.swift */; };
 		775C964B278ACBEA00A9BEA0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775C964A278ACBEA00A9BEA0 /* SceneDelegate.swift */; };
 		775C9652278ACBEB00A9BEA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 775C9651278ACBEB00A9BEA0 /* Assets.xcassets */; };
@@ -64,6 +66,8 @@
 
 /* Begin PBXFileReference section */
 		18FC9C8D02E669D0F43E8733 /* Pods-Fillin-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fillin-iOS.release.xcconfig"; path = "Target Support Files/Pods-Fillin-iOS/Pods-Fillin-iOS.release.xcconfig"; sourceTree = "<group>"; };
+		77337B5327911EE600933DBD /* FilmCurationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmCurationCollectionViewCell.swift; sourceTree = "<group>"; };
+		77337B5427911EE600933DBD /* FilmCurationCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilmCurationCollectionViewCell.xib; sourceTree = "<group>"; };
 		775C9645278ACBEA00A9BEA0 /* Fillin-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fillin-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		775C9648278ACBEA00A9BEA0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		775C964A278ACBEA00A9BEA0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -149,6 +153,15 @@
 				18FC9C8D02E669D0F43E8733 /* Pods-Fillin-iOS.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		77337B4E27911E8100933DBD /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				77337B5327911EE600933DBD /* FilmCurationCollectionViewCell.swift */,
+				77337B5427911EE600933DBD /* FilmCurationCollectionViewCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		775C963C278ACBEA00A9BEA0 = {
@@ -335,6 +348,7 @@
 		775C968B278AD1A700A9BEA0 /* FilmRollViewController */ = {
 			isa = PBXGroup;
 			children = (
+				77337B4E27911E8100933DBD /* Cell */,
 				775C9698278AD89F00A9BEA0 /* FilmRollViewController.swift */,
 				775C9699278AD89F00A9BEA0 /* FilmRollViewController.xib */,
 			);
@@ -492,6 +506,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7769EC5A278F5F6500618EEF /* ArrowCollectionViewCell.xib in Resources */,
+				77337B5627911EE600933DBD /* FilmCurationCollectionViewCell.xib in Resources */,
 				7769EC56278F515700618EEF /* PhotosCollectionViewCell.xib in Resources */,
 				775C965E278ACDE200A9BEA0 /* .swiftlint.yml in Resources */,
 				77CC0734278F10890020F34A /* MapTableViewCell.xib in Resources */,
@@ -613,6 +628,7 @@
 				77CC0728278F02B80020F34A /* WelcomeTableViewCell.swift in Sources */,
 				775C969A278AD89F00A9BEA0 /* FilmRollViewController.swift in Sources */,
 				775C9674278ACF6600A9BEA0 /* TempModel.swift in Sources */,
+				77337B5527911EE600933DBD /* FilmCurationCollectionViewCell.swift in Sources */,
 				775C96A2278AD8BB00A9BEA0 /* MyPageViewController.swift in Sources */,
 				E83AEF9D278F313100B3F42E /* MyPagePhotoCollectionViewCell.swift in Sources */,
 				775C969E278AD8A900A9BEA0 /* AddPhotoViewController.swift in Sources */,

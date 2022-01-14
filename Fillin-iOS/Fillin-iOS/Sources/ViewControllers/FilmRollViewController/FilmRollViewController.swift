@@ -21,6 +21,7 @@ class FilmRollViewController: UIViewController {
 
         setUI()
         setNavigationBar()
+        registerXib()
     }
     
 }
@@ -35,5 +36,9 @@ extension FilmRollViewController {
         navigationBar.popViewController = {
             self.navigationController?.popViewController(animated: true)
         }
+    }
+    
+    private func registerXib() {
+        filmRollCollectionView.register(FilmCurationCollectionViewCell.nib(), forCellWithReuseIdentifier: Const.Xib.filmCurationCollectionViewCell)
     }
 }
