@@ -11,6 +11,10 @@ class FilmRollViewController: UIViewController {
     
     // MARK: - @IBOutlet Properties
     @IBOutlet weak var navigationBar: FilinNavigationBar!
+    @IBOutlet weak var filmCurationLabel: UILabel!
+    
+    @IBOutlet weak var filmCurationCollectionView: UICollectionView!
+    @IBOutlet weak var filmRollCollectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +27,7 @@ class FilmRollViewController: UIViewController {
 
 extension FilmRollViewController {
     private func setUI() {
-        
+        filmCurationLabel.font = .engHead
     }
     
     private func setNavigationBar() {
