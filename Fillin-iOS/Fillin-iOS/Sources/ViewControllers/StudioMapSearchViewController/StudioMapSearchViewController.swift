@@ -83,6 +83,12 @@ class StudioMapSearchViewController: UIViewController {
     }
   }
   
+  override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    self.view.endEditing(true)
+  }
+  
   @objc func touchSearchButton(_ sender: UIButton) {
   }
+  
+  
 }
