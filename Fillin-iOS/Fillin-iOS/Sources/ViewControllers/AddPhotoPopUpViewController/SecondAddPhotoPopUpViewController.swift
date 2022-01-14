@@ -60,11 +60,13 @@ extension SecondAddPhotoPopUpViewController {
   }
   func layoutDeleteButton() {
     backgroundView.add(deleteButton) {
-      $0.setImage(UIImage(asset: Asset.icnGo), for: .normal)
+      $0.setImage(UIImage(asset: Asset.icnClosewhite), for: .normal)
       $0.addTarget(self, action: #selector(self.touchDeleteButton), for: .touchUpInside)
       $0.snp.makeConstraints {
         $0.top.equalToSuperview().offset(14)
         $0.trailing.equalToSuperview().offset(14)
+        $0.width.equalTo(24)
+        $0.height.equalTo(24)
       }
     }
   }
@@ -93,7 +95,7 @@ extension SecondAddPhotoPopUpViewController {
   }
   func layoutCheckmarkIcon() {
     backgroundView.add(checkmarkIcon) {
-      $0.image = UIImage(asset: Asset.icnGo)
+      $0.image = UIImage(asset: Asset.imgPhoto)
       $0.snp.makeConstraints {
         $0.top.equalTo(self.explainLabel.snp.bottom).offset(41)
         $0.centerX.equalToSuperview()

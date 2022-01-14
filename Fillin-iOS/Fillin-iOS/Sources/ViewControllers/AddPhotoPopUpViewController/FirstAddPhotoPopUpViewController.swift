@@ -76,7 +76,7 @@ extension FirstAddPhotoPopUpViewController {
   }
   func layoutTrashIcon() {
     backgroundView.add(trashIcon) {
-      $0.image = UIImage(asset: Asset.icnGo)
+      $0.image = UIImage(asset: Asset.imgTrash)
       $0.snp.makeConstraints {
         $0.top.equalTo(self.explainLabel.snp.bottom).offset(26)
         $0.centerX.equalTo(self.backgroundView.snp.centerX)
