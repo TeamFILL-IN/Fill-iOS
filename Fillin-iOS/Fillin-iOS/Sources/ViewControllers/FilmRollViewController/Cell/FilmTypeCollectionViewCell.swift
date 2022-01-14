@@ -11,6 +11,8 @@ class FilmTypeCollectionViewCell: UICollectionViewCell {
 
     // MARK: - @IBOutlet Properties
     @IBOutlet var filmTypeButtons: [UIButton]!
+    @IBOutlet weak var chooseFilmView: UIView!
+    @IBOutlet weak var chooseFilmLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,5 +28,6 @@ class FilmTypeCollectionViewCell: UICollectionViewCell {
         filmTypeButtons.forEach{
             $0.titleLabel?.font = .subhead2
         }
+        chooseFilmLabel.font = .body2
     }
 }
