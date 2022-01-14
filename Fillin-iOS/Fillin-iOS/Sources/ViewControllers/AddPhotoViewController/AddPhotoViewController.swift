@@ -173,9 +173,9 @@ extension AddPhotoViewController {
     
   }
   @objc func touchaddPhotoButton() {
-   let firstAddPhotoPopUpViewController = FirstAddPhotoPopUpViewController()
-    firstAddPhotoPopUpViewController.modalPresentationStyle = .overCurrentContext
-    firstAddPhotoPopUpViewController.modalTransitionStyle = .crossDissolve
-    self.present(firstAddPhotoPopUpViewController, animated: false, completion: nil)
+   let secondVC = SecondAddPhotoPopUpViewController()
+    secondVC.modalPresentationStyle = .overCurrentContext
+    secondVC.modalTransitionStyle = .crossDissolve
+    self.present(secondVC, animated: false, completion: nil)
   }
 }
