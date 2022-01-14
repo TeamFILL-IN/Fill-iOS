@@ -172,7 +172,6 @@
 				77337B5427911EE600933DBD /* FilmCurationCollectionViewCell.xib */,
 				77B352132791A34A001718DE /* FilmTypeCollectionViewCell.swift */,
 				77B352142791A34A001718DE /* FilmTypeCollectionViewCell.xib */,
-				77B3521B2791C2D0001718DE /* FilmRollViewController+DataSource.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -364,6 +363,7 @@
 				77337B4E27911E8100933DBD /* Cell */,
 				775C9698278AD89F00A9BEA0 /* FilmRollViewController.swift */,
 				775C9699278AD89F00A9BEA0 /* FilmRollViewController.xib */,
+				77B3521B2791C2D0001718DE /* FilmRollViewController+DataSource.swift */,
 				77B352172791C029001718DE /* FilmRollViewController+Layout.swift */,
 				77B352192791C052001718DE /* FilmRollSection.swift */,
 			);
