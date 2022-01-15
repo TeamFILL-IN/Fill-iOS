@@ -7,54 +7,48 @@
 
 import UIKit
 
-class StudioMapSearchListViewController: UIViewController, UISearchBarDelegate{
-  
+class StudioMapSearchListViewController: UIViewController {
+
   // MARK: - Properties
-  private let searchBar = UISearchBar()
+  //private let searchBar = UISearchBar()
   private let categoryView = UIView()
   private let categoryButton = UIButton()
   private let searchResultTV = UITableView()
-  private let stackView = UIStackView()
   
   let navigationBar = FilinNavigationBar()
   
   // MARK: - View Life Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    setUI()
-    setSearchResultTV()
+    //setSearchResultTV()
     setNavigationBar()
     layoutNavigaionBar()
-    setSearchBar()        
+    //setSearchBar()            
   }
-  
-  func setUI() {
-    stackView.isHidden = false
-  }
-  
-  func setSearchResultTV() {
-    searchResultTV.delegate = self
-    searchResultTV.dataSource = self
-  }
-  
-  func setSearchBar() {
-    searchBar.delegate = self
-    searchBar.barTintColor = .grey1
-    searchBar.layer.borderColor = UIColor.fillinRed.cgColor
-    searchBar.layer.borderWidth = 1
-    //searchBar.setImage(Asset.icnSearch.image, for: .normal))
-    if let textfield = searchBar.value(forKey: "searchField") as? UITextField {
-      textfield.backgroundColor = .darkGrey2
-      textfield.attributedPlaceholder = NSAttributedString(string: textfield.placeholder ?? "추억을 현상할 현상소를 검색해보세요", attributes: [NSAttributedString.Key.foregroundColor : UIColor.grey1])
-      //서치바 텍스트입력시 색 정하기
-      textfield.textColor = .fillinWhite
-      
-      if let leftView = textfield.leftView as? UIImageView {
-        leftView.image = leftView.image?.withRenderingMode(.alwaysTemplate)
-      }
-      searchBar.backgroundImage = UIImage()
-    }
-  }
+
+//  func setSearchResultTV() {
+//    searchResultTV.delegate = self
+//    searchResultTV.dataSource = self
+//  }
+//
+//  func setSearchBar() {
+//    searchBar.delegate = self
+//    searchBar.barTintColor = .grey1
+//    searchBar.layer.borderColor = UIColor.fillinRed.cgColor
+//    searchBar.layer.borderWidth = 1
+//    //searchBar.setImage(Asset.icnSearch.image, for: .normal))
+//    if let textfield = searchBar.value(forKey: "searchField") as? UITextField {
+//      textfield.backgroundColor = .darkGrey2
+//      textfield.attributedPlaceholder = NSAttributedString(string: textfield.placeholder ?? "추억을 현상할 현상소를 검색해보세요", attributes: [NSAttributedString.Key.foregroundColor : UIColor.grey1])
+//      //서치바 텍스트입력시 색 정하기
+//      textfield.textColor = .fillinWhite
+//
+//      if let leftView = textfield.leftView as? UIImageView {
+//        leftView.image = leftView.image?.withRenderingMode(.alwaysTemplate)
+//      }
+//      searchBar.backgroundImage = UIImage()
+//    }
+//  }
   
   @objc func dismissScreen() {
     self.dismiss(animated: true, completion: nil)

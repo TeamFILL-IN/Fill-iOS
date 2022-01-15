@@ -169,10 +169,10 @@
 			isa = PBXGroup;
 			children = (
 				6FC9A4212790458000B94CFB /* StudioMapSearchViewController.swift */,
-				6FC9A45727914B9E00B94CFB /* TempSearch */,
 				6FC9A4222790458000B94CFB /* StudioMapSearchViewController.xib */,
 				6FC9A42B2791280800B94CFB /* StudioMapSearchListViewController.swift */,
 				6FC9A42C2791280800B94CFB /* StudioMapSearchListViewController.xib */,
+				6FC9A45727914B9E00B94CFB /* TempSearch */,
 			);
 			path = StudioMapSearchViewController;
 			sourceTree = "<group>";

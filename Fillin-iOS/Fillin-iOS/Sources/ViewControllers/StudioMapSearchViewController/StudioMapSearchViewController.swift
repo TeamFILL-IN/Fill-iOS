@@ -25,7 +25,8 @@ class StudioMapSearchViewController: UIViewController {
     $0.setPlaceHolder()
     $0.addLeftPadding()
   }
-  
+  let tableView = UITableView()
+  let dividerView = UIView()
   let navigationBar = FilinNavigationBar()
   
   // MARK: - View Life Cycle
@@ -33,6 +34,8 @@ class StudioMapSearchViewController: UIViewController {
     super.viewDidLoad()
     layoutSeachView()
     layoutNavigaionBar()
+    //layoutTableView()
+    layoutDividerView()
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -72,7 +75,7 @@ class StudioMapSearchViewController: UIViewController {
   private func layoutNavigaionBar() {
     view.add(navigationBar) {
       self.navigationBar.popViewController = {
-        print("go")
+        
         self.dismiss(animated: true, completion: nil)
       }
       $0.snp.makeConstraints {
@@ -83,12 +86,28 @@ class StudioMapSearchViewController: UIViewController {
     }
   }
   
+  private func layoutDividerView() {
+    view.add(dividerView) {
+      $0.backgroundColor = .darkGrey3
+      $0.snp.makeConstraints {
+        $0.top.equalTo(self.searchPlaceTextField.snp.bottom).offset(18)
+        $0.leading.trailing.equalToSuperview()
+        $0.height.equalTo(2)
+      }
+    }
+  }
+  
+//  private func layoutTableView() {
+//    view.add(tableView)
+//    $0.snp.makeConstraints {
+//      $0.top.equalTo(self.)
+//    }
+//  }
+  
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
     self.view.endEditing(true)
   }
   
   @objc func touchSearchButton(_ sender: UIButton) {
   }
-  
-  
 }
