@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6FB32C8E2793678200CCAFAB /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB32C8C2793678200CCAFAB /* TableViewCell.swift */; };
+		6FB32C92279367B300CCAFAB /* StudioMapSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB32C90279367B300CCAFAB /* StudioMapSearchTableViewCell.swift */; };
+		6FB32C93279367B300CCAFAB /* StudioMapSearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FB32C91279367B300CCAFAB /* StudioMapSearchTableViewCell.xib */; };
 		6FC9A4232790458000B94CFB /* StudioMapSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC9A4212790458000B94CFB /* StudioMapSearchViewController.swift */; };
 		6FC9A4242790458000B94CFB /* StudioMapSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FC9A4222790458000B94CFB /* StudioMapSearchViewController.xib */; };
 		6FC9A42D2791280800B94CFB /* StudioMapSearchListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC9A42B2791280800B94CFB /* StudioMapSearchListViewController.swift */; };
 		6FC9A42E2791280800B94CFB /* StudioMapSearchListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FC9A42C2791280800B94CFB /* StudioMapSearchListViewController.xib */; };
-		6FC9A45227914B8700B94CFB /* TempSearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FC9A45127914B8700B94CFB /* TempSearch.storyboard */; };
-		6FC9A45527914B9900B94CFB /* TempSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC9A45327914B9900B94CFB /* TempSearchViewController.swift */; };
-		6FC9A45627914B9900B94CFB /* TempSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FC9A45427914B9900B94CFB /* TempSearchViewController.xib */; };
 		775C9649278ACBEA00A9BEA0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775C9648278ACBEA00A9BEA0 /* AppDelegate.swift */; };
 		775C964B278ACBEA00A9BEA0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775C964A278ACBEA00A9BEA0 /* SceneDelegate.swift */; };
 		775C9652278ACBEB00A9BEA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 775C9651278ACBEB00A9BEA0 /* Assets.xcassets */; };
@@ -71,13 +71,13 @@
 
 /* Begin PBXFileReference section */
 		18FC9C8D02E669D0F43E8733 /* Pods-Fillin-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fillin-iOS.release.xcconfig"; path = "Target Support Files/Pods-Fillin-iOS/Pods-Fillin-iOS.release.xcconfig"; sourceTree = "<group>"; };
+		6FB32C8C2793678200CCAFAB /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		6FB32C90279367B300CCAFAB /* StudioMapSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudioMapSearchTableViewCell.swift; sourceTree = "<group>"; };
+		6FB32C91279367B300CCAFAB /* StudioMapSearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StudioMapSearchTableViewCell.xib; sourceTree = "<group>"; };
 		6FC9A4212790458000B94CFB /* StudioMapSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudioMapSearchViewController.swift; sourceTree = "<group>"; };
 		6FC9A4222790458000B94CFB /* StudioMapSearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StudioMapSearchViewController.xib; sourceTree = "<group>"; };
 		6FC9A42B2791280800B94CFB /* StudioMapSearchListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudioMapSearchListViewController.swift; sourceTree = "<group>"; };
 		6FC9A42C2791280800B94CFB /* StudioMapSearchListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StudioMapSearchListViewController.xib; sourceTree = "<group>"; };
-		6FC9A45127914B8700B94CFB /* TempSearch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TempSearch.storyboard; sourceTree = "<group>"; };
-		6FC9A45327914B9900B94CFB /* TempSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempSearchViewController.swift; sourceTree = "<group>"; };
-		6FC9A45427914B9900B94CFB /* TempSearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TempSearchViewController.xib; sourceTree = "<group>"; };
 		775C9645278ACBEA00A9BEA0 /* Fillin-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fillin-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		775C9648278ACBEA00A9BEA0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		775C964A278ACBEA00A9BEA0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -172,24 +172,16 @@
 				6FC9A4222790458000B94CFB /* StudioMapSearchViewController.xib */,
 				6FC9A42B2791280800B94CFB /* StudioMapSearchListViewController.swift */,
 				6FC9A42C2791280800B94CFB /* StudioMapSearchListViewController.xib */,
-				6FC9A45727914B9E00B94CFB /* TempSearch */,
+				6FB32C90279367B300CCAFAB /* StudioMapSearchTableViewCell.swift */,
+				6FB32C91279367B300CCAFAB /* StudioMapSearchTableViewCell.xib */,
 			);
 			path = StudioMapSearchViewController;
-			sourceTree = "<group>";
-		};
-		6FC9A45727914B9E00B94CFB /* TempSearch */ = {
-			isa = PBXGroup;
-			children = (
-				6FC9A45127914B8700B94CFB /* TempSearch.storyboard */,
-				6FC9A45327914B9900B94CFB /* TempSearchViewController.swift */,
-				6FC9A45427914B9900B94CFB /* TempSearchViewController.xib */,
-			);
-			path = TempSearch;
 			sourceTree = "<group>";
 		};
 		775C963C278ACBEA00A9BEA0 = {
 			isa = PBXGroup;
 			children = (
+				6FB32C8C2793678200CCAFAB /* TableViewCell.swift */,
 				775C96A9278B2E1100A9BEA0 /* swiftgen.yml */,
 				775C965D278ACDE200A9BEA0 /* .swiftlint.yml */,
 				775C9647278ACBEA00A9BEA0 /* Fillin-iOS */,
@@ -534,7 +526,6 @@
 				775C965E278ACDE200A9BEA0 /* .swiftlint.yml in Resources */,
 				77CC0734278F10890020F34A /* MapTableViewCell.xib in Resources */,
 				775C96AA278B2E1100A9BEA0 /* swiftgen.yml in Resources */,
-				6FC9A45227914B8700B94CFB /* TempSearch.storyboard in Resources */,
 				775C96A8278AD8E600A9BEA0 /* SplashViewController.xib in Resources */,
 				77CC0739278F11DA0020F34A /* PhotosTableViewCell.xib in Resources */,
 				77CC072D278F0DC10020F34A /* TabBarTableViewCell.xib in Resources */,
@@ -550,7 +541,7 @@
 				775C969F278AD8A900A9BEA0 /* AddPhotoViewController.xib in Resources */,
 				775C9685278AD0B500A9BEA0 /* NotoSansKR-Regular.otf in Resources */,
 				775C9691278AD87900A9BEA0 /* HomeViewController.xib in Resources */,
-				6FC9A45627914B9900B94CFB /* TempSearchViewController.xib in Resources */,
+				6FB32C93279367B300CCAFAB /* StudioMapSearchTableViewCell.xib in Resources */,
 				77878AC7278D947900137D30 /* Colors.xcassets in Resources */,
 				77628EAD278D7ADB00CB5919 /* FilmRollClickViewController.xib in Resources */,
 				775C96A3278AD8BB00A9BEA0 /* MyPageViewController.xib in Resources */,
@@ -648,11 +639,12 @@
 				775C96A7278AD8E600A9BEA0 /* SplashViewController.swift in Sources */,
 				7769EC59278F5F6500618EEF /* ArrowCollectionViewCell.swift in Sources */,
 				77CC0738278F11DA0020F34A /* PhotosTableViewCell.swift in Sources */,
+				6FB32C92279367B300CCAFAB /* StudioMapSearchTableViewCell.swift in Sources */,
+				6FB32C8E2793678200CCAFAB /* TableViewCell.swift in Sources */,
 				77CC072C278F0DC10020F34A /* TabBarTableViewCell.swift in Sources */,
 				775C9696278AD89200A9BEA0 /* StudioMapViewController.swift in Sources */,
 				775C96B2278B5B3800A9BEA0 /* FillinNavigationBar.swift in Sources */,
 				6FC9A42D2791280800B94CFB /* StudioMapSearchListViewController.swift in Sources */,
-				6FC9A45527914B9900B94CFB /* TempSearchViewController.swift in Sources */,
 				77CC0728278F02B80020F34A /* WelcomeTableViewCell.swift in Sources */,
 				775C969A278AD89F00A9BEA0 /* FilmRollViewController.swift in Sources */,
 				775C9674278ACF6600A9BEA0 /* TempModel.swift in Sources */,

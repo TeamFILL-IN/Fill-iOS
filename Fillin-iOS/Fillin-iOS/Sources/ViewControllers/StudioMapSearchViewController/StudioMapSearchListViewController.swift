@@ -49,10 +49,6 @@ class StudioMapSearchListViewController: UIViewController {
 //      searchBar.backgroundImage = UIImage()
 //    }
 //  }
-  
-  @objc func dismissScreen() {
-    self.dismiss(animated: true, completion: nil)
-  }
  
   private let searchPlaceTextField = UITextField().then {
     $0.backgroundColor = .darkGrey2
@@ -63,8 +59,8 @@ class StudioMapSearchListViewController: UIViewController {
     $0.setPlaceHolder()
     $0.addLeftPadding()
   }
-  
-  override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+
+override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
     self.view.endEditing(true)
   }
   
@@ -85,5 +81,7 @@ class StudioMapSearchListViewController: UIViewController {
       }
     }
   }
+//    @objc func dismissScreen() {
+//      self.dismiss(animated: true, completion: nil)
+//    }
 }
-
