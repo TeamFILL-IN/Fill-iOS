@@ -9,13 +9,15 @@ import UIKit
 
 import SnapKit
 import Then
+import Photos
+import SwiftUI
 
 // MARK: - ADddPhotoViewController
 class AddPhotoViewController: UIViewController {
   
   // MARK: - Components
   let navigationBar = FilinNavigationBar()
-  let photobackgroundView = UIView()
+  var photobackgroundView = UIImageView()
   let photoIcon = UIButton()
   let filmLabel = UILabel()
   let filmchooseButton = UIButton()
@@ -23,12 +25,22 @@ class AddPhotoViewController: UIViewController {
   let studiochooseButton = UIButton()
   let addphotoBackground = UIView()
   let addphotoButton = UIButton()
+  let imagePickerController = UIImagePickerController()
   
   // MARK: - LifeCycle
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .fillinBlack
     self.navigationController?.navigationBar.isHidden = true
+    imagePickerController.delegate = self
+    
+    /// 이미지뷰에 액션을 넣어서 이미지 선택하면 다시 사진 선택할 수 있게
+    let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.touchimageView))
+    tapGestureRecognizer.isEnabled = true
+    tapGestureRecognizer.numberOfTapsRequired = 1
+    /// 이미지뷰는 터치가 원래 안되니까 터치 가능하도록
+    self.photobackgroundView.isUserInteractionEnabled = true
+    self.photobackgroundView.addGestureRecognizer(tapGestureRecognizer)
     layout()
   }
 }
@@ -70,7 +82,8 @@ extension AddPhotoViewController {
   func layoutPhotoIcon() {
     photobackgroundView.add(photoIcon) {
       $0.setImage(UIImage(asset: Asset.icnAddPhotoBig), for: .normal)
-      $0.addTarget(self, action: #selector(self.touchphotoIconButton), for: .touchUpInside)
+      $0.addTarget(self, action: #selector(self.touchimageView), for: .touchUpInside)
+      $0.adjustsImageWhenHighlighted = false
       $0.snp.makeConstraints {
         $0.centerX.equalToSuperview()
         $0.centerY.equalToSuperview()
@@ -163,8 +176,50 @@ extension AddPhotoViewController {
       }
     }
   }
-  @objc func touchphotoIconButton() {
-   
+  /// 사용자가 권한 deny 눌렀을 경우 Settings로 보내도록
+  func settingAlert() {
+    if let appName = Bundle.main.infoDictionary!["CFBunldName"] as? String {
+      let alert = UIAlertController(title: "설정", message: "\(appName)이(가) 카메라 접근 허용이 되어있지 않습니다. 설정화면으로 가시겠습니까?", preferredStyle: .alert)
+      let cancelAction = UIAlertAction(title: "취소", style: .default) { (action) in
+      }
+      let confirmAction = UIAlertAction(title: "확인", style: .default) { (action) in UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+      }
+      alert.addAction(cancelAction)
+      alert.addAction(confirmAction)
+      self.present(alert, animated: true, completion: nil)
+    } else {
+      
+    }
+  }
+  @objc func touchimageView() {
+    print("어쩔티비")
+    switch PHPhotoLibrary.authorizationStatus() {
+    case .denied:
+      settingAlert()
+      print("omg")
+    case .restricted:
+      break
+    case .authorized:
+      print("허가")
+      self.imagePickerController.sourceType = .photoLibrary
+      self.present(self.imagePickerController, animated: true, completion: nil)
+    case .notDetermined:
+      print("노 결정")
+    
+      PHPhotoLibrary.requestAuthorization({ state in
+        DispatchQueue.main.async {
+          if state == .authorized {
+            self.imagePickerController.sourceType = .photoLibrary
+            self.present(self.imagePickerController, animated: true, completion: nil)
+          } else {
+            self.dismiss(animated: true, completion: nil)
+          }
+        }
+      })
+      
+    default:
+      break
+    }
   }
   @objc func touchfilmChooseButton() {
     
@@ -173,9 +228,21 @@ extension AddPhotoViewController {
     
   }
   @objc func touchaddPhotoButton() {
-   let secondVC = SecondAddPhotoPopUpViewController()
-    secondVC.modalPresentationStyle = .overCurrentContext
-    secondVC.modalTransitionStyle = .crossDissolve
-    self.present(secondVC, animated: false, completion: nil)
+    let secondVC = SecondAddPhotoPopUpViewController()
+     secondVC.modalPresentationStyle = .overCurrentContext
+     secondVC.modalTransitionStyle = .crossDissolve
+     self.present(secondVC, animated: false, completion: nil)
+  }
+}
+
+// MARK: - ImagePicker Extension
+extension AddPhotoViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+  func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+      photobackgroundView.image = image
+      photobackgroundView.contentMode = .scaleAspectFit
+      photoIcon.isHidden = true
+    }
+    dismiss(animated: true, completion: nil)
   }
 }
