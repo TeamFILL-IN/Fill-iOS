@@ -7,13 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6FB32C8E2793678200CCAFAB /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB32C8C2793678200CCAFAB /* TableViewCell.swift */; };
-		6FB32C92279367B300CCAFAB /* StudioMapSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB32C90279367B300CCAFAB /* StudioMapSearchTableViewCell.swift */; };
-		6FB32C93279367B300CCAFAB /* StudioMapSearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FB32C91279367B300CCAFAB /* StudioMapSearchTableViewCell.xib */; };
-		6FC9A4232790458000B94CFB /* StudioMapSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC9A4212790458000B94CFB /* StudioMapSearchViewController.swift */; };
-		6FC9A4242790458000B94CFB /* StudioMapSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FC9A4222790458000B94CFB /* StudioMapSearchViewController.xib */; };
-		6FC9A42D2791280800B94CFB /* StudioMapSearchListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC9A42B2791280800B94CFB /* StudioMapSearchListViewController.swift */; };
-		6FC9A42E2791280800B94CFB /* StudioMapSearchListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FC9A42C2791280800B94CFB /* StudioMapSearchListViewController.xib */; };
 		775C9649278ACBEA00A9BEA0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775C9648278ACBEA00A9BEA0 /* AppDelegate.swift */; };
 		775C964B278ACBEA00A9BEA0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775C964A278ACBEA00A9BEA0 /* SceneDelegate.swift */; };
 		775C9652278ACBEB00A9BEA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 775C9651278ACBEB00A9BEA0 /* Assets.xcassets */; };
@@ -66,18 +59,13 @@
 		9ADF3537C1D51ED22F4C921B /* Pods_Fillin_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F33300C623DFF466AFCE2914 /* Pods_Fillin_iOS.framework */; };
 		E83AEF9D278F313100B3F42E /* MyPagePhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83AEF9C278F313100B3F42E /* MyPagePhotoCollectionViewCell.swift */; };
 		E83AEF9F278F376300B3F42E /* identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83AEF9E278F376300B3F42E /* identifiable.swift */; };
+		E87493E22791A40100DCCF1F /* FirstAddPhotoPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87493E12791A40100DCCF1F /* FirstAddPhotoPopUpViewController.swift */; };
+		E87493E42791A43200DCCF1F /* SecondAddPhotoPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87493E32791A43200DCCF1F /* SecondAddPhotoPopUpViewController.swift */; };
 		E878EC2A278D0E9400135FB9 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E878EC29278D0E9400135FB9 /* UILabel+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		18FC9C8D02E669D0F43E8733 /* Pods-Fillin-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fillin-iOS.release.xcconfig"; path = "Target Support Files/Pods-Fillin-iOS/Pods-Fillin-iOS.release.xcconfig"; sourceTree = "<group>"; };
-		6FB32C8C2793678200CCAFAB /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
-		6FB32C90279367B300CCAFAB /* StudioMapSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudioMapSearchTableViewCell.swift; sourceTree = "<group>"; };
-		6FB32C91279367B300CCAFAB /* StudioMapSearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StudioMapSearchTableViewCell.xib; sourceTree = "<group>"; };
-		6FC9A4212790458000B94CFB /* StudioMapSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudioMapSearchViewController.swift; sourceTree = "<group>"; };
-		6FC9A4222790458000B94CFB /* StudioMapSearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StudioMapSearchViewController.xib; sourceTree = "<group>"; };
-		6FC9A42B2791280800B94CFB /* StudioMapSearchListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudioMapSearchListViewController.swift; sourceTree = "<group>"; };
-		6FC9A42C2791280800B94CFB /* StudioMapSearchListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StudioMapSearchListViewController.xib; sourceTree = "<group>"; };
 		775C9645278ACBEA00A9BEA0 /* Fillin-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fillin-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		775C9648278ACBEA00A9BEA0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		775C964A278ACBEA00A9BEA0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -132,6 +120,8 @@
 		864A552B88FE473B50DE4171 /* Pods-Fillin-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fillin-iOS.debug.xcconfig"; path = "Target Support Files/Pods-Fillin-iOS/Pods-Fillin-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		E83AEF9C278F313100B3F42E /* MyPagePhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPagePhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		E83AEF9E278F376300B3F42E /* identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = identifiable.swift; sourceTree = "<group>"; };
+		E87493E12791A40100DCCF1F /* FirstAddPhotoPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstAddPhotoPopUpViewController.swift; sourceTree = "<group>"; };
+		E87493E32791A43200DCCF1F /* SecondAddPhotoPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondAddPhotoPopUpViewController.swift; sourceTree = "<group>"; };
 		E878EC29278D0E9400135FB9 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		F33300C623DFF466AFCE2914 /* Pods_Fillin_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fillin_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -165,23 +155,9 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		6FC9A42527904C6500B94CFB /* StudioMapSearchViewController */ = {
-			isa = PBXGroup;
-			children = (
-				6FC9A4212790458000B94CFB /* StudioMapSearchViewController.swift */,
-				6FC9A4222790458000B94CFB /* StudioMapSearchViewController.xib */,
-				6FC9A42B2791280800B94CFB /* StudioMapSearchListViewController.swift */,
-				6FC9A42C2791280800B94CFB /* StudioMapSearchListViewController.xib */,
-				6FB32C90279367B300CCAFAB /* StudioMapSearchTableViewCell.swift */,
-				6FB32C91279367B300CCAFAB /* StudioMapSearchTableViewCell.xib */,
-			);
-			path = StudioMapSearchViewController;
-			sourceTree = "<group>";
-		};
 		775C963C278ACBEA00A9BEA0 = {
 			isa = PBXGroup;
 			children = (
-				6FB32C8C2793678200CCAFAB /* TableViewCell.swift */,
 				775C96A9278B2E1100A9BEA0 /* swiftgen.yml */,
 				775C965D278ACDE200A9BEA0 /* .swiftlint.yml */,
 				775C9647278ACBEA00A9BEA0 /* Fillin-iOS */,
@@ -238,14 +214,14 @@
 		775C9661278ACEB700A9BEA0 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				E87493E02791A3E000DCCF1F /* AddPhotoPopUpViewController */,
 				775C96A4278AD8D800A9BEA0 /* SplashViewController */,
 				775C968D278AD1AB00A9BEA0 /* HomeViewController */,
 				775C968B278AD1A700A9BEA0 /* FilmRollViewController */,
 				77628EA9278D7AC400CB5919 /* FilmRollClickViewController */,
+				775C968C278AD1A900A9BEA0 /* StudioMapViewController */,
 				775C968A278AD1A500A9BEA0 /* AddPhotoViewController */,
 				775C9670278ACF5400A9BEA0 /* MyPageViewController */,
-				775C968C278AD1A900A9BEA0 /* StudioMapViewController */,
-				6FC9A42527904C6500B94CFB /* StudioMapSearchViewController */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -458,6 +434,15 @@
 			path = PhotosTableViewCell;
 			sourceTree = "<group>";
 		};
+		E87493E02791A3E000DCCF1F /* AddPhotoPopUpViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E87493E12791A40100DCCF1F /* FirstAddPhotoPopUpViewController.swift */,
+				E87493E32791A43200DCCF1F /* SecondAddPhotoPopUpViewController.swift */,
+			);
+			path = AddPhotoPopUpViewController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -521,7 +506,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7769EC5A278F5F6500618EEF /* ArrowCollectionViewCell.xib in Resources */,
-				6FC9A4242790458000B94CFB /* StudioMapSearchViewController.xib in Resources */,
 				7769EC56278F515700618EEF /* PhotosCollectionViewCell.xib in Resources */,
 				775C965E278ACDE200A9BEA0 /* .swiftlint.yml in Resources */,
 				77CC0734278F10890020F34A /* MapTableViewCell.xib in Resources */,
@@ -533,7 +517,6 @@
 				775C9697278AD89200A9BEA0 /* StudioMapViewController.xib in Resources */,
 				775C9655278ACBEB00A9BEA0 /* LaunchScreen.storyboard in Resources */,
 				775C9683278AD0AC00A9BEA0 /* NotoSansKR-Bold.otf in Resources */,
-				6FC9A42E2791280800B94CFB /* StudioMapSearchListViewController.xib in Resources */,
 				775C9689278AD0D200A9BEA0 /* FuturaStdBook.otf in Resources */,
 				775C9687278AD0C300A9BEA0 /* FuturaStdBold.otf in Resources */,
 				775C9652278ACBEB00A9BEA0 /* Assets.xcassets in Resources */,
@@ -541,7 +524,6 @@
 				775C969F278AD8A900A9BEA0 /* AddPhotoViewController.xib in Resources */,
 				775C9685278AD0B500A9BEA0 /* NotoSansKR-Regular.otf in Resources */,
 				775C9691278AD87900A9BEA0 /* HomeViewController.xib in Resources */,
-				6FB32C93279367B300CCAFAB /* StudioMapSearchTableViewCell.xib in Resources */,
 				77878AC7278D947900137D30 /* Colors.xcassets in Resources */,
 				77628EAD278D7ADB00CB5919 /* FilmRollClickViewController.xib in Resources */,
 				775C96A3278AD8BB00A9BEA0 /* MyPageViewController.xib in Resources */,
@@ -637,14 +619,12 @@
 				77CC0733278F10890020F34A /* MapTableViewCell.swift in Sources */,
 				775C9649278ACBEA00A9BEA0 /* AppDelegate.swift in Sources */,
 				775C96A7278AD8E600A9BEA0 /* SplashViewController.swift in Sources */,
+				E87493E42791A43200DCCF1F /* SecondAddPhotoPopUpViewController.swift in Sources */,
 				7769EC59278F5F6500618EEF /* ArrowCollectionViewCell.swift in Sources */,
 				77CC0738278F11DA0020F34A /* PhotosTableViewCell.swift in Sources */,
-				6FB32C92279367B300CCAFAB /* StudioMapSearchTableViewCell.swift in Sources */,
-				6FB32C8E2793678200CCAFAB /* TableViewCell.swift in Sources */,
 				77CC072C278F0DC10020F34A /* TabBarTableViewCell.swift in Sources */,
 				775C9696278AD89200A9BEA0 /* StudioMapViewController.swift in Sources */,
 				775C96B2278B5B3800A9BEA0 /* FillinNavigationBar.swift in Sources */,
-				6FC9A42D2791280800B94CFB /* StudioMapSearchListViewController.swift in Sources */,
 				77CC0728278F02B80020F34A /* WelcomeTableViewCell.swift in Sources */,
 				775C969A278AD89F00A9BEA0 /* FilmRollViewController.swift in Sources */,
 				775C9674278ACF6600A9BEA0 /* TempModel.swift in Sources */,
@@ -655,12 +635,12 @@
 				775C964B278ACBEA00A9BEA0 /* SceneDelegate.swift in Sources */,
 				E83AEF9F278F376300B3F42E /* identifiable.swift in Sources */,
 				775C9672278ACF5D00A9BEA0 /* TempClass.swift in Sources */,
-				6FC9A4232790458000B94CFB /* StudioMapSearchViewController.swift in Sources */,
 				E878EC2A278D0E9400135FB9 /* UILabel+Extension.swift in Sources */,
 				7769EC55278F515700618EEF /* PhotosCollectionViewCell.swift in Sources */,
 				775C96B4278B61D100A9BEA0 /* UIView+Extension.swift in Sources */,
 				775C9677278ACF8B00A9BEA0 /* MoyaLoggerPlugin.swift in Sources */,
 				775C9667278ACF0300A9BEA0 /* Const.swift in Sources */,
+				E87493E22791A40100DCCF1F /* FirstAddPhotoPopUpViewController.swift in Sources */,
 				775C96B0278B33E200A9BEA0 /* Assets+Generated.swift in Sources */,
 				775C967F278ACFFD00A9BEA0 /* UIColor+Extension.swift in Sources */,
 				77D7CD52278FF02D00FE7F58 /* Notification.swift in Sources */,
@@ -810,7 +790,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3FAK98S72C;
+				DEVELOPMENT_TEAM = 4QG3GC35LA;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Fillin-iOS/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -839,7 +819,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3FAK98S72C;
+				DEVELOPMENT_TEAM = 4QG3GC35LA;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Fillin-iOS/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
