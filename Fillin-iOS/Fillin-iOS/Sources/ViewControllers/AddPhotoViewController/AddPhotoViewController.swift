@@ -228,7 +228,10 @@ extension AddPhotoViewController {
     
   }
   @objc func touchaddPhotoButton() {
-    
+    let secondVC = SecondAddPhotoPopUpViewController()
+     secondVC.modalPresentationStyle = .overCurrentContext
+     secondVC.modalTransitionStyle = .crossDissolve
+     self.present(secondVC, animated: false, completion: nil)
   }
 }
 
