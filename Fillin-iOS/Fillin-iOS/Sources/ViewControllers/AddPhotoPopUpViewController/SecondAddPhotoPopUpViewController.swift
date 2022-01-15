@@ -25,7 +25,6 @@ class SecondAddPhotoPopUpViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     layout()
-    setupGestureRecognizer()
   }
 }
 // MARK: - Extension
@@ -105,27 +104,10 @@ extension SecondAddPhotoPopUpViewController {
       }
     }
   }
-  private func setupGestureRecognizer() {
-      // 흐린 부분 탭할 때, 바텀시트를 내리는 TapGesture
-      let dimmedTap = UITapGestureRecognizer(target: self, action: #selector(tappedDimmedView(_:)))
-      dimmedBackView.addGestureRecognizer(dimmedTap)
-      dimmedBackView.isUserInteractionEnabled = true
-  }
-  private func dismissPopUp() {
-      UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
-          self.dimmedBackView.alpha = 0.0
-          self.view.layoutIfNeeded()
-          self.backgroundView.isHidden = true
-      }, completion: { _ in
-          if self.presentingViewController != nil {
-              self.dismiss(animated: false, completion: nil)
-          }
-      })
-  }
-  @objc private func tappedDimmedView(_ tapRecognizer: UITapGestureRecognizer) {
-      dismissPopUp()
-  }
   @objc func touchDeleteButton() {
-    /// pop 되면서 FilmRoll뷰로 Push 되도록 하는 코드
+    guard let parentVC = presentingViewController as? UINavigationController else { return }
+    dismiss(animated: true) {
+      parentVC.popToRootViewController(animated: true)
+    }
   }
 }

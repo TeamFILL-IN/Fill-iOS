@@ -26,7 +26,6 @@ class FirstAddPhotoPopUpViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     layout()
-    setupGestureRecognizer()
   }
 }
 // MARK: - Extension
@@ -124,26 +123,6 @@ extension FirstAddPhotoPopUpViewController {
         $0.width.equalTo((UIScreen.main.bounds.width-36)*0.6)
       }
     }
-  }
-  private func setupGestureRecognizer() {
-      // 흐린 부분 탭할 때, 바텀시트를 내리는 TapGesture
-      let dimmedTap = UITapGestureRecognizer(target: self, action: #selector(tappedDimmedView(_:)))
-      dimmedBackView.addGestureRecognizer(dimmedTap)
-      dimmedBackView.isUserInteractionEnabled = true
-  }
-  private func dismissPopUp() {
-      UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
-          self.dimmedBackView.alpha = 0.0
-          self.view.layoutIfNeeded()
-          self.backgroundView.isHidden = true
-      }, completion: { _ in
-          if self.presentingViewController != nil {
-              self.dismiss(animated: false, completion: nil)
-          }
-      })
-  }
-  @objc private func tappedDimmedView(_ tapRecognizer: UITapGestureRecognizer) {
-      dismissPopUp()
   }
   @objc func touchCancelButton() {
     /// 정보를 삭제하면서 dismiss
