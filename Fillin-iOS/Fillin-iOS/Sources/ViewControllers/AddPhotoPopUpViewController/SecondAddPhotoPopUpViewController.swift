@@ -64,7 +64,7 @@ extension SecondAddPhotoPopUpViewController {
       $0.addTarget(self, action: #selector(self.touchDeleteButton), for: .touchUpInside)
       $0.snp.makeConstraints {
         $0.top.equalToSuperview().offset(14)
-        $0.trailing.equalToSuperview().offset(14)
+        $0.trailing.equalToSuperview().offset(-14)
         $0.width.equalTo(24)
         $0.height.equalTo(24)
       }
@@ -87,6 +87,7 @@ extension SecondAddPhotoPopUpViewController {
                     color: .grey2,
                     font: .body2)
       $0.numberOfLines = 2
+      $0.textAlignment = .center
       $0.snp.makeConstraints {
         $0.top.equalTo(self.explainLabel.snp.bottom).offset(12)
         $0.centerX.equalToSuperview()
@@ -97,7 +98,7 @@ extension SecondAddPhotoPopUpViewController {
     backgroundView.add(checkmarkIcon) {
       $0.image = UIImage(asset: Asset.imgPhoto)
       $0.snp.makeConstraints {
-        $0.top.equalTo(self.explainLabel.snp.bottom).offset(41)
+        $0.top.equalTo(self.subexplainLabel.snp.bottom).offset(41)
         $0.centerX.equalToSuperview()
         $0.width.equalTo(71)
         $0.height.equalTo(71)
