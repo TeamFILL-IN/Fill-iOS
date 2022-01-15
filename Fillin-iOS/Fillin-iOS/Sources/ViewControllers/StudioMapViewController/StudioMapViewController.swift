@@ -82,33 +82,21 @@ extension StudioMapViewController {
   
   private func setUpInfo() {
     self.mapView.mapView.touchDelegate = self
-    infoWindow.dataSource = defaultInfoWindowImage
     
-    let marker1 = NMFMarker(position: NMGLatLng(lat: 37.57000, lng: 126.97618))
+    let marker1 = NMFMarker(position: NMGLatLng(lat: 37.35940010181669, lng: 127.10475679570187))
+    marker1.iconImage = NMFOverlayImage(image: Asset.icnPlaceBig2.image)
     marker1.touchHandler = { [weak self] (overlay: NMFOverlay) -> Bool in
+      marker1.iconImage = NMFOverlayImage(image: Asset.icnPlaceBig.image)
       self?.infoWindow.close()
       self?.defaultInfoWindowImage.title = marker1.userInfo["tag"] as? String ?? ""
       self?.infoWindow.open(with: marker1)
       
       let nextVC = StudioMapBottomSheetViewController()
-//      nextVC.modalPresentationStyle = .overCurrentContext
-//      nextVC.modalTransitionStyle = .crossDissolve
       nextVC.modalPresentationStyle = .overFullScreen
       self?.present(nextVC, animated: false, completion: nil)
       return true
     }
-    marker1.userInfo = ["tag": "Marker 1"]
     marker1.mapView = self.mapView.mapView
-    
-    let marker2 = NMFMarker(position: NMGLatLng(lat: 37.56138, lng: 126.97970))
-    marker2.touchHandler = { [weak self] (overlay: NMFOverlay) -> Bool in
-      self?.infoWindow.close()
-      self?.defaultInfoWindowImage.title = marker2.userInfo["tag"] as? String ?? ""
-      self?.infoWindow.open(with: marker2, alignType: NMFAlignType.left)
-      return true
-    }
-    marker2.userInfo = ["tag": "Marker 2"]
-    marker2.mapView = self.mapView.mapView
   }
   
   private func layoutMapView() {
@@ -200,7 +188,7 @@ extension StudioMapViewController: CLLocationManagerDelegate {
     default:
       print("GPS: Default")
     }
-  }
+  } 
 }
 
 extension StudioMapViewController: NMFMapViewTouchDelegate {
