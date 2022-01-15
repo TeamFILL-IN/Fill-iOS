@@ -46,18 +46,20 @@ extension FilmRollViewController {
     
         let firstGroup = NSCollectionLayoutGroup.horizontal(
             layoutSize: NSCollectionLayoutSize(
-                widthDimension: .estimated(108),
-                heightDimension: .estimated(124)),
+                widthDimension: .absolute(108),
+                heightDimension: .fractionalHeight(1)),
             subitem: firstItem, count: 1)
         
         let secondGroup = NSCollectionLayoutGroup.horizontal(
+            // TODO: 5 데이터 갯수로 바꿔주세요.
             layoutSize: NSCollectionLayoutSize(
-                widthDimension: .estimated(165*5),
-                heightDimension: .estimated(124)),
+                widthDimension: .absolute(165*5),
+                heightDimension: .fractionalHeight(1)),
             subitem: item, count: 5)
         
         let group = NSCollectionLayoutGroup.horizontal(
             layoutSize: NSCollectionLayoutSize(
+                // TODO: 5 데이터 갯수로 바꿔주세요.
                 widthDimension: .estimated(165*5 + 108),
                 heightDimension: .estimated(124)),
             subitems: [firstGroup, secondGroup])
@@ -88,26 +90,50 @@ extension FilmRollViewController {
     }
     
     func filmRollSectionLayout() -> NSCollectionLayoutSection {
-        let item = NSCollectionLayoutItem(
+        let shorterItem = NSCollectionLayoutItem(
             layoutSize: NSCollectionLayoutSize(
                 widthDimension: .fractionalWidth(1),
-                heightDimension: .fractionalHeight(1)
+                heightDimension: .absolute(165)
             )
         )
+        shorterItem.contentInsets = .init(
+            top: 0, leading: 4.5, bottom: 9, trailing: 4.5
+        )
+        
+        let longerItem = NSCollectionLayoutItem(
+            layoutSize: NSCollectionLayoutSize(
+                widthDimension: .fractionalWidth(1),
+                heightDimension: .absolute(256)
+            )
+        )
+        longerItem.contentInsets = .init(
+            top: 0, leading: 4.5, bottom: 9, trailing: 4.5
+        )
 
+        let leftGroup = NSCollectionLayoutGroup.vertical(
+            layoutSize: NSCollectionLayoutSize(
+                widthDimension: .fractionalWidth(0.5),
+                heightDimension: .absolute(165*5)
+            ),
+            subitem: shorterItem, count: 5)
+        
+        let rightGroup = NSCollectionLayoutGroup.vertical(
+            layoutSize: NSCollectionLayoutSize(
+                widthDimension: .fractionalWidth(0.5),
+                heightDimension: .absolute(256*5)
+            ),
+            subitem: longerItem, count: 5)
+        
         let group = NSCollectionLayoutGroup.horizontal(
             layoutSize: NSCollectionLayoutSize(
                 widthDimension: .fractionalWidth(1),
-                heightDimension: .fractionalHeight(1/3)
+                heightDimension: .absolute(256*5)
             ),
-            subitem: item,
-            count: 2)
-        group.contentInsets = NSDirectionalEdgeInsets(
-            top: 9, leading: 9, bottom: 0, trailing: 9
-        )
+            subitems: [leftGroup, rightGroup])
 
         let section = NSCollectionLayoutSection(group: group)
         section.boundarySupplementaryItems = []
+        section.contentInsets = .init(top: 18, leading: 13.5, bottom: 23, trailing: 13.5)
         return section
     }
     

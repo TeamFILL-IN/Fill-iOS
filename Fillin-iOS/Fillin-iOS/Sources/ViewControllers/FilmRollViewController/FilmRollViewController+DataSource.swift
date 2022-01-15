@@ -19,7 +19,7 @@ final class FilmRollViewControllerDataSource: NSObject, UICollectionViewDataSour
             // TODO: data 갯수
         case .filmCuration:   return 6
         case .filmType:   return 1
-        case .filmRoll:   return 1
+        case .filmRoll:   return 10
         }
     }
     
@@ -43,9 +43,9 @@ final class FilmRollViewControllerDataSource: NSObject, UICollectionViewDataSour
             return curationCell
             
         case .filmRoll:
-            guard let curationCell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Xib.filmCurationCollectionViewCell, for: indexPath) as? FilmCurationCollectionViewCell else { return UICollectionViewCell() }
+            guard let filmRollCell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Xib.filmCurationCollectionViewCell, for: indexPath) as? FilmCurationCollectionViewCell else { return UICollectionViewCell() }
 
-            return curationCell
+            return filmRollCell
         }
     }
     
