@@ -57,6 +57,7 @@ internal enum Asset {
   internal static let iosBtnStudiomap = ImageAsset(name: "iosBtnStudiomap")
   internal static let iosCardImg = ImageAsset(name: "iosCardImg")
   internal static let iosCardImgVertical = ImageAsset(name: "iosCardImgVertical")
+  internal static let iosCurationCover = ImageAsset(name: "iosCurationCover")
   internal static let iosMapRectangle = ImageAsset(name: "iosMapRectangle")
   internal static let iosPhotoFrame = ImageAsset(name: "iosPhotoFrame")
   internal static let iosPhotoRectangle = ImageAsset(name: "iosPhotoRectangle")

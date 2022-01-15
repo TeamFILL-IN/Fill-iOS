@@ -79,10 +79,10 @@ extension FilmRollViewController {
         let group = NSCollectionLayoutGroup.horizontal(
             layoutSize: NSCollectionLayoutSize(
                 widthDimension: .fractionalWidth(1),
-                heightDimension: .fractionalHeight(1)
+                heightDimension: .fractionalHeight(1/3)
             ),
-            subitems: [item])
-        
+            subitem: item,
+            count: 2)
         group.contentInsets = NSDirectionalEdgeInsets(
             top: 9, leading: 9, bottom: 0, trailing: 9
         )
