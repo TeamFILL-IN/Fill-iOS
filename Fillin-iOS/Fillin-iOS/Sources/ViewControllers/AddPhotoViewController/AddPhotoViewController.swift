@@ -43,6 +43,11 @@ class AddPhotoViewController: UIViewController {
     self.photobackgroundView.addGestureRecognizer(tapGestureRecognizer)
     layout()
   }
+  override func viewWillAppear(_ animated: Bool) {
+    self.photobackgroundView.image = Asset.icnAddPhotoBig.image
+    self.filmchooseButton.setTitle("어떤 필름을 사용했나요?", for: .normal)
+    self.studiochooseButton.setTitle("어떤 현상소에서 현상했나요?", for: .normal)
+  }
 }
 // MARK: - Extension
 extension AddPhotoViewController {
