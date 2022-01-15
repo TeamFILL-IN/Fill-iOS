@@ -70,6 +70,8 @@
 		9ADF3537C1D51ED22F4C921B /* Pods_Fillin_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F33300C623DFF466AFCE2914 /* Pods_Fillin_iOS.framework */; };
 		E83AEF9D278F313100B3F42E /* MyPagePhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83AEF9C278F313100B3F42E /* MyPagePhotoCollectionViewCell.swift */; };
 		E83AEF9F278F376300B3F42E /* identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83AEF9E278F376300B3F42E /* identifiable.swift */; };
+		E87493E22791A40100DCCF1F /* FirstAddPhotoPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87493E12791A40100DCCF1F /* FirstAddPhotoPopUpViewController.swift */; };
+		E87493E42791A43200DCCF1F /* SecondAddPhotoPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87493E32791A43200DCCF1F /* SecondAddPhotoPopUpViewController.swift */; };
 		E878EC2A278D0E9400135FB9 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E878EC29278D0E9400135FB9 /* UILabel+Extension.swift */; };
 /* End PBXBuildFile section */
 
@@ -140,6 +142,8 @@
 		864A552B88FE473B50DE4171 /* Pods-Fillin-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fillin-iOS.debug.xcconfig"; path = "Target Support Files/Pods-Fillin-iOS/Pods-Fillin-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		E83AEF9C278F313100B3F42E /* MyPagePhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPagePhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		E83AEF9E278F376300B3F42E /* identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = identifiable.swift; sourceTree = "<group>"; };
+		E87493E12791A40100DCCF1F /* FirstAddPhotoPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstAddPhotoPopUpViewController.swift; sourceTree = "<group>"; };
+		E87493E32791A43200DCCF1F /* SecondAddPhotoPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondAddPhotoPopUpViewController.swift; sourceTree = "<group>"; };
 		E878EC29278D0E9400135FB9 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		F33300C623DFF466AFCE2914 /* Pods_Fillin_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fillin_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -247,6 +251,7 @@
 		775C9661278ACEB700A9BEA0 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				E87493E02791A3E000DCCF1F /* AddPhotoPopUpViewController */,
 				775C96A4278AD8D800A9BEA0 /* SplashViewController */,
 				775C968D278AD1AB00A9BEA0 /* HomeViewController */,
 				775C968B278AD1A700A9BEA0 /* FilmRollViewController */,
@@ -470,6 +475,15 @@
 			path = PhotosTableViewCell;
 			sourceTree = "<group>";
 		};
+		E87493E02791A3E000DCCF1F /* AddPhotoPopUpViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E87493E12791A40100DCCF1F /* FirstAddPhotoPopUpViewController.swift */,
+				E87493E32791A43200DCCF1F /* SecondAddPhotoPopUpViewController.swift */,
+			);
+			path = AddPhotoPopUpViewController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -651,6 +665,7 @@
 				775C9649278ACBEA00A9BEA0 /* AppDelegate.swift in Sources */,
 				77B3521C2791C2D0001718DE /* FilmRollViewController+DataSource.swift in Sources */,
 				775C96A7278AD8E600A9BEA0 /* SplashViewController.swift in Sources */,
+				E87493E42791A43200DCCF1F /* SecondAddPhotoPopUpViewController.swift in Sources */,
 				7769EC59278F5F6500618EEF /* ArrowCollectionViewCell.swift in Sources */,
 				77CC0738278F11DA0020F34A /* PhotosTableViewCell.swift in Sources */,
 				77CC072C278F0DC10020F34A /* TabBarTableViewCell.swift in Sources */,
@@ -676,6 +691,7 @@
 				775C9677278ACF8B00A9BEA0 /* MoyaLoggerPlugin.swift in Sources */,
 				77B352152791A34A001718DE /* FilmTypeCollectionViewCell.swift in Sources */,
 				775C9667278ACF0300A9BEA0 /* Const.swift in Sources */,
+				E87493E22791A40100DCCF1F /* FirstAddPhotoPopUpViewController.swift in Sources */,
 				775C96B0278B33E200A9BEA0 /* Assets+Generated.swift in Sources */,
 				77B3522727920C0A001718DE /* FilmCurationCollectionReusableView.swift in Sources */,
 				775C967F278ACFFD00A9BEA0 /* UIColor+Extension.swift in Sources */,
@@ -826,7 +842,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = T3VFJ764ZC;
+				DEVELOPMENT_TEAM = 4QG3GC35LA;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Fillin-iOS/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -855,7 +871,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = T3VFJ764ZC;
+				DEVELOPMENT_TEAM = 4QG3GC35LA;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Fillin-iOS/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
