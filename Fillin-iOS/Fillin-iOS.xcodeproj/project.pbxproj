@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6FC9A428279091EA00B94CFB /* StudioMapBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC9A426279091EA00B94CFB /* StudioMapBottomSheetViewController.swift */; };
 		6FC9A429279091EA00B94CFB /* StudioMapBottomSheetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FC9A427279091EA00B94CFB /* StudioMapBottomSheetViewController.xib */; };
+		6FDA263A27927EDD00DA4DD2 /* MapLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDA263927927EDD00DA4DD2 /* MapLocation.swift */; };
 		775C9649278ACBEA00A9BEA0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775C9648278ACBEA00A9BEA0 /* AppDelegate.swift */; };
 		775C964B278ACBEA00A9BEA0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775C964A278ACBEA00A9BEA0 /* SceneDelegate.swift */; };
 		775C9652278ACBEB00A9BEA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 775C9651278ACBEB00A9BEA0 /* Assets.xcassets */; };
@@ -67,6 +68,7 @@
 		18FC9C8D02E669D0F43E8733 /* Pods-Fillin-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fillin-iOS.release.xcconfig"; path = "Target Support Files/Pods-Fillin-iOS/Pods-Fillin-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		6FC9A426279091EA00B94CFB /* StudioMapBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudioMapBottomSheetViewController.swift; sourceTree = "<group>"; };
 		6FC9A427279091EA00B94CFB /* StudioMapBottomSheetViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StudioMapBottomSheetViewController.xib; sourceTree = "<group>"; };
+		6FDA263927927EDD00DA4DD2 /* MapLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapLocation.swift; sourceTree = "<group>"; };
 		775C9645278ACBEA00A9BEA0 /* Fillin-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fillin-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		775C9648278ACBEA00A9BEA0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		775C964A278ACBEA00A9BEA0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -160,6 +162,14 @@
 				6FC9A427279091EA00B94CFB /* StudioMapBottomSheetViewController.xib */,
 			);
 			path = StudioMapBottomSheetViewController;
+			sourceTree = "<group>";
+		};
+		6FDA263827927EB600DA4DD2 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				6FDA263927927EDD00DA4DD2 /* MapLocation.swift */,
+			);
+			path = Map;
 			sourceTree = "<group>";
 		};
 		775C963C278ACBEA00A9BEA0 = {
@@ -303,6 +313,7 @@
 		775C966B278ACF3200A9BEA0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				6FDA263827927EB600DA4DD2 /* Map */,
 				775C9673278ACF6600A9BEA0 /* TempModel.swift */,
 			);
 			path = Models;
@@ -626,6 +637,7 @@
 				77CC0728278F02B80020F34A /* WelcomeTableViewCell.swift in Sources */,
 				775C969A278AD89F00A9BEA0 /* FilmRollViewController.swift in Sources */,
 				775C9674278ACF6600A9BEA0 /* TempModel.swift in Sources */,
+				6FDA263A27927EDD00DA4DD2 /* MapLocation.swift in Sources */,
 				775C96A2278AD8BB00A9BEA0 /* MyPageViewController.swift in Sources */,
 				E83AEF9D278F313100B3F42E /* MyPagePhotoCollectionViewCell.swift in Sources */,
 				775C969E278AD8A900A9BEA0 /* AddPhotoViewController.swift in Sources */,
@@ -784,7 +796,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = T3VFJ764ZC;
+				DEVELOPMENT_TEAM = 3FAK98S72C;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Fillin-iOS/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -813,7 +825,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = T3VFJ764ZC;
+				DEVELOPMENT_TEAM = 3FAK98S72C;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Fillin-iOS/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

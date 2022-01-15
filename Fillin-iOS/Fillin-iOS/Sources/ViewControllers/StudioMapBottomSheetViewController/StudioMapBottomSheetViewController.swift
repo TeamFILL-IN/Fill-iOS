@@ -1,9 +1,9 @@
 //
-///  StudioMapBottomSheetViewController.swift
-///  Fillin-iOS
-//////
+//  StudioMapBottomSheetViewController.swift
+//  Fillin-iOS
+//
 //  Created by 임주민 on 2022/01/14.
-////
+//
 import UIKit
 
 class StudioMapBottomSheetViewController: UIViewController {
@@ -15,11 +15,11 @@ class StudioMapBottomSheetViewController: UIViewController {
   private var bottomSheetViewTopConstraint: NSLayoutConstraint!
   
   // 기존 화면을 흐려지게 만들기 위한 뷰
-  let dimmedBackView: UIView = {
-    let view = UIView()
-    view.backgroundColor = .clear
-    return view
-  }()
+//  let dimmedBackView: UIView = {
+//    let view = UIView()
+//    view.backgroundColor = .clear
+//    return view
+//  }()
   
   // 바텀 시트 뷰
   let bottomSheetView: UIView = {
@@ -60,21 +60,21 @@ class StudioMapBottomSheetViewController: UIViewController {
   // MARK: - @Functions
   // UI 세팅 작업
   private func setupUI() {
-    view.addSubview(dimmedBackView)
+    //view.addSubview(dimmedBackView)
     view.addSubview(bottomSheetView)
     view.addSubview(dismissIndicatorView)
     view.addSubview(bottomSheetCoverView)
     view.backgroundColor = .clear
     
-    dimmedBackView.alpha = 0.0
+   // dimmedBackView.alpha = 0.0
     setupLayout()
   }
   
   private func setupGestureRecognizer() {
     // TapGesture
-    let dimmedTap = UITapGestureRecognizer(target: self, action: #selector(dimmedViewTapped(_:)))
-    dimmedBackView.addGestureRecognizer(dimmedTap)
-    dimmedBackView.isUserInteractionEnabled = true
+//    let dimmedTap = UITapGestureRecognizer(target: self, action: #selector(dimmedViewTapped(_:)))
+//    dimmedBackView.addGestureRecognizer(dimmedTap)
+//    dimmedBackView.isUserInteractionEnabled = true
     
     // swipeGesture
     let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(panGesture))
@@ -84,13 +84,13 @@ class StudioMapBottomSheetViewController: UIViewController {
   
   // 레이아웃
   private func setupLayout() {
-    dimmedBackView.translatesAutoresizingMaskIntoConstraints = false
-    NSLayoutConstraint.activate([
-      dimmedBackView.topAnchor.constraint(equalTo: view.topAnchor),
-      dimmedBackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-      dimmedBackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-      dimmedBackView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-    ])
+//    dimmedBackView.translatesAutoresizingMaskIntoConstraints = false
+//    NSLayoutConstraint.activate([
+//      dimmedBackView.topAnchor.constraint(equalTo: view.topAnchor),
+//      dimmedBackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+//      dimmedBackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+//      dimmedBackView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+//    ])
     
     bottomSheetView.translatesAutoresizingMaskIntoConstraints = false
     let topConstant = view.safeAreaInsets.bottom + view.safeAreaLayoutGuide.layoutFrame.height
@@ -127,7 +127,7 @@ class StudioMapBottomSheetViewController: UIViewController {
     bottomSheetViewTopConstraint.constant = (safeAreaHeight + bottomPadding) - bottomHeight
     
     UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
-      self.dimmedBackView.alpha = 1.0
+     // self.dimmedBackView.alpha = 1.0
       self.view.layoutIfNeeded()
     }, completion: { _ in
       self.bottomSheetCoverView.isHidden = true
@@ -140,7 +140,7 @@ class StudioMapBottomSheetViewController: UIViewController {
     let bottomPadding = view.safeAreaInsets.bottom
     bottomSheetViewTopConstraint.constant = safeAreaHeight + bottomPadding
     UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
-      self.dimmedBackView.alpha = 0.0
+     // self.dimmedBackView.alpha = 0.0
       self.view.layoutIfNeeded()
       self.bottomSheetCoverView.isHidden = false
     }, completion: { _ in
@@ -150,12 +150,17 @@ class StudioMapBottomSheetViewController: UIViewController {
     })
   }
   
+  func panDownToDismiss() {
+      let panAction = UIPanGestureRecognizer(target: self, action: #selector(dimmedViewTapped(_:)))
+      self.bottomSheetView.addGestureRecognizer(panAction)
+    }
+  
   func hideBottomSheetAndPresentVC(nextViewController: UIViewController) {
     let safeAreaHeight = view.safeAreaLayoutGuide.layoutFrame.height
     let bottomPadding = view.safeAreaInsets.bottom
     bottomSheetViewTopConstraint.constant = safeAreaHeight + bottomPadding
     UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
-      self.dimmedBackView.alpha = 0.0
+     //  self.dimmedBackView.alpha = 0.0
       self.view.layoutIfNeeded()
       self.bottomSheetCoverView.isHidden = false
     }, completion: { _ in
@@ -170,12 +175,10 @@ class StudioMapBottomSheetViewController: UIViewController {
     })
   }
   
-  // UITapGestureRecognizer 연결 함수 부분
   @objc private func dimmedViewTapped(_ tapRecognizer: UITapGestureRecognizer) {
     hideBottomSheetAndGoBack()
   }
-  
-  // UISwipeGestureRecognizer 연결 함수 부분
+
   @objc func panGesture(_ recognizer: UISwipeGestureRecognizer) {
     if recognizer.state == .ended {
       switch recognizer.direction {

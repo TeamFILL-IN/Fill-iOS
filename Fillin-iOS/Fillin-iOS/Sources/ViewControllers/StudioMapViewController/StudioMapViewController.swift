@@ -18,7 +18,6 @@ class StudioMapViewController: UIViewController {
   // MARK: - Properties
   let mapView = NMFNaverMapView(frame: .zero)
   let myLocationButton = UIButton()
-  let marker = NMFMarker()
   let bottomSheet = StudioMapBottomSheetViewController()
   let dataSource = NMFInfoWindowDefaultTextSource.data()
   let magnifyingGlassButton = UIButton().then {
@@ -37,6 +36,10 @@ class StudioMapViewController: UIViewController {
   var locationManager = CLLocationManager()
   var infoWindow = NMFInfoWindow()
   var defaultInfoWindowImage = NMFInfoWindowDefaultTextSource.data()
+  var markers = [NMFMarker]()
+  var marker = NMFMarker()
+  var selectedMarker: NMFMarker?
+  var coordinates: [MapCoordinates] = [MapCoordinates(coordinates: NMGLatLng(lat: 36.3595, lng: 127.10477), colorCode: "", id: "")]
   
   // MARK: - View Life Cycle
   override func viewDidLoad() {
@@ -45,16 +48,14 @@ class StudioMapViewController: UIViewController {
     layoutMapView()
     layoutMyLocationButton()
     layoutSeachView()
-    setUpMarker()
+    setUpMarkerInfo()
   }
   
-  // MARK: - Func
+  // MARK: - override Func
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
     self.view.endEditing(true)
   }
   
-  // MARK: - 마커 클릭 시 정보창
- 
 }
 
 // MARK: - Extensions
@@ -71,28 +72,25 @@ extension StudioMapViewController {
     locationManager.delegate = self
     self.locationManager.requestWhenInUseAuthorization()
   }
-  
-  private func setUpMarker() {
-    marker.position = NMGLatLng(lat: 37.56383740177333, lng: 126.92093672692367) /// 홍대
-    marker.position = NMGLatLng(lat: 37.45201087366944, lng: 126.65536562781361) /// 인천
-    marker.iconImage = NMFOverlayImage(image: Asset.icnPlaceBig.image)
-    marker.mapView = self.mapView.mapView
-    setUpInfo()
-  }
-  
-  private func setUpInfo() {
+
+  private func setUpMarkerInfo() {
     self.mapView.mapView.touchDelegate = self
     
     let marker1 = NMFMarker(position: NMGLatLng(lat: 37.35940010181669, lng: 127.10475679570187))
     marker1.iconImage = NMFOverlayImage(image: Asset.icnPlaceBig2.image)
+    marker1.tag = 0
+    
     marker1.touchHandler = { [weak self] (overlay: NMFOverlay) -> Bool in
-      marker1.iconImage = NMFOverlayImage(image: Asset.icnPlaceBig.image)
-      self?.infoWindow.close()
-      self?.defaultInfoWindowImage.title = marker1.userInfo["tag"] as? String ?? ""
-      self?.infoWindow.open(with: marker1)
-      
+      if marker1.tag == 0 {
+        marker1.tag = 1
+        marker1.iconImage = NMFOverlayImage(image: Asset.icnPlaceBig.image)
+      } else if marker1.tag == 1 {
+        marker1.tag = 0
+        marker1.iconImage = NMFOverlayImage(image: Asset.icnPlaceBig2.image)
+      }
       let nextVC = StudioMapBottomSheetViewController()
-      nextVC.modalPresentationStyle = .overFullScreen
+      nextVC.modalPresentationStyle = .overCurrentContext
+      nextVC.modalTransitionStyle = .crossDissolve
       self?.present(nextVC, animated: false, completion: nil)
       return true
     }
@@ -188,7 +186,7 @@ extension StudioMapViewController: CLLocationManagerDelegate {
     default:
       print("GPS: Default")
     }
-  } 
+  }
 }
 
 extension StudioMapViewController: NMFMapViewTouchDelegate {
