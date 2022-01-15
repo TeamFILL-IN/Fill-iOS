@@ -260,14 +260,14 @@ extension MyPageViewController : UICollectionViewDataSource {
   }
 }
 
-extension MyPageViewController : UICollectionViewDelegateFlowLayout {
+extension MyPageViewController: UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     let cellWidth = (collectionView.frame.width-18)/3
     let cellHeight = (collectionView.frame.width-18)/3
     
     return CGSize(width: cellWidth, height: cellHeight)
   }
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewzLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
     return UIEdgeInsets.zero
   }
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
