@@ -17,7 +17,7 @@ final class FilmRollViewControllerDataSource: NSObject, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch FilmRollSection.allCases[section] {
             // TODO: data 갯수
-        case .filmCuration:   return 5
+        case .filmCuration:   return 6
         case .filmType:   return 1
         case .filmRoll:   return 1
         }
@@ -26,9 +26,16 @@ final class FilmRollViewControllerDataSource: NSObject, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch FilmRollSection.allCases[indexPath.section] {
         case .filmCuration:
-            guard let curationCell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Xib.filmCurationCollectionViewCell, for: indexPath) as? FilmCurationCollectionViewCell else { return UICollectionViewCell() }
+            switch indexPath.row {
+            case 0:
+                guard let curationFirstCell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Xib.filmCurationFirstCollectionViewCell, for: indexPath) as? FilmCurationFirstCollectionViewCell else { return UICollectionViewCell() }
 
-            return curationCell
+                return curationFirstCell
+            default:
+                guard let curationCell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Xib.filmCurationCollectionViewCell, for: indexPath) as? FilmCurationCollectionViewCell else { return UICollectionViewCell() }
+                
+                return curationCell
+            }
             
         case .filmType:
             guard let curationCell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Xib.filmTypeCollectionViewCell, for: indexPath) as? FilmTypeCollectionViewCell else { return UICollectionViewCell() }

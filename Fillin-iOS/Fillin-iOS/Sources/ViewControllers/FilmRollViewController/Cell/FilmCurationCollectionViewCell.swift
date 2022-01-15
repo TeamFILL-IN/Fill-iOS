@@ -9,10 +9,11 @@ import UIKit
 
 class FilmCurationCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var filmCurationImageView: UIImageView!
     // MARK: - View Life Cycle
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+
     }
     
     // MARK: - Functions
