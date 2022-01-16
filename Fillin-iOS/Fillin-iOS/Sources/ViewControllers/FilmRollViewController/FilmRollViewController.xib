@@ -38,6 +38,11 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pbZ-Du-ObY">
+                    <rect key="frame" x="313" y="710" width="81" height="81"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" image="btnAddphhoto"/>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" name="Fillin_black"/>
@@ -45,7 +50,9 @@
                 <constraint firstItem="JEJ-6a-B7L" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="2aF-hE-GwK"/>
                 <constraint firstItem="JEJ-6a-B7L" firstAttribute="top" secondItem="jxQ-8W-5tL" secondAttribute="bottom" id="32Z-jr-XtK"/>
                 <constraint firstItem="JEJ-6a-B7L" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="EeE-Tx-caX"/>
+                <constraint firstItem="pbZ-Du-ObY" firstAttribute="top" secondItem="jxQ-8W-5tL" secondAttribute="bottom" constant="616" id="Ia9-Fz-hEP"/>
                 <constraint firstAttribute="bottom" secondItem="JEJ-6a-B7L" secondAttribute="bottom" id="Vxv-0c-4U0"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="pbZ-Du-ObY" secondAttribute="trailing" constant="20" id="cBn-Fl-ZC4"/>
                 <constraint firstItem="jxQ-8W-5tL" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="e9p-Mj-4Nb"/>
                 <constraint firstItem="jxQ-8W-5tL" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="nAv-kC-rsh"/>
                 <constraint firstItem="jxQ-8W-5tL" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="nC7-EN-OTw"/>
@@ -54,6 +61,7 @@
         </view>
     </objects>
     <resources>
+        <image name="btnAddphhoto" width="81" height="81"/>
         <namedColor name="Fillin_black">
             <color red="0.0039215686274509803" green="0.0039215686274509803" blue="0.0039215686274509803" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
