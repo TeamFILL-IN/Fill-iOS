@@ -9,10 +9,14 @@ import UIKit
 
 class FilmTypeCollectionViewCell: UICollectionViewCell {
 
+    // MARK: - Properties
+    var viewWidth = UIScreen.main.bounds.width
+    
     // MARK: - @IBOutlet Properties
     @IBOutlet var filmTypeButtons: [UIButton]!
     @IBOutlet weak var chooseFilmView: UIView!
     @IBOutlet weak var chooseFilmLabel: UILabel!
+    @IBOutlet weak var chosenViewLeading: NSLayoutConstraint!
     
     // MARK: - @IBOutlet Properties
     @IBAction func touchFilmTypeButtons(_ sender: UIButton) {
@@ -20,12 +24,15 @@ class FilmTypeCollectionViewCell: UICollectionViewCell {
         switch sender.tag {
         case 0:
             print(sender.tag)
+            chosenViewLeading.constant = 0
         case 1:
             print(sender.tag)
+            chosenViewLeading.constant = viewWidth/4
         case 2:
             print(sender.tag)
+            chosenViewLeading.constant = (viewWidth/4)*2
         case 3:
-            print(sender.tag)
+            chosenViewLeading.constant = (viewWidth/4)*3
         default:
             return
         }
@@ -58,5 +65,5 @@ class FilmTypeCollectionViewCell: UICollectionViewCell {
     
     @objc func touchChooseFilmView(_ sender: UITapGestureRecognizer) {
          // TODO: 필름 종류 선택 뷰로 이동
-      }
+    }
 }

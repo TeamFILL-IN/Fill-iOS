@@ -145,6 +145,7 @@
             <connections>
                 <outlet property="chooseFilmLabel" destination="L5o-lJ-8Jz" id="EDR-sX-mlr"/>
                 <outlet property="chooseFilmView" destination="YSQ-bL-i8D" id="Guq-dU-Xvp"/>
+                <outlet property="chosenViewLeading" destination="VgW-hG-v5E" id="U1r-Ah-FXR"/>
                 <outletCollection property="filmTypeButtons" destination="Mc7-Gc-LXj" collectionClass="NSMutableArray" id="sg8-bL-jdA"/>
                 <outletCollection property="filmTypeButtons" destination="7hP-uS-3a1" collectionClass="NSMutableArray" id="n8Z-QY-2Jk"/>
                 <outletCollection property="filmTypeButtons" destination="SCd-lG-aEJ" collectionClass="NSMutableArray" id="TMJ-QV-CT0"/>
