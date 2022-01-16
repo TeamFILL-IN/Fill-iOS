@@ -180,14 +180,11 @@
 		77337B4E27911E8100933DBD /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				77337B5327911EE600933DBD /* FilmCurationCollectionViewCell.swift */,
-				77337B5427911EE600933DBD /* FilmCurationCollectionViewCell.xib */,
-				77B352132791A34A001718DE /* FilmTypeCollectionViewCell.swift */,
-				77B352142791A34A001718DE /* FilmTypeCollectionViewCell.xib */,
-				77B3522527920C0A001718DE /* FilmCurationCollectionReusableView.swift */,
-				77B3522627920C0A001718DE /* FilmCurationCollectionReusableView.xib */,
-				77B3522927933F84001718DE /* FilmCurationFirstCollectionViewCell.swift */,
-				77B3522A27933F84001718DE /* FilmCurationFirstCollectionViewCell.xib */,
+				77C24FB327949C14007DB533 /* FilmCurationCollectionViewCell */,
+				77C24FB427949C29007DB533 /* FilmTypeCollectionViewCell */,
+				77C24FB627949C39007DB533 /* FilmCurationFirstCollectionViewCell */,
+				77C24FB527949C32007DB533 /* FilmCurationCollectionReusableView */,
+				77C24FB727949C41007DB533 /* FilmRollCollectionView */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -380,9 +377,6 @@
 				77337B4E27911E8100933DBD /* Cell */,
 				775C9698278AD89F00A9BEA0 /* FilmRollViewController.swift */,
 				775C9699278AD89F00A9BEA0 /* FilmRollViewController.xib */,
-				77B3521B2791C2D0001718DE /* FilmRollViewController+DataSource.swift */,
-				77B352172791C029001718DE /* FilmRollViewController+Layout.swift */,
-				77B352192791C052001718DE /* FilmRollSection.swift */,
 			);
 			path = FilmRollViewController;
 			sourceTree = "<group>";
@@ -422,6 +416,53 @@
 				77628EAB278D7ADB00CB5919 /* FilmRollClickViewController.xib */,
 			);
 			path = FilmRollClickViewController;
+			sourceTree = "<group>";
+		};
+		77C24FB327949C14007DB533 /* FilmCurationCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				77337B5327911EE600933DBD /* FilmCurationCollectionViewCell.swift */,
+				77337B5427911EE600933DBD /* FilmCurationCollectionViewCell.xib */,
+			);
+			path = FilmCurationCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		77C24FB427949C29007DB533 /* FilmTypeCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				77B352132791A34A001718DE /* FilmTypeCollectionViewCell.swift */,
+				77B352142791A34A001718DE /* FilmTypeCollectionViewCell.xib */,
+			);
+			path = FilmTypeCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		77C24FB527949C32007DB533 /* FilmCurationCollectionReusableView */ = {
+			isa = PBXGroup;
+			children = (
+				77B3522527920C0A001718DE /* FilmCurationCollectionReusableView.swift */,
+				77B3522627920C0A001718DE /* FilmCurationCollectionReusableView.xib */,
+			);
+			path = FilmCurationCollectionReusableView;
+			sourceTree = "<group>";
+		};
+		77C24FB627949C39007DB533 /* FilmCurationFirstCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				77B3522927933F84001718DE /* FilmCurationFirstCollectionViewCell.swift */,
+				77B3522A27933F84001718DE /* FilmCurationFirstCollectionViewCell.xib */,
+			);
+			path = FilmCurationFirstCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		77C24FB727949C41007DB533 /* FilmRollCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				77B3521B2791C2D0001718DE /* FilmRollViewController+DataSource.swift */,
+				77B352172791C029001718DE /* FilmRollViewController+Layout.swift */,
+				77B352192791C052001718DE /* FilmRollSection.swift */,
+			);
+			name = FilmRollCollectionView;
+			path = ../FilmRollCollectionView;
 			sourceTree = "<group>";
 		};
 		77CC0725278F02900020F34A /* Cell */ = {
