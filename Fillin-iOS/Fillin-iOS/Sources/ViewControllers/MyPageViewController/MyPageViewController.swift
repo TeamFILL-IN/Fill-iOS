@@ -11,7 +11,7 @@ import SnapKit
 import Then
 
 // MARK: - MyPageViewController
-class MyPageViewController: UIViewController, UICollectionViewDelegate {
+class MyPageViewController: UIViewController, ConstraintRelatableTarget {
   
   // MARK: - Components
   let navigationBar = FilinNavigationBar()
@@ -111,6 +111,7 @@ extension MyPageViewController {
       $0.snp.makeConstraints {
         $0.centerX.top.leading.equalToSuperview()
         $0.bottom.equalTo(self.mypageScrollview.snp.bottom)
+        $0.height.equalTo((UIScreen.main.bounds.height*(249/812)+10*(UIScreen.main.bounds.width-36)/3 + 9) - 9)
       }
     }
   }
@@ -200,7 +201,7 @@ extension MyPageViewController {
   }
   func layoutGotoNoticePageButton() {
     orangeBackgroundview.add(gotonoticepageButton) {
-      $0.setImage(UIImage(asset: Asset.icnEdit), for: .normal)
+      $0.setImage(UIImage(asset: Asset.icnGo), for: .normal)
       $0.snp.makeConstraints {
         $0.centerY.equalToSuperview()
         $0.trailing.equalToSuperview().offset(-16)
@@ -214,6 +215,7 @@ extension MyPageViewController {
         $0.top.equalTo(self.orangeBackgroundview.snp.bottom).offset(12)
         $0.centerX.equalToSuperview()
         $0.width.equalToSuperview()
+        $0.height.equalTo(2)
       }
     }
   }
@@ -236,13 +238,16 @@ extension MyPageViewController {
         $0.top.equalTo(self.myphotosLabel.snp.bottom).offset(12)
         $0.centerX.equalToSuperview()
         $0.leading.equalToSuperview().offset(18)
-        $0.height.equalTo(600)
         $0.bottom.equalTo(self.mypageScrollContainverView.snp.bottom)
       }
     }
   }
 }
 // MARK: - UICollectionView
+extension MyPageViewController : UICollectionViewDelegate {
+  
+}
+
 extension MyPageViewController : UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return 30
@@ -254,7 +259,8 @@ extension MyPageViewController : UICollectionViewDataSource {
     return myphotoCell
   }
 }
-extension MyPageViewController : UICollectionViewDelegateFlowLayout {
+
+extension MyPageViewController: UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     let cellWidth = (collectionView.frame.width-18)/3
     let cellHeight = (collectionView.frame.width-18)/3
@@ -265,6 +271,6 @@ extension MyPageViewController : UICollectionViewDelegateFlowLayout {
     return UIEdgeInsets.zero
   }
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-    return 0
+    return 9
   }
 }

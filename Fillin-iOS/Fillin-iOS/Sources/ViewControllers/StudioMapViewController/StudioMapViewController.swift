@@ -34,28 +34,20 @@ class StudioMapViewController: UIViewController {
   }
   
   var locationManager = CLLocationManager()
-  var infoWindow = NMFInfoWindow()
-  var defaultInfoWindowImage = NMFInfoWindowDefaultTextSource.data()
-  var markers = [NMFMarker]()
-  var marker = NMFMarker()
-  var selectedMarker: NMFMarker?
-  var coordinates: [MapCoordinates] = [MapCoordinates(coordinates: NMGLatLng(lat: 36.3595, lng: 127.10477), colorCode: "", id: "")]
+  let navigationBar = FilinNavigationBar()
   
   // MARK: - View Life Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
     setUpMapView()
+    setUpMarker()
+    setUpNavigationBar()
     layoutMapView()
     layoutMyLocationButton()
-    layoutSeachView()
     setUpMarkerInfo()
+    layoutSearchView()
+    layoutNavigaionBar()
   }
-  
-  // MARK: - override Func
-  override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-    self.view.endEditing(true)
-  }
-  
 }
 
 // MARK: - Extensions
@@ -63,11 +55,14 @@ extension StudioMapViewController {
   
   private func setUpMapView() {
     view.addSubview(mapView)
+    let locationOverlay = mapView.mapView.locationOverlay
     mapView.mapView.positionMode = .direction
     mapView.mapView.mapType = .navi
     mapView.mapView.isNightModeEnabled = true
     mapView.showZoomControls = false
     mapView.showScaleBar = false
+    locationOverlay.hidden = true
+    locationOverlay.icon = NMFOverlayImage(image: Asset.icnPlaceBig.image)
     
     locationManager.delegate = self
     self.locationManager.requestWhenInUseAuthorization()
@@ -97,6 +92,11 @@ extension StudioMapViewController {
     marker1.mapView = self.mapView.mapView
   }
   
+  private func setUpNavigationBar() {
+    self.navigationController?.navigationBar.isHidden = true
+    navigationBar.popViewController = { self.navigationController?.popViewController(animated: true) }
+  }
+  
   private func layoutMapView() {
     mapView.snp.makeConstraints {
       $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
@@ -116,22 +116,42 @@ extension StudioMapViewController {
     myLocationButton.addTarget(self, action: #selector(touchLocationButton), for: .touchUpInside)
   }
   
-  private func layoutSeachView() {
+  private func layoutSearchView() {
     view.addSubview(searchPlaceTextField)
     view.addSubview(magnifyingGlassButton)
-    searchPlaceTextField.snp.makeConstraints {
-      $0.top.equalTo(self.view).inset(111)
-      $0.leading.equalTo(self.view).inset(18)
-      $0.trailing.equalTo(self.view).inset(18)
-      $0.size.height.equalTo(48)
-    }
     magnifyingGlassButton.snp.makeConstraints {
       $0.top.equalTo(searchPlaceTextField).inset(11)
       $0.leading.equalTo(searchPlaceTextField).inset(295)
       $0.bottom.equalTo(searchPlaceTextField).inset(11)
       $0.trailing.equalTo(searchPlaceTextField).inset(18)
     }
-    magnifyingGlassButton.addTarget(self, action: #selector(touchSearchButton), for: .touchUpInside)
+    searchPlaceTextField.snp.makeConstraints {
+      $0.top.equalTo(self.view.safeAreaLayoutGuide).inset(68)
+      $0.leading.equalTo(self.view).inset(18)
+      $0.trailing.equalTo(self.view).inset(18)
+      $0.size.height.equalTo(48)
+    }
+    searchPlaceTextField.addTarget(self, action: #selector(textFieldDidBeginEditing(_:)), for: .touchDown)
+  }
+  
+  func layoutNavigaionBar() {
+    view.add(navigationBar) {
+      self.navigationBar.popViewController = {
+        self.navigationController?.popViewController(animated: true)
+      }
+      $0.snp.makeConstraints {
+        $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
+        $0.leading.trailing.equalToSuperview()
+        $0.height.equalTo(50)
+      }
+    }
+  }
+  
+  @objc func textFieldDidBeginEditing(_ textField: UITextField) {
+    let newVC = StudioMapSearchViewController()
+    newVC.modalTransitionStyle = .crossDissolve
+    newVC.modalPresentationStyle = .fullScreen
+    self.present(newVC, animated: true, completion: nil)
   }
 }
 
@@ -141,9 +161,6 @@ extension StudioMapViewController {
   @objc func touchLocationButton(_ sender: UIButton) {
     sender.isSelected = !sender.isSelected
     mapView.mapView.positionMode = .direction
-  }
-  
-  @objc func touchSearchButton(_ sender: UIButton) {
   }
 }
 

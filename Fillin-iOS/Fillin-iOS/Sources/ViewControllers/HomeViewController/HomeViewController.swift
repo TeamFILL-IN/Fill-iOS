@@ -11,12 +11,24 @@ class HomeViewController: UIViewController {
 
     // MARK: - @IBOutlet Properties
     @IBOutlet weak var homeTableView: UITableView!
+    @IBOutlet weak var floatingButton: UIView!
+    @IBOutlet weak var floatingButtonLabel: UILabel!
+    
+    // MARK: - @IBAction Properties
+    @IBAction func touchDismissFloatingButton(_ sender: Any) {
+        floatingButton.isHidden = true
+    }
     
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
         registerXib()
+        setNotification()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        floatingButton.isHidden = false
     }
 }
 
@@ -24,6 +36,7 @@ class HomeViewController: UIViewController {
 extension HomeViewController {
     private func setUI() {
         self.navigationController?.navigationBar.isHidden = true
+        floatingButtonLabel.font = .subhead2
         homeTableView.dataSource = self
         homeTableView.delegate = self
         if #available(iOS 15, *) {
@@ -36,6 +49,15 @@ extension HomeViewController {
         homeTableView.register(TabBarTableViewCell.nib(), forCellReuseIdentifier: Const.Xib.tabBarTableViewCell)
         homeTableView.register(MapTableViewCell.nib(), forCellReuseIdentifier: Const.Xib.mapTableViewCell)
         homeTableView.register(PhotosTableViewCell.nib(), forCellReuseIdentifier: Const.Xib.photosTableViewCell)
+    }
+    
+    private func setNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(pushToFilmRollViewController(_:)), name: .pushToFilmRollViewController, object: nil)
+    }
+    
+    // MARK: - @objc Methods
+    @objc func pushToFilmRollViewController(_ notification: Notification) {
+        self.navigationController?.pushViewController(FilmRollViewController(), animated: true)
     }
 }
 
@@ -93,12 +115,14 @@ extension HomeViewController: UITableViewDataSource {
                 return UITableViewCell()
             }
             
+            mapCell.selectionStyle = .none
             return mapCell
         case 3 :
             guard let photosCell = tableView.dequeueReusableCell(withIdentifier: Const.Xib.photosTableViewCell, for: indexPath) as? PhotosTableViewCell else {
                 return UITableViewCell()
             }
             
+            photosCell.selectionStyle = .none
             return photosCell
         default:
             return UITableViewCell()
@@ -109,5 +133,13 @@ extension HomeViewController: UITableViewDataSource {
 
 // MARK: - UITableViewDelegate
 extension HomeViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.row {
+        case 2 :
+            self.navigationController?.pushViewController(StudioMapViewController(), animated: true)
+        default:
+            return 
+        }
+    }
     
 }

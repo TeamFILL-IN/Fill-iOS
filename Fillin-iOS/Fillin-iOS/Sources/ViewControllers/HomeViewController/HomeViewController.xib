@@ -11,6 +11,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="Fillin_iOS" customModuleProvider="target">
             <connections>
+                <outlet property="floatingButton" destination="dcn-Q6-jvD" id="gvk-9y-VjC"/>
+                <outlet property="floatingButtonLabel" destination="uA2-qn-YYK" id="pgD-ii-BwV"/>
                 <outlet property="homeTableView" destination="lZ5-aU-eAU" id="CUn-0a-51x"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -24,11 +26,46 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                     <color key="backgroundColor" name="Fillin_black"/>
                 </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dcn-Q6-jvD">
+                    <rect key="frame" x="18" y="802" width="378" height="49"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btnHomeFloating" translatesAutoresizingMaskIntoConstraints="NO" id="vb9-KU-VuM">
+                            <rect key="frame" x="0.0" y="0.0" width="378" height="49"/>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8c2-ko-dKe">
+                            <rect key="frame" x="339" y="12.5" width="24" height="24"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" image="icnClose"/>
+                            <connections>
+                                <action selector="touchDismissFloatingButton:" destination="-1" eventType="touchUpInside" id="p5v-38-raE"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="나만 아는 현상소를 필린에 알려주세요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uA2-qn-YYK">
+                            <rect key="frame" x="20" y="14" width="258" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" name="Fillin_black"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="vb9-KU-VuM" secondAttribute="trailing" id="15P-eO-lta"/>
+                        <constraint firstItem="uA2-qn-YYK" firstAttribute="centerY" secondItem="dcn-Q6-jvD" secondAttribute="centerY" id="NpD-HG-1gv"/>
+                        <constraint firstItem="vb9-KU-VuM" firstAttribute="leading" secondItem="dcn-Q6-jvD" secondAttribute="leading" id="P8c-FF-aer"/>
+                        <constraint firstAttribute="bottom" secondItem="vb9-KU-VuM" secondAttribute="bottom" id="WsA-Sk-kqI"/>
+                        <constraint firstItem="vb9-KU-VuM" firstAttribute="trailing" secondItem="8c2-ko-dKe" secondAttribute="trailing" constant="15" id="aI5-fL-fdI"/>
+                        <constraint firstItem="uA2-qn-YYK" firstAttribute="leading" secondItem="dcn-Q6-jvD" secondAttribute="leading" constant="20" id="afg-g9-ZHo"/>
+                        <constraint firstItem="vb9-KU-VuM" firstAttribute="top" secondItem="dcn-Q6-jvD" secondAttribute="top" id="oTi-6D-RsO"/>
+                        <constraint firstItem="8c2-ko-dKe" firstAttribute="centerY" secondItem="dcn-Q6-jvD" secondAttribute="centerY" id="zSc-dU-qVY"/>
+                    </constraints>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="dcn-Q6-jvD" secondAttribute="bottom" constant="45" id="0wX-cg-eqR"/>
+                <constraint firstItem="dcn-Q6-jvD" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="18" id="Gjx-at-yMv"/>
                 <constraint firstItem="lZ5-aU-eAU" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="HW1-57-QXR"/>
+                <constraint firstItem="dcn-Q6-jvD" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="SyQ-Ib-uyR"/>
                 <constraint firstItem="lZ5-aU-eAU" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="XSh-g4-lW0"/>
                 <constraint firstItem="lZ5-aU-eAU" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="dSJ-d4-cFj"/>
                 <constraint firstAttribute="bottom" secondItem="lZ5-aU-eAU" secondAttribute="bottom" id="o8p-P1-UiR"/>
@@ -37,6 +74,8 @@
         </view>
     </objects>
     <resources>
+        <image name="btnHomeFloating" width="340" height="49"/>
+        <image name="icnClose" width="24" height="24"/>
         <namedColor name="Fillin_black">
             <color red="0.0039215686274509803" green="0.0039215686274509803" blue="0.0039215686274509803" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
