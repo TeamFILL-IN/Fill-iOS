@@ -62,13 +62,15 @@
 		77D7CD52278FF02D00FE7F58 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D7CD51278FF02D00FE7F58 /* Notification.swift */; };
 		9ADF3537C1D51ED22F4C921B /* Pods_Fillin_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F33300C623DFF466AFCE2914 /* Pods_Fillin_iOS.framework */; };
 		E83AA9FA2793BED200A6B0C4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83AA9F92793BED200A6B0C4 /* LoginViewController.swift */; };
-		E83AA9FD2793BEE500A6B0C4 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83AA9FC2793BEE500A6B0C4 /* OnboardingViewController.swift */; };
+		E83AA9FD2793BEE500A6B0C4 /* OnboardingFirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83AA9FC2793BEE500A6B0C4 /* OnboardingFirstViewController.swift */; };
 		E83AA9FF2793C9BF00A6B0C4 /* NotoSansKR-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = E83AA9FE2793C9BE00A6B0C4 /* NotoSansKR-Medium.otf */; };
 		E83AEF9D278F313100B3F42E /* MyPagePhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83AEF9C278F313100B3F42E /* MyPagePhotoCollectionViewCell.swift */; };
 		E83AEF9F278F376300B3F42E /* identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83AEF9E278F376300B3F42E /* identifiable.swift */; };
 		E87493E22791A40100DCCF1F /* FirstAddPhotoPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87493E12791A40100DCCF1F /* FirstAddPhotoPopUpViewController.swift */; };
 		E87493E42791A43200DCCF1F /* SecondAddPhotoPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87493E32791A43200DCCF1F /* SecondAddPhotoPopUpViewController.swift */; };
 		E878EC2A278D0E9400135FB9 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E878EC29278D0E9400135FB9 /* UILabel+Extension.swift */; };
+		E8A38B7327945EE2006AC23D /* OnboardingSecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A38B7227945EE2006AC23D /* OnboardingSecondViewController.swift */; };
+		E8A38B7527945EEA006AC23D /* OnboardingThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A38B7427945EEA006AC23D /* OnboardingThirdViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -130,13 +132,15 @@
 		77D7CD51278FF02D00FE7F58 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		864A552B88FE473B50DE4171 /* Pods-Fillin-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fillin-iOS.debug.xcconfig"; path = "Target Support Files/Pods-Fillin-iOS/Pods-Fillin-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		E83AA9F92793BED200A6B0C4 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		E83AA9FC2793BEE500A6B0C4 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		E83AA9FC2793BEE500A6B0C4 /* OnboardingFirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFirstViewController.swift; sourceTree = "<group>"; };
 		E83AA9FE2793C9BE00A6B0C4 /* NotoSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.otf"; sourceTree = "<group>"; };
 		E83AEF9C278F313100B3F42E /* MyPagePhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPagePhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		E83AEF9E278F376300B3F42E /* identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = identifiable.swift; sourceTree = "<group>"; };
 		E87493E12791A40100DCCF1F /* FirstAddPhotoPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstAddPhotoPopUpViewController.swift; sourceTree = "<group>"; };
 		E87493E32791A43200DCCF1F /* SecondAddPhotoPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondAddPhotoPopUpViewController.swift; sourceTree = "<group>"; };
 		E878EC29278D0E9400135FB9 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
+		E8A38B7227945EE2006AC23D /* OnboardingSecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSecondViewController.swift; sourceTree = "<group>"; };
+		E8A38B7427945EEA006AC23D /* OnboardingThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingThirdViewController.swift; sourceTree = "<group>"; };
 		F33300C623DFF466AFCE2914 /* Pods_Fillin_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fillin_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -475,7 +479,9 @@
 		E83AA9FB2793BED600A6B0C4 /* OnboardingViewController */ = {
 			isa = PBXGroup;
 			children = (
-				E83AA9FC2793BEE500A6B0C4 /* OnboardingViewController.swift */,
+				E83AA9FC2793BEE500A6B0C4 /* OnboardingFirstViewController.swift */,
+				E8A38B7227945EE2006AC23D /* OnboardingSecondViewController.swift */,
+				E8A38B7427945EEA006AC23D /* OnboardingThirdViewController.swift */,
 			);
 			path = OnboardingViewController;
 			sourceTree = "<group>";
@@ -666,12 +672,14 @@
 			files = (
 				775C967D278ACFDD00A9BEA0 /* Xib.swift in Sources */,
 				77CC0733278F10890020F34A /* MapTableViewCell.swift in Sources */,
+				E8A38B7327945EE2006AC23D /* OnboardingSecondViewController.swift in Sources */,
 				775C9649278ACBEA00A9BEA0 /* AppDelegate.swift in Sources */,
-				E83AA9FD2793BEE500A6B0C4 /* OnboardingViewController.swift in Sources */,
+				E83AA9FD2793BEE500A6B0C4 /* OnboardingFirstViewController.swift in Sources */,
 				775C96A7278AD8E600A9BEA0 /* SplashViewController.swift in Sources */,
 				E87493E42791A43200DCCF1F /* SecondAddPhotoPopUpViewController.swift in Sources */,
 				7769EC59278F5F6500618EEF /* ArrowCollectionViewCell.swift in Sources */,
 				77CC0738278F11DA0020F34A /* PhotosTableViewCell.swift in Sources */,
+				E8A38B7527945EEA006AC23D /* OnboardingThirdViewController.swift in Sources */,
 				77CC072C278F0DC10020F34A /* TabBarTableViewCell.swift in Sources */,
 				775C9696278AD89200A9BEA0 /* StudioMapViewController.swift in Sources */,
 				775C96B2278B5B3800A9BEA0 /* FillinNavigationBar.swift in Sources */,
@@ -843,7 +851,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3FAK98S72C;
+				DEVELOPMENT_TEAM = 4QG3GC35LA;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Fillin-iOS/Info.plist";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "위치 권한이 필요합니다.";
@@ -877,7 +885,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3FAK98S72C;
+				DEVELOPMENT_TEAM = 4QG3GC35LA;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Fillin-iOS/Info.plist";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "위치 권한이 필요합니다.";

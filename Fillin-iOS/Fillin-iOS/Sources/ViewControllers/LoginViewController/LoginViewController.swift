@@ -9,6 +9,7 @@ import UIKit
 
 import SnapKit
 import Then
+import AuthenticationServices
 
 // MARK: - LoginViewController
 class LoginViewController: UIViewController {
@@ -17,7 +18,7 @@ class LoginViewController: UIViewController {
   let fillinLogoIcon = UIImageView()
   let fillinexplainengLabel = UILabel()
   let fillinexplainkorLabel = UILabel()
-  let appleloginBar = UIImageView()
+  let appleloginBar = UIButton()
   let appleloginIcon = UIButton()
   let appleloginexplainLabel = UILabel()
   
@@ -27,6 +28,7 @@ class LoginViewController: UIViewController {
     view.backgroundColor = .fillinBlack
     self.navigationController?.navigationBar.isHidden = true
     layout()
+    setUI()
   }
 }
 // MARK: - Extension
@@ -35,9 +37,6 @@ extension LoginViewController {
     layoutFillinLogoIcon()
     layoutFillinExplainEngLabel()
     layoutFillinExplainKorLabel()
-    layoutAppleLoginBar()
-    layoutAppleLoginIcon()
-    layoutAppleLoginExplainLabel()
   }
   func layoutFillinLogoIcon() {
     view.add(fillinLogoIcon) {
@@ -80,38 +79,90 @@ extension LoginViewController {
       }
     }
   }
-  func layoutAppleLoginBar() {
-    view.add(appleloginBar) {
-      $0.image = UIImage(asset: Asset.btnlogin)
+  func setUI() {
+    let authorizationButton = ASAuthorizationAppleIDButton(type: .signIn, style: .white)
+    authorizationButton.addTarget(self, action: #selector(appleSignInButtonPress), for: .touchUpInside)
+    view.add(authorizationButton) {
+      authorizationButton.translatesAutoresizingMaskIntoConstraints = false
       $0.snp.makeConstraints {
         $0.bottom.equalToSuperview().offset(-90)
         $0.centerX.equalToSuperview()
         $0.leading.equalToSuperview().offset(30)
-
+        $0.height.equalTo(44)
       }
     }
   }
-  func layoutAppleLoginIcon() {
-    appleloginBar.add(appleloginIcon) {
-      $0.setImage(UIImage(asset: Asset.appleLogo), for: .normal)
-      $0.isUserInteractionEnabled = true
-      $0.snp.makeConstraints {
-        $0.centerY.equalToSuperview()
-        $0.leading.equalToSuperview().offset(76)
-        $0.width.equalTo(24)
-        $0.height.equalTo(24)
-      }
-    }
+  @objc
+  func appleSignInButtonPress() {
+    let appleIDProvider = ASAuthorizationAppleIDProvider()
+    let request = appleIDProvider.createRequest()
+    request.requestedScopes = [.fullName, .email]
+    
+    let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+    authorizationController.delegate = self
+    authorizationController.presentationContextProvider = self
+    authorizationController.performRequests()
   }
-  func layoutAppleLoginExplainLabel() {
-    appleloginBar.add(appleloginexplainLabel) {
-      $0.setupLabel(text: "Apple로 시작하기",
-                    color: .fillinBlack,
-                    font: .subhead3)
-      $0.snp.makeConstraints {
-        $0.centerY.equalToSuperview()
-        $0.leading.equalTo(self.appleloginIcon.snp.trailing).offset(16)
-      }
+  func presentToMain() {
+    let homeVC = HomeViewController()
+    homeVC.modalPresentationStyle = .overFullScreen
+    self.present(homeVC, animated: true) {
+//      UserDefaults.standard.set(false, forKey: Const.UserDefaultsKey.isOnboarding)
     }
   }
 }
+
+// MARK: - Extension AppleSignIn
+extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
+  func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+    return self.view.window!
+  }
+  
+  // Apple ID 연동 성공 시
+  func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+    switch authorization.credential {
+//      Apple ID
+    case let appleIDCredential as ASAuthorizationAppleIDCredential:
+      
+      let userIdentifier = appleIDCredential.user
+//      postUserSignUpWithAPI(request: userIdentifier)
+//      UserDefaults.standard.set(true, forKey: Const.UserDefaultsKey.isAppleLogin)
+//      UserDefaults.standard.set(false, forKey: Const.UserDefaultsKey.isKakaoLogin)
+      
+    default:
+      break
+    }
+  }
+  
+  // Apple ID 연동 실패 시
+  func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+    // Handle error.
+  }
+}
+
+//// MARK: - Network
+//extension LoginViewController {
+//  func postUserSignUpWithAPI(request: String) {
+//    UserAPI.shared.userSocialSignUp(request: request) { response in
+//      switch response {
+//      case .success(let loginData):
+//        print("postUserSignUpWithAPI - success")
+//        if let userData = loginData as? UserWithTokenRequest {
+//          UserDefaults.standard.set(userData.user.userID, forKey: Const.UserDefaultsKey.userID)
+//          UserDefaults.standard.set(userData.user.token.accessToken, forKey: Const.UserDefaultsKey.accessToken)
+//          UserDefaults.standard.set(userData.user.token.refreshToken, forKey: Const.UserDefaultsKey.refreshToken)
+//          self.presentToMain()
+//        }
+//      case .requestErr(let message):
+//        print("postUserSignUpWithAPI - requestErr: \(message)")
+//      case .pathErr:
+//        print("postUserSignUpWithAPI - pathErr")
+//      case .serverErr:
+//        print("postUserSignUpWithAPI - serverErr")
+//      case .networkFail:
+//        print("postUserSignUpWithAPI - networkFail")
+//      }
+//    }
+//  }
+//
+//}
