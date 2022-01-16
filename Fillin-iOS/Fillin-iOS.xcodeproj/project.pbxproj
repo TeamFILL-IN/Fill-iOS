@@ -121,6 +121,7 @@
 		7769EC58278F5F6500618EEF /* ArrowCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArrowCollectionViewCell.xib; sourceTree = "<group>"; };
 		77878AC6278D947900137D30 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		77878AC8278D9FDB00137D30 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		77C24FB227949734007DB533 /* Fillin-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Fillin-iOS.entitlements"; sourceTree = "<group>"; };
 		77CC0726278F02B80020F34A /* WelcomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeTableViewCell.swift; sourceTree = "<group>"; };
 		77CC0727278F02B80020F34A /* WelcomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WelcomeTableViewCell.xib; sourceTree = "<group>"; };
 		77CC072A278F0DC10020F34A /* TabBarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarTableViewCell.swift; sourceTree = "<group>"; };
@@ -208,6 +209,7 @@
 		775C9647278ACBEA00A9BEA0 /* Fillin-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				77C24FB227949734007DB533 /* Fillin-iOS.entitlements */,
 				775C9656278ACBEB00A9BEA0 /* Info.plist */,
 				775C9660278ACE6A00A9BEA0 /* Resources */,
 				775C965F278ACE5B00A9BEA0 /* Sources */,
@@ -849,6 +851,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Fillin-iOS/Fillin-iOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = T3VFJ764ZC;
@@ -884,6 +887,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Fillin-iOS/Fillin-iOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = T3VFJ764ZC;
