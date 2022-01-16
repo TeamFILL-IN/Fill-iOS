@@ -31,7 +31,7 @@ class StudioMapSearchTableViewCell: UITableViewCell {
       $0.snp.makeConstraints {
         $0.top.equalTo(self.contentView).offset(18)
         $0.leading.equalTo(self.contentView).offset(18)
-        $0.trailing.equalTo(self.contentView).offset(-335)
+        $0.height.equalTo(22)
       }
     }
     contentView.add(nameStudioLabel) {

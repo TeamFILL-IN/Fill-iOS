@@ -72,9 +72,15 @@ class StudioMapSearchViewController: UIViewController {
     searchPlaceTextField.becomeFirstResponder()
   }
   
+  override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    self.view.endEditing(true)
+  }
+  
   private func layoutNavigaionBar() {
     view.add(navigationBar) {
       self.navigationBar.popViewController = {
+        print("버튼 누름")
+        self.view.endEditing(true)
         self.dismiss(animated: true, completion: nil)
       }
       $0.snp.makeConstraints {
@@ -111,14 +117,14 @@ class StudioMapSearchViewController: UIViewController {
   func makeTableView() {
     tableView.dataSource = self
     tableView.delegate = self
-    self.tableView.register(StudioMapSearchTableViewCell.self, forCellReuseIdentifier: "StudioSearchCell")
-    self.tableView.showsVerticalScrollIndicator = false
+    tableView.showsVerticalScrollIndicator = false
     
+    registerXib()
     layoutTableView()
   }
   
-  override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-    self.view.endEditing(true)
+  func registerXib() {
+    tableView.register(StudioMapSearchTableViewCell.self, forCellReuseIdentifier: Const.Xib.studioSearchTableViewCell)
   }
   
   @objc func touchSearchButton(_ sender: UIButton) {
@@ -133,7 +139,7 @@ extension StudioMapSearchViewController: UITableViewDataSource, UITableViewDeleg
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    guard let cell = tableView.dequeueReusableCell(withIdentifier: "StudioSearchCell", for: indexPath) as? StudioMapSearchTableViewCell else { return UITableViewCell() }
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: Const.Xib.studioSearchTableViewCell, for: indexPath) as? StudioMapSearchTableViewCell else { return UITableViewCell() }
     return cell
   }
   

@@ -38,7 +38,6 @@ class StudioMapViewController: UIViewController {
   // MARK: - View Life Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.navigationController?.navigationBar.isHidden = true
     setUpMapView()
     setUpMarker()
     setUpNavigationBar()
@@ -46,11 +45,6 @@ class StudioMapViewController: UIViewController {
     layoutMyLocationButton()
     layoutSearchView()
     layoutNavigaionBar()
-  }
-  
-  // MARK: - Custom Func
-  override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-    self.view.endEditing(true)
   }
 }
 
@@ -72,14 +66,15 @@ extension StudioMapViewController {
     self.locationManager.requestWhenInUseAuthorization()
   }
   
-  private func setUpNavigationBar() {
-    navigationBar.popViewController = { self.navigationController?.popViewController(animated: true) }
-  }
-  
   private func setUpMarker() {
     marker.position = NMGLatLng(lat: 37.45201087366944, lng: 126.65536562781361)
     marker.iconImage = NMFOverlayImage(image: Asset.icnPlaceBig.image)
     marker.mapView = self.mapView.mapView
+  }
+  
+  private func setUpNavigationBar() {
+    self.navigationController?.navigationBar.isHidden = true
+    navigationBar.popViewController = { self.navigationController?.popViewController(animated: true) }
   }
   
   private func layoutMapView() {
