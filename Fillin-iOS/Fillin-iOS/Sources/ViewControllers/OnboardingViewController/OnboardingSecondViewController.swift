@@ -70,7 +70,7 @@ extension OnboardingSecondViewController {
   }
   func layoutOnboardImage() {
     view.add(onboardimage) {
-      $0.image = UIImage(asset: Asset.icnAddPhotoBig)
+      $0.image = UIImage(asset: Asset.imgonboarding2frame)
       $0.snp.makeConstraints {
         $0.top.equalTo(self.boldTitleLabel.snp.bottom).offset(67)
         $0.centerX.equalToSuperview()
