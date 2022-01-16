@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6FB32C9C279378C900CCAFAB /* StudioMapSearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FB32C96279378C900CCAFAB /* StudioMapSearchTableViewCell.xib */; };
+		6FB32C9D279378C900CCAFAB /* StudioMapSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB32C97279378C900CCAFAB /* StudioMapSearchTableViewCell.swift */; };
+		6FB32C9E279378C900CCAFAB /* StudioMapSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FB32C98279378C900CCAFAB /* StudioMapSearchViewController.xib */; };
+		6FB32C9F279378C900CCAFAB /* StudioMapSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB32C99279378C900CCAFAB /* StudioMapSearchViewController.swift */; };
 		775C9649278ACBEA00A9BEA0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775C9648278ACBEA00A9BEA0 /* AppDelegate.swift */; };
 		775C964B278ACBEA00A9BEA0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775C964A278ACBEA00A9BEA0 /* SceneDelegate.swift */; };
 		775C9652278ACBEB00A9BEA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 775C9651278ACBEB00A9BEA0 /* Assets.xcassets */; };
@@ -69,6 +73,10 @@
 
 /* Begin PBXFileReference section */
 		18FC9C8D02E669D0F43E8733 /* Pods-Fillin-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fillin-iOS.release.xcconfig"; path = "Target Support Files/Pods-Fillin-iOS/Pods-Fillin-iOS.release.xcconfig"; sourceTree = "<group>"; };
+		6FB32C96279378C900CCAFAB /* StudioMapSearchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StudioMapSearchTableViewCell.xib; sourceTree = "<group>"; };
+		6FB32C97279378C900CCAFAB /* StudioMapSearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudioMapSearchTableViewCell.swift; sourceTree = "<group>"; };
+		6FB32C98279378C900CCAFAB /* StudioMapSearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StudioMapSearchViewController.xib; sourceTree = "<group>"; };
+		6FB32C99279378C900CCAFAB /* StudioMapSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudioMapSearchViewController.swift; sourceTree = "<group>"; };
 		775C9645278ACBEA00A9BEA0 /* Fillin-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fillin-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		775C9648278ACBEA00A9BEA0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		775C964A278ACBEA00A9BEA0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -161,6 +169,18 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		6FB32C94279378C900CCAFAB /* StudioMapSearchViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6FB32C96279378C900CCAFAB /* StudioMapSearchTableViewCell.xib */,
+				6FB32C97279378C900CCAFAB /* StudioMapSearchTableViewCell.swift */,
+				6FB32C98279378C900CCAFAB /* StudioMapSearchViewController.xib */,
+				6FB32C99279378C900CCAFAB /* StudioMapSearchViewController.swift */,
+			);
+			name = StudioMapSearchViewController;
+			path = "Fillin-iOS/Sources/ViewControllers/StudioMapSearchViewController";
+			sourceTree = SOURCE_ROOT;
+		};
 		775C963C278ACBEA00A9BEA0 = {
 			isa = PBXGroup;
 			children = (
@@ -222,6 +242,7 @@
 			children = (
 				E83AA9FB2793BED600A6B0C4 /* OnboardingViewController */,
 				E83AA9F82793BEB300A6B0C4 /* LoginViewController */,
+				6FB32C94279378C900CCAFAB /* StudioMapSearchViewController */,
 				E87493E02791A3E000DCCF1F /* AddPhotoPopUpViewController */,
 				775C96A4278AD8D800A9BEA0 /* SplashViewController */,
 				775C968D278AD1AB00A9BEA0 /* HomeViewController */,
@@ -539,6 +560,7 @@
 				77CC0739278F11DA0020F34A /* PhotosTableViewCell.xib in Resources */,
 				77CC072D278F0DC10020F34A /* TabBarTableViewCell.xib in Resources */,
 				E83AA9FF2793C9BF00A6B0C4 /* NotoSansKR-Medium.otf in Resources */,
+				6FB32C9C279378C900CCAFAB /* StudioMapSearchTableViewCell.xib in Resources */,
 				77CC0729278F02B80020F34A /* WelcomeTableViewCell.xib in Resources */,
 				775C9697278AD89200A9BEA0 /* StudioMapViewController.xib in Resources */,
 				775C9655278ACBEB00A9BEA0 /* LaunchScreen.storyboard in Resources */,
@@ -549,6 +571,7 @@
 				775C969B278AD89F00A9BEA0 /* FilmRollViewController.xib in Resources */,
 				775C969F278AD8A900A9BEA0 /* AddPhotoViewController.xib in Resources */,
 				775C9685278AD0B500A9BEA0 /* NotoSansKR-Regular.otf in Resources */,
+				6FB32C9E279378C900CCAFAB /* StudioMapSearchViewController.xib in Resources */,
 				775C9691278AD87900A9BEA0 /* HomeViewController.xib in Resources */,
 				77878AC7278D947900137D30 /* Colors.xcassets in Resources */,
 				77628EAD278D7ADB00CB5919 /* FilmRollClickViewController.xib in Resources */,
@@ -657,6 +680,7 @@
 				775C9674278ACF6600A9BEA0 /* TempModel.swift in Sources */,
 				775C96A2278AD8BB00A9BEA0 /* MyPageViewController.swift in Sources */,
 				E83AEF9D278F313100B3F42E /* MyPagePhotoCollectionViewCell.swift in Sources */,
+				6FB32C9F279378C900CCAFAB /* StudioMapSearchViewController.swift in Sources */,
 				775C969E278AD8A900A9BEA0 /* AddPhotoViewController.swift in Sources */,
 				77628EAC278D7ADB00CB5919 /* FilmRollClickViewController.swift in Sources */,
 				775C964B278ACBEA00A9BEA0 /* SceneDelegate.swift in Sources */,
@@ -667,6 +691,7 @@
 				7769EC55278F515700618EEF /* PhotosCollectionViewCell.swift in Sources */,
 				775C96B4278B61D100A9BEA0 /* UIView+Extension.swift in Sources */,
 				775C9677278ACF8B00A9BEA0 /* MoyaLoggerPlugin.swift in Sources */,
+				6FB32C9D279378C900CCAFAB /* StudioMapSearchTableViewCell.swift in Sources */,
 				775C9667278ACF0300A9BEA0 /* Const.swift in Sources */,
 				E87493E22791A40100DCCF1F /* FirstAddPhotoPopUpViewController.swift in Sources */,
 				775C96B0278B33E200A9BEA0 /* Assets+Generated.swift in Sources */,
@@ -818,7 +843,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 4QG3GC35LA;
+				DEVELOPMENT_TEAM = 3FAK98S72C;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Fillin-iOS/Info.plist";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "위치 권한이 필요합니다.";
@@ -852,7 +877,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 4QG3GC35LA;
+				DEVELOPMENT_TEAM = 3FAK98S72C;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Fillin-iOS/Info.plist";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "위치 권한이 필요합니다.";
