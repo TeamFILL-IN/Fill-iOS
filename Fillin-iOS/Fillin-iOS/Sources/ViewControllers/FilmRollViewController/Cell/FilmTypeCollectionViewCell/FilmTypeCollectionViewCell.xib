@@ -46,27 +46,51 @@
                                                 <state key="normal" title="컬러">
                                                     <color key="titleColor" name="Fillin_white"/>
                                                 </state>
+                                                <state key="selected">
+                                                    <color key="titleColor" name="Fillin_red"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="touchFilmTypeButtons:" destination="gTV-IL-0wX" eventType="touchUpInside" id="5lq-r3-VCv"/>
+                                                </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7hP-uS-3a1">
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7hP-uS-3a1">
                                                 <rect key="frame" x="94" y="0.0" width="93.5" height="45"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="흑백">
                                                     <color key="titleColor" name="Fillin_white"/>
                                                 </state>
+                                                <state key="selected">
+                                                    <color key="titleColor" name="Fillin_red"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="touchFilmTypeButtons:" destination="gTV-IL-0wX" eventType="touchUpInside" id="XcY-qJ-nLU"/>
+                                                </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SCd-lG-aEJ">
+                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SCd-lG-aEJ">
                                                 <rect key="frame" x="187.5" y="0.0" width="94" height="45"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="특수">
                                                     <color key="titleColor" name="Fillin_white"/>
                                                 </state>
+                                                <state key="selected">
+                                                    <color key="titleColor" name="Fillin_red"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="touchFilmTypeButtons:" destination="gTV-IL-0wX" eventType="touchUpInside" id="wtH-dg-whR"/>
+                                                </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jyh-3w-Lbr">
+                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jyh-3w-Lbr">
                                                 <rect key="frame" x="281.5" y="0.0" width="93.5" height="45"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="일회용">
                                                     <color key="titleColor" name="Fillin_white"/>
                                                 </state>
+                                                <state key="selected">
+                                                    <color key="titleColor" name="Fillin_red"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="touchFilmTypeButtons:" destination="gTV-IL-0wX" eventType="touchUpInside" id="Mmy-0n-tv8"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -121,10 +145,10 @@
             <connections>
                 <outlet property="chooseFilmLabel" destination="L5o-lJ-8Jz" id="EDR-sX-mlr"/>
                 <outlet property="chooseFilmView" destination="YSQ-bL-i8D" id="Guq-dU-Xvp"/>
-                <outletCollection property="filmTypeButtons" destination="SCd-lG-aEJ" collectionClass="NSMutableArray" id="bqj-d1-jTm"/>
-                <outletCollection property="filmTypeButtons" destination="Mc7-Gc-LXj" collectionClass="NSMutableArray" id="9f4-SC-9K3"/>
-                <outletCollection property="filmTypeButtons" destination="7hP-uS-3a1" collectionClass="NSMutableArray" id="yve-8j-PUL"/>
-                <outletCollection property="filmTypeButtons" destination="Jyh-3w-Lbr" collectionClass="NSMutableArray" id="gL3-P4-Ck4"/>
+                <outletCollection property="filmTypeButtons" destination="Mc7-Gc-LXj" collectionClass="NSMutableArray" id="sg8-bL-jdA"/>
+                <outletCollection property="filmTypeButtons" destination="7hP-uS-3a1" collectionClass="NSMutableArray" id="n8Z-QY-2Jk"/>
+                <outletCollection property="filmTypeButtons" destination="SCd-lG-aEJ" collectionClass="NSMutableArray" id="TMJ-QV-CT0"/>
+                <outletCollection property="filmTypeButtons" destination="Jyh-3w-Lbr" collectionClass="NSMutableArray" id="0j9-tC-NMv"/>
             </connections>
             <point key="canvasLocation" x="252.89855072463769" y="125.22321428571428"/>
         </collectionViewCell>
