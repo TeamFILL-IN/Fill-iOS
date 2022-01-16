@@ -6,6 +6,7 @@
 	<string>tha4qcgyyp</string>
 	<key>UIAppFonts</key>
 	<array>
+		<string>NotoSansKR-Medium.otf</string>
 		<string>NotoSansKR-Bold.otf</string>
 		<string>NotoSansKR-Regular.otf</string>
 		<string>FuturaStdBold.otf</string>
