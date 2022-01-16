@@ -22,6 +22,7 @@ internal typealias AssetImageTypeAlias = ImageAsset.Image
 // swiftlint:disable identifier_name line_length nesting type_body_length type_name
 internal enum Asset {
   internal static let accentColor = ColorAsset(name: "AccentColor")
+  internal static let appleLogo = ImageAsset(name: "appleLogo")
   internal static let basicProfile = ImageAsset(name: "basicProfile")
   internal static let btnBack = ImageAsset(name: "btnBack")
   internal static let btnHome = ImageAsset(name: "btnHome")
@@ -29,6 +30,7 @@ internal enum Asset {
   internal static let btnLike = ImageAsset(name: "btnLike")
   internal static let btnMore = ImageAsset(name: "btnMore")
   internal static let btnScrap = ImageAsset(name: "btnScrap")
+  internal static let btnlogin = ImageAsset(name: "btnlogin")
   internal static let icnAddPhotoBig = ImageAsset(name: "icnAddPhotoBig")
   internal static let icnCall = ImageAsset(name: "icnCall")
   internal static let icnCamera = ImageAsset(name: "icnCamera")
@@ -64,6 +66,7 @@ internal enum Asset {
   internal static let iosPhotoFrame = ImageAsset(name: "iosPhotoFrame")
   internal static let iosPhotoRectangle = ImageAsset(name: "iosPhotoRectangle")
   internal static let iosStatusbar = ImageAsset(name: "iosStatusbar")
+  internal static let loginLogo = ImageAsset(name: "loginLogo")
   internal static let logo = ImageAsset(name: "logo")
   internal static let photoInsert = ImageAsset(name: "photo_insert")
   internal static let profile = ImageAsset(name: "profile")

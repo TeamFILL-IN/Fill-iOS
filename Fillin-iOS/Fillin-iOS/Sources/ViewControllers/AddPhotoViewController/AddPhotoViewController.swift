@@ -219,7 +219,8 @@ extension AddPhotoViewController {
     
   }
   @objc func touchaddPhotoButton() {
-    let secondVC = SecondAddPhotoPopUpViewController()
+//    let secondVC = SecondAddPhotoPopUpViewController()
+    let secondVC = LoginViewController()
      secondVC.modalPresentationStyle = .overCurrentContext
      secondVC.modalTransitionStyle = .crossDissolve
      self.present(secondVC, animated: false, completion: nil)
