@@ -20,21 +20,23 @@ class FilmTypeCollectionViewCell: UICollectionViewCell {
     
     // MARK: - @IBOutlet Properties
     @IBAction func touchFilmTypeButtons(_ sender: UIButton) {
-        sender.isSelected = !sender.isSelected
-        switch sender.tag {
-        case 0:
-            print(sender.tag)
-            chosenViewLeading.constant = 0
-        case 1:
-            print(sender.tag)
-            chosenViewLeading.constant = viewWidth/4
-        case 2:
-            print(sender.tag)
-            chosenViewLeading.constant = (viewWidth/4)*2
-        case 3:
-            chosenViewLeading.constant = (viewWidth/4)*3
-        default:
-            return
+        if !sender.isSelected {
+            filmTypeButtons.forEach {
+                $0.isSelected = false
+            }
+            sender.isSelected = !sender.isSelected
+            switch sender.tag {
+            case 0:
+                chosenViewLeading.constant = 0
+            case 1:
+                chosenViewLeading.constant = viewWidth/4
+            case 2:
+                chosenViewLeading.constant = (viewWidth/4)*2
+            case 3:
+                chosenViewLeading.constant = (viewWidth/4)*3
+            default:
+                return
+            }
         }
     }
     
