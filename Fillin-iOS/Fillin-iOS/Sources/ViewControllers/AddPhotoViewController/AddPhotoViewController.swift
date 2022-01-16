@@ -44,7 +44,7 @@ class AddPhotoViewController: UIViewController {
     layout()
   }
   override func viewWillAppear(_ animated: Bool) {
-    self.photobackgroundView.image = Asset.icnAddPhotoBig.image
+    self.photobackgroundView.image = Asset.photoInsert.image
     self.filmchooseButton.setTitle("어떤 필름을 사용했나요?", for: .normal)
     self.studiochooseButton.setTitle("어떤 현상소에서 현상했나요?", for: .normal)
   }
@@ -54,7 +54,6 @@ extension AddPhotoViewController {
   func layout() {
     layoutNavigationBar()
     layoutPhotoBackgroundView()
-    layoutPhotoIcon()
     layoutFilmLabel()
     layoutFilmChooseButton()
     layoutStudioLabel()
@@ -76,24 +75,11 @@ extension AddPhotoViewController {
   }
   func layoutPhotoBackgroundView() {
     view.add(photobackgroundView) {
-      $0.backgroundColor = .darkGrey3
+      $0.image = UIImage(asset: Asset.photoInsert)
       $0.snp.makeConstraints {
         $0.top.equalTo(self.navigationBar.snp.bottom)
         $0.centerX.equalToSuperview()
         $0.width.height.equalTo(self.view.frame.width)
-      }
-    }
-  }
-  func layoutPhotoIcon() {
-    photobackgroundView.add(photoIcon) {
-      $0.setImage(UIImage(asset: Asset.icnAddPhotoBig), for: .normal)
-      $0.addTarget(self, action: #selector(self.touchimageView), for: .touchUpInside)
-      $0.adjustsImageWhenHighlighted = false
-      $0.snp.makeConstraints {
-        $0.centerX.equalToSuperview()
-        $0.centerY.equalToSuperview()
-        $0.width.equalTo(106)
-        $0.height.equalTo(106)
       }
     }
   }
