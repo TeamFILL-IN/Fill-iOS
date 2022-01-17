@@ -41,6 +41,8 @@ class MyPageViewController: UIViewController, ConstraintRelatableTarget {
     return collectionView
   }()
   
+  var serverNewPhotos : PhotosResponse?
+  
   // MARK: - LifeCycle
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -50,6 +52,7 @@ class MyPageViewController: UIViewController, ConstraintRelatableTarget {
     layout()
     self.myphotoCollectionview.delegate = self
     self.myphotoCollectionview.dataSource = self
+    userPhotosWithAPI(userID: 11)
   }
   
   override func viewDidLayoutSubviews() {
@@ -232,7 +235,7 @@ extension MyPageViewController {
   }
   func layoutMyPhotoCollectionView() {
     mypageScrollContainverView.add(myphotoCollectionview) {
-      $0.backgroundColor = .orange
+      $0.backgroundColor = .fillinBlack
       $0.isUserInteractionEnabled = true
       $0.snp.makeConstraints {
         $0.top.equalTo(self.myphotosLabel.snp.bottom).offset(12)
@@ -248,13 +251,15 @@ extension MyPageViewController : UICollectionViewDelegate {
   
 }
 
-extension MyPageViewController : UICollectionViewDataSource {
+extension MyPageViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 30
+    print(serverNewPhotos?.photos.count ?? 0)
+    return serverNewPhotos?.photos.count ?? 0
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     guard let myphotoCell = collectionView.dequeueReusableCell(withReuseIdentifier: MyPagePhotoCollectionViewCell.identifier, for: indexPath) as? MyPagePhotoCollectionViewCell else {return UICollectionViewCell() }
+    myphotoCell.mypagePhotoImageView.updateServerImage(serverNewPhotos?.photos[indexPath.row].imageURL ?? "")
     myphotoCell.awakeFromNib()
     return myphotoCell
   }
@@ -273,4 +278,29 @@ extension MyPageViewController: UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
     return 9
   }
+}
+
+// MARK: - Network
+extension MyPageViewController {
+  func userPhotosWithAPI(userID: Int) {
+      MyPageAPI.shared.userPhotos(userID: userID) { response in
+            switch response {
+            case .success(let data):
+              print("어쩔티비")
+              print(data)
+                if let photos = data as? PhotosResponse {
+                    self.serverNewPhotos = photos
+                    self.myphotoCollectionview.reloadData()
+                }
+            case .requestErr(let message):
+                print("userPhotosWithAPI - requestErr: \(message)")
+            case .pathErr:
+                print("userPhotosWithAPI - pathErr")
+            case .serverErr:
+                print("userPhotosWithAPI - serverErr")
+            case .networkFail:
+                print("userPhotosWithAPI - networkFail")
+            }
+        }
+    }
 }
