@@ -14,6 +14,10 @@ extension Const {
         static let photosTableViewCell = "PhotosTableViewCell"
         static let photosCollectionViewCell = "PhotosCollectionViewCell"
         static let arrowCollectionViewCell = "ArrowCollectionViewCell"
+        static let filmCurationCollectionViewCell = "FilmCurationCollectionViewCell"
+        static let filmTypeCollectionViewCell = "FilmTypeCollectionViewCell"
+        static let filmCurationCollectionReusableView = "FilmCurationCollectionReusableView"
+        static let filmCurationFirstCollectionViewCell = "FilmCurationFirstCollectionViewCell"
         static let studioSearchTableViewCell = "StudioSearchTableViewCell"
     }
 }
