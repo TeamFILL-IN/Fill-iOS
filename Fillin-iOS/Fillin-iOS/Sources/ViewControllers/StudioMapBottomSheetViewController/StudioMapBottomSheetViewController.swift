@@ -9,33 +9,30 @@ import UIKit
 class StudioMapBottomSheetViewController: UIViewController {
   
   // MARK: - Properties
-  var bottomHeight: CGFloat = 210
+  enum BottomSheetViewState {
+    case expanded
+    case normal
+  }
   
-  // bottomSheet가 view의 상단에서 떨어진 거리
+  private let contentViewController: UIViewController
   private var bottomSheetViewTopConstraint: NSLayoutConstraint!
+  var bottomSheetPanMinTopConstant: CGFloat = 50.0
+  var bottomHeight: CGFloat = 210
+  let defaultHeight: CGFloat = 210
+  private lazy var bottomSheetPanStartingTopConstant: CGFloat = bottomSheetPanMinTopConstant
   
-  // 기존 화면을 흐려지게 만들기 위한 뷰
-//  let dimmedBackView: UIView = {
-//    let view = UIView()
-//    view.backgroundColor = .clear
-//    return view
-//  }()
-  
-  // 바텀 시트 뷰
   let bottomSheetView: UIView = {
     let view = UIView()
     view.backgroundColor = .darkGrey2
     return view
   }()
   
-  // 애니메이션을 위한 뷰
   let bottomSheetCoverView: UIView = {
     let view = UIView()
     view.backgroundColor = .darkGrey2
     return view
   }()
   
-  // dismiss Indicator View UI 구성 부분
   private let dismissIndicatorView: UIView = {
     let view = UIView()
     view.backgroundColor = .darkGrey1
@@ -57,24 +54,43 @@ class StudioMapBottomSheetViewController: UIViewController {
     showBottomSheet()
   }
   
+  // MARK: - init
+  init(contentViewController: UIViewController) {
+    self.contentViewController = contentViewController
+    super.init(nibName: nil, bundle: nil)
+  }
+  
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+  
   // MARK: - @Functions
   // UI 세팅 작업
   private func setupUI() {
-    //view.addSubview(dimmedBackView)
+    addChild(contentViewController)
+    bottomSheetView.addSubview(contentViewController.view)
+    contentViewController.didMove(toParent: self)
+    bottomSheetView.clipsToBounds = true
+    
     view.addSubview(bottomSheetView)
     view.addSubview(dismissIndicatorView)
     view.addSubview(bottomSheetCoverView)
     view.backgroundColor = .clear
+
+    let viewPan = UIPanGestureRecognizer(target: self, action: #selector(viewPanned(_:)))
     
-   // dimmedBackView.alpha = 0.0
+    viewPan.delaysTouchesBegan = false
+    viewPan.delaysTouchesEnded = false
+    view.addGestureRecognizer(viewPan)
+    
     setupLayout()
   }
   
   private func setupGestureRecognizer() {
     // TapGesture
-//    let dimmedTap = UITapGestureRecognizer(target: self, action: #selector(dimmedViewTapped(_:)))
-//    dimmedBackView.addGestureRecognizer(dimmedTap)
-//    dimmedBackView.isUserInteractionEnabled = true
+    //    let dimmedTap = UITapGestureRecognizer(target: self, action: #selector(dimmedViewTapped(_:)))
+    //    dimmedBackView.addGestureRecognizer(dimmedTap)
+    //    dimmedBackView.isUserInteractionEnabled = true
     
     // swipeGesture
     let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(panGesture))
@@ -84,13 +100,13 @@ class StudioMapBottomSheetViewController: UIViewController {
   
   // 레이아웃
   private func setupLayout() {
-//    dimmedBackView.translatesAutoresizingMaskIntoConstraints = false
-//    NSLayoutConstraint.activate([
-//      dimmedBackView.topAnchor.constraint(equalTo: view.topAnchor),
-//      dimmedBackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-//      dimmedBackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-//      dimmedBackView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-//    ])
+    contentViewController.view.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      contentViewController.view.topAnchor.constraint(equalTo: bottomSheetView.topAnchor),
+      contentViewController.view.leadingAnchor.constraint(equalTo: bottomSheetView.leadingAnchor),
+      contentViewController.view.trailingAnchor.constraint(equalTo: bottomSheetView.trailingAnchor),
+      contentViewController.view.bottomAnchor.constraint(equalTo: bottomSheetView.bottomAnchor)
+    ])
     
     bottomSheetView.translatesAutoresizingMaskIntoConstraints = false
     let topConstant = view.safeAreaInsets.bottom + view.safeAreaLayoutGuide.layoutFrame.height
@@ -119,28 +135,28 @@ class StudioMapBottomSheetViewController: UIViewController {
     ])
   }
   
-  // 바텀 시트 표출 애니메이션
-  private func showBottomSheet() {
-    let safeAreaHeight: CGFloat = view.safeAreaLayoutGuide.layoutFrame.height
-    let bottomPadding: CGFloat = view.safeAreaInsets.bottom
+  private func showBottomSheet(atState: BottomSheetViewState = .normal) {
     
-    bottomSheetViewTopConstraint.constant = (safeAreaHeight + bottomPadding) - bottomHeight
+    if atState == .normal {
+      let safeAreaHeight: CGFloat = view.safeAreaLayoutGuide.layoutFrame.height
+      let bottomPadding: CGFloat = view.safeAreaInsets.bottom
+      bottomSheetViewTopConstraint.constant = (safeAreaHeight + bottomPadding) - defaultHeight
+    } else {
+      bottomSheetViewTopConstraint.constant = bottomSheetPanMinTopConstant
+    }
     
-    UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
-     // self.dimmedBackView.alpha = 1.0
+    UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseIn, animations: {
       self.view.layoutIfNeeded()
     }, completion: { _ in
       self.bottomSheetCoverView.isHidden = true
     })
   }
   
-  // 바텀 시트 사라지는 애니메이션
   func hideBottomSheetAndGoBack() {
     let safeAreaHeight = view.safeAreaLayoutGuide.layoutFrame.height
     let bottomPadding = view.safeAreaInsets.bottom
     bottomSheetViewTopConstraint.constant = safeAreaHeight + bottomPadding
     UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
-     // self.dimmedBackView.alpha = 0.0
       self.view.layoutIfNeeded()
       self.bottomSheetCoverView.isHidden = false
     }, completion: { _ in
@@ -150,35 +166,42 @@ class StudioMapBottomSheetViewController: UIViewController {
     })
   }
   
-  func panDownToDismiss() {
-      let panAction = UIPanGestureRecognizer(target: self, action: #selector(dimmedViewTapped(_:)))
-      self.bottomSheetView.addGestureRecognizer(panAction)
-    }
+  //  func panDownToDismiss() {
+  //    let panAction = UIPanGestureRecognizer(target: self, action: #selector(dimmedViewTapped(_:)))
+  //    self.bottomSheetView.addGestureRecognizer(panAction)
+  //  }
   
-  func hideBottomSheetAndPresentVC(nextViewController: UIViewController) {
-    let safeAreaHeight = view.safeAreaLayoutGuide.layoutFrame.height
-    let bottomPadding = view.safeAreaInsets.bottom
-    bottomSheetViewTopConstraint.constant = safeAreaHeight + bottomPadding
-    UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
-     //  self.dimmedBackView.alpha = 0.0
-      self.view.layoutIfNeeded()
-      self.bottomSheetCoverView.isHidden = false
-    }, completion: { _ in
-      if self.presentingViewController != nil {
-        guard let presentingVC = self.presentingViewController else { return }
-        self.dismiss(animated: false) {
-          let nextVC = nextViewController
-          nextVC.modalPresentationStyle = .overFullScreen
-          presentingVC.present(nextVC, animated: true, completion: nil)
-        }
-      }
-    })
+  //  func hideBottomSheetAndPresentVC(nextViewController: UIViewController) {
+  //    let safeAreaHeight = view.safeAreaLayoutGuide.layoutFrame.height
+  //    let bottomPadding = view.safeAreaInsets.bottom
+  //    bottomSheetViewTopConstraint.constant = safeAreaHeight + bottomPadding
+  //    UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
+  //      //  self.dimmedBackView.alpha = 0.0
+  //      self.view.layoutIfNeeded()
+  //      self.bottomSheetCoverView.isHidden = false
+  //    }, completion: { _ in
+  //      if self.presentingViewController != nil {
+  //        guard let presentingVC = self.presentingViewController else { return }
+  //        self.dismiss(animated: false) {
+  //          let nextVC = nextViewController
+  //          nextVC.modalPresentationStyle = .overFullScreen
+  //          presentingVC.present(nextVC, animated: true, completion: nil)
+  //        }
+  //      }
+  //    })
+  //  }
+  
+  func nearest(to number: CGFloat, inValues values: [CGFloat]) -> CGFloat {
+    guard let nearestVal = values.min(by: { abs(number - $0) < abs(number - $1) })
+    else { return number }
+    return nearestVal
   }
   
+  // MARK: - @objc
   @objc private func dimmedViewTapped(_ tapRecognizer: UITapGestureRecognizer) {
     hideBottomSheetAndGoBack()
   }
-
+  
   @objc func panGesture(_ recognizer: UISwipeGestureRecognizer) {
     if recognizer.state == .ended {
       switch recognizer.direction {
@@ -187,6 +210,39 @@ class StudioMapBottomSheetViewController: UIViewController {
       default:
         break
       }
+    }
+  }
+  
+  @objc private func viewPanned(_ panGestureRecognizer: UIPanGestureRecognizer) {
+    let translation = panGestureRecognizer.translation(in: self.view)
+    let velocity = panGestureRecognizer.velocity(in: view)
+    
+    switch panGestureRecognizer.state {
+    case .began:
+      bottomSheetPanStartingTopConstant = bottomSheetViewTopConstraint.constant
+    case .changed:
+      if bottomSheetPanStartingTopConstant + translation.y > bottomSheetPanMinTopConstant {
+        bottomSheetViewTopConstraint.constant = bottomSheetPanStartingTopConstant + translation.y
+      }
+    case .ended:
+      if velocity.y > 1500 {
+        hideBottomSheetAndGoBack()
+        return
+      }
+      let safeAreaHeight = view.safeAreaLayoutGuide.layoutFrame.height
+      let bottomPadding = view.safeAreaInsets.bottom
+      
+      let defaultPadding = safeAreaHeight + bottomPadding - defaultHeight
+      let nearestValue = nearest(to: bottomSheetViewTopConstraint.constant, inValues: [bottomSheetPanMinTopConstant, defaultPadding, safeAreaHeight + bottomPadding])
+      if nearestValue == bottomSheetPanMinTopConstant {
+        showBottomSheet(atState: .expanded)
+      } else if nearestValue == defaultPadding {
+        showBottomSheet(atState: .normal)
+      } else {
+        hideBottomSheetAndGoBack()
+      }
+    default:
+      break
     }
   }
 }

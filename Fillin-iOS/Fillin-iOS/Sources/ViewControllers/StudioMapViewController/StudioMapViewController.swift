@@ -18,7 +18,6 @@ class StudioMapViewController: UIViewController, NMFMapViewTouchDelegate {
   // MARK: - Properties
   let mapView = NMFNaverMapView(frame: .zero)
   let myLocationButton = UIButton()
-  let bottomSheet = StudioMapBottomSheetViewController()
   let dataSource = NMFInfoWindowDefaultTextSource.data()
   let magnifyingGlassButton = UIButton().then {
     $0.setImage(Asset.icnSearch.image, for: .normal)
@@ -46,6 +45,8 @@ class StudioMapViewController: UIViewController, NMFMapViewTouchDelegate {
     setUpMarkerInfo()
     layoutSearchView()
     layoutNavigaionBar()
+    let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: 37.35940010181669, lng: 127.10475679570187))
+    mapView.mapView.moveCamera(cameraUpdate)
   }
 }
 
@@ -82,7 +83,7 @@ extension StudioMapViewController {
         marker1.tag = 0
         marker1.iconImage = NMFOverlayImage(image: Asset.icnPlaceBig2.image)
       }
-      let nextVC = StudioMapBottomSheetViewController()
+      let nextVC = StudioMapBottomSheetViewController(contentViewController: StudioMapContentViewController())
       nextVC.modalPresentationStyle = .overCurrentContext
       nextVC.modalTransitionStyle = .crossDissolve
       self?.present(nextVC, animated: false, completion: nil)
