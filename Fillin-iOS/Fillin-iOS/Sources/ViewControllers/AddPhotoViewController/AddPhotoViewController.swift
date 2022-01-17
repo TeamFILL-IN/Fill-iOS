@@ -196,7 +196,7 @@ extension AddPhotoViewController {
       self.present(self.imagePickerController, animated: true, completion: nil)
     case .notDetermined:
       print("노 결정")
-    
+      
       PHPhotoLibrary.requestAuthorization({ state in
         DispatchQueue.main.async {
           if state == .authorized {
@@ -220,9 +220,9 @@ extension AddPhotoViewController {
   }
   @objc func touchaddPhotoButton() {
     let secondVC = SecondAddPhotoPopUpViewController()
-     secondVC.modalPresentationStyle = .overCurrentContext
-     secondVC.modalTransitionStyle = .crossDissolve
-     self.present(secondVC, animated: false, completion: nil)
+    secondVC.modalPresentationStyle = .overCurrentContext
+    secondVC.modalTransitionStyle = .crossDissolve
+    self.present(secondVC, animated: false, completion: nil)
   }
 }
 

@@ -73,5 +73,14 @@ extension UIFont {
   class var body1: UIFont {
     return UIFont(name: "NotoSansKR-Regular", size: 12.0)!
   }
+  
+  class var display: UIFont {
+    return UIFont(name: "NotoSansKR-Medium", size: 24.0)!
+  }
+  
+  class var engbigHead2: UIFont {
+    return UIFont(name: "FuturaStd-Bold", size: 24.0)!
+  }
+
 
 }
