@@ -1,5 +1,5 @@
 //
-//  Photos.swift
+//  PhotosResponse.swift
 //  Fillin-iOS
 //
 //  Created by Yi Joon Choi on 2022/01/17.
@@ -7,8 +7,8 @@
 
 import Foundation
 
-// MARK: - DataClass
-struct Photos: Codable {
+// MARK: - PhotosResponse
+struct PhotosResponse: Codable {
     let photos: [Photo]
 }
 

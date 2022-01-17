@@ -87,7 +87,7 @@
 		77E3C9162795466E0007EC0F /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E3C9152795466E0007EC0F /* URL.swift */; };
 		77E3C918279556FC0007EC0F /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E3C917279556FC0007EC0F /* Header.swift */; };
 		77E3C91A279557560007EC0F /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E3C919279557560007EC0F /* UserDefaultsKey.swift */; };
-		77E3C91D27955D730007EC0F /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E3C91C27955D730007EC0F /* Photos.swift */; };
+		77E3C91D27955D730007EC0F /* PhotosResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E3C91C27955D730007EC0F /* PhotosResponse.swift */; };
 		9ADF3537C1D51ED22F4C921B /* Pods_Fillin_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F33300C623DFF466AFCE2914 /* Pods_Fillin_iOS.framework */; };
 		E83AA9FA2793BED200A6B0C4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83AA9F92793BED200A6B0C4 /* LoginViewController.swift */; };
 		E83AA9FD2793BEE500A6B0C4 /* OnboardingFirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83AA9FC2793BEE500A6B0C4 /* OnboardingFirstViewController.swift */; };
@@ -186,7 +186,7 @@
 		77E3C9152795466E0007EC0F /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		77E3C917279556FC0007EC0F /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		77E3C919279557560007EC0F /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
-		77E3C91C27955D730007EC0F /* Photos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
+		77E3C91C27955D730007EC0F /* PhotosResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosResponse.swift; sourceTree = "<group>"; };
 		864A552B88FE473B50DE4171 /* Pods-Fillin-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fillin-iOS.debug.xcconfig"; path = "Target Support Files/Pods-Fillin-iOS/Pods-Fillin-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		E83AA9F92793BED200A6B0C4 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E83AA9FC2793BEE500A6B0C4 /* OnboardingFirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFirstViewController.swift; sourceTree = "<group>"; };
@@ -412,7 +412,7 @@
 			children = (
 				77E3C911279542390007EC0F /* NetworkResult.swift */,
 				77E3C9132795424D0007EC0F /* GenericResponse.swift */,
-				77E3C91C27955D730007EC0F /* Photos.swift */,
+				77E3C91C27955D730007EC0F /* PhotosResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -879,7 +879,7 @@
 				775C969A278AD89F00A9BEA0 /* FilmRollViewController.swift in Sources */,
 				77337B5527911EE600933DBD /* FilmCurationCollectionViewCell.swift in Sources */,
 				77E3C9142795424D0007EC0F /* GenericResponse.swift in Sources */,
-				77E3C91D27955D730007EC0F /* Photos.swift in Sources */,
+				77E3C91D27955D730007EC0F /* PhotosResponse.swift in Sources */,
 				77E3C912279542390007EC0F /* NetworkResult.swift in Sources */,
 				775C96A2278AD8BB00A9BEA0 /* MyPageViewController.swift in Sources */,
 				77B3521A2791C052001718DE /* FilmRollSection.swift in Sources */,

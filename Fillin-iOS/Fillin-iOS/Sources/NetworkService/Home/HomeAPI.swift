@@ -34,7 +34,7 @@ public class HomeAPI {
     private func judgeLatestPhotosStatus(by statusCode: Int, _ data: Data) -> NetworkResult<Any> {
 
         let decoder = JSONDecoder()
-        guard let decodedData = try? decoder.decode(GenericResponse<Photos>.self, from: data)
+        guard let decodedData = try? decoder.decode(GenericResponse<PhotosResponse>.self, from: data)
         else {
             return .pathErr
         }
