@@ -9,6 +9,9 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
+    // MARK: - Properties
+    var newPhotos: PhotosResponse?
+    
     // MARK: - @IBOutlet Properties
     @IBOutlet weak var homeTableView: UITableView!
     @IBOutlet weak var floatingButton: UIView!
@@ -42,6 +45,8 @@ extension HomeViewController {
         if #available(iOS 15, *) {
             homeTableView.sectionHeaderTopPadding = 0
         }
+        
+        latestPhotosWithAPI()
     }
     
     private func registerXib() {
@@ -142,4 +147,29 @@ extension HomeViewController: UITableViewDelegate {
         }
     }
     
+}
+
+// MARK: - Network
+extension HomeViewController {
+    func latestPhotosWithAPI() {
+        HomeAPI.shared.latestPhotos { response in
+            switch response {
+            case .success(let data):
+                if let photos = data as? PhotosResponse {
+//                    self.newPhotos = photos
+//                    self.homeTableView.reloadData()
+                    print("photos")
+                    print(photos)
+                }
+            case .requestErr(let message):
+                print("latestPhotosWithAPI - requestErr: \(message)")
+            case .pathErr:
+                print("latestPhotosWithAPI - pathErr")
+            case .serverErr:
+                print("latestPhotosWithAPI - serverErr")
+            case .networkFail:
+                print("latestPhotosWithAPI - networkFail")
+            }
+        }
+    }
 }
