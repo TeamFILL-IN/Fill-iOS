@@ -10,7 +10,7 @@ import UIKit
 class HomeViewController: UIViewController {
 
     // MARK: - Properties
-    var newPhotos: PhotosResponse?
+    var serverNewPhotos: PhotosResponse?
     
     // MARK: - @IBOutlet Properties
     @IBOutlet weak var homeTableView: UITableView!
@@ -128,6 +128,7 @@ extension HomeViewController: UITableViewDataSource {
             }
             
             photosCell.selectionStyle = .none
+            photosCell.updateNewPhotos(data: serverNewPhotos ?? PhotosResponse(photos: []))
             return photosCell
         default:
             return UITableViewCell()
@@ -156,10 +157,8 @@ extension HomeViewController {
             switch response {
             case .success(let data):
                 if let photos = data as? PhotosResponse {
-//                    self.newPhotos = photos
-//                    self.homeTableView.reloadData()
-                    print("photos")
-                    print(photos)
+                    self.serverNewPhotos = photos
+                    self.homeTableView.reloadData()
                 }
             case .requestErr(let message):
                 print("latestPhotosWithAPI - requestErr: \(message)")

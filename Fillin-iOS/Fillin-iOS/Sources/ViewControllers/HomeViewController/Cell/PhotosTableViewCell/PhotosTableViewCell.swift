@@ -6,9 +6,13 @@
 //
 
 import UIKit
+import Kingfisher
 
 class PhotosTableViewCell: UITableViewCell {
 
+    // MARK: - Properties
+    var serverNewPhotos: PhotosResponse?
+    
     // MARK: - @IBOutlet Properties
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var photosCollectionView: UICollectionView!
@@ -49,7 +53,7 @@ extension PhotosTableViewCell: UICollectionViewDelegateFlowLayout {
         var height: CGFloat
 
         switch indexPath.row {
-        case 7:
+        case 8:
             width = 65
             height = collectionView.frame.size.height
         default:
@@ -67,12 +71,13 @@ extension PhotosTableViewCell: UICollectionViewDelegateFlowLayout {
 // MARK: - UICollectionViewDataSource
 extension PhotosTableViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 8
+//        return 1 + (serverNewPhotos?.photos.count ?? 0)
+        return 9
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch indexPath.row {
-        case 7:
+        case 8:
             guard let arrowCell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Xib.arrowCollectionViewCell, for: indexPath) as? ArrowCollectionViewCell else {
                 return UICollectionViewCell()
             }
@@ -83,6 +88,10 @@ extension PhotosTableViewCell: UICollectionViewDataSource {
                 return UICollectionViewCell()
             }
             
+//            photoCell.photoImageView.updateServerImage(serverNewPhotos?.photos[indexPath.row].imageURL ?? "")
+            
+            photoCell.photoImageView.updateServerImage("https://mblogthumb-phinf.pstatic.net/MjAxODAzMTRfMjcz/MDAxNTIwOTU0NTM4MDY1.5WmSbdqE3GMfHq8dwgRjPUFFUVf6Q5XwpIFc-_JZfpkg.vZDTqlsDfLQOAB7qQfdNHhEuGNk6umQox1WRjKPWriYg.JPEG.kj_8/20160901_57c7ce9428fe6.jpg?type=w2")
+
             return photoCell
         }
         
@@ -90,7 +99,7 @@ extension PhotosTableViewCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch indexPath.row {
-        case 7:
+        case 8:
             NotificationCenter.default.post(name: .pushToFilmRollViewController, object: nil)
         default:
             return
@@ -102,4 +111,12 @@ extension PhotosTableViewCell: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate
 extension PhotosTableViewCell: UICollectionViewDelegate {
     
+}
+
+// MARK: - Network
+extension PhotosTableViewCell {
+    func updateNewPhotos(data: PhotosResponse) {
+        serverNewPhotos = data
+        photosCollectionView.reloadData()
+    }
 }
