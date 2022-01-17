@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FilmCurationCollectionReusableView" id="U6b-Vx-4bR" customClass="FilmCurationCollectionReusableView" customModule="Fillin_iOS" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hCq-GX-zib">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FILM CURATION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ml7-RT-vR4">
+                            <rect key="frame" x="0.0" y="14.5" width="125" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" name="Fillin_white"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" name="Fillin_black"/>
+                    <constraints>
+                        <constraint firstItem="ml7-RT-vR4" firstAttribute="centerY" secondItem="hCq-GX-zib" secondAttribute="centerY" id="I0W-jZ-Kzl"/>
+                        <constraint firstItem="ml7-RT-vR4" firstAttribute="leading" secondItem="hCq-GX-zib" secondAttribute="leading" id="IvR-mX-1kL"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="VXr-Tz-HHm"/>
+            <constraints>
+                <constraint firstItem="hCq-GX-zib" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" id="3I0-r9-GFo"/>
+                <constraint firstAttribute="bottom" secondItem="hCq-GX-zib" secondAttribute="bottom" id="pbA-4h-asw"/>
+                <constraint firstItem="VXr-Tz-HHm" firstAttribute="trailing" secondItem="hCq-GX-zib" secondAttribute="trailing" id="rQi-9b-Ey6"/>
+                <constraint firstItem="hCq-GX-zib" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" id="uIL-at-Qnu"/>
+            </constraints>
+            <connections>
+                <outlet property="titleLabel" destination="ml7-RT-vR4" id="hjl-mr-bXA"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="53.571428571428569"/>
+        </collectionReusableView>
+    </objects>
+    <resources>
+        <namedColor name="Fillin_black">
+            <color red="0.0039215686274509803" green="0.0039215686274509803" blue="0.0039215686274509803" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Fillin_white">
+            <color red="0.99215686274509807" green="0.98039215686274506" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

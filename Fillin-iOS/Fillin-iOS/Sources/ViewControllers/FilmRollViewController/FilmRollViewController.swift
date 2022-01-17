@@ -8,21 +8,52 @@
 import UIKit
 
 class FilmRollViewController: UIViewController {
-
+    
+    // MARK: - Properties
+    private let dataSource = FilmRollViewControllerDataSource()
+    
+    // MARK: - @IBOutlet Properties
+    @IBOutlet weak var navigationBar: FilinNavigationBar!
+    @IBOutlet weak var filmRollCollectionView: UICollectionView!
+    
+    // MARK: - @IBAction Properties
+    @IBAction func touchAddPhotoButton(_ sender: Any) {
+        let nextVC = AddPhotoViewController()
+        self.navigationController?.pushViewController(nextVC, animated: true)
+    }
+    
+    // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        setUI()
+        setNavigationBar()
+        registerXib()
     }
+    
+}
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+// MARK: - Extensions
+extension FilmRollViewController {
+    private func setUI() {
+        filmRollCollectionView.dataSource = dataSource
+        filmRollCollectionView.collectionViewLayout = createLayout()
     }
-    */
-
+    
+    private func setNavigationBar() {
+        self.navigationController?.navigationBar.isHidden = true
+        navigationBar.popViewController = {
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    private func registerXib() {
+        filmRollCollectionView.register(FilmCurationFirstCollectionViewCell.nib(), forCellWithReuseIdentifier: Const.Xib.filmCurationFirstCollectionViewCell)
+        filmRollCollectionView.register(FilmCurationCollectionViewCell.nib(), forCellWithReuseIdentifier: Const.Xib.filmCurationCollectionViewCell)
+        filmRollCollectionView.register(FilmTypeCollectionViewCell.nib(), forCellWithReuseIdentifier: Const.Xib.filmTypeCollectionViewCell)
+        filmRollCollectionView.register(
+            FilmCurationCollectionReusableView.nib(),
+            forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+            withReuseIdentifier: Const.Xib.filmCurationCollectionReusableView)
+    }
 }
