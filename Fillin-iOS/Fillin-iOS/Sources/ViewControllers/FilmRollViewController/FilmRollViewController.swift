@@ -16,6 +16,12 @@ class FilmRollViewController: UIViewController {
     @IBOutlet weak var navigationBar: FilinNavigationBar!
     @IBOutlet weak var filmRollCollectionView: UICollectionView!
     
+    // MARK: - @IBAction Properties
+    @IBAction func touchAddPhotoButton(_ sender: Any) {
+        let nextVC = AddPhotoViewController()
+        self.navigationController?.pushViewController(nextVC, animated: true)
+    }
+    
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
