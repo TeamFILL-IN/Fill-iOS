@@ -73,13 +73,13 @@
 
 /* Begin PBXFileReference section */
 		18FC9C8D02E669D0F43E8733 /* Pods-Fillin-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fillin-iOS.release.xcconfig"; path = "Target Support Files/Pods-Fillin-iOS/Pods-Fillin-iOS.release.xcconfig"; sourceTree = "<group>"; };
-		6FC9A426279091EA00B94CFB /* StudioMapBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudioMapBottomSheetViewController.swift; sourceTree = "<group>"; };
-		6FC9A427279091EA00B94CFB /* StudioMapBottomSheetViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StudioMapBottomSheetViewController.xib; sourceTree = "<group>"; };
-		6FDA263927927EDD00DA4DD2 /* MapLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapLocation.swift; sourceTree = "<group>"; };
 		6FB32C96279378C900CCAFAB /* StudioMapSearchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StudioMapSearchTableViewCell.xib; sourceTree = "<group>"; };
 		6FB32C97279378C900CCAFAB /* StudioMapSearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudioMapSearchTableViewCell.swift; sourceTree = "<group>"; };
 		6FB32C98279378C900CCAFAB /* StudioMapSearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StudioMapSearchViewController.xib; sourceTree = "<group>"; };
 		6FB32C99279378C900CCAFAB /* StudioMapSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudioMapSearchViewController.swift; sourceTree = "<group>"; };
+		6FC9A426279091EA00B94CFB /* StudioMapBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudioMapBottomSheetViewController.swift; sourceTree = "<group>"; };
+		6FC9A427279091EA00B94CFB /* StudioMapBottomSheetViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StudioMapBottomSheetViewController.xib; sourceTree = "<group>"; };
+		6FDA263927927EDD00DA4DD2 /* MapLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapLocation.swift; sourceTree = "<group>"; };
 		775C9645278ACBEA00A9BEA0 /* Fillin-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fillin-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		775C9648278ACBEA00A9BEA0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		775C964A278ACBEA00A9BEA0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -263,9 +263,9 @@
 				775C968D278AD1AB00A9BEA0 /* HomeViewController */,
 				775C968B278AD1A700A9BEA0 /* FilmRollViewController */,
 				77628EA9278D7AC400CB5919 /* FilmRollClickViewController */,
+				6FC9A42A279091F700B94CFB /* StudioMapBottomSheetViewController */,
 				775C968C278AD1A900A9BEA0 /* StudioMapViewController */,
 				775C968A278AD1A500A9BEA0 /* AddPhotoViewController */,
-				6FC9A42A279091F700B94CFB /* StudioMapBottomSheetViewController */,
 				775C9670278ACF5400A9BEA0 /* MyPageViewController */,
 			);
 			path = ViewControllers;

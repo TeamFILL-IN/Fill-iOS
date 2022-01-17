@@ -13,7 +13,7 @@ import SnapKit
 import Then
 import MapKit
 
-class StudioMapViewController: UIViewController {
+class StudioMapViewController: UIViewController, NMFMapViewTouchDelegate {
   
   // MARK: - Properties
   let mapView = NMFNaverMapView(frame: .zero)
@@ -40,7 +40,6 @@ class StudioMapViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     setUpMapView()
-    setUpMarker()
     setUpNavigationBar()
     layoutMapView()
     layoutMyLocationButton()
@@ -203,16 +202,5 @@ extension StudioMapViewController: CLLocationManagerDelegate {
     default:
       print("GPS: Default")
     }
-  }
-}
-
-extension StudioMapViewController: NMFMapViewTouchDelegate {
-  func mapView(_ mapView: NMFMapView, didTapMap latlng: NMGLatLng, point: CGPoint) {
-    infoWindow.close()
-    
-    let latlngStr = String(format: "좌표:(%.5f, %.5f)", latlng.lat, latlng.lng)
-    defaultInfoWindowImage.title = latlngStr
-    infoWindow.position = latlng
-    infoWindow.open(with: mapView)
   }
 }
