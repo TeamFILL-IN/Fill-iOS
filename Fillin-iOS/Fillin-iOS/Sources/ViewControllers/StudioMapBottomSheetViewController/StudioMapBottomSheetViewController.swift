@@ -1,7 +1,7 @@
 //
 //  StudioMapBottomSheetViewController.swift
 //  Fillin-iOS
-//
+///Users/jumin/Fill-iOS/Fillin-iOS/Fillin-iOS/Sources/ViewControllers/StudioMapBottomSheetViewController
 //  Created by 임주민 on 2022/01/14.
 //
 import UIKit
@@ -166,7 +166,7 @@ class StudioMapBottomSheetViewController: UIViewController {
   }
   
   func setNotification() {
-    NotificationCenter.default.post(name: NSNotification.Name("TestNotification"), object: nil, userInfo: nil)
+    NotificationCenter.default.post(name: NSNotification.Name.changeMarker, object: nil, userInfo: nil)
   }
   
   // MARK: - @objc

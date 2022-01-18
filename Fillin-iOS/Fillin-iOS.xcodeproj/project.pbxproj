@@ -452,8 +452,8 @@
 				6F3B873527968AEB00A4BD07 /* AddPhotoViewController */,
 				6F3B873827968AEB00A4BD07 /* FilmRollClickViewController */,
 				6F3B873B27968AEB00A4BD07 /* FilmRollViewController */,
-				6F3B874F27968AEB00A4BD07 /* StudioMapBottomSheetViewController */,
 				6F3B876627968AEB00A4BD07 /* LoginViewController */,
+				6F3B874F27968AEB00A4BD07 /* StudioMapBottomSheetViewController */,
 				6F3B875227968AEB00A4BD07 /* HomeViewController */,
 			);
 			path = ViewControllers;
