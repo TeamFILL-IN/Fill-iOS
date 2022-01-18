@@ -87,12 +87,7 @@ class StudioMapBottomSheetViewController: UIViewController {
   }
   
   private func setupGestureRecognizer() {
-    // TapGesture
-    //    let dimmedTap = UITapGestureRecognizer(target: self, action: #selector(dimmedViewTapped(_:)))
-    //    dimmedBackView.addGestureRecognizer(dimmedTap)
-    //    dimmedBackView.isUserInteractionEnabled = true
-    
-    // swipeGesture
+
     let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(panGesture))
     swipeGesture.direction = .down
     view.addGestureRecognizer(swipeGesture)
@@ -165,32 +160,7 @@ class StudioMapBottomSheetViewController: UIViewController {
       }
     })
   }
-  
-  //  func panDownToDismiss() {
-  //    let panAction = UIPanGestureRecognizer(target: self, action: #selector(dimmedViewTapped(_:)))
-  //    self.bottomSheetView.addGestureRecognizer(panAction)
-  //  }
-  
-  //  func hideBottomSheetAndPresentVC(nextViewController: UIViewController) {
-  //    let safeAreaHeight = view.safeAreaLayoutGuide.layoutFrame.height
-  //    let bottomPadding = view.safeAreaInsets.bottom
-  //    bottomSheetViewTopConstraint.constant = safeAreaHeight + bottomPadding
-  //    UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
-  //      //  self.dimmedBackView.alpha = 0.0
-  //      self.view.layoutIfNeeded()
-  //      self.bottomSheetCoverView.isHidden = false
-  //    }, completion: { _ in
-  //      if self.presentingViewController != nil {
-  //        guard let presentingVC = self.presentingViewController else { return }
-  //        self.dismiss(animated: false) {
-  //          let nextVC = nextViewController
-  //          nextVC.modalPresentationStyle = .overFullScreen
-  //          presentingVC.present(nextVC, animated: true, completion: nil)
-  //        }
-  //      }
-  //    })
-  //  }
-  
+
   func nearest(to number: CGFloat, inValues values: [CGFloat]) -> CGFloat {
     guard let nearestVal = values.min(by: { abs(number - $0) < abs(number - $1) })
     else { return number }
