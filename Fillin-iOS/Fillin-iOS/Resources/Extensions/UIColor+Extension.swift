@@ -77,8 +77,9 @@ extension UIColor {
   @nonobjc class var fillinRedBtnPress: UIColor {
     return UIColor(red: 213.0 / 255.0, green: 108.0 / 255.0, blue: 70.0 / 255.0, alpha: 1.0)
   }
+  
   @nonobjc class var backgroundCover: UIColor {
-    return UIColor(white: 0.0, alpha: 0.6)
+      return UIColor(white: 0.0, alpha: 0.6)
   }
 
 }
