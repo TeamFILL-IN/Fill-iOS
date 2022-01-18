@@ -40,7 +40,7 @@ class MyPageViewController: UIViewController {
     collectionView.translatesAutoresizingMaskIntoConstraints = false
     return collectionView
   }()
-  var serverNewPhotos : PhotosResponse?
+  var serverNewPhotos: PhotosResponse?
   
   // MARK: - LifeCycle
   override func viewDidLoad() {
@@ -243,7 +243,7 @@ extension MyPageViewController {
   }
 }
 // MARK: - UICollectionView
-extension MyPageViewController : UICollectionViewDelegate {
+extension MyPageViewController: UICollectionViewDelegate {
   
 }
 

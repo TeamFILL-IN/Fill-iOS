@@ -105,7 +105,7 @@ extension SecondAddPhotoPopUpViewController {
     }
   }
   @objc func touchDeleteButton() {
-    /// 현재 올라와있는 모달을 dismiss 하고 FilmRollVC 로 Push 하는 코드
+    // 현재 올라와있는 모달을 dismiss 하고 FilmRollVC 로 Push 하는 코드
     guard let parentVC = presentingViewController as? UINavigationController else { return }
     dismiss(animated: true) {
         parentVC.pushViewController(FilmRollViewController(), animated: true)

@@ -167,7 +167,7 @@ extension AddPhotoViewController {
       }
     }
   }
-  /// 사용자가 권한 deny 눌렀을 경우 Settings로 보내도록
+  // 사용자가 권한 deny 눌렀을 경우 Settings로 보내도록
   func settingAlert() {
     if let appName = Bundle.main.infoDictionary!["CFBunldName"] as? String {
       let alert = UIAlertController(title: "설정", message: "\(appName)이(가) 카메라 접근 허용이 되어있지 않습니다. 설정화면으로 가시겠습니까?", preferredStyle: .alert)
@@ -228,7 +228,7 @@ extension AddPhotoViewController {
 
 // MARK: - ImagePicker Extension
 extension AddPhotoViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-  func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+  func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
     if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
       photobackgroundView.image = image
       photobackgroundView.contentMode = .scaleAspectFit
