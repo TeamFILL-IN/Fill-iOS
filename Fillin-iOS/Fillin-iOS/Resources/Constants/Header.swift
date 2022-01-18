@@ -12,6 +12,6 @@ extension Const {
 //        static var tokenHeader = ["Content-Type": "application/json",
 //                                  "token": accessToken]
         static var tokenHeader = ["Content-Type": "application/json",
-                                  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsImVtYWlsIjoiIiwiaWF0IjoxNjQyNDA1MDUyLCJleHAiOjE2NDM2MTQ2NTIsImlzcyI6ImZpbGxpbiJ9.NFD7MuGQmNcEw8l_NlWkxgz0Hx6KaQk4m4qwEDPuw5U"]
+                                  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsImVtYWlsIjoiIiwiaWF0IjoxNjQyNDc0NTk1LCJleHAiOjE2NDM2ODQxOTUsImlzcyI6ImZpbGxpbiJ9.klSTrcs7HO47mIZ6zICaB33O3KukthGIdyPmKQKCSUk"]
     }
 }
