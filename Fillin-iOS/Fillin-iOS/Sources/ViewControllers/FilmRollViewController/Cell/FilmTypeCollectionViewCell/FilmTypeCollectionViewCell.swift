@@ -22,6 +22,7 @@ class FilmTypeCollectionViewCell: UICollectionViewCell {
     
     // MARK: - @IBOutlet Properties
     @IBAction func touchFilmTypeButtons(_ sender: UIButton) {
+        // TODO: 서버 붙이고 반복코드 리팩토링
         if !sender.isSelected {
             filmTypeButtons.forEach {
                 $0.isSelected = false
@@ -55,6 +56,7 @@ class FilmTypeCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         setUI()
         setGesture()
+        setNotification()
     }
     
     // MARK: - Functions
@@ -68,6 +70,7 @@ class FilmTypeCollectionViewCell: UICollectionViewCell {
         }
         chooseFilmLabel.font = .body2
         filmTypeButtons[selectedTag].isSelected = true
+        chosenViewLeading.constant = selectedLeading
     }
     
     private func setGesture() {
@@ -76,9 +79,25 @@ class FilmTypeCollectionViewCell: UICollectionViewCell {
         chooseFilmView.addGestureRecognizer(tapGesture)
     }
     
+    private func setNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(updateSelectedFilmType), name: Notification.Name.updateSelectedFilmType, object: nil)
+    }
+    
     @objc func touchChooseFilmView(_ sender: UITapGestureRecognizer) {
         // TODO: 필름 종류 선택 뷰로 이동
         let selectedFilmDict = ["selectedTag": selectedTag, "selectedLeading": selectedLeading] as [String: Any]
         NotificationCenter.default.post(name: NSNotification.Name.pushToFilmSelectViewController, object: selectedFilmDict, userInfo: nil)
+    }
+    
+    @objc func updateSelectedFilmType(_ notification: Notification) {
+        // TODO: touchFilmTypeButtons에서도 사용되기 때문에 더러운 코드 리팩토링
+        filmTypeButtons.forEach {
+            $0.isSelected = false
+        }
+        let selectedFilmDict = notification.object as? NSDictionary
+        selectedTag = selectedFilmDict?["selectedTag"] as? Int ?? 0
+        selectedLeading = selectedFilmDict?["selectedLeading"] as? CGFloat ?? 0
+        filmTypeButtons[selectedTag].isSelected = true
+        chosenViewLeading.constant = selectedLeading
     }
 }

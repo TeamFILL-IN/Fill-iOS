@@ -52,6 +52,7 @@ class FilmSelectViewController: UIViewController {
         super.viewDidLoad()
         setUI()
         setNavigationBar()
+        registerXib()
     }
 }
 // MARK: - Extensions
@@ -62,6 +63,8 @@ extension FilmSelectViewController {
         }
         filmTypeButtons[selectedTag].isSelected = true
         chosenViewLeading.constant = selectedLeading
+        filmTypeTableView.delegate = self
+        filmTypeTableView.dataSource = self
     }
     
     private func setNavigationBar() {
@@ -69,5 +72,39 @@ extension FilmSelectViewController {
         navigationBar.popViewController = {
             self.navigationController?.popViewController(animated: true)
         }
+    }
+    
+    private func registerXib() {
+        filmTypeTableView.register(FilmTypeTableViewCell.nib(), forCellReuseIdentifier: Const.Xib.filmTypeTableViewCell)
+    }
+}
+
+// MARK: - UITableViewDataSource
+extension FilmSelectViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let filmCell = tableView.dequeueReusableCell(withIdentifier: Const.Xib.filmTypeTableViewCell, for: indexPath) as? FilmTypeTableViewCell else {
+            return UITableViewCell()
+        }
+        
+        filmCell.filmNameLabel.text = "Kodak color plus 200 abcdefg1234567"
+        return filmCell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
+    
+}
+
+// MARK: - UITableViewDelegate
+extension FilmSelectViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedFilmDict = ["selectedTag": selectedTag, "selectedLeading": selectedLeading] as [String: Any]
+        NotificationCenter.default.post(name: NSNotification.Name.updateSelectedFilmType, object: selectedFilmDict, userInfo: nil)
+        self.navigationController?.popViewController(animated: true)
     }
 }
