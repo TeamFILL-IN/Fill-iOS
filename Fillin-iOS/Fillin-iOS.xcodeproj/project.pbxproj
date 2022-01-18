@@ -376,14 +376,14 @@
 		6F3B870527968AEB00A4BD07 /* NetworkService */ = {
 			isa = PBXGroup;
 			children = (
+				6F3B871727968AEB00A4BD07 /* HowTo.swift */,
 				6F3B870627968AEB00A4BD07 /* Home */,
 				6F3B870927968AEB00A4BD07 /* Plugin */,
 				6F3B870B27968AEB00A4BD07 /* User */,
-				6F3B870E27968AEB00A4BD07 /* MyPage */,
 				6F3B871127968AEB00A4BD07 /* AddPhoto */,
-				6F3B871427968AEB00A4BD07 /* StudioMap */,
-				6F3B871727968AEB00A4BD07 /* HowTo.swift */,
 				6F3B871827968AEB00A4BD07 /* FilmRoll */,
+				6F3B871427968AEB00A4BD07 /* StudioMap */,
+				6F3B870E27968AEB00A4BD07 /* MyPage */,
 			);
 			path = NetworkService;
 			sourceTree = "<group>";
