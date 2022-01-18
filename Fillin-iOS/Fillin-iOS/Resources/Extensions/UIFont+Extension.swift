@@ -82,5 +82,4 @@ extension UIFont {
     return UIFont(name: "FuturaStd-Bold", size: 24.0)!
   }
 
-
 }

@@ -25,10 +25,11 @@ class FilmRollViewController: UIViewController {
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setUI()
         setNavigationBar()
         registerXib()
+        setNotification()
     }
     
 }
@@ -55,5 +56,17 @@ extension FilmRollViewController {
             FilmCurationCollectionReusableView.nib(),
             forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
             withReuseIdentifier: Const.Xib.filmCurationCollectionReusableView)
+    }
+    
+    private func setNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(pushToFilmTypeViewController), name: Notification.Name.pushToFilmSelectViewController, object: nil)
+    }
+    
+    @objc func pushToFilmTypeViewController(_ notification: Notification) {
+        let selectedFilmDict = notification.object as? NSDictionary
+        let nextVC = FilmSelectViewController()
+        nextVC.selectedTag = selectedFilmDict?["selectedTag"] as? Int ?? 0
+        nextVC.selectedLeading = selectedFilmDict?["selectedLeading"] as? CGFloat ?? 0
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
 }
