@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		77337B5527911EE600933DBD /* FilmCurationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77337B5327911EE600933DBD /* FilmCurationCollectionViewCell.swift */; };
-		77337B5627911EE600933DBD /* FilmCurationCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77337B5427911EE600933DBD /* FilmCurationCollectionViewCell.xib */; };
 		6F3B85CE2795649400A4BD07 /* StudioMapContentViewController copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3B85CC2795649400A4BD07 /* StudioMapContentViewController copy.swift */; };
 		6F3B85CF2795649400A4BD07 /* StudioMapContentViewController copy.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F3B85CD2795649400A4BD07 /* StudioMapContentViewController copy.xib */; };
+		6F3B85D727967BF200A4BD07 /* StudioMapCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3B85D527967BF200A4BD07 /* StudioMapCollectionViewCell.swift */; };
+		6F3B85D827967BF200A4BD07 /* StudioMapCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F3B85D627967BF200A4BD07 /* StudioMapCollectionViewCell.xib */; };
 		6FB32C9C279378C900CCAFAB /* StudioMapSearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FB32C96279378C900CCAFAB /* StudioMapSearchTableViewCell.xib */; };
 		6FB32C9D279378C900CCAFAB /* StudioMapSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB32C97279378C900CCAFAB /* StudioMapSearchTableViewCell.swift */; };
 		6FB32C9E279378C900CCAFAB /* StudioMapSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FB32C98279378C900CCAFAB /* StudioMapSearchViewController.xib */; };
@@ -18,6 +18,8 @@
 		6FC9A428279091EA00B94CFB /* StudioMapBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC9A426279091EA00B94CFB /* StudioMapBottomSheetViewController.swift */; };
 		6FC9A429279091EA00B94CFB /* StudioMapBottomSheetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FC9A427279091EA00B94CFB /* StudioMapBottomSheetViewController.xib */; };
 		6FDA263A27927EDD00DA4DD2 /* MapLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDA263927927EDD00DA4DD2 /* MapLocation.swift */; };
+		77337B5527911EE600933DBD /* FilmCurationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77337B5327911EE600933DBD /* FilmCurationCollectionViewCell.swift */; };
+		77337B5627911EE600933DBD /* FilmCurationCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77337B5427911EE600933DBD /* FilmCurationCollectionViewCell.xib */; };
 		775C9649278ACBEA00A9BEA0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775C9648278ACBEA00A9BEA0 /* AppDelegate.swift */; };
 		775C964B278ACBEA00A9BEA0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775C964A278ACBEA00A9BEA0 /* SceneDelegate.swift */; };
 		775C9652278ACBEB00A9BEA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 775C9651278ACBEB00A9BEA0 /* Assets.xcassets */; };
@@ -93,15 +95,17 @@
 		18FC9C8D02E669D0F43E8733 /* Pods-Fillin-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fillin-iOS.release.xcconfig"; path = "Target Support Files/Pods-Fillin-iOS/Pods-Fillin-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		6F3B85CC2795649400A4BD07 /* StudioMapContentViewController copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StudioMapContentViewController copy.swift"; sourceTree = "<group>"; };
 		6F3B85CD2795649400A4BD07 /* StudioMapContentViewController copy.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "StudioMapContentViewController copy.xib"; sourceTree = "<group>"; };
+		6F3B85D527967BF200A4BD07 /* StudioMapCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudioMapCollectionViewCell.swift; sourceTree = "<group>"; };
+		6F3B85D627967BF200A4BD07 /* StudioMapCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StudioMapCollectionViewCell.xib; sourceTree = "<group>"; };
 		6FB32C96279378C900CCAFAB /* StudioMapSearchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StudioMapSearchTableViewCell.xib; sourceTree = "<group>"; };
 		6FB32C97279378C900CCAFAB /* StudioMapSearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudioMapSearchTableViewCell.swift; sourceTree = "<group>"; };
 		6FB32C98279378C900CCAFAB /* StudioMapSearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StudioMapSearchViewController.xib; sourceTree = "<group>"; };
 		6FB32C99279378C900CCAFAB /* StudioMapSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudioMapSearchViewController.swift; sourceTree = "<group>"; };
-		77337B5327911EE600933DBD /* FilmCurationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmCurationCollectionViewCell.swift; sourceTree = "<group>"; };
-		77337B5427911EE600933DBD /* FilmCurationCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilmCurationCollectionViewCell.xib; sourceTree = "<group>"; };
 		6FC9A426279091EA00B94CFB /* StudioMapBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudioMapBottomSheetViewController.swift; sourceTree = "<group>"; };
 		6FC9A427279091EA00B94CFB /* StudioMapBottomSheetViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StudioMapBottomSheetViewController.xib; sourceTree = "<group>"; };
 		6FDA263927927EDD00DA4DD2 /* MapLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapLocation.swift; sourceTree = "<group>"; };
+		77337B5327911EE600933DBD /* FilmCurationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmCurationCollectionViewCell.swift; sourceTree = "<group>"; };
+		77337B5427911EE600933DBD /* FilmCurationCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilmCurationCollectionViewCell.xib; sourceTree = "<group>"; };
 		775C9645278ACBEA00A9BEA0 /* Fillin-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fillin-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		775C9648278ACBEA00A9BEA0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		775C964A278ACBEA00A9BEA0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -144,7 +148,6 @@
 		7769EC58278F5F6500618EEF /* ArrowCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArrowCollectionViewCell.xib; sourceTree = "<group>"; };
 		77878AC6278D947900137D30 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		77878AC8278D9FDB00137D30 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
-		77C24FB227949734007DB533 /* Fillin-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Fillin-iOS.entitlements"; sourceTree = "<group>"; };
 		77B352132791A34A001718DE /* FilmTypeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmTypeCollectionViewCell.swift; sourceTree = "<group>"; };
 		77B352142791A34A001718DE /* FilmTypeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilmTypeCollectionViewCell.xib; sourceTree = "<group>"; };
 		77B352172791C029001718DE /* FilmRollViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FilmRollViewController+Layout.swift"; sourceTree = "<group>"; };
@@ -154,6 +157,7 @@
 		77B3522627920C0A001718DE /* FilmCurationCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilmCurationCollectionReusableView.xib; sourceTree = "<group>"; };
 		77B3522927933F84001718DE /* FilmCurationFirstCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmCurationFirstCollectionViewCell.swift; sourceTree = "<group>"; };
 		77B3522A27933F84001718DE /* FilmCurationFirstCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilmCurationFirstCollectionViewCell.xib; sourceTree = "<group>"; };
+		77C24FB227949734007DB533 /* Fillin-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Fillin-iOS.entitlements"; sourceTree = "<group>"; };
 		77CC0726278F02B80020F34A /* WelcomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeTableViewCell.swift; sourceTree = "<group>"; };
 		77CC0727278F02B80020F34A /* WelcomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WelcomeTableViewCell.xib; sourceTree = "<group>"; };
 		77CC072A278F0DC10020F34A /* TabBarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarTableViewCell.swift; sourceTree = "<group>"; };
@@ -206,21 +210,11 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		77337B4E27911E8100933DBD /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				77C24FB327949C14007DB533 /* FilmCurationCollectionViewCell */,
-				77C24FB427949C29007DB533 /* FilmTypeCollectionViewCell */,
-				77C24FB627949C39007DB533 /* FilmCurationFirstCollectionViewCell */,
-				77C24FB527949C32007DB533 /* FilmCurationCollectionReusableView */,
-				77C24FB727949C41007DB533 /* FilmRollCollectionView */,
-			);
-			path = Cell;
-			sourceTree = "<group>";
-		};
 		6F3B85D0279564AB00A4BD07 /* StudioMapContentViewController */ = {
 			isa = PBXGroup;
 			children = (
+				6F3B85D527967BF200A4BD07 /* StudioMapCollectionViewCell.swift */,
+				6F3B85D627967BF200A4BD07 /* StudioMapCollectionViewCell.xib */,
 				6F3B85CC2795649400A4BD07 /* StudioMapContentViewController copy.swift */,
 				6F3B85CD2795649400A4BD07 /* StudioMapContentViewController copy.xib */,
 			);
@@ -242,6 +236,7 @@
 		6FC9A42A279091F700B94CFB /* StudioMapBottomSheetViewController */ = {
 			isa = PBXGroup;
 			children = (
+				6F3B85D0279564AB00A4BD07 /* StudioMapContentViewController */,
 				6FC9A426279091EA00B94CFB /* StudioMapBottomSheetViewController.swift */,
 				6FC9A427279091EA00B94CFB /* StudioMapBottomSheetViewController.xib */,
 			);
@@ -254,6 +249,18 @@
 				6FDA263927927EDD00DA4DD2 /* MapLocation.swift */,
 			);
 			path = Map;
+			sourceTree = "<group>";
+		};
+		77337B4E27911E8100933DBD /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				77C24FB327949C14007DB533 /* FilmCurationCollectionViewCell */,
+				77C24FB427949C29007DB533 /* FilmTypeCollectionViewCell */,
+				77C24FB627949C39007DB533 /* FilmCurationFirstCollectionViewCell */,
+				77C24FB527949C32007DB533 /* FilmCurationCollectionReusableView */,
+				77C24FB727949C41007DB533 /* FilmRollCollectionView */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		775C963C278ACBEA00A9BEA0 = {
@@ -318,13 +325,12 @@
 			children = (
 				E83AA9FB2793BED600A6B0C4 /* OnboardingViewController */,
 				E83AA9F82793BEB300A6B0C4 /* LoginViewController */,
-				6FB32C94279378C900CCAFAB /* StudioMapSearchViewController */,
 				E87493E02791A3E000DCCF1F /* AddPhotoPopUpViewController */,
 				775C96A4278AD8D800A9BEA0 /* SplashViewController */,
 				775C968D278AD1AB00A9BEA0 /* HomeViewController */,
 				775C968B278AD1A700A9BEA0 /* FilmRollViewController */,
 				77628EA9278D7AC400CB5919 /* FilmRollClickViewController */,
-				6F3B85D0279564AB00A4BD07 /* StudioMapContentViewController */,
+				6FB32C94279378C900CCAFAB /* StudioMapSearchViewController */,
 				6FC9A42A279091F700B94CFB /* StudioMapBottomSheetViewController */,
 				775C968C278AD1A900A9BEA0 /* StudioMapViewController */,
 				775C968A278AD1A500A9BEA0 /* AddPhotoViewController */,
@@ -693,6 +699,7 @@
 				77CC0739278F11DA0020F34A /* PhotosTableViewCell.xib in Resources */,
 				77CC072D278F0DC10020F34A /* TabBarTableViewCell.xib in Resources */,
 				E83AA9FF2793C9BF00A6B0C4 /* NotoSansKR-Medium.otf in Resources */,
+				6F3B85D827967BF200A4BD07 /* StudioMapCollectionViewCell.xib in Resources */,
 				6FB32C9C279378C900CCAFAB /* StudioMapSearchTableViewCell.xib in Resources */,
 				77CC0729278F02B80020F34A /* WelcomeTableViewCell.xib in Resources */,
 				775C9697278AD89200A9BEA0 /* StudioMapViewController.xib in Resources */,
@@ -803,6 +810,7 @@
 				77CC0733278F10890020F34A /* MapTableViewCell.swift in Sources */,
 				E8A38B7327945EE2006AC23D /* OnboardingSecondViewController.swift in Sources */,
 				775C9649278ACBEA00A9BEA0 /* AppDelegate.swift in Sources */,
+				6F3B85D727967BF200A4BD07 /* StudioMapCollectionViewCell.swift in Sources */,
 				E83AA9FD2793BEE500A6B0C4 /* OnboardingFirstViewController.swift in Sources */,
 				77B3521C2791C2D0001718DE /* FilmRollViewController+DataSource.swift in Sources */,
 				775C96A7278AD8E600A9BEA0 /* SplashViewController.swift in Sources */,
