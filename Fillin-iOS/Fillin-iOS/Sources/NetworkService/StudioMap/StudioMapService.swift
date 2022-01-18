@@ -9,7 +9,7 @@ import Foundation
 import Moya
 
 enum StudioMapService {
-    
+  case totalStudio
 }
 
 extension StudioMapService: TargetType {
@@ -20,12 +20,15 @@ extension StudioMapService: TargetType {
     
     var path: String {
         switch self {
-
+        case .totalStudio:
+          return "/studio"
         }
     }
     
     var method: Moya.Method {
         switch self {
+        case .totalStudio:
+          return .get
 
         }
     }
@@ -36,12 +39,15 @@ extension StudioMapService: TargetType {
     
     var task: Task {
         switch self {
-
+        case .totalStudio:
+          return .requestPlain
         }
     }
     
     var headers: [String: String]? {
         switch self {
+        case .totalStudio:
+          return Const.Header.tokenHeader
 
         }
     }
