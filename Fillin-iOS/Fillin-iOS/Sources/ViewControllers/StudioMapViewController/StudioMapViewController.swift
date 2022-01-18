@@ -16,6 +16,8 @@ import MapKit
 class StudioMapViewController: UIViewController {
   
   // MARK: - Properties
+  var serverStudios: StudioResponse?
+  var selectedMarker: NMFMarker?
   let mapView = NMFNaverMapView(frame: .zero)
   let myLocationButton = UIButton()
   let dataSource = NMFInfoWindowDefaultTextSource.data()
@@ -42,15 +44,20 @@ class StudioMapViewController: UIViewController {
     setUpNavigationBar()
     layoutMapView()
     layoutMyLocationButton()
-    setUpMarkerInfo()
     layoutSearchView()
     layoutNavigaionBar()
     showNaverMarker()
+    totalStudioWithAPI()
+    setNotification()
   }
 }
 
 // MARK: - Extensions
 extension StudioMapViewController {
+  
+  func setNotification() {
+    NotificationCenter.default.addObserver(self, selector: #selector(changeMarkerObserver(_:)), name: NSNotification.Name.changeMarker, object: nil)
+  }
   
   private func setUpMapView() {
     view.addSubview(mapView)
@@ -75,27 +82,31 @@ extension StudioMapViewController {
   private func setUpMarkerInfo() {
     self.mapView.mapView.touchDelegate = self
     
-    let marker = NMFMarker(position: NMGLatLng(lat: 37.35940010181669, lng: 127.10475679570187))
-    marker.iconImage = NMFOverlayImage(image: Asset.icnPlaceBig2.image)
-    
-    marker.touchHandler = { [weak self] (overlay: NMFOverlay) -> Bool in
-      switch self?.markerState {
-      case 0:
-        self?.markerState = 1
-        marker.iconImage = NMFOverlayImage(image: Asset.icnPlaceBig.image)
-      case 1:
-        self?.markerState = 0
-        marker.iconImage = NMFOverlayImage(image: Asset.icnPlaceBig2.image)
-      default:
-        print("no")
+    // 서버의 전체 스튜디오 조회
+    serverStudios?.studio.forEach {
+      let marker = NMFMarker(position: NMGLatLng(lat: $0.lati, lng: $0.long))
+      marker.iconImage = NMFOverlayImage(image: Asset.icnPlaceBig2.image)
+      
+      marker.touchHandler = { [weak self] (overlay: NMFOverlay) -> Bool in
+        switch self?.markerState {
+        case 0:
+          self?.markerState = 1
+          self?.selectedMarker = marker
+          marker.iconImage = NMFOverlayImage(image: Asset.icnPlaceBig.image)
+        case 1:
+          self?.markerState = 0
+          marker.iconImage = NMFOverlayImage(image: Asset.icnPlaceBig2.image)
+        default:
+          print("no")
+        }
+        let nextVC = StudioMapBottomSheetViewController(contentViewController: StudioMapContentViewController())
+        nextVC.modalPresentationStyle = .overCurrentContext
+        nextVC.modalTransitionStyle = .crossDissolve
+        self?.present(nextVC, animated: false, completion: nil)
+        return true
       }
-      let nextVC = StudioMapBottomSheetViewController(contentViewController: StudioMapContentViewController())
-      nextVC.modalPresentationStyle = .overCurrentContext
-      nextVC.modalTransitionStyle = .crossDissolve
-      self?.present(nextVC, animated: false, completion: nil)
-      return true
+      marker.mapView = self.mapView.mapView
     }
-    marker.mapView = self.mapView.mapView
   }
   
   private func setUpNavigationBar() {
@@ -159,6 +170,12 @@ extension StudioMapViewController {
     newVC.modalPresentationStyle = .fullScreen
     self.present(newVC, animated: true, completion: nil)
   }
+  
+  @objc func changeMarkerObserver(_ notification: Notification) {
+    selectedMarker?.iconImage = NMFOverlayImage(image: Asset.icnPlaceBig2.image)
+    selectedMarker = nil
+    markerState = 0
+  }
 }
 
 // MARK: - @objc
@@ -213,5 +230,26 @@ extension StudioMapViewController: CLLocationManagerDelegate {
 }
 
 extension StudioMapViewController: NMFMapViewTouchDelegate {
-  
+}
+
+extension StudioMapViewController {
+  func totalStudioWithAPI() {
+    StudioMapAPI.shared.totalStudio { response in
+      switch response {
+      case .success(let data):
+        if let studios = data as? StudioResponse {
+          self.serverStudios = studios
+          self.setUpMarkerInfo()
+        }
+      case .requestErr(let message):
+        print("totalStudioWithAPI - requestErr: \(message)")
+      case .pathErr:
+        print("totalStudioWithAPI - pathErr")
+      case .serverErr:
+        print("totalStudioWithAPI - serverErr")
+      case .networkFail:
+        print("totalStudioWithAPI - networkFail")
+      }
+    }
+  }
 }

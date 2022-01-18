@@ -165,6 +165,10 @@ class StudioMapBottomSheetViewController: UIViewController {
     return nearestVal
   }
   
+  func setNotification() {
+    NotificationCenter.default.post(name: NSNotification.Name.changeMarker, object: nil, userInfo: nil)
+  }
+  
   // MARK: - @objc
   @objc private func dimmedViewTapped(_ tapRecognizer: UITapGestureRecognizer) {
     hideBottomSheetAndGoBack()
@@ -194,6 +198,7 @@ class StudioMapBottomSheetViewController: UIViewController {
       }
     case .ended:
       if velocity.y > 1500 {
+        setNotification()
         hideBottomSheetAndGoBack()
         return
       }
@@ -201,12 +206,13 @@ class StudioMapBottomSheetViewController: UIViewController {
       let bottomPadding = view.safeAreaInsets.bottom
       
       let defaultPadding = safeAreaHeight + bottomPadding - defaultHeight
-      let nearestValue = nearest(to: bottomSheetViewTopConstraint.constant, inValues: [bottomSheetPanMinTopConstant, defaultPadding, safeAreaHeight + bottomPadding])
-      if nearestValue == bottomSheetPanMinTopConstant {
+      let nearestValue = nearest(to: bottomSheetViewTopConstraint.constant, inValues: [bottomSheetPanMinTopConstant + 200, defaultPadding, safeAreaHeight + bottomPadding])
+      if nearestValue == bottomSheetPanMinTopConstant + 200 {
         showBottomSheet(atState: .expanded)
       } else if nearestValue == defaultPadding {
         showBottomSheet(atState: .normal)
       } else {
+        setNotification()
         hideBottomSheetAndGoBack()
       }
     default:

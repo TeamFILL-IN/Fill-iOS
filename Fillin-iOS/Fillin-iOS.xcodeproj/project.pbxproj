@@ -105,6 +105,7 @@
 		6F3B87E027968D3000A4BD07 /* StudioMapContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3B87DC27968D3000A4BD07 /* StudioMapContentViewController.swift */; };
 		6F3B87E127968D3000A4BD07 /* StudioMapCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3B87DD27968D3000A4BD07 /* StudioMapCollectionViewCell.swift */; };
 		6F3B87E227968D3000A4BD07 /* StudioMapContentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F3B87DE27968D3000A4BD07 /* StudioMapContentViewController.xib */; };
+		6F8B71F92796F33A00F88EB3 /* StudioResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8B71F82796F33A00F88EB3 /* StudioResponse.swift */; };
 		775C965E278ACDE200A9BEA0 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 775C965D278ACDE200A9BEA0 /* .swiftlint.yml */; };
 		775C96AA278B2E1100A9BEA0 /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = 775C96A9278B2E1100A9BEA0 /* swiftgen.yml */; };
 		9ADF3537C1D51ED22F4C921B /* Pods_Fillin_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F33300C623DFF466AFCE2914 /* Pods_Fillin_iOS.framework */; };
@@ -212,6 +213,7 @@
 		6F3B87DC27968D3000A4BD07 /* StudioMapContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudioMapContentViewController.swift; sourceTree = "<group>"; };
 		6F3B87DD27968D3000A4BD07 /* StudioMapCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudioMapCollectionViewCell.swift; sourceTree = "<group>"; };
 		6F3B87DE27968D3000A4BD07 /* StudioMapContentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StudioMapContentViewController.xib; sourceTree = "<group>"; };
+		6F8B71F82796F33A00F88EB3 /* StudioResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudioResponse.swift; sourceTree = "<group>"; };
 		775C9645278ACBEA00A9BEA0 /* Fillin-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fillin-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		775C965D278ACDE200A9BEA0 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		775C96A9278B2E1100A9BEA0 /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
@@ -450,8 +452,8 @@
 				6F3B873527968AEB00A4BD07 /* AddPhotoViewController */,
 				6F3B873827968AEB00A4BD07 /* FilmRollClickViewController */,
 				6F3B873B27968AEB00A4BD07 /* FilmRollViewController */,
-				6F3B874F27968AEB00A4BD07 /* StudioMapBottomSheetViewController */,
 				6F3B876627968AEB00A4BD07 /* LoginViewController */,
+				6F3B874F27968AEB00A4BD07 /* StudioMapBottomSheetViewController */,
 				6F3B875227968AEB00A4BD07 /* HomeViewController */,
 			);
 			path = ViewControllers;
@@ -500,6 +502,7 @@
 		6F3B872C27968AEB00A4BD07 /* StudioMapViewController */ = {
 			isa = PBXGroup;
 			children = (
+				6F8B71F72796F30000F88EB3 /* DataModel */,
 				6F3B872D27968AEB00A4BD07 /* StudioMapViewController.xib */,
 				6F3B872E27968AEB00A4BD07 /* StudioMapViewController.swift */,
 			);
@@ -705,6 +708,14 @@
 				6F3B87DE27968D3000A4BD07 /* StudioMapContentViewController.xib */,
 			);
 			path = StudioMapContentViewController;
+			sourceTree = "<group>";
+		};
+		6F8B71F72796F30000F88EB3 /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				6F8B71F82796F33A00F88EB3 /* StudioResponse.swift */,
+			);
+			path = DataModel;
 			sourceTree = "<group>";
 		};
 		775C963C278ACBEA00A9BEA0 = {
@@ -915,6 +926,7 @@
 				6F3B87CD27968AEB00A4BD07 /* FillinNavigationBar.swift in Sources */,
 				6F3B87C527968AEB00A4BD07 /* ArrowCollectionViewCell.swift in Sources */,
 				6F3B879E27968AEB00A4BD07 /* OnboardingSecondViewController.swift in Sources */,
+				6F8B71F92796F33A00F88EB3 /* StudioResponse.swift in Sources */,
 				6F3B877A27968AEB00A4BD07 /* UILabel+Extension.swift in Sources */,
 				6F3B87AF27968AEB00A4BD07 /* FilmRollViewController+DataSource.swift in Sources */,
 				6F3B87CF27968AEB00A4BD07 /* SceneDelegate.swift in Sources */,
