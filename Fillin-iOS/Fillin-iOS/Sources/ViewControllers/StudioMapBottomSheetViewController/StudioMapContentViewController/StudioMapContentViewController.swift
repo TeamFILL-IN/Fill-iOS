@@ -77,7 +77,7 @@ class StudioMapContentViewController: UIViewController {
       $0.snp.makeConstraints {
         $0.centerX.top.leading.equalToSuperview()
         $0.bottom.equalTo(self.studioScrollview.snp.bottom)
-        $0.height.equalTo((UIScreen.main.bounds.height*(249/812)+10*(UIScreen.main.bounds.width-36)/3 + 9) - 9)
+        $0.height.equalTo((UIScreen.main.bounds.height*(500/812)+10*(UIScreen.main.bounds.width-36)/3 + 9) - 9)
       }
     }
     
