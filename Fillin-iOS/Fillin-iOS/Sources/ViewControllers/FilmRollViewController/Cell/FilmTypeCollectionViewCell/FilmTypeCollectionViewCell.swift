@@ -8,9 +8,11 @@
 import UIKit
 
 class FilmTypeCollectionViewCell: UICollectionViewCell {
-
+    
     // MARK: - Properties
     var viewWidth = UIScreen.main.bounds.width
+    var selectedTag = 0
+    var selectedLeading: CGFloat = 0
     
     // MARK: - @IBOutlet Properties
     @IBOutlet var filmTypeButtons: [UIButton]!
@@ -28,15 +30,24 @@ class FilmTypeCollectionViewCell: UICollectionViewCell {
             switch sender.tag {
             case 0:
                 chosenViewLeading.constant = 0
+                selectedTag = 0
+                selectedLeading = 0
             case 1:
                 chosenViewLeading.constant = viewWidth/4
+                selectedTag = 1
+                selectedLeading = viewWidth/4
             case 2:
                 chosenViewLeading.constant = (viewWidth/4)*2
+                selectedTag = 2
+                selectedLeading = (viewWidth/4)*2
             case 3:
                 chosenViewLeading.constant = (viewWidth/4)*3
+                selectedTag = 3
+                selectedLeading = (viewWidth/4)*3
             default:
                 return
             }
+            chosenViewLeading.constant = selectedLeading
         }
     }
     
@@ -56,7 +67,7 @@ class FilmTypeCollectionViewCell: UICollectionViewCell {
             $0.titleLabel?.font = .subhead2
         }
         chooseFilmLabel.font = .body2
-        filmTypeButtons[0].isSelected = true
+        filmTypeButtons[selectedTag].isSelected = true
     }
     
     private func setGesture() {
@@ -66,7 +77,8 @@ class FilmTypeCollectionViewCell: UICollectionViewCell {
     }
     
     @objc func touchChooseFilmView(_ sender: UITapGestureRecognizer) {
-         // TODO: 필름 종류 선택 뷰로 이동
-        NotificationCenter.default.post(name: NSNotification.Name.pushToFilmSelectViewController, object: nil, userInfo: nil)
+        // TODO: 필름 종류 선택 뷰로 이동
+        let selectedFilmDict = ["selectedTag": selectedTag, "selectedLeading": selectedLeading] as [String: Any]
+        NotificationCenter.default.post(name: NSNotification.Name.pushToFilmSelectViewController, object: selectedFilmDict, userInfo: nil)
     }
 }

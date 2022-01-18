@@ -3,6 +3,7 @@
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -10,8 +11,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FilmSelectViewController" customModule="Fillin_iOS" customModuleProvider="target">
             <connections>
+                <outlet property="chosenViewLeading" destination="pG8-ar-oWp" id="jOx-AR-shO"/>
                 <outlet property="navigationBar" destination="gXV-tv-ZoZ" id="752-OJ-FPw"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outletCollection property="filmTypeButtons" destination="gcr-aT-aWi" collectionClass="NSMutableArray" id="0mS-xV-Jkq"/>
+                <outletCollection property="filmTypeButtons" destination="h9c-a2-ST8" collectionClass="NSMutableArray" id="jV4-SP-qId"/>
+                <outletCollection property="filmTypeButtons" destination="Lmm-nb-kJL" collectionClass="NSMutableArray" id="0bM-R7-Ire"/>
+                <outletCollection property="filmTypeButtons" destination="AUE-Uq-fj3" collectionClass="NSMutableArray" id="OS9-NE-FTy"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -26,18 +32,103 @@
                         <constraint firstAttribute="height" constant="50" id="UU7-c1-clk"/>
                     </constraints>
                 </view>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="J4O-03-3Iv">
+                    <rect key="frame" x="0.0" y="94" width="375" height="44"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gcr-aT-aWi">
+                            <rect key="frame" x="0.0" y="0.0" width="93.666666666666671" height="44"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="컬러"/>
+                            <state key="selected" title="컬러">
+                                <color key="titleColor" name="Fillin_red"/>
+                            </state>
+                            <connections>
+                                <action selector="touchFilmTypeButtons:" destination="-1" eventType="touchUpInside" id="K1I-7o-ufi"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h9c-a2-ST8">
+                            <rect key="frame" x="93.666666666666686" y="0.0" width="94" height="44"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="흑백"/>
+                            <state key="selected" title="흑백">
+                                <color key="titleColor" name="Fillin_red"/>
+                            </state>
+                            <connections>
+                                <action selector="touchFilmTypeButtons:" destination="-1" eventType="touchUpInside" id="W3V-cx-Hu6"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lmm-nb-kJL">
+                            <rect key="frame" x="187.66666666666666" y="0.0" width="93.666666666666657" height="44"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="특수"/>
+                            <state key="selected" title="특수">
+                                <color key="titleColor" name="Fillin_red"/>
+                            </state>
+                            <connections>
+                                <action selector="touchFilmTypeButtons:" destination="-1" eventType="touchUpInside" id="o31-3O-gTI"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AUE-Uq-fj3">
+                            <rect key="frame" x="281.33333333333331" y="0.0" width="93.666666666666686" height="44"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="일회용"/>
+                            <state key="selected" title="일회용">
+                                <color key="titleColor" name="Fillin_red"/>
+                            </state>
+                            <connections>
+                                <action selector="touchFilmTypeButtons:" destination="-1" eventType="touchUpInside" id="rq0-fK-k9X"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" name="Fillin_black"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="iVO-LU-iWn"/>
+                    </constraints>
+                </stackView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="moE-Jq-3Aw">
+                    <rect key="frame" x="0.0" y="138" width="375" height="1"/>
+                    <color key="backgroundColor" name="Dark grey 2"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="ILh-co-0ct"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pyQ-Ha-ThG">
+                    <rect key="frame" x="0.0" y="138" width="93.666666666666671" height="1"/>
+                    <color key="backgroundColor" name="Fillin_red"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="HQC-B3-OKm"/>
+                    </constraints>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="moE-Jq-3Aw" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="C3L-YG-wdt"/>
+                <constraint firstItem="pyQ-Ha-ThG" firstAttribute="width" secondItem="moE-Jq-3Aw" secondAttribute="width" multiplier="0.25" id="FwO-s6-dwL"/>
+                <constraint firstItem="J4O-03-3Iv" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="LKV-l0-QR4"/>
                 <constraint firstItem="gXV-tv-ZoZ" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="MxF-bN-C0H"/>
+                <constraint firstItem="J4O-03-3Iv" firstAttribute="top" secondItem="gXV-tv-ZoZ" secondAttribute="bottom" id="Q8f-Dg-cjd"/>
                 <constraint firstItem="gXV-tv-ZoZ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Vgb-gv-JFz"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="J4O-03-3Iv" secondAttribute="trailing" id="ZKL-6r-RSt"/>
                 <constraint firstItem="gXV-tv-ZoZ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="a8K-wN-CeI"/>
+                <constraint firstItem="pyQ-Ha-ThG" firstAttribute="top" secondItem="moE-Jq-3Aw" secondAttribute="top" id="bAz-Cg-5oy"/>
+                <constraint firstItem="moE-Jq-3Aw" firstAttribute="top" secondItem="J4O-03-3Iv" secondAttribute="bottom" id="ndZ-X3-P1x"/>
+                <constraint firstItem="pyQ-Ha-ThG" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="pG8-ar-oWp"/>
+                <constraint firstItem="moE-Jq-3Aw" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="uwf-2S-GKQ"/>
             </constraints>
             <point key="canvasLocation" x="138.40000000000001" y="49.50738916256158"/>
         </view>
     </objects>
     <resources>
+        <namedColor name="Dark grey 2">
+            <color red="0.13725490196078433" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Fillin_black">
+            <color red="0.0039215686274509803" green="0.0039215686274509803" blue="0.0039215686274509803" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Fillin_red">
+            <color red="0.86274509803921573" green="0.30980392156862746" blue="0.10980392156862745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
