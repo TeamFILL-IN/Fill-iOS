@@ -9,8 +9,8 @@ import UIKit
 
 class FilmTypeTableViewCell: UITableViewCell {
     
-    
     // MARK: - @IBOutlet Properties
+    @IBOutlet weak var filmBackView: UIView!
     @IBOutlet weak var filmNameLabel: UILabel!
     
     override func awakeFromNib() {
@@ -26,6 +26,7 @@ class FilmTypeTableViewCell: UITableViewCell {
     
     override var isSelected: Bool {
         didSet {
+            filmBackView.backgroundColor = isSelected ? .darkGrey2 : .fillinBlack
             filmNameLabel.textColor = isSelected ? .fillinRed : .fillinWhite
         }
     }

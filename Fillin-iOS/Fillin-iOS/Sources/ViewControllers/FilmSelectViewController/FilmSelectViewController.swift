@@ -63,6 +63,9 @@ extension FilmSelectViewController {
         }
         filmTypeButtons[selectedTag].isSelected = true
         chosenViewLeading.constant = selectedLeading
+        if #available(iOS 15, *) {
+            filmTypeTableView.sectionHeaderTopPadding = 0
+        }
         filmTypeTableView.delegate = self
         filmTypeTableView.dataSource = self
     }
@@ -103,6 +106,8 @@ extension FilmSelectViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 extension FilmSelectViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let filmCell = tableView.cellForRow(at: indexPath)
+        filmCell?.isSelected = true
         let selectedFilmDict = ["selectedTag": selectedTag, "selectedLeading": selectedLeading] as [String: Any]
         NotificationCenter.default.post(name: NSNotification.Name.updateSelectedFilmType, object: selectedFilmDict, userInfo: nil)
         self.navigationController?.popViewController(animated: true)

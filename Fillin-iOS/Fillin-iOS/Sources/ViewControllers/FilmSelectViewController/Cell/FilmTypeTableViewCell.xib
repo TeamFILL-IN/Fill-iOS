@@ -43,6 +43,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="filmBackView" destination="LRd-Du-0uq" id="YT6-xL-ihY"/>
                 <outlet property="filmNameLabel" destination="0wd-Yv-54t" id="5AP-mQ-eXh"/>
             </connections>
             <point key="canvasLocation" x="133" y="105"/>
