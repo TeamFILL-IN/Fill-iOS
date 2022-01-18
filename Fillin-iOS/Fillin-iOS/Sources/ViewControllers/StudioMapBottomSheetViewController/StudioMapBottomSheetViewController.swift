@@ -72,9 +72,7 @@ class StudioMapBottomSheetViewController: UIViewController {
     contentViewController.didMove(toParent: self)
     bottomSheetView.clipsToBounds = true
     
-    view.addSubview(bottomSheetView)
-    view.addSubview(dismissIndicatorView)
-    view.addSubview(bottomSheetCoverView)
+    view.addSubviews([bottomSheetView, dismissIndicatorView, bottomSheetCoverView])
     view.backgroundColor = .clear
 
     let viewPan = UIPanGestureRecognizer(target: self, action: #selector(viewPanned(_:)))

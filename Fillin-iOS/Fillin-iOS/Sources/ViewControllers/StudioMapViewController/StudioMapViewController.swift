@@ -13,7 +13,7 @@ import SnapKit
 import Then
 import MapKit
 
-class StudioMapViewController: UIViewController, NMFMapViewTouchDelegate {
+class StudioMapViewController: UIViewController {
   
   // MARK: - Properties
   let mapView = NMFNaverMapView(frame: .zero)
@@ -31,7 +31,7 @@ class StudioMapViewController: UIViewController, NMFMapViewTouchDelegate {
     $0.setPlaceHolder()
     $0.addLeftPadding()
   }
-  
+  var markerState = 0
   var locationManager = CLLocationManager()
   let navigationBar = FilinNavigationBar()
   
@@ -45,8 +45,7 @@ class StudioMapViewController: UIViewController, NMFMapViewTouchDelegate {
     setUpMarkerInfo()
     layoutSearchView()
     layoutNavigaionBar()
-    let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: 37.35940010181669, lng: 127.10475679570187))
-    mapView.mapView.moveCamera(cameraUpdate)
+    showNaverMarker()
   }
 }
 
@@ -67,21 +66,28 @@ extension StudioMapViewController {
     locationManager.delegate = self
     self.locationManager.requestWhenInUseAuthorization()
   }
+  
+  func showNaverMarker() {
+    let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: 37.35940010181669, lng: 127.10475679570187))
+    mapView.mapView.moveCamera(cameraUpdate)
+  }
 
   private func setUpMarkerInfo() {
     self.mapView.mapView.touchDelegate = self
     
-    let marker1 = NMFMarker(position: NMGLatLng(lat: 37.35940010181669, lng: 127.10475679570187))
-    marker1.iconImage = NMFOverlayImage(image: Asset.icnPlaceBig2.image)
-    marker1.tag = 0
+    let marker = NMFMarker(position: NMGLatLng(lat: 37.35940010181669, lng: 127.10475679570187))
+    marker.iconImage = NMFOverlayImage(image: Asset.icnPlaceBig2.image)
     
-    marker1.touchHandler = { [weak self] (overlay: NMFOverlay) -> Bool in
-      if marker1.tag == 0 {
-        marker1.tag = 1
-        marker1.iconImage = NMFOverlayImage(image: Asset.icnPlaceBig.image)
-      } else if marker1.tag == 1 {
-        marker1.tag = 0
-        marker1.iconImage = NMFOverlayImage(image: Asset.icnPlaceBig2.image)
+    marker.touchHandler = { [weak self] (overlay: NMFOverlay) -> Bool in
+      switch self?.markerState {
+      case 0:
+        self?.markerState = 1
+        marker.iconImage = NMFOverlayImage(image: Asset.icnPlaceBig.image)
+      case 1:
+        self?.markerState = 0
+        marker.iconImage = NMFOverlayImage(image: Asset.icnPlaceBig2.image)
+      default:
+        print("no")
       }
       let nextVC = StudioMapBottomSheetViewController(contentViewController: StudioMapContentViewController())
       nextVC.modalPresentationStyle = .overCurrentContext
@@ -89,7 +95,7 @@ extension StudioMapViewController {
       self?.present(nextVC, animated: false, completion: nil)
       return true
     }
-    marker1.mapView = self.mapView.mapView
+    marker.mapView = self.mapView.mapView
   }
   
   private func setUpNavigationBar() {
@@ -182,7 +188,7 @@ extension UITextField {
   }
 }
 
-// MARK: - Extension - CLLocationManagerDelegate
+// MARK: - Extension
 extension StudioMapViewController: CLLocationManagerDelegate {
   
   func getLocationUsagePermission() {
@@ -204,4 +210,8 @@ extension StudioMapViewController: CLLocationManagerDelegate {
       print("GPS: Default")
     }
   }
+}
+
+extension StudioMapViewController: NMFMapViewTouchDelegate {
+  
 }

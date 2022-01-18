@@ -10,6 +10,8 @@ import UIKit
 class StudioMapContentViewController: UIViewController {
   
   // MARK: - Properties
+  let studioScrollview = UIScrollView()
+  let studioScrollContainverView = UIView()
   let studioLabel = UILabel()
   let scrapButton = UIButton()
   let firstdividerView = UIView()
@@ -26,8 +28,6 @@ class StudioMapContentViewController: UIViewController {
   let linkButton = UIButton()
   let photoReviewLabel = UILabel()
   let underlineView = UIView()
-  let studioScrollview = UIScrollView()
-  let studioScrollContainverView = UIView()
   let studioCollectionview: UICollectionView = {
     let layout = UICollectionViewFlowLayout()
     layout.scrollDirection = .vertical
