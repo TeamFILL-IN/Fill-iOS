@@ -31,6 +31,22 @@ public class StudioMapAPI {
     }
   }
   
+  func infoStudio(completion: @escaping (NetworkResult<Any>) -> Void) {
+    studioMapProvider.request(.totalStudio) { (result) in
+      switch result {
+      case .success(let response):
+        let statusCode = response.statusCode
+        let data = response.data
+        
+        let networkResult = self.judgeinfoStudioStatus(by: statusCode, data)
+        completion(networkResult)
+        
+      case .failure(let err):
+        print(err)
+      }
+    }
+  }
+  
   private func judgeTotalStudioStatus(by statusCode: Int, _ data: Data) -> NetworkResult<Any> {
     
     let decoder = JSONDecoder()
@@ -49,15 +65,15 @@ public class StudioMapAPI {
     }
   }
   
-  private func judgeStatus(by statusCode: Int, _ data: Data) -> NetworkResult<Any> {
+  private func judgeinfoStudioStatus(by statusCode: Int, _ data: Data) -> NetworkResult<Any> {
     
     let decoder = JSONDecoder()
-    guard let decodedData = try? decoder.decode(GenericResponse<String>.self, from: data)
+    guard let decodedData = try? decoder.decode(GenericResponse<StudioInfoResponse>.self, from: data)
     else { return .pathErr }
     
     switch statusCode {
     case 200:
-      return .success(decodedData.message)
+      return .success(decodedData.data ?? "None-Data")
     case 400..<500:
       return .requestErr(decodedData.message)
     case 500:
