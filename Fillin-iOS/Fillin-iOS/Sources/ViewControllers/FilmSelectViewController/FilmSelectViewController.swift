@@ -27,6 +27,7 @@ class FilmSelectViewController: UIViewController {
                 $0.isSelected = false
             }
             sender.isSelected = !sender.isSelected
+            // TODO: 서버 붙이고 반복코드 리팩토링
             switch sender.tag {
             case 0:
                 selectedTag = 0

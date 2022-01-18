@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FilmSelectViewController" customModule="Fillin_iOS" customModuleProvider="target">
             <connections>
                 <outlet property="chosenViewLeading" destination="pG8-ar-oWp" id="jOx-AR-shO"/>
+                <outlet property="filmTypeTableView" destination="A14-fc-qd8" id="x9C-zo-NKi"/>
                 <outlet property="navigationBar" destination="gXV-tv-ZoZ" id="752-OJ-FPw"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outletCollection property="filmTypeButtons" destination="gcr-aT-aWi" collectionClass="NSMutableArray" id="0mS-xV-Jkq"/>
@@ -99,22 +100,30 @@
                         <constraint firstAttribute="height" constant="1" id="HQC-B3-OKm"/>
                     </constraints>
                 </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="A14-fc-qd8">
+                    <rect key="frame" x="0.0" y="139" width="375" height="639"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="moE-Jq-3Aw" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="C3L-YG-wdt"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="A14-fc-qd8" secondAttribute="bottom" id="F5S-6R-kFb"/>
                 <constraint firstItem="pyQ-Ha-ThG" firstAttribute="width" secondItem="moE-Jq-3Aw" secondAttribute="width" multiplier="0.25" id="FwO-s6-dwL"/>
                 <constraint firstItem="J4O-03-3Iv" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="LKV-l0-QR4"/>
                 <constraint firstItem="gXV-tv-ZoZ" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="MxF-bN-C0H"/>
                 <constraint firstItem="J4O-03-3Iv" firstAttribute="top" secondItem="gXV-tv-ZoZ" secondAttribute="bottom" id="Q8f-Dg-cjd"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="A14-fc-qd8" secondAttribute="trailing" id="Rg0-UZ-fTi"/>
                 <constraint firstItem="gXV-tv-ZoZ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Vgb-gv-JFz"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="J4O-03-3Iv" secondAttribute="trailing" id="ZKL-6r-RSt"/>
                 <constraint firstItem="gXV-tv-ZoZ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="a8K-wN-CeI"/>
                 <constraint firstItem="pyQ-Ha-ThG" firstAttribute="top" secondItem="moE-Jq-3Aw" secondAttribute="top" id="bAz-Cg-5oy"/>
+                <constraint firstItem="A14-fc-qd8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="fck-HJ-Gg8"/>
                 <constraint firstItem="moE-Jq-3Aw" firstAttribute="top" secondItem="J4O-03-3Iv" secondAttribute="bottom" id="ndZ-X3-P1x"/>
                 <constraint firstItem="pyQ-Ha-ThG" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="pG8-ar-oWp"/>
                 <constraint firstItem="moE-Jq-3Aw" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="uwf-2S-GKQ"/>
+                <constraint firstItem="A14-fc-qd8" firstAttribute="top" secondItem="moE-Jq-3Aw" secondAttribute="bottom" id="xQd-I3-vPB"/>
             </constraints>
             <point key="canvasLocation" x="138.40000000000001" y="49.50738916256158"/>
         </view>
