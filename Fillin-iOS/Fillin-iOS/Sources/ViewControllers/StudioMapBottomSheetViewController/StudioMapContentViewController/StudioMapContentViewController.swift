@@ -10,6 +10,7 @@ import UIKit
 class StudioMapContentViewController: UIViewController {
   
   // MARK: - Properties
+  var serverStudioInfo: StudioInfoResponse?
   let studioScrollview = UIScrollView()
   let studioScrollContainverView = UIView()
   let studioLabel = UILabel()
@@ -44,6 +45,7 @@ class StudioMapContentViewController: UIViewController {
     setupAttribute()
     setupUI()
     register()
+    studioInfoWithAPI()
   }
   
   // MARK: - Func
@@ -64,7 +66,6 @@ class StudioMapContentViewController: UIViewController {
       $0.backgroundColor = .clear
       $0.translatesAutoresizingMaskIntoConstraints = false
       $0.showsVerticalScrollIndicator = false
-      $0.isScrollEnabled = true
       $0.snp.makeConstraints {
         $0.top.equalTo(self.view.snp.top).offset(29)
         $0.centerX.leading.trailing.bottom.equalToSuperview()
@@ -83,7 +84,9 @@ class StudioMapContentViewController: UIViewController {
     
     // label
     studioScrollContainverView.add(studioLabel) {
-      $0.text = "필린 사진관"
+      
+      print(self.serverStudioInfo?.studio.name ?? "none data")
+      $0.text = self.serverStudioInfo?.studio.name
       $0.textColor = .white
       $0.font = .headline
       $0.snp.makeConstraints {
@@ -251,6 +254,28 @@ class StudioMapContentViewController: UIViewController {
       }
     }
   }
+}
+
+// MARK: - Network
+extension StudioMapContentViewController {
+    func studioInfoWithAPI() {
+      StudioMapAPI.shared.infoStudio { response in
+            switch response {
+            case .success(let data):
+                if let studioinfo = data as? StudioInfoResponse {
+                  self.serverStudioInfo = studioinfo
+                }
+            case .requestErr(let message):
+                print("studioInfoWithAPI - requestErr: \(message)")
+            case .pathErr:
+                print("studioInfoWithAPI - pathErr")
+            case .serverErr:
+                print("studioInfoWithAPI - serverErr")
+            case .networkFail:
+                print("studioInfoWithAPI - networkFail")
+            }
+        }
+    }
 }
  
 // MARK: - UICollectionView
