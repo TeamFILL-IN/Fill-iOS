@@ -9,12 +9,7 @@ output_dir: Fillin-iOS/Resources/Constants
 
 ## Generate constants for your localized strings.
 ##   Be sure that SwiftGen only parses ONE locale (typically Base.lproj, or en.lproj, or whichever your development region is); otherwise it will generate the same keys multiple times.
-##   SwiftGen will parse all `.strings` files found in that folder.
-# strings:
-#   inputs:
-#     - Resources/Base.lproj
-#   outputs:
-#     - templateName: structured-swift5
+##   SwiftGen will parse all `.strings` files found in that folder.             
 #       output: Strings+Generated.swift
 
 

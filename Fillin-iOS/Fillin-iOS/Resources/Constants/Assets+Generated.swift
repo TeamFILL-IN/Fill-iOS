@@ -55,6 +55,7 @@ internal enum Asset {
   internal static let icnPrice = ImageAsset(name: "icnPrice")
   internal static let icnSearch = ImageAsset(name: "icnSearch")
   internal static let icnTime = ImageAsset(name: "icnTime")
+  internal static let icnPlaceBig2 = ImageAsset(name: "icn_place_big2")
   internal static let iconFilmroll = ImageAsset(name: "iconFilmroll")
   internal static let imgOnboardingDot1 = ImageAsset(name: "imgOnboardingDot1")
   internal static let imgOnboardingDot2 = ImageAsset(name: "imgOnboardingDot2")
