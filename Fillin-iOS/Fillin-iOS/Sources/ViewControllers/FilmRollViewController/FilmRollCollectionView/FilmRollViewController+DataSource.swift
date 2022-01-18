@@ -38,9 +38,9 @@ final class FilmRollViewControllerDataSource: NSObject, UICollectionViewDataSour
             }
             
         case .filmType:
-            guard let curationCell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Xib.filmTypeCollectionViewCell, for: indexPath) as? FilmTypeCollectionViewCell else { return UICollectionViewCell() }
-
-            return curationCell
+            guard let filmTypeCell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Xib.filmTypeCollectionViewCell, for: indexPath) as? FilmTypeCollectionViewCell else { return UICollectionViewCell() }
+            
+            return filmTypeCell
             
         case .filmRoll:
             guard let filmRollCell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Xib.filmCurationCollectionViewCell, for: indexPath) as? FilmCurationCollectionViewCell else { return UICollectionViewCell() }

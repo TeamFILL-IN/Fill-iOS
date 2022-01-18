@@ -166,7 +166,7 @@ class StudioMapBottomSheetViewController: UIViewController {
   }
   
   func setNotification() {
-    NotificationCenter.default.post(name: NSNotification.Name("TestNotification"), object: nil, userInfo: nil)
+    NotificationCenter.default.post(name: NSNotification.Name.changeMarker, object: nil, userInfo: nil)
   }
   
   // MARK: - @objc

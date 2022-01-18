@@ -24,7 +24,7 @@ class MyPagePhotoCollectionViewCell: UICollectionViewCell {
   override func awakeFromNib() {
     super.awakeFromNib()
     layout()
-    self.backgroundColor = .red
+    self.backgroundColor = .darkGrey1
   }
 }
 

@@ -140,8 +140,8 @@ extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
   }
 }
 
-//// MARK: - Network
-//extension LoginViewController {
+// MARK: - Network
+// extension LoginViewController {
 //  func postUserSignUpWithAPI(request: String) {
 //    UserAPI.shared.userSocialSignUp(request: request) { response in
 //      switch response {
@@ -165,4 +165,4 @@ extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
 //    }
 //  }
 //
-//}
+// }

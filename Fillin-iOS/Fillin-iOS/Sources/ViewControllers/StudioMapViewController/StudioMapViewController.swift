@@ -56,9 +56,7 @@ class StudioMapViewController: UIViewController {
 extension StudioMapViewController {
   
   func setNotification() {
-    NotificationCenter.default.addObserver(self,
-                                           selector: #selector(didRecieveTestNotification(_:)),
-                                           name: NSNotification.Name("TestNotification"), object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(changeMarkerObserver(_:)), name: NSNotification.Name.changeMarker, object: nil)
   }
   
   private func setUpMapView() {
@@ -173,7 +171,7 @@ extension StudioMapViewController {
     self.present(newVC, animated: true, completion: nil)
   }
   
-  @objc func didRecieveTestNotification(_ notification: Notification) {
+  @objc func changeMarkerObserver(_ notification: Notification) {
     selectedMarker?.iconImage = NMFOverlayImage(image: Asset.icnPlaceBig2.image)
     selectedMarker = nil
     markerState = 0

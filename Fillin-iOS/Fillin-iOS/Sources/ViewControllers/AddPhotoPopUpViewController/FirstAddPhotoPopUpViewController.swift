@@ -125,11 +125,11 @@ extension FirstAddPhotoPopUpViewController {
     }
   }
   @objc func touchCancelButton() {
-    /// 정보를 삭제하면서 dismiss
+    // 정보를 삭제하면서 dismiss
     self.dismiss(animated: false, completion: nil)
   }
   @objc func touchContinueButton() {
-    /// 정보를 그대로 놔두고 dismiss
+    // 정보를 그대로 놔두고 dismiss
     self.dismiss(animated: true, completion: nil)
   }
 }
