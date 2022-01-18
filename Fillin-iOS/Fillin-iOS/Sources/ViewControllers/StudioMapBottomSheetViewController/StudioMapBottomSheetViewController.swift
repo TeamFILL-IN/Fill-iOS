@@ -64,7 +64,8 @@ class StudioMapBottomSheetViewController: UIViewController {
     fatalError("init(coder:) has not been implemented")
   }
   
-  // MARK: - Func
+  // MARK: - @Functions
+  // UI 세팅 작업
   private func setupUI() {
     addChild(contentViewController)
     bottomSheetView.addSubview(contentViewController.view)
@@ -84,7 +85,20 @@ class StudioMapBottomSheetViewController: UIViewController {
     
     setupLayout()
   }
-
+  
+  private func setupGestureRecognizer() {
+    // TapGesture
+    //    let dimmedTap = UITapGestureRecognizer(target: self, action: #selector(dimmedViewTapped(_:)))
+    //    dimmedBackView.addGestureRecognizer(dimmedTap)
+    //    dimmedBackView.isUserInteractionEnabled = true
+    
+    // swipeGesture
+    let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(panGesture))
+    swipeGesture.direction = .down
+    view.addGestureRecognizer(swipeGesture)
+  }
+  
+  // 레이아웃
   private func setupLayout() {
     contentViewController.view.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
@@ -121,13 +135,8 @@ class StudioMapBottomSheetViewController: UIViewController {
     ])
   }
   
-  private func setupGestureRecognizer() {
-    let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(panGesture))
-    swipeGesture.direction = .down
-    view.addGestureRecognizer(swipeGesture)
-  }
-  
   private func showBottomSheet(atState: BottomSheetViewState = .normal) {
+    
     if atState == .normal {
       let safeAreaHeight: CGFloat = view.safeAreaLayoutGuide.layoutFrame.height
       let bottomPadding: CGFloat = view.safeAreaInsets.bottom
@@ -156,6 +165,31 @@ class StudioMapBottomSheetViewController: UIViewController {
       }
     })
   }
+  
+  //  func panDownToDismiss() {
+  //    let panAction = UIPanGestureRecognizer(target: self, action: #selector(dimmedViewTapped(_:)))
+  //    self.bottomSheetView.addGestureRecognizer(panAction)
+  //  }
+  
+  //  func hideBottomSheetAndPresentVC(nextViewController: UIViewController) {
+  //    let safeAreaHeight = view.safeAreaLayoutGuide.layoutFrame.height
+  //    let bottomPadding = view.safeAreaInsets.bottom
+  //    bottomSheetViewTopConstraint.constant = safeAreaHeight + bottomPadding
+  //    UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
+  //      //  self.dimmedBackView.alpha = 0.0
+  //      self.view.layoutIfNeeded()
+  //      self.bottomSheetCoverView.isHidden = false
+  //    }, completion: { _ in
+  //      if self.presentingViewController != nil {
+  //        guard let presentingVC = self.presentingViewController else { return }
+  //        self.dismiss(animated: false) {
+  //          let nextVC = nextViewController
+  //          nextVC.modalPresentationStyle = .overFullScreen
+  //          presentingVC.present(nextVC, animated: true, completion: nil)
+  //        }
+  //      }
+  //    })
+  //  }
   
   func nearest(to number: CGFloat, inValues values: [CGFloat]) -> CGFloat {
     guard let nearestVal = values.min(by: { abs(number - $0) < abs(number - $1) })

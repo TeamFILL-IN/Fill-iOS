@@ -19,6 +19,5 @@ extension Const {
         static let filmCurationCollectionReusableView = "FilmCurationCollectionReusableView"
         static let filmCurationFirstCollectionViewCell = "FilmCurationFirstCollectionViewCell"
         static let studioSearchTableViewCell = "StudioSearchTableViewCell"
-        static let studioMapContentTableViewCell = "StudioMapContentTableViewCell"
     }
 }
