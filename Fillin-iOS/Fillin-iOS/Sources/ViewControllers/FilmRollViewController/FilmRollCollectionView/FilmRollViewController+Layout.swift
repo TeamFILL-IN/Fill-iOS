@@ -46,21 +46,19 @@ extension FilmRollViewController {
     
         let firstGroup = NSCollectionLayoutGroup.horizontal(
             layoutSize: NSCollectionLayoutSize(
-                widthDimension: .absolute(108),
+                widthDimension: .estimated(120),
                 heightDimension: .fractionalHeight(1)),
             subitem: firstItem, count: 1)
         
         let secondGroup = NSCollectionLayoutGroup.horizontal(
-            // TODO: 5 데이터 갯수로 바꿔주세요.
             layoutSize: NSCollectionLayoutSize(
                 widthDimension: .absolute(165 * CGFloat(dataSource.serverCuration?.photos.count ?? 0)),
                 heightDimension: .fractionalHeight(1)),
-            subitem: item, count: 5)
+            subitem: item, count: dataSource.serverCuration?.photos.count ?? 1)
         
         let group = NSCollectionLayoutGroup.horizontal(
             layoutSize: NSCollectionLayoutSize(
-                // TODO: 5 데이터 갯수로 바꿔주세요.
-                widthDimension: .absolute(165 * CGFloat(dataSource.serverCuration?.photos.count ?? 0) + 108),
+                widthDimension: .estimated(165 * CGFloat(dataSource.serverCuration?.photos.count ?? 0) + 120),
                 heightDimension: .absolute(124)),
             subitems: [firstGroup, secondGroup])
         
