@@ -15,8 +15,8 @@ public class MyPageAPI {
   
   public init() { }
   
-  func userPhotos(userID: Int, completion: @escaping(NetworkResult<Any>) -> Void) {
-    mypageProvider.request(.userPhotos(userID: userID)) { (result) in
+  func userPhotos(completion: @escaping(NetworkResult<Any>) -> Void) {
+    mypageProvider.request(.userPhotos) { (result) in
       switch result {
       case .success(let response):
           let statusCode = response.statusCode

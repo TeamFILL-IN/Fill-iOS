@@ -9,7 +9,7 @@ import Foundation
 import Moya
 
 enum MyPageService {
-  case userPhotos(userID : Int)
+  case userPhotos
 }
 
 extension MyPageService: TargetType {
@@ -20,8 +20,8 @@ extension MyPageService: TargetType {
     
     var path: String {
         switch self {
-        case .userPhotos(let userID) :
-          return "/photo/user/\(userID)"
+        case .userPhotos :
+          return "/photo/user"
         }
     }
     

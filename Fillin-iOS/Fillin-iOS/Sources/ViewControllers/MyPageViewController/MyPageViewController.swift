@@ -120,8 +120,7 @@ extension MyPageViewController {
   }
   func layoutUserImageView() {
     mypageScrollContainverView.add(userImageview) {
-      $0.image = Asset.profile.image
-      //      $0.backgroundColor = .white
+      $0.image = UIImage(asset: Asset.appleLogo)
       $0.snp.makeConstraints {
         $0.top.equalTo(self.mypageScrollContainverView.snp.top).offset(14)
         $0.leading.equalToSuperview().offset(18)
@@ -283,24 +282,27 @@ extension MyPageViewController: UICollectionViewDelegateFlowLayout {
 // MARK: - Network
 extension MyPageViewController {
   func userPhotosWithAPI(userID: Int) {
-      MyPageAPI.shared.userPhotos(userID: userID) { response in
-            switch response {
-            case .success(let data):
-              print("어쩔티비")
-              print(data)
-                if let photos = data as? PhotosResponse {
-                    self.serverNewPhotos = photos
-                    self.myphotoCollectionview.reloadData()
-                }
-            case .requestErr(let message):
-                print("userPhotosWithAPI - requestErr: \(message)")
-            case .pathErr:
-                print("userPhotosWithAPI - pathErr")
-            case .serverErr:
-                print("userPhotosWithAPI - serverErr")
-            case .networkFail:
-                print("userPhotosWithAPI - networkFail")
-            }
+    MyPageAPI.shared.userPhotos { response in
+      switch response {
+      case .success(let data):
+        print("어쩔티비")
+        print(data)
+        if let photos = data as? PhotosResponse {
+          self.serverNewPhotos = photos
+          self.userImageview.updateServerImage(photos.photos[0].userImageURL)
+          self.userNameLabel.text = photos.photos[0].nickname
+          self.myphotoCollectionview.reloadData()
+
         }
+      case .requestErr(let message):
+        print("userPhotosWithAPI - requestErr: \(message)")
+      case .pathErr:
+        print("userPhotosWithAPI - pathErr")
+      case .serverErr:
+        print("userPhotosWithAPI - serverErr")
+      case .networkFail:
+        print("userPhotosWithAPI - networkFail")
+      }
     }
+  }
 }
