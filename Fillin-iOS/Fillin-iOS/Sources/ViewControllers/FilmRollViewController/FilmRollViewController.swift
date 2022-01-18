@@ -29,6 +29,7 @@ class FilmRollViewController: UIViewController {
         setUI()
         setNavigationBar()
         registerXib()
+        setNotification()
     }
     
 }
@@ -55,5 +56,14 @@ extension FilmRollViewController {
             FilmCurationCollectionReusableView.nib(),
             forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
             withReuseIdentifier: Const.Xib.filmCurationCollectionReusableView)
+    }
+    
+    private func setNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(pushToFilmTypeViewController), name: Notification.Name.pushToFilmSelectViewController, object: nil)
+    }
+
+    @objc func pushToFilmTypeViewController() {
+        let nextVC = FilmSelectViewController()
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
 }

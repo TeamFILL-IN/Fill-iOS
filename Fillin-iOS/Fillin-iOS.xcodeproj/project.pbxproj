@@ -544,10 +544,10 @@
 		6F3B873B27968AEB00A4BD07 /* FilmRollViewController */ = {
 			isa = PBXGroup;
 			children = (
-				6F3B873C27968AEB00A4BD07 /* FilmRollViewController.xib */,
-				6F3B873D27968AEB00A4BD07 /* FilmRollCollectionView */,
-				6F3B874127968AEB00A4BD07 /* FilmRollViewController.swift */,
 				6F3B874227968AEB00A4BD07 /* Cell */,
+				6F3B873D27968AEB00A4BD07 /* FilmRollCollectionView */,
+				6F3B873C27968AEB00A4BD07 /* FilmRollViewController.xib */,
+				6F3B874127968AEB00A4BD07 /* FilmRollViewController.swift */,
 			);
 			path = FilmRollViewController;
 			sourceTree = "<group>";
@@ -555,9 +555,9 @@
 		6F3B873D27968AEB00A4BD07 /* FilmRollCollectionView */ = {
 			isa = PBXGroup;
 			children = (
+				6F3B874027968AEB00A4BD07 /* FilmRollViewController+Layout.swift */,
 				6F3B873E27968AEB00A4BD07 /* FilmRollViewController+DataSource.swift */,
 				6F3B873F27968AEB00A4BD07 /* FilmRollSection.swift */,
-				6F3B874027968AEB00A4BD07 /* FilmRollViewController+Layout.swift */,
 			);
 			path = FilmRollCollectionView;
 			sourceTree = "<group>";
@@ -565,10 +565,10 @@
 		6F3B874227968AEB00A4BD07 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				6F3B874327968AEB00A4BD07 /* FilmTypeCollectionViewCell */,
 				6F3B874627968AEB00A4BD07 /* FilmCurationCollectionViewCell */,
 				6F3B874927968AEB00A4BD07 /* FilmCurationFirstCollectionViewCell */,
 				6F3B874C27968AEB00A4BD07 /* FilmCurationCollectionReusableView */,
+				6F3B874327968AEB00A4BD07 /* FilmTypeCollectionViewCell */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -622,9 +622,9 @@
 		6F3B875227968AEB00A4BD07 /* HomeViewController */ = {
 			isa = PBXGroup;
 			children = (
+				6F3B875527968AEB00A4BD07 /* Cell */,
 				6F3B875327968AEB00A4BD07 /* HomeViewController.xib */,
 				6F3B875427968AEB00A4BD07 /* HomeViewController.swift */,
-				6F3B875527968AEB00A4BD07 /* Cell */,
 			);
 			path = HomeViewController;
 			sourceTree = "<group>";

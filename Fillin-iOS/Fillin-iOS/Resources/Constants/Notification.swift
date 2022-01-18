@@ -9,5 +9,6 @@ import Foundation
 
 extension Notification.Name {
     static let pushToFilmRollViewController = Notification.Name("pushToFilmRollViewController")
+    static let pushToFilmSelectViewController = Notification.Name("pushToFilmSelectViewController")
     static let changeMarker = Notification.Name("changeMarker")
 }

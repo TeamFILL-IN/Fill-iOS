@@ -67,5 +67,6 @@ class FilmTypeCollectionViewCell: UICollectionViewCell {
     
     @objc func touchChooseFilmView(_ sender: UITapGestureRecognizer) {
          // TODO: 필름 종류 선택 뷰로 이동
+        NotificationCenter.default.post(name: NSNotification.Name.pushToFilmSelectViewController, object: nil, userInfo: nil)
     }
 }
