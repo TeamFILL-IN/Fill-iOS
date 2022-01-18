@@ -261,10 +261,10 @@
 		6F3B86E027968AEB00A4BD07 /* Fillin-iOS */ = {
 			isa = PBXGroup;
 			children = (
-				6F3B86E127968AEB00A4BD07 /* Resources */,
-				6F3B86FC27968AEB00A4BD07 /* Sources */,
 				6F3B876E27968AEB00A4BD07 /* Fillin-iOS.entitlements */,
 				6F3B876F27968AEB00A4BD07 /* Info.plist */,
+				6F3B86E127968AEB00A4BD07 /* Resources */,
+				6F3B86FC27968AEB00A4BD07 /* Sources */,
 			);
 			path = "Fillin-iOS";
 			sourceTree = "<group>";
@@ -272,10 +272,10 @@
 		6F3B86E127968AEB00A4BD07 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6F3B86F727968AEB00A4BD07 /* Assets */,
 				6F3B86E227968AEB00A4BD07 /* Constants */,
 				6F3B86EA27968AEB00A4BD07 /* Extensions */,
 				6F3B86F127968AEB00A4BD07 /* Fonts */,
-				6F3B86F727968AEB00A4BD07 /* Assets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -283,13 +283,13 @@
 		6F3B86E227968AEB00A4BD07 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
+				6F3B86E927968AEB00A4BD07 /* Const.swift */,
 				6F3B86E327968AEB00A4BD07 /* Assets+Generated.swift */,
 				6F3B86E427968AEB00A4BD07 /* Xib.swift */,
 				6F3B86E527968AEB00A4BD07 /* UserDefaultsKey.swift */,
 				6F3B86E627968AEB00A4BD07 /* Header.swift */,
 				6F3B86E727968AEB00A4BD07 /* Notification.swift */,
 				6F3B86E827968AEB00A4BD07 /* URL.swift */,
-				6F3B86E927968AEB00A4BD07 /* Const.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -310,11 +310,11 @@
 		6F3B86F127968AEB00A4BD07 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				6F3B86F627968AEB00A4BD07 /* NotoSansKR-Regular.otf */,
 				6F3B86F227968AEB00A4BD07 /* NotoSansKR-Bold.otf */,
 				6F3B86F327968AEB00A4BD07 /* NotoSansKR-Medium.otf */,
 				6F3B86F427968AEB00A4BD07 /* FuturaStdBook.otf */,
 				6F3B86F527968AEB00A4BD07 /* FuturaStdBold.otf */,
-				6F3B86F627968AEB00A4BD07 /* NotoSansKR-Regular.otf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -332,14 +332,14 @@
 		6F3B86FC27968AEB00A4BD07 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				6F3B876827968AEB00A4BD07 /* AppDelegate.swift */,
+				6F3B876D27968AEB00A4BD07 /* SceneDelegate.swift */,
 				6F3B86FD27968AEB00A4BD07 /* Classes */,
 				6F3B86FF27968AEB00A4BD07 /* Models */,
 				6F3B870527968AEB00A4BD07 /* NetworkService */,
-				6F3B871B27968AEB00A4BD07 /* ViewControllers */,
-				6F3B876827968AEB00A4BD07 /* AppDelegate.swift */,
-				6F3B876927968AEB00A4BD07 /* Views */,
 				6F3B876B27968AEB00A4BD07 /* Protocols */,
-				6F3B876D27968AEB00A4BD07 /* SceneDelegate.swift */,
+				6F3B876927968AEB00A4BD07 /* Views */,
+				6F3B871B27968AEB00A4BD07 /* ViewControllers */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -730,9 +730,9 @@
 		775C963C278ACBEA00A9BEA0 = {
 			isa = PBXGroup;
 			children = (
-				6F3B86E027968AEB00A4BD07 /* Fillin-iOS */,
 				775C96A9278B2E1100A9BEA0 /* swiftgen.yml */,
 				775C965D278ACDE200A9BEA0 /* .swiftlint.yml */,
+				6F3B86E027968AEB00A4BD07 /* Fillin-iOS */,
 				775C9646278ACBEA00A9BEA0 /* Products */,
 				395998FF8B0904B6BF7C4A7B /* Pods */,
 				33B49427CA26D6FA968A16CD /* Frameworks */,
