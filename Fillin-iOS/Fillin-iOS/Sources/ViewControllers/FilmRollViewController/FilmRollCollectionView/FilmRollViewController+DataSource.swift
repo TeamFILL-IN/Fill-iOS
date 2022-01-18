@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-final class FilmRollViewControllerDataSource: NSObject, UICollectionViewDataSource {
+class FilmRollViewControllerDataSource: NSObject, UICollectionViewDataSource {
     
     var serverCuration: CurationResponse?
     
@@ -18,10 +18,12 @@ final class FilmRollViewControllerDataSource: NSObject, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch FilmRollSection.allCases[section] {
-            // TODO: data 갯수
-        case .filmCuration:   return serverCuration?.photos.count ?? 0
-        case .filmType:   return 1
-        case .filmRoll:   return 10
+        case .filmCuration:
+            return (serverCuration?.photos.count ?? 0) + 1
+        case .filmType:
+            return 1
+        case .filmRoll:
+            return 10
         }
     }
     
@@ -38,7 +40,7 @@ final class FilmRollViewControllerDataSource: NSObject, UICollectionViewDataSour
             default:
                 guard let curationCell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Xib.filmCurationCollectionViewCell, for: indexPath) as? FilmCurationCollectionViewCell else { return UICollectionViewCell() }
                 
-                curationCell.filmCurationImageView.updateServerImage(serverCuration?.photos[indexPath.row].imageURL ?? "")
+                curationCell.filmCurationImageView.updateServerImage(serverCuration?.photos[indexPath.row-1].imageURL ?? "")
                 return curationCell
             }
             

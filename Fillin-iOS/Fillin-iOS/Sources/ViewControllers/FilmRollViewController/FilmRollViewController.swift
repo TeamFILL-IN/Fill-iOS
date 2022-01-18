@@ -10,7 +10,7 @@ import UIKit
 class FilmRollViewController: UIViewController {
     
     // MARK: - Properties
-    private let dataSource = FilmRollViewControllerDataSource()
+    let dataSource = FilmRollViewControllerDataSource()
     
     // MARK: - @IBOutlet Properties
     @IBOutlet weak var navigationBar: FilinNavigationBar!

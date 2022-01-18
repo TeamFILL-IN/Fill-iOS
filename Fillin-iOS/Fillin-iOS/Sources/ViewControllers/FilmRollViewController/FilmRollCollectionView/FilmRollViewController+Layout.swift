@@ -32,15 +32,15 @@ extension FilmRollViewController {
     func filmCurationSectionLayout() -> NSCollectionLayoutSection {
         let firstItem = NSCollectionLayoutItem(
             layoutSize: NSCollectionLayoutSize(
-                widthDimension: .absolute(108),
-                heightDimension: .absolute(124))
+                widthDimension: .fractionalWidth(1),
+                heightDimension: .fractionalHeight(1))
         )
         firstItem.contentInsets = .init(top: 0, leading: 0, bottom: 0, trailing: 9)
         
         let item = NSCollectionLayoutItem(
             layoutSize: NSCollectionLayoutSize(
                 widthDimension: .absolute(165),
-                heightDimension: .absolute(124))
+                heightDimension: .fractionalHeight(1))
         )
         item.contentInsets = .init(top: 0, leading: 0, bottom: 0, trailing: 9)
     
@@ -53,15 +53,15 @@ extension FilmRollViewController {
         let secondGroup = NSCollectionLayoutGroup.horizontal(
             // TODO: 5 데이터 갯수로 바꿔주세요.
             layoutSize: NSCollectionLayoutSize(
-                widthDimension: .absolute(165*5),
+                widthDimension: .absolute(165 * CGFloat(dataSource.serverCuration?.photos.count ?? 0)),
                 heightDimension: .fractionalHeight(1)),
             subitem: item, count: 5)
         
         let group = NSCollectionLayoutGroup.horizontal(
             layoutSize: NSCollectionLayoutSize(
                 // TODO: 5 데이터 갯수로 바꿔주세요.
-                widthDimension: .estimated(165*5 + 108),
-                heightDimension: .estimated(124)),
+                widthDimension: .absolute(165 * CGFloat(dataSource.serverCuration?.photos.count ?? 0) + 108),
+                heightDimension: .absolute(124)),
             subitems: [firstGroup, secondGroup])
         
         let section = NSCollectionLayoutSection(group: group)
