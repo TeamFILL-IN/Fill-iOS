@@ -281,13 +281,11 @@ extension MyPageViewController {
     MyPageAPI.shared.userPhotos { response in
       switch response {
       case .success(let data):
-        print("어쩔티비")
-        print(data)
         if let photos = data as? PhotosResponse {
           self.serverNewPhotos = photos
           self.userImageview.updateServerImage(photos.photos[0].userImageURL)
           self.userNameLabel.text = photos.photos[0].nickname
-          ///  /3을 하게 되면 1,2개일 때는 제대로 나오지 않기 때문에 소수점 올림 해주기
+          // /3을 하게 되면 1,2개일 때는 제대로 나오지 않기 때문에 소수점 올림 해주기
           let photosCount = ceil(Double(photos.photos.count)/3)
           let intPhotosCount = Int(photosCount)
           self.myphotoCollectionview.heightAnchor.constraint(equalToConstant: CGFloat((intPhotosCount*(Int(UIScreen.main.bounds.width)-36)/3 + 9))+30).isActive = true
