@@ -11,7 +11,7 @@ import SnapKit
 import Then
 
 // MARK: - MyPageViewController
-class MyPageViewController: UIViewController, ConstraintRelatableTarget {
+class MyPageViewController: UIViewController {
   
   // MARK: - Components
   let navigationBar = FilinNavigationBar()
@@ -40,7 +40,6 @@ class MyPageViewController: UIViewController, ConstraintRelatableTarget {
     collectionView.translatesAutoresizingMaskIntoConstraints = false
     return collectionView
   }()
-  
   var serverNewPhotos : PhotosResponse?
   
   // MARK: - LifeCycle
@@ -52,12 +51,7 @@ class MyPageViewController: UIViewController, ConstraintRelatableTarget {
     layout()
     self.myphotoCollectionview.delegate = self
     self.myphotoCollectionview.dataSource = self
-    userPhotosWithAPI(userID: 11)
-  }
-  
-  override func viewDidLayoutSubviews() {
-    /// subview들이 자리 잡은 후 레이아웃 조정 필요할 때 (ex. radius 값)
-    self.userImageview.layer.cornerRadius = self.userImageview.frame.width/2
+    userPhotosWithAPI()
   }
 }
 
@@ -109,17 +103,19 @@ extension MyPageViewController {
   func layoutMyPageScrollContainerView() {
     mypageScrollview.add(mypageScrollContainverView) {
       $0.translatesAutoresizingMaskIntoConstraints = false
-      $0.backgroundColor = .fillinBlack
       $0.contentMode = .scaleToFill
       $0.snp.makeConstraints {
         $0.centerX.top.leading.equalToSuperview()
         $0.bottom.equalTo(self.mypageScrollview.snp.bottom)
-        $0.height.equalTo((UIScreen.main.bounds.height*(249/812)+10*(UIScreen.main.bounds.width-36)/3 + 9) - 9)
+        $0.width.equalTo(self.view)
+        $0.height.equalTo(self.view).priority(250)
       }
     }
   }
   func layoutUserImageView() {
     mypageScrollContainverView.add(userImageview) {
+      $0.setBorder(borderColor: .fillinWhite, borderWidth: 1)
+      $0.setRounded(radius: 27.5)
       $0.image = UIImage(asset: Asset.appleLogo)
       $0.snp.makeConstraints {
         $0.top.equalTo(self.mypageScrollContainverView.snp.top).offset(14)
@@ -159,6 +155,7 @@ extension MyPageViewController {
       $0.snp.makeConstraints {
         $0.top.equalTo(self.userNameLabel.snp.bottom).offset(5)
         $0.leading.equalTo(self.userCameraIcon.snp.trailing).offset(7)
+        $0.centerY.equalTo(self.userCameraIcon)
       }
     }
   }
@@ -252,7 +249,6 @@ extension MyPageViewController : UICollectionViewDelegate {
 
 extension MyPageViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    print(serverNewPhotos?.photos.count ?? 0)
     return serverNewPhotos?.photos.count ?? 0
   }
   
@@ -281,7 +277,7 @@ extension MyPageViewController: UICollectionViewDelegateFlowLayout {
 
 // MARK: - Network
 extension MyPageViewController {
-  func userPhotosWithAPI(userID: Int) {
+  func userPhotosWithAPI() {
     MyPageAPI.shared.userPhotos { response in
       switch response {
       case .success(let data):
@@ -291,8 +287,11 @@ extension MyPageViewController {
           self.serverNewPhotos = photos
           self.userImageview.updateServerImage(photos.photos[0].userImageURL)
           self.userNameLabel.text = photos.photos[0].nickname
+          ///  /3을 하게 되면 1,2개일 때는 제대로 나오지 않기 때문에 소수점 올림 해주기
+          let photosCount = ceil(Double(photos.photos.count)/3)
+          let intPhotosCount = Int(photosCount)
+          self.myphotoCollectionview.heightAnchor.constraint(equalToConstant: CGFloat((intPhotosCount*(Int(UIScreen.main.bounds.width)-36)/3 + 9))+30).isActive = true
           self.myphotoCollectionview.reloadData()
-
         }
       case .requestErr(let message):
         print("userPhotosWithAPI - requestErr: \(message)")
