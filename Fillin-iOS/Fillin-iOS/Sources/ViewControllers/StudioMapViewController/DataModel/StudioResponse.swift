@@ -17,4 +17,3 @@ struct Studio: Codable {
     let id: Int
     let lati, long: Double
 }
-

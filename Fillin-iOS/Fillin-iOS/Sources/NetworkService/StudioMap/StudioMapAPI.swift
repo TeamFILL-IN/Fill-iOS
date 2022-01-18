@@ -11,7 +11,7 @@ import Moya
 public class StudioMapAPI {
   
   static let shared = StudioMapAPI()
-  var studioMapProvider = MoyaProvider<StudioMapService>(plugins: [MoyaLoggerPlugin()])
+  var studioMapProvider = MoyaProvider<StudioMapService>()
   
   public init() { }
   
@@ -39,7 +39,7 @@ public class StudioMapAPI {
     
     switch statusCode {
     case 200:
-      return .success(decodedData.message)
+      return .success(decodedData.data ?? "None-Data")
     case 400..<500:
       return .requestErr(decodedData.message)
     case 500:

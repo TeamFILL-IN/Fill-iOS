@@ -16,6 +16,7 @@ import MapKit
 class StudioMapViewController: UIViewController {
   
   // MARK: - Properties
+  var serverStudios: StudioResponse?
   let mapView = NMFNaverMapView(frame: .zero)
   let myLocationButton = UIButton()
   let dataSource = NMFInfoWindowDefaultTextSource.data()
@@ -46,6 +47,7 @@ class StudioMapViewController: UIViewController {
     layoutSearchView()
     layoutNavigaionBar()
     showNaverMarker()
+    totalStudioWithAPI()
   }
 }
 
@@ -213,5 +215,26 @@ extension StudioMapViewController: CLLocationManagerDelegate {
 }
 
 extension StudioMapViewController: NMFMapViewTouchDelegate {
-  
+}
+
+extension StudioMapViewController {
+  func totalStudioWithAPI() {
+    StudioMapAPI.shared.totalStudio { response in
+      switch response {
+      case .success(let data):
+        print(data, "sdfsdfsdf")
+        if let studios = data as? StudioResponse {
+          self.serverStudios = studios
+        }
+      case .requestErr(let message):
+        print("totalStudioWithAPI - requestErr: \(message)")
+      case .pathErr:
+        print("totalStudioWithAPI - pathErr")
+      case .serverErr:
+        print("totalStudioWithAPI - serverErr")
+      case .networkFail:
+        print("totalStudioWithAPI - networkFail")
+      }
+    }
+  }
 }
