@@ -32,6 +32,7 @@ extension MyPagePhotoCollectionViewCell {
   func layoutMyPagePhotoImageView() {
     self.contentView.add(mypagePhotoImageView) {
       $0.contentMode = .scaleAspectFill
+      // 이미지가 넘치는 것을 막기 위해
       $0.clipsToBounds = true
       $0.snp.makeConstraints {
         $0.top.equalTo(self.contentView.snp.top)

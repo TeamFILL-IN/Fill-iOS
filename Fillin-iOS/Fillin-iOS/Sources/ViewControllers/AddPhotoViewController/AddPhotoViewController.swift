@@ -175,7 +175,7 @@ extension AddPhotoViewController {
                               okAction: { _ in UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)},
                               cancelAction: nil,
                               completion: nil)
-      print("omg")
+      print("거절")
     case .restricted:
       break
     case .authorized:
@@ -214,8 +214,6 @@ extension AddPhotoViewController {
 // MARK: - ImagePicker Extension
 extension AddPhotoViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
   func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-//    let options = PHContentEditingInputRequestOptions()
-//    options.isNetworkAccessAllowed = true
     if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
       photobackgroundView.image = image
       photobackgroundView.contentMode = .scaleAspectFit
@@ -231,7 +229,6 @@ extension AddPhotoViewController {
     AddPhotoAPI.shared.addPhotos(studioId: studioId, filmId: filmId, img: img) { response in
       switch response {
       case .success:
-        print("성공티비")
         let secondVC = SecondAddPhotoPopUpViewController()
         secondVC.modalPresentationStyle = .overCurrentContext
         secondVC.modalTransitionStyle = .crossDissolve
