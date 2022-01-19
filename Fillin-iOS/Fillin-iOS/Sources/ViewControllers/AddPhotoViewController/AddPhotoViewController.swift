@@ -42,6 +42,7 @@ class AddPhotoViewController: UIViewController {
     self.photobackgroundView.isUserInteractionEnabled = true
     self.photobackgroundView.addGestureRecognizer(tapGestureRecognizer)
     layout()
+    setNotification()
   }
   override func viewWillAppear(_ animated: Bool) {
     self.photobackgroundView.image = Asset.photoInsert.image
@@ -201,13 +202,23 @@ extension AddPhotoViewController {
     }
   }
   @objc func touchfilmChooseButton() {
-    
+    let filmselectVC = FilmSelectViewController()
+    self.present(filmselectVC, animated: false, completion: nil)
   }
   @objc func touchstudioChooseButton() {
-    
+    let studiochooseVC = StudioMapSearchViewController()
+    self.present(studiochooseVC, animated: false, completion: nil)
   }
   @objc func touchaddPhotoButton() {
+    // addPhoto클릭하면 서버통신
     addPhotosWithAPI(studioId: 6, filmId: 1, img: self.photobackgroundView.image ?? UIImage())
+  }
+  private func setNotification() {
+    NotificationCenter.default.addObserver(self, selector: #selector(pushToFilmSelectViewController(_:)), name: .pushToFilmSelectViewController, object: nil)
+  }
+  @objc func pushToFilmSelectViewController(_ notification: Notification) {
+    modalPresentationStyle = .fullScreen
+    self.present(FilmSelectViewController(), animated: true, completion: nil)
   }
 }
 
