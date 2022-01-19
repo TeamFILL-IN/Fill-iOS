@@ -13,6 +13,8 @@ class FilmSelectViewController: UIViewController {
     var viewWidth = UIScreen.main.bounds.width
     var selectedTag = 0
     var selectedLeading: CGFloat = 0
+    var selectedFilm = ""
+    var serverFilmList: FilmResponse?
     
     // MARK: - @IBOutlet Properties
     @IBOutlet weak var navigationBar: FilinNavigationBar!
@@ -45,6 +47,7 @@ class FilmSelectViewController: UIViewController {
                 return
             }
             chosenViewLeading.constant = selectedLeading
+            listOfFilmsWithAPI(styleId: selectedTag + 1)
         }
     }
     
@@ -53,6 +56,7 @@ class FilmSelectViewController: UIViewController {
         setUI()
         setNavigationBar()
         registerXib()
+        listOfFilmsWithAPI(styleId: selectedTag + 1)
     }
 }
 // MARK: - Extensions
@@ -93,7 +97,7 @@ extension FilmSelectViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         
-        filmCell.filmNameLabel.text = "Kodak color plus 200 abcdefg1234567"
+        filmCell.filmNameLabel.text = serverFilmList?.films[indexPath.row].name
         return filmCell
     }
     
@@ -106,10 +110,36 @@ extension FilmSelectViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 extension FilmSelectViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let filmCell = tableView.cellForRow(at: indexPath)
+        let filmCell = tableView.cellForRow(at: indexPath) as? FilmTypeTableViewCell
         filmCell?.isSelected = true
-        let selectedFilmDict = ["selectedTag": selectedTag, "selectedLeading": selectedLeading] as [String: Any]
+        selectedFilm = filmCell?.filmNameLabel.text ?? ""
+        let selectedFilmDict = ["selectedTag": selectedTag,
+                                "selectedLeading": selectedLeading,
+                                "selectedFilm": selectedFilm] as [String: Any]
         NotificationCenter.default.post(name: NSNotification.Name.updateSelectedFilmType, object: selectedFilmDict, userInfo: nil)
         self.navigationController?.popViewController(animated: true)
+    }
+}
+
+// MARK: - Network
+extension FilmSelectViewController {
+    func listOfFilmsWithAPI(styleId: Int) {
+        FlimSelectAPI.shared.listOfFilms(styleId: styleId) { response in
+            switch response {
+            case .success(let data):
+                if let films = data as? FilmResponse {
+                    self.serverFilmList = films
+                    self.filmTypeTableView.reloadData()
+                }
+            case .requestErr(let message):
+                print("listOfFilmsWithAPI - requestErr: \(message)")
+            case .pathErr:
+                print("listOfFilmsWithAPI - pathErr")
+            case .serverErr:
+                print("listOfFilmsWithAPI - serverErr")
+            case .networkFail:
+                print("listOfFilmsWithAPI - networkFail")
+            }
+        }
     }
 }

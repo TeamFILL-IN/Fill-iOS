@@ -9,6 +9,11 @@ import Foundation
 
 // MARK: - FilmResponse
 struct FilmResponse: Codable {
+    let films: [Film]
+}
+
+// MARK: - Film
+struct Film: Codable {
     let id: Int
     let name: String
     let styleID: Int

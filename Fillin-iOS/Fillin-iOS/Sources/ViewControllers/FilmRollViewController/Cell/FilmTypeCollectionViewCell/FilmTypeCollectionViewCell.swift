@@ -13,6 +13,10 @@ class FilmTypeCollectionViewCell: UICollectionViewCell {
     var viewWidth = UIScreen.main.bounds.width
     var selectedTag = 0
     var selectedLeading: CGFloat = 0
+    var selectedFilm = ["필름 종류를 선택하세요",
+                        "필름 종류를 선택하세요",
+                        "필름 종류를 선택하세요",
+                        "필름 종류를 선택하세요"]
     
     // MARK: - @IBOutlet Properties
     @IBOutlet var filmTypeButtons: [UIButton]!
@@ -20,7 +24,7 @@ class FilmTypeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var chooseFilmLabel: UILabel!
     @IBOutlet weak var chosenViewLeading: NSLayoutConstraint!
     
-    // MARK: - @IBOutlet Properties
+    // MARK: - @IBAction Properties
     @IBAction func touchFilmTypeButtons(_ sender: UIButton) {
         // TODO: 서버 붙이고 반복코드 리팩토링
         if !sender.isSelected {
@@ -48,7 +52,7 @@ class FilmTypeCollectionViewCell: UICollectionViewCell {
             default:
                 return
             }
-            chosenViewLeading.constant = selectedLeading
+            setSelectedFilm()
         }
     }
     
@@ -57,6 +61,7 @@ class FilmTypeCollectionViewCell: UICollectionViewCell {
         setUI()
         setGesture()
         setNotification()
+        setSelectedFilm()
     }
     
     // MARK: - Functions
@@ -69,8 +74,6 @@ class FilmTypeCollectionViewCell: UICollectionViewCell {
             $0.titleLabel?.font = .subhead2
         }
         chooseFilmLabel.font = .body2
-        filmTypeButtons[selectedTag].isSelected = true
-        chosenViewLeading.constant = selectedLeading
     }
     
     private func setGesture() {
@@ -83,8 +86,13 @@ class FilmTypeCollectionViewCell: UICollectionViewCell {
         NotificationCenter.default.addObserver(self, selector: #selector(updateSelectedFilmType), name: Notification.Name.updateSelectedFilmType, object: nil)
     }
     
+    private func setSelectedFilm() {
+        chooseFilmLabel.text = selectedFilm[selectedTag]
+        filmTypeButtons[selectedTag].isSelected = true
+        chosenViewLeading.constant = selectedLeading
+    }
+    
     @objc func touchChooseFilmView(_ sender: UITapGestureRecognizer) {
-        // TODO: 필름 종류 선택 뷰로 이동
         let selectedFilmDict = ["selectedTag": selectedTag, "selectedLeading": selectedLeading] as [String: Any]
         NotificationCenter.default.post(name: NSNotification.Name.pushToFilmSelectViewController, object: selectedFilmDict, userInfo: nil)
     }
@@ -97,7 +105,8 @@ class FilmTypeCollectionViewCell: UICollectionViewCell {
         let selectedFilmDict = notification.object as? NSDictionary
         selectedTag = selectedFilmDict?["selectedTag"] as? Int ?? 0
         selectedLeading = selectedFilmDict?["selectedLeading"] as? CGFloat ?? 0
-        filmTypeButtons[selectedTag].isSelected = true
-        chosenViewLeading.constant = selectedLeading
+        selectedFilm[selectedTag] = selectedFilmDict?["selectedFilm"] as? String ?? ""
+        chooseFilmLabel.font = .engDisplay2Book
+        setSelectedFilm()
     }
 }
