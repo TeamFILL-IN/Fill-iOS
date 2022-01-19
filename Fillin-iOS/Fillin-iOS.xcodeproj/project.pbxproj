@@ -112,6 +112,7 @@
 		77EB4216279736F700C726D8 /* FilmSelectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77EB4214279736F700C726D8 /* FilmSelectViewController.xib */; };
 		77EB421A27973C1500C726D8 /* FilmTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77EB421827973C1500C726D8 /* FilmTypeTableViewCell.swift */; };
 		77EB421B27973C1500C726D8 /* FilmTypeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77EB421927973C1500C726D8 /* FilmTypeTableViewCell.xib */; };
+		77EB421E27974B0900C726D8 /* CurationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77EB421D27974B0900C726D8 /* CurationResponse.swift */; };
 		9ADF3537C1D51ED22F4C921B /* Pods_Fillin_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F33300C623DFF466AFCE2914 /* Pods_Fillin_iOS.framework */; };
 /* End PBXBuildFile section */
 
@@ -225,6 +226,7 @@
 		77EB4214279736F700C726D8 /* FilmSelectViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilmSelectViewController.xib; sourceTree = "<group>"; };
 		77EB421827973C1500C726D8 /* FilmTypeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmTypeTableViewCell.swift; sourceTree = "<group>"; };
 		77EB421927973C1500C726D8 /* FilmTypeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilmTypeTableViewCell.xib; sourceTree = "<group>"; };
+		77EB421D27974B0900C726D8 /* CurationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurationResponse.swift; sourceTree = "<group>"; };
 		864A552B88FE473B50DE4171 /* Pods-Fillin-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fillin-iOS.debug.xcconfig"; path = "Target Support Files/Pods-Fillin-iOS/Pods-Fillin-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		F33300C623DFF466AFCE2914 /* Pods_Fillin_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fillin_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -374,14 +376,14 @@
 		6F3B870527968AEB00A4BD07 /* NetworkService */ = {
 			isa = PBXGroup;
 			children = (
+				6F3B871727968AEB00A4BD07 /* HowTo.swift */,
 				6F3B870627968AEB00A4BD07 /* Home */,
 				6F3B870927968AEB00A4BD07 /* Plugin */,
 				6F3B870B27968AEB00A4BD07 /* User */,
-				6F3B870E27968AEB00A4BD07 /* MyPage */,
 				6F3B871127968AEB00A4BD07 /* AddPhoto */,
-				6F3B871427968AEB00A4BD07 /* StudioMap */,
-				6F3B871727968AEB00A4BD07 /* HowTo.swift */,
 				6F3B871827968AEB00A4BD07 /* FilmRoll */,
+				6F3B871427968AEB00A4BD07 /* StudioMap */,
+				6F3B870E27968AEB00A4BD07 /* MyPage */,
 			);
 			path = NetworkService;
 			sourceTree = "<group>";
@@ -442,8 +444,8 @@
 		6F3B871827968AEB00A4BD07 /* FilmRoll */ = {
 			isa = PBXGroup;
 			children = (
-				6F3B871927968AEB00A4BD07 /* FilmRollService.swift */,
 				6F3B871A27968AEB00A4BD07 /* FilmRollAPI.swift */,
+				6F3B871927968AEB00A4BD07 /* FilmRollService.swift */,
 			);
 			path = FilmRoll;
 			sourceTree = "<group>";
@@ -548,6 +550,7 @@
 		6F3B873B27968AEB00A4BD07 /* FilmRollViewController */ = {
 			isa = PBXGroup;
 			children = (
+				77EB421C27974AE300C726D8 /* DataModel */,
 				6F3B874227968AEB00A4BD07 /* Cell */,
 				6F3B873D27968AEB00A4BD07 /* FilmRollCollectionView */,
 				6F3B873C27968AEB00A4BD07 /* FilmRollViewController.xib */,
@@ -764,6 +767,14 @@
 				77EB421927973C1500C726D8 /* FilmTypeTableViewCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		77EB421C27974AE300C726D8 /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				77EB421D27974B0900C726D8 /* CurationResponse.swift */,
+			);
+			path = DataModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -995,6 +1006,7 @@
 				6F3B87A827968AEB00A4BD07 /* FirstAddPhotoPopUpViewController.swift in Sources */,
 				6F3B879027968AEB00A4BD07 /* MyPageAPI.swift in Sources */,
 				6F3B878D27968AEB00A4BD07 /* UserAPI.swift in Sources */,
+				77EB421E27974B0900C726D8 /* CurationResponse.swift in Sources */,
 				77EB421A27973C1500C726D8 /* FilmTypeTableViewCell.swift in Sources */,
 				6F3B87CC27968AEB00A4BD07 /* AppDelegate.swift in Sources */,
 				6F3B878C27968AEB00A4BD07 /* MoyaLoggerPlugin.swift in Sources */,
