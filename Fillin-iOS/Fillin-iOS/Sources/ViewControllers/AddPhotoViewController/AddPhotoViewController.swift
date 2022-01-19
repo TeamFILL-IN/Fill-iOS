@@ -106,7 +106,7 @@ extension AddPhotoViewController {
       $0.setBorder(borderColor: .fillinRed, borderWidth: 1)
       $0.contentHorizontalAlignment = .left
       $0.contentEdgeInsets = UIEdgeInsets(top: 0, left: 18, bottom: 0, right: 0)
-      $0.addTarget(self, action: #selector(self.touchfilmChooseButton), for: .touchUpInside)
+      $0.addTarget(self, action: #selector(self.touchFilmChooseButton), for: .touchUpInside)
       $0.snp.makeConstraints {
         $0.top.equalTo(self.filmLabel.snp.bottom).offset(9)
         $0.centerX.equalToSuperview()
@@ -137,7 +137,7 @@ extension AddPhotoViewController {
       $0.setBorder(borderColor: .fillinRed, borderWidth: 1)
       $0.contentHorizontalAlignment = .left
       $0.contentEdgeInsets = UIEdgeInsets(top: 0, left: 18, bottom: 0, right: 0)
-      $0.addTarget(self, action: #selector(self.touchstudioChooseButton), for: .touchUpInside)
+      $0.addTarget(self, action: #selector(self.touchStudioChooseButton), for: .touchUpInside)
       $0.snp.makeConstraints {
         $0.top.equalTo(self.studioLabel.snp.bottom).offset(9)
         $0.centerX.equalToSuperview()
@@ -161,7 +161,7 @@ extension AddPhotoViewController {
       $0.setTitle("Add Photo", for: .normal)
       $0.titleLabel?.font = .engBighead
       $0.setTitleColor(.fillinBlack, for: .normal)
-      $0.addTarget(self, action: #selector(self.touchaddPhotoButton), for: .touchUpInside)
+      $0.addTarget(self, action: #selector(self.touchAddPhotoButton), for: .touchUpInside)
       $0.snp.makeConstraints {
         $0.top.equalToSuperview().offset(15)
         $0.centerX.equalToSuperview()
@@ -201,15 +201,15 @@ extension AddPhotoViewController {
       break
     }
   }
-  @objc func touchfilmChooseButton() {
-    let filmselectVC = FilmSelectViewController()
-    self.present(filmselectVC, animated: false, completion: nil)
+  @objc func touchFilmChooseButton() {
+    let filmSelectVC = FilmSelectViewController()
+    self.present(filmSelectVC, animated: false, completion: nil)
   }
-  @objc func touchstudioChooseButton() {
-    let studiochooseVC = StudioMapSearchViewController()
-    self.present(studiochooseVC, animated: false, completion: nil)
+  @objc func touchStudioChooseButton() {
+    let studioChooseVC = StudioMapSearchViewController()
+    self.present(studioChooseVC, animated: false, completion: nil)
   }
-  @objc func touchaddPhotoButton() {
+  @objc func touchAddPhotoButton() {
     // addPhoto클릭하면 서버통신
     addPhotosWithAPI(studioId: 6, filmId: 1, img: self.photobackgroundView.image ?? UIImage())
   }
