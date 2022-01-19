@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 
 class FilmSelectViewController: UIViewController {
     
@@ -15,6 +16,23 @@ class FilmSelectViewController: UIViewController {
     var selectedLeading: CGFloat = 0
     var selectedFilm = ""
     var serverFilmList: FilmResponse?
+    
+    lazy var loadingBgView: UIView = {
+        let bgView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+        bgView.backgroundColor = .backgroundCover
+        
+        return bgView
+    }()
+    
+    lazy var activityIndicator: NVActivityIndicatorView = {
+        let activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40),
+                                                        type: .ballBeat,
+                                                        color: .fillinRed,
+                                                        padding: .zero)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        
+        return activityIndicator
+    }()
     
     // MARK: - @IBOutlet Properties
     @IBOutlet weak var navigationBar: FilinNavigationBar!
@@ -33,12 +51,14 @@ class FilmSelectViewController: UIViewController {
             chosenViewLeading.constant = selectedLeading
             
             setSelectedFilm()
+            setActivityIndicator()
             listOfFilmsWithAPI(styleId: selectedTag + 1)
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setActivityIndicator()
         setUI()
         setNavigationBar()
         registerXib()
@@ -73,6 +93,18 @@ extension FilmSelectViewController {
     private func setSelectedFilm() {
         filmTypeButtons[selectedTag].isSelected = true
         chosenViewLeading.constant = selectedLeading
+    }
+    
+    private func setActivityIndicator() {
+        view.addSubview(loadingBgView)
+        loadingBgView.addSubview(activityIndicator)
+        
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+        
+        activityIndicator.startAnimating()
     }
 }
 
@@ -120,6 +152,8 @@ extension FilmSelectViewController {
                 if let films = data as? FilmResponse {
                     self.serverFilmList = films
                     self.filmTypeTableView.reloadData()
+                    self.activityIndicator.stopAnimating()
+                    self.loadingBgView.removeFromSuperview()
                 }
             case .requestErr(let message):
                 print("listOfFilmsWithAPI - requestErr: \(message)")
