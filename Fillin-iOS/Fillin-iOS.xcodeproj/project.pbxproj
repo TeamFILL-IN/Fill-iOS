@@ -363,10 +363,10 @@
 		6F3B86FF27968AEB00A4BD07 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				6F3B870027968AEB00A4BD07 /* PhotosResponse.swift */,
-				6F3B870127968AEB00A4BD07 /* Map */,
 				6F3B870327968AEB00A4BD07 /* NetworkResult.swift */,
 				6F3B870427968AEB00A4BD07 /* GenericResponse.swift */,
+				6F3B870027968AEB00A4BD07 /* PhotosResponse.swift */,
+				6F3B870127968AEB00A4BD07 /* Map */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -460,19 +460,19 @@
 		6F3B871B27968AEB00A4BD07 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				77EB4212279736C200C726D8 /* FilmSelectViewController */,
-				6F3B871C27968AEB00A4BD07 /* StudioMapSearchViewController */,
-				6F3B872127968AEB00A4BD07 /* OnboardingViewController */,
 				6F3B872527968AEB00A4BD07 /* SplashViewController */,
-				6F3B872827968AEB00A4BD07 /* MyPageViewController */,
-				6F3B872C27968AEB00A4BD07 /* StudioMapViewController */,
-				6F3B873227968AEB00A4BD07 /* AddPhotoPopUpViewController */,
-				6F3B873527968AEB00A4BD07 /* AddPhotoViewController */,
-				6F3B873827968AEB00A4BD07 /* FilmRollClickViewController */,
-				6F3B873B27968AEB00A4BD07 /* FilmRollViewController */,
+				6F3B872127968AEB00A4BD07 /* OnboardingViewController */,
 				6F3B876627968AEB00A4BD07 /* LoginViewController */,
-				6F3B874F27968AEB00A4BD07 /* StudioMapBottomSheetViewController */,
 				6F3B875227968AEB00A4BD07 /* HomeViewController */,
+				6F3B873527968AEB00A4BD07 /* AddPhotoViewController */,
+				6F3B873227968AEB00A4BD07 /* AddPhotoPopUpViewController */,
+				6F3B873B27968AEB00A4BD07 /* FilmRollViewController */,
+				6F3B873827968AEB00A4BD07 /* FilmRollClickViewController */,
+				77EB4212279736C200C726D8 /* FilmSelectViewController */,
+				6F3B872C27968AEB00A4BD07 /* StudioMapViewController */,
+				6F3B874F27968AEB00A4BD07 /* StudioMapBottomSheetViewController */,
+				6F3B871C27968AEB00A4BD07 /* StudioMapSearchViewController */,
+				6F3B872827968AEB00A4BD07 /* MyPageViewController */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -480,10 +480,10 @@
 		6F3B871C27968AEB00A4BD07 /* StudioMapSearchViewController */ = {
 			isa = PBXGroup;
 			children = (
-				6F3B871D27968AEB00A4BD07 /* StudioMapSearchTableViewCell.xib */,
 				6F3B871E27968AEB00A4BD07 /* StudioMapSearchTableViewCell.swift */,
-				6F3B871F27968AEB00A4BD07 /* StudioMapSearchViewController.xib */,
+				6F3B871D27968AEB00A4BD07 /* StudioMapSearchTableViewCell.xib */,
 				6F3B872027968AEB00A4BD07 /* StudioMapSearchViewController.swift */,
+				6F3B871F27968AEB00A4BD07 /* StudioMapSearchViewController.xib */,
 			);
 			path = StudioMapSearchViewController;
 			sourceTree = "<group>";
@@ -521,8 +521,8 @@
 			isa = PBXGroup;
 			children = (
 				6F8B71F72796F30000F88EB3 /* DataModel */,
-				6F3B872D27968AEB00A4BD07 /* StudioMapViewController.xib */,
 				6F3B872E27968AEB00A4BD07 /* StudioMapViewController.swift */,
+				6F3B872D27968AEB00A4BD07 /* StudioMapViewController.xib */,
 			);
 			path = StudioMapViewController;
 			sourceTree = "<group>";
@@ -539,8 +539,8 @@
 		6F3B873527968AEB00A4BD07 /* AddPhotoViewController */ = {
 			isa = PBXGroup;
 			children = (
-				6F3B873627968AEB00A4BD07 /* AddPhotoViewController.xib */,
 				6F3B873727968AEB00A4BD07 /* AddPhotoViewController.swift */,
+				6F3B873627968AEB00A4BD07 /* AddPhotoViewController.xib */,
 			);
 			path = AddPhotoViewController;
 			sourceTree = "<group>";
@@ -560,8 +560,8 @@
 				77EB421C27974AE300C726D8 /* DataModel */,
 				6F3B874227968AEB00A4BD07 /* Cell */,
 				6F3B873D27968AEB00A4BD07 /* FilmRollCollectionView */,
-				6F3B873C27968AEB00A4BD07 /* FilmRollViewController.xib */,
 				6F3B874127968AEB00A4BD07 /* FilmRollViewController.swift */,
+				6F3B873C27968AEB00A4BD07 /* FilmRollViewController.xib */,
 			);
 			path = FilmRollViewController;
 			sourceTree = "<group>";
@@ -569,9 +569,9 @@
 		6F3B873D27968AEB00A4BD07 /* FilmRollCollectionView */ = {
 			isa = PBXGroup;
 			children = (
+				6F3B873F27968AEB00A4BD07 /* FilmRollSection.swift */,
 				6F3B874027968AEB00A4BD07 /* FilmRollViewController+Layout.swift */,
 				6F3B873E27968AEB00A4BD07 /* FilmRollViewController+DataSource.swift */,
-				6F3B873F27968AEB00A4BD07 /* FilmRollSection.swift */,
 			);
 			path = FilmRollCollectionView;
 			sourceTree = "<group>";
@@ -579,9 +579,9 @@
 		6F3B874227968AEB00A4BD07 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				6F3B874627968AEB00A4BD07 /* FilmCurationCollectionViewCell */,
-				6F3B874927968AEB00A4BD07 /* FilmCurationFirstCollectionViewCell */,
 				6F3B874C27968AEB00A4BD07 /* FilmCurationCollectionReusableView */,
+				6F3B874927968AEB00A4BD07 /* FilmCurationFirstCollectionViewCell */,
+				6F3B874627968AEB00A4BD07 /* FilmCurationCollectionViewCell */,
 				6F3B874327968AEB00A4BD07 /* FilmTypeCollectionViewCell */,
 			);
 			path = Cell;
@@ -599,8 +599,8 @@
 		6F3B874627968AEB00A4BD07 /* FilmCurationCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				6F3B874727968AEB00A4BD07 /* FilmCurationCollectionViewCell.xib */,
 				6F3B874827968AEB00A4BD07 /* FilmCurationCollectionViewCell.swift */,
+				6F3B874727968AEB00A4BD07 /* FilmCurationCollectionViewCell.xib */,
 			);
 			path = FilmCurationCollectionViewCell;
 			sourceTree = "<group>";
@@ -608,8 +608,8 @@
 		6F3B874927968AEB00A4BD07 /* FilmCurationFirstCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				6F3B874A27968AEB00A4BD07 /* FilmCurationFirstCollectionViewCell.xib */,
 				6F3B874B27968AEB00A4BD07 /* FilmCurationFirstCollectionViewCell.swift */,
+				6F3B874A27968AEB00A4BD07 /* FilmCurationFirstCollectionViewCell.xib */,
 			);
 			path = FilmCurationFirstCollectionViewCell;
 			sourceTree = "<group>";
@@ -617,8 +617,8 @@
 		6F3B874C27968AEB00A4BD07 /* FilmCurationCollectionReusableView */ = {
 			isa = PBXGroup;
 			children = (
-				6F3B874D27968AEB00A4BD07 /* FilmCurationCollectionReusableView.xib */,
 				6F3B874E27968AEB00A4BD07 /* FilmCurationCollectionReusableView.swift */,
+				6F3B874D27968AEB00A4BD07 /* FilmCurationCollectionReusableView.xib */,
 			);
 			path = FilmCurationCollectionReusableView;
 			sourceTree = "<group>";
@@ -627,8 +627,8 @@
 			isa = PBXGroup;
 			children = (
 				6F3B87DA27968D3000A4BD07 /* StudioMapContentViewController */,
-				6F3B875027968AEB00A4BD07 /* StudioMapBottomSheetViewController.xib */,
 				6F3B875127968AEB00A4BD07 /* StudioMapBottomSheetViewController.swift */,
+				6F3B875027968AEB00A4BD07 /* StudioMapBottomSheetViewController.xib */,
 			);
 			path = StudioMapBottomSheetViewController;
 			sourceTree = "<group>";
@@ -637,8 +637,8 @@
 			isa = PBXGroup;
 			children = (
 				6F3B875527968AEB00A4BD07 /* Cell */,
-				6F3B875327968AEB00A4BD07 /* HomeViewController.xib */,
 				6F3B875427968AEB00A4BD07 /* HomeViewController.swift */,
+				6F3B875327968AEB00A4BD07 /* HomeViewController.xib */,
 			);
 			path = HomeViewController;
 			sourceTree = "<group>";
@@ -657,8 +657,8 @@
 		6F3B875627968AEB00A4BD07 /* TabBarTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				6F3B875727968AEB00A4BD07 /* TabBarTableViewCell.xib */,
 				6F3B875827968AEB00A4BD07 /* TabBarTableViewCell.swift */,
+				6F3B875727968AEB00A4BD07 /* TabBarTableViewCell.xib */,
 			);
 			path = TabBarTableViewCell;
 			sourceTree = "<group>";
@@ -666,12 +666,12 @@
 		6F3B875927968AEB00A4BD07 /* PhotosTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				6F3B875A27968AEB00A4BD07 /* PhotosCollectionViewCell.xib */,
 				6F3B875B27968AEB00A4BD07 /* PhotosCollectionViewCell.swift */,
+				6F3B875A27968AEB00A4BD07 /* PhotosCollectionViewCell.xib */,
 				6F3B875C27968AEB00A4BD07 /* PhotosTableViewCell.swift */,
-				6F3B875D27968AEB00A4BD07 /* ArrowCollectionViewCell.xib */,
-				6F3B875E27968AEB00A4BD07 /* ArrowCollectionViewCell.swift */,
 				6F3B875F27968AEB00A4BD07 /* PhotosTableViewCell.xib */,
+				6F3B875E27968AEB00A4BD07 /* ArrowCollectionViewCell.swift */,
+				6F3B875D27968AEB00A4BD07 /* ArrowCollectionViewCell.xib */,
 			);
 			path = PhotosTableViewCell;
 			sourceTree = "<group>";
@@ -679,8 +679,8 @@
 		6F3B876027968AEB00A4BD07 /* MapTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				6F3B876127968AEB00A4BD07 /* MapTableViewCell.xib */,
 				6F3B876227968AEB00A4BD07 /* MapTableViewCell.swift */,
+				6F3B876127968AEB00A4BD07 /* MapTableViewCell.xib */,
 			);
 			path = MapTableViewCell;
 			sourceTree = "<group>";
@@ -721,9 +721,9 @@
 		6F3B87DA27968D3000A4BD07 /* StudioMapContentViewController */ = {
 			isa = PBXGroup;
 			children = (
+				6F3B87DD27968D3000A4BD07 /* StudioMapCollectionViewCell.swift */,
 				6F3B87DB27968D3000A4BD07 /* StudioMapCollectionViewCell.xib */,
 				6F3B87DC27968D3000A4BD07 /* StudioMapContentViewController.swift */,
-				6F3B87DD27968D3000A4BD07 /* StudioMapCollectionViewCell.swift */,
 				6F3B87DE27968D3000A4BD07 /* StudioMapContentViewController.xib */,
 			);
 			path = StudioMapContentViewController;
