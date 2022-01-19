@@ -13,6 +13,10 @@ class FilmTypeCollectionViewCell: UICollectionViewCell {
     var viewWidth = UIScreen.main.bounds.width
     var selectedTag = 0
     var selectedLeading: CGFloat = 0
+    var selectedIcon = [Asset.icnCategory.image,
+                        Asset.icnCategory.image,
+                        Asset.icnCategory.image,
+                        Asset.icnCategory.image]
     var selectedFilm = ["필름 종류를 선택하세요",
                         "필름 종류를 선택하세요",
                         "필름 종류를 선택하세요",
@@ -21,37 +25,20 @@ class FilmTypeCollectionViewCell: UICollectionViewCell {
     // MARK: - @IBOutlet Properties
     @IBOutlet var filmTypeButtons: [UIButton]!
     @IBOutlet weak var chooseFilmView: UIView!
+    @IBOutlet weak var chooseFilmIcon: UIImageView!
     @IBOutlet weak var chooseFilmLabel: UILabel!
     @IBOutlet weak var chosenViewLeading: NSLayoutConstraint!
     
     // MARK: - @IBAction Properties
     @IBAction func touchFilmTypeButtons(_ sender: UIButton) {
-        // TODO: 서버 붙이고 반복코드 리팩토링
         if !sender.isSelected {
             filmTypeButtons.forEach {
                 $0.isSelected = false
             }
-            sender.isSelected = !sender.isSelected
-            switch sender.tag {
-            case 0:
-                chosenViewLeading.constant = 0
-                selectedTag = 0
-                selectedLeading = 0
-            case 1:
-                chosenViewLeading.constant = viewWidth/4
-                selectedTag = 1
-                selectedLeading = viewWidth/4
-            case 2:
-                chosenViewLeading.constant = (viewWidth/4)*2
-                selectedTag = 2
-                selectedLeading = (viewWidth/4)*2
-            case 3:
-                chosenViewLeading.constant = (viewWidth/4)*3
-                selectedTag = 3
-                selectedLeading = (viewWidth/4)*3
-            default:
-                return
-            }
+            selectedTag = sender.tag
+            selectedLeading = (viewWidth/4) * CGFloat(sender.tag)
+            chosenViewLeading.constant = selectedLeading
+            
             setSelectedFilm()
         }
     }
@@ -87,6 +74,7 @@ class FilmTypeCollectionViewCell: UICollectionViewCell {
     }
     
     private func setSelectedFilm() {
+        chooseFilmIcon.image = selectedIcon[selectedTag]
         chooseFilmLabel.text = selectedFilm[selectedTag]
         filmTypeButtons[selectedTag].isSelected = true
         chosenViewLeading.constant = selectedLeading
@@ -98,7 +86,6 @@ class FilmTypeCollectionViewCell: UICollectionViewCell {
     }
     
     @objc func updateSelectedFilmType(_ notification: Notification) {
-        // TODO: touchFilmTypeButtons에서도 사용되기 때문에 더러운 코드 리팩토링
         filmTypeButtons.forEach {
             $0.isSelected = false
         }
@@ -106,6 +93,7 @@ class FilmTypeCollectionViewCell: UICollectionViewCell {
         selectedTag = selectedFilmDict?["selectedTag"] as? Int ?? 0
         selectedLeading = selectedFilmDict?["selectedLeading"] as? CGFloat ?? 0
         selectedFilm[selectedTag] = selectedFilmDict?["selectedFilm"] as? String ?? ""
+        selectedIcon[selectedTag] = Asset.iconFilmroll.image
         chooseFilmLabel.font = .engDisplay2Book
         setSelectedFilm()
     }

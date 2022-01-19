@@ -28,25 +28,11 @@ class FilmSelectViewController: UIViewController {
             filmTypeButtons.forEach {
                 $0.isSelected = false
             }
-            sender.isSelected = !sender.isSelected
-            // TODO: 서버 붙이고 반복코드 리팩토링
-            switch sender.tag {
-            case 0:
-                selectedTag = 0
-                selectedLeading = 0
-            case 1:
-                selectedTag = 1
-                selectedLeading = viewWidth/4
-            case 2:
-                selectedTag = 2
-                selectedLeading = (viewWidth/4)*2
-            case 3:
-                selectedTag = 3
-                selectedLeading = (viewWidth/4)*3
-            default:
-                return
-            }
+            selectedTag = sender.tag
+            selectedLeading = (viewWidth/4) * CGFloat(sender.tag)
             chosenViewLeading.constant = selectedLeading
+            
+            setSelectedFilm()
             listOfFilmsWithAPI(styleId: selectedTag + 1)
         }
     }
@@ -56,6 +42,7 @@ class FilmSelectViewController: UIViewController {
         setUI()
         setNavigationBar()
         registerXib()
+        setSelectedFilm()
         listOfFilmsWithAPI(styleId: selectedTag + 1)
     }
 }
@@ -65,8 +52,6 @@ extension FilmSelectViewController {
         filmTypeButtons.forEach {
             $0.titleLabel?.font = .subhead2
         }
-        filmTypeButtons[selectedTag].isSelected = true
-        chosenViewLeading.constant = selectedLeading
         if #available(iOS 15, *) {
             filmTypeTableView.sectionHeaderTopPadding = 0
         }
@@ -83,6 +68,11 @@ extension FilmSelectViewController {
     
     private func registerXib() {
         filmTypeTableView.register(FilmTypeTableViewCell.nib(), forCellReuseIdentifier: Const.Xib.filmTypeTableViewCell)
+    }
+    
+    private func setSelectedFilm() {
+        filmTypeButtons[selectedTag].isSelected = true
+        chosenViewLeading.constant = selectedLeading
     }
 }
 
