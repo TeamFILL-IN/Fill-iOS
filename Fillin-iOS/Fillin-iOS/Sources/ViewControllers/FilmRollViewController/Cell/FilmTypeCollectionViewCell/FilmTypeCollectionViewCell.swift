@@ -93,7 +93,7 @@ class FilmTypeCollectionViewCell: UICollectionViewCell {
         selectedTag = selectedFilmDict?["selectedTag"] as? Int ?? 0
         selectedLeading = selectedFilmDict?["selectedLeading"] as? CGFloat ?? 0
         selectedFilm[selectedTag] = selectedFilmDict?["selectedFilm"] as? String ?? ""
-        selectedIcon[selectedTag] = Asset.iconFilmroll.image
+        selectedIcon[selectedTag] = Asset.icnFilmRoll.image
         chooseFilmLabel.font = .engDisplay2Book
         setSelectedFilm()
     }
