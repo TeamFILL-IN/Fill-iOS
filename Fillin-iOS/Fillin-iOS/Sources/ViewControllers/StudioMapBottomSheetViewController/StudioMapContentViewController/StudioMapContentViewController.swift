@@ -82,7 +82,7 @@ class StudioMapContentViewController: UIViewController {
     
     // label
     studioScrollContainverView.add(studioLabel) {
-      $0.text = StudioMapBottomSheetViewController.name
+      $0.text = StudioMapViewController.name
       $0.textColor = .white
       $0.font = .headline
       $0.snp.makeConstraints {
@@ -110,7 +110,7 @@ class StudioMapContentViewController: UIViewController {
     }
     // Label
     studioScrollContainverView.add(locationLabel) {
-      $0.text = StudioMapBottomSheetViewController.address
+      $0.text = StudioMapViewController.address
       $0.numberOfLines = 0
       $0.font = .body2
       $0.textColor = .grey1
@@ -122,7 +122,7 @@ class StudioMapContentViewController: UIViewController {
       }
     }
     studioScrollContainverView.add(timeLabel) {
-      $0.text = StudioMapBottomSheetViewController.time
+      $0.text = StudioMapViewController.time
       $0.numberOfLines = 0
       $0.font = .body2
       $0.textColor = .grey1
@@ -134,7 +134,7 @@ class StudioMapContentViewController: UIViewController {
       }
     }
     studioScrollContainverView.add(callLabel) {
-      $0.text = StudioMapBottomSheetViewController.tel
+      $0.text = StudioMapViewController.tel
       $0.numberOfLines = 0
       $0.font = .body2
       $0.textColor = .grey1
@@ -146,7 +146,7 @@ class StudioMapContentViewController: UIViewController {
       }
     }
     studioScrollContainverView.add(priceLabel) {
-      $0.text = StudioMapBottomSheetViewController.price
+      $0.text = StudioMapViewController.price
       $0.numberOfLines = 0
       $0.font = .body2
       $0.textColor = .grey1
@@ -253,7 +253,7 @@ class StudioMapContentViewController: UIViewController {
   
   // MARK: - @objc
   @objc func touchLinkButton() {
-    let studioUrl = NSURL(string: StudioMapBottomSheetViewController.site ?? "none site")
+    let studioUrl = NSURL(string: StudioMapViewController.site ?? "none site")
     let studioSafariView: SFSafariViewController = SFSafariViewController(url: studioUrl! as URL)
     self.present(studioSafariView, animated: true, completion: nil)
   }

@@ -16,6 +16,13 @@ import MapKit
 class StudioMapViewController: UIViewController {
   
   // MARK: - Properties
+  static var name: String?
+  static var address: String?
+  static var time: String?
+  static var tel: String?
+  static var price: String?
+  static var site: String?
+  
   var serverStudioInfo: StudioInfoResponse?
   var serverStudios: StudioResponse?
   var selectedMarker: NMFMarker?
@@ -110,8 +117,15 @@ extension StudioMapViewController {
     }
   }
   
-  func presentBottomSheetAfterSuccess() {
-    let nextVC = StudioMapBottomSheetViewController(contentViewController: StudioMapContentViewController(), name: self.serverStudioInfo?.studio.name, address: self.serverStudioInfo?.studio.address, time: self.serverStudioInfo?.studio.time, tel: self.serverStudioInfo?.studio.tel, price: self.serverStudioInfo?.studio.price, site: self.serverStudioInfo?.studio.site)
+  func presentBottomSheetAfterInfo() {
+    StudioMapViewController.name = self.serverStudioInfo?.studio.name
+    StudioMapViewController.address = self.serverStudioInfo?.studio.address
+    StudioMapViewController.time = self.serverStudioInfo?.studio.time
+    StudioMapViewController.tel = self.serverStudioInfo?.studio.tel
+    StudioMapViewController.price = self.serverStudioInfo?.studio.price
+    StudioMapViewController.site = self.serverStudioInfo?.studio.site
+    
+    let nextVC = StudioMapBottomSheetViewController(contentViewController: StudioMapContentViewController())
     nextVC.modalPresentationStyle = .overCurrentContext
     nextVC.modalTransitionStyle = .crossDissolve
     self.present(nextVC, animated: false, completion: nil)
@@ -271,7 +285,7 @@ extension StudioMapViewController {
               print(data)
                 if let studioinfo = data as? StudioInfoResponse {
                   self.serverStudioInfo = studioinfo
-                  self.presentBottomSheetAfterSuccess()
+                  self.presentBottomSheetAfterInfo()
                 }
             case .requestErr(let message):
                 print("studioInfoWithAPI - requestErr: \(message)")

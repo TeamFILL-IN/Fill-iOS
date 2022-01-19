@@ -41,13 +41,6 @@ class StudioMapBottomSheetViewController: UIViewController {
     return view
   }()
   
-  static var name: String?
-  static var address: String?
-  static var time: String?
-  static var tel: String?
-  static var price: String?
-  static var site: String?
-  
   // MARK: - View Life Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -62,16 +55,9 @@ class StudioMapBottomSheetViewController: UIViewController {
   }
   
   // MARK: - init
-  init(contentViewController: UIViewController, name: String?, address: String?, time: String?, tel: String?, price: String?, site: String?) {
+  init(contentViewController: UIViewController) {
     self.contentViewController = contentViewController
     super.init(nibName: nil, bundle: nil)
-    
-    StudioMapBottomSheetViewController.name = name
-    StudioMapBottomSheetViewController.address = address
-    StudioMapBottomSheetViewController.time = time
-    StudioMapBottomSheetViewController.tel = tel
-    StudioMapBottomSheetViewController.price = price
-    StudioMapBottomSheetViewController.site = site
   }
   
   required init?(coder: NSCoder) {
