@@ -22,8 +22,9 @@ class FilmCurationFirstCollectionViewCell: UICollectionViewCell {
     }
 
     private func setUI() {
-        curationTitleLabel.text = "따뜻한 사진을\n원한다면"
         curationTitleLabel.font = .subhead2
         curationTitleLabel.numberOfLines = 2
+        curationTitleLabel.lineBreakMode = .byWordWrapping
+        curationTitleLabel.sizeToFit()
     }
 }

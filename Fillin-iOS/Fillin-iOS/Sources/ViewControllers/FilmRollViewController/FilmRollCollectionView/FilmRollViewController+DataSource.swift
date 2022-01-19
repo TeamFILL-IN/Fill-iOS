@@ -8,7 +8,9 @@
 import Foundation
 import UIKit
 
-final class FilmRollViewControllerDataSource: NSObject, UICollectionViewDataSource {
+class FilmRollViewControllerDataSource: NSObject, UICollectionViewDataSource {
+    
+    var serverCuration: CurationResponse?
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         3
@@ -16,10 +18,12 @@ final class FilmRollViewControllerDataSource: NSObject, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch FilmRollSection.allCases[section] {
-            // TODO: data 갯수
-        case .filmCuration:   return 6
-        case .filmType:   return 1
-        case .filmRoll:   return 10
+        case .filmCuration:
+            return (serverCuration?.photos.count ?? 0) + 1
+        case .filmType:
+            return 1
+        case .filmRoll:
+            return 10
         }
     }
     
@@ -29,18 +33,21 @@ final class FilmRollViewControllerDataSource: NSObject, UICollectionViewDataSour
             switch indexPath.row {
             case 0:
                 guard let curationFirstCell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Xib.filmCurationFirstCollectionViewCell, for: indexPath) as? FilmCurationFirstCollectionViewCell else { return UICollectionViewCell() }
+                
+                curationFirstCell.curationTitleLabel.text = serverCuration?.curation.title
 
                 return curationFirstCell
             default:
                 guard let curationCell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Xib.filmCurationCollectionViewCell, for: indexPath) as? FilmCurationCollectionViewCell else { return UICollectionViewCell() }
                 
+                curationCell.filmCurationImageView.updateServerImage(serverCuration?.photos[indexPath.row-1].imageURL ?? "")
                 return curationCell
             }
             
         case .filmType:
-            guard let curationCell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Xib.filmTypeCollectionViewCell, for: indexPath) as? FilmTypeCollectionViewCell else { return UICollectionViewCell() }
-
-            return curationCell
+            guard let filmTypeCell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Xib.filmTypeCollectionViewCell, for: indexPath) as? FilmTypeCollectionViewCell else { return UICollectionViewCell() }
+            
+            return filmTypeCell
             
         case .filmRoll:
             guard let filmRollCell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Xib.filmCurationCollectionViewCell, for: indexPath) as? FilmCurationCollectionViewCell else { return UICollectionViewCell() }

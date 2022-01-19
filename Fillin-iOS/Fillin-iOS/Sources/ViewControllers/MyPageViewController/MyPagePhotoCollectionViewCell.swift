@@ -35,6 +35,7 @@ extension MyPagePhotoCollectionViewCell {
   }
   func layoutMyPagePhotoImageView() {
     self.contentView.add(mypagePhotoImageView) {
+      $0.contentMode = .scaleAspectFit
       $0.snp.makeConstraints {
         $0.top.equalTo(self.contentView.snp.top)
         $0.leading.equalTo(self.contentView.snp.leading)
