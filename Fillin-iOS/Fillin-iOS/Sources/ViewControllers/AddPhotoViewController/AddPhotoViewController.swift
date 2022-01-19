@@ -167,27 +167,15 @@ extension AddPhotoViewController {
       }
     }
   }
-  // 사용자가 권한 deny 눌렀을 경우 Settings로 보내도록
-  func settingAlert() {
-    if let appName = Bundle.main.infoDictionary!["CFBunldName"] as? String {
-      let alert = UIAlertController(title: "설정", message: "\(appName)이(가) 카메라 접근 허용이 되어있지 않습니다. 설정화면으로 가시겠습니까?", preferredStyle: .alert)
-      let cancelAction = UIAlertAction(title: "취소", style: .default) { (action) in
-      }
-      let confirmAction = UIAlertAction(title: "확인", style: .default) { (action) in UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
-      }
-      alert.addAction(cancelAction)
-      alert.addAction(confirmAction)
-      self.present(alert, animated: true, completion: nil)
-    } else {
-      
-    }
-  }
   @objc func touchimageView() {
-    print("어쩔티비")
     switch PHPhotoLibrary.authorizationStatus() {
     case .denied:
-      settingAlert()
-      print("omg")
+      makeOKCancelAlert(title: "갤러리 권한이 허용되어 있지 않습니다.",
+                              message: "필름 사진 이미지 저장을 위해 갤러리 권한이 필요합니다. 앱 설정으로 이동해 허용해 주세요.",
+                              okAction: { _ in UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)},
+                              cancelAction: nil,
+                              completion: nil)
+      print("거절")
     case .restricted:
       break
     case .authorized:
@@ -219,10 +207,7 @@ extension AddPhotoViewController {
     
   }
   @objc func touchaddPhotoButton() {
-    let secondVC = SecondAddPhotoPopUpViewController()
-    secondVC.modalPresentationStyle = .overCurrentContext
-    secondVC.modalTransitionStyle = .crossDissolve
-    self.present(secondVC, animated: false, completion: nil)
+    addPhotosWithAPI(studioId: 6, filmId: 1, img: self.photobackgroundView.image ?? UIImage())
   }
 }
 
@@ -235,5 +220,29 @@ extension AddPhotoViewController: UIImagePickerControllerDelegate, UINavigationC
       photoIcon.isHidden = true
     }
     dismiss(animated: true, completion: nil)
+  }
+}
+
+// MARK: - Network
+extension AddPhotoViewController {
+  func addPhotosWithAPI(studioId: Int, filmId: Int, img: UIImage) {
+    AddPhotoAPI.shared.addPhotos(studioId: studioId, filmId: filmId, img: img) { response in
+      switch response {
+      case .success:
+        let secondVC = SecondAddPhotoPopUpViewController()
+        secondVC.modalPresentationStyle = .overCurrentContext
+        secondVC.modalTransitionStyle = .crossDissolve
+        self.present(secondVC, animated: false, completion: nil)
+      case .requestErr(let message):
+        print("addPhotosWithAPI - requestErr: \(message)")
+      case .pathErr:
+        print("addPhotosWithAPI - pathErr")
+      case .serverErr:
+        print("addPhotosWithAPI - serverErr")
+      case .networkFail:
+        print("addPhotosWithAPI - networkFail")
+      }
+    }
+    
   }
 }

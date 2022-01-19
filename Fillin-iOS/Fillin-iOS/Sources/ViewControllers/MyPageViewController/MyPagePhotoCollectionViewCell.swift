@@ -14,11 +14,7 @@ import Then
 class MyPagePhotoCollectionViewCell: UICollectionViewCell {
   
   // MARK: - Components
-  var mypagePhotoImageView = UIImageView() {
-    didSet {
-      self.mypagePhotoImageView.contentMode = .scaleAspectFill
-    }
-  }
+  var mypagePhotoImageView = UIImageView()
   
   // MARK: - LifeCycles
   override func awakeFromNib() {
@@ -35,6 +31,9 @@ extension MyPagePhotoCollectionViewCell {
   }
   func layoutMyPagePhotoImageView() {
     self.contentView.add(mypagePhotoImageView) {
+      $0.contentMode = .scaleAspectFill
+      // 이미지가 넘치는 것을 막기 위해
+      $0.clipsToBounds = true
       $0.snp.makeConstraints {
         $0.top.equalTo(self.contentView.snp.top)
         $0.leading.equalTo(self.contentView.snp.leading)
