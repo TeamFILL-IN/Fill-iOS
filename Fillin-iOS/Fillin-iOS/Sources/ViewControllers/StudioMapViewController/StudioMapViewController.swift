@@ -16,8 +16,17 @@ import MapKit
 class StudioMapViewController: UIViewController {
   
   // MARK: - Properties
+  static var name: String?
+  static var address: String?
+  static var time: String?
+  static var tel: String?
+  static var price: String?
+  static var site: String?
+  
+  var serverStudioInfo: StudioInfoResponse?
   var serverStudios: StudioResponse?
   var selectedMarker: NMFMarker?
+  var selectedMarkerInfo: Studio?
   let mapView = NMFNaverMapView(frame: .zero)
   let myLocationButton = UIButton()
   let dataSource = NMFInfoWindowDefaultTextSource.data()
@@ -82,31 +91,44 @@ extension StudioMapViewController {
   private func setUpMarkerInfo() {
     self.mapView.mapView.touchDelegate = self
     
-    // 서버의 전체 스튜디오 조회
     serverStudios?.studio.forEach {
       let marker = NMFMarker(position: NMGLatLng(lat: $0.lati, lng: $0.long))
+      let markerInfo = Studio(id: $0.id, lati: $0.lati, long: $0.long)
       marker.iconImage = NMFOverlayImage(image: Asset.icnPlaceBig2.image)
       
       marker.touchHandler = { [weak self] (overlay: NMFOverlay) -> Bool in
         switch self?.markerState {
-        case 0:
+        case 0: // 마커 안눌린 상태
           self?.markerState = 1
           self?.selectedMarker = marker
+          self?.selectedMarkerInfo  = markerInfo
           marker.iconImage = NMFOverlayImage(image: Asset.icnPlaceBig.image)
-        case 1:
+          self?.setNotification()
+          self?.studioInfoWithAPI(studioID: markerInfo.id)
+        case 1: // 마커 눌려진 상태
           self?.markerState = 0
           marker.iconImage = NMFOverlayImage(image: Asset.icnPlaceBig2.image)
         default:
           print("no")
         }
-        let nextVC = StudioMapBottomSheetViewController(contentViewController: StudioMapContentViewController())
-        nextVC.modalPresentationStyle = .overCurrentContext
-        nextVC.modalTransitionStyle = .crossDissolve
-        self?.present(nextVC, animated: false, completion: nil)
         return true
       }
       marker.mapView = self.mapView.mapView
     }
+  }
+  
+  func presentBottomSheetAfterInfo() {
+    StudioMapViewController.name = self.serverStudioInfo?.studio.name
+    StudioMapViewController.address = self.serverStudioInfo?.studio.address
+    StudioMapViewController.time = self.serverStudioInfo?.studio.time
+    StudioMapViewController.tel = self.serverStudioInfo?.studio.tel
+    StudioMapViewController.price = self.serverStudioInfo?.studio.price
+    StudioMapViewController.site = self.serverStudioInfo?.studio.site
+    
+    let nextVC = StudioMapBottomSheetViewController(contentViewController: StudioMapContentViewController())
+    nextVC.modalPresentationStyle = .overCurrentContext
+    nextVC.modalTransitionStyle = .crossDissolve
+    self.present(nextVC, animated: false, completion: nil)
   }
   
   private func setUpNavigationBar() {
@@ -253,3 +275,28 @@ extension StudioMapViewController {
     }
   }
 }
+
+// MARK: - Network
+extension StudioMapViewController {
+  func studioInfoWithAPI(studioID: Int) {
+    StudioMapAPI.shared.infoStudio(studioID: studioID) { response in
+            switch response {
+            case .success(let data):
+              print(data)
+                if let studioinfo = data as? StudioInfoResponse {
+                  self.serverStudioInfo = studioinfo
+                  self.presentBottomSheetAfterInfo()
+                }
+            case .requestErr(let message):
+                print("studioInfoWithAPI - requestErr: \(message)")
+            case .pathErr:
+                print("studioInfoWithAPI - pathErr")
+            case .serverErr:
+                print("studioInfoWithAPI - serverErr")
+            case .networkFail:
+                print("studioInfoWithAPI - networkFail")
+            }
+        }
+    }
+}
+ 
