@@ -34,7 +34,7 @@ public class FlimSelectAPI {
     private func judgelistOfFilmsStatus(by statusCode: Int, _ data: Data) -> NetworkResult<Any> {
 
         let decoder = JSONDecoder()
-        guard let decodedData = try? decoder.decode(GenericResponse<PhotosResponse>.self, from: data)
+        guard let decodedData = try? decoder.decode(GenericResponse<FilmResponse>.self, from: data)
         else {
             return .pathErr
         }
