@@ -38,7 +38,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LwA-LS-YrT">
                                 <rect key="frame" x="95" y="0.0" width="94" height="81"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="iosBtnFilmroll"/>
+                                <buttonConfiguration key="configuration" style="plain" image="iosBtnFilmroll" title=""/>
                                 <connections>
                                     <action selector="touchFilmRoll:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="2cK-xN-zP6"/>
                                 </connections>

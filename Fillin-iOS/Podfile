@@ -13,4 +13,5 @@ pod 'SnapKit', '~> 5.0.0'
 pod 'Then'
 pod 'SwiftGen', '~> 6.0'
 pod 'NMapsMap'
+pod 'NVActivityIndicatorView'
 end

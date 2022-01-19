@@ -143,6 +143,7 @@
             </constraints>
             <size key="customSize" width="248" height="104"/>
             <connections>
+                <outlet property="chooseFilmIcon" destination="EEM-bn-drh" id="J79-sX-dvz"/>
                 <outlet property="chooseFilmLabel" destination="L5o-lJ-8Jz" id="EDR-sX-mlr"/>
                 <outlet property="chooseFilmView" destination="YSQ-bL-i8D" id="Guq-dU-Xvp"/>
                 <outlet property="chosenViewLeading" destination="VgW-hG-v5E" id="U1r-Ah-FXR"/>
