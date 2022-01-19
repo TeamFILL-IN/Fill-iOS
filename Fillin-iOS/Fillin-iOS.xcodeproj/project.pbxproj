@@ -113,6 +113,9 @@
 		77EB421A27973C1500C726D8 /* FilmTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77EB421827973C1500C726D8 /* FilmTypeTableViewCell.swift */; };
 		77EB421B27973C1500C726D8 /* FilmTypeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77EB421927973C1500C726D8 /* FilmTypeTableViewCell.xib */; };
 		77EB421E27974B0900C726D8 /* CurationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77EB421D27974B0900C726D8 /* CurationResponse.swift */; };
+		77EB42212797D17600C726D8 /* FlimSelectAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77EB42202797D17600C726D8 /* FlimSelectAPI.swift */; };
+		77EB42232797D1CE00C726D8 /* FilmSelectService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77EB42222797D1CE00C726D8 /* FilmSelectService.swift */; };
+		77EB42262797DAFD00C726D8 /* FilmResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77EB42252797DAFD00C726D8 /* FilmResponse.swift */; };
 		9ADF3537C1D51ED22F4C921B /* Pods_Fillin_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F33300C623DFF466AFCE2914 /* Pods_Fillin_iOS.framework */; };
 /* End PBXBuildFile section */
 
@@ -227,6 +230,9 @@
 		77EB421827973C1500C726D8 /* FilmTypeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmTypeTableViewCell.swift; sourceTree = "<group>"; };
 		77EB421927973C1500C726D8 /* FilmTypeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilmTypeTableViewCell.xib; sourceTree = "<group>"; };
 		77EB421D27974B0900C726D8 /* CurationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurationResponse.swift; sourceTree = "<group>"; };
+		77EB42202797D17600C726D8 /* FlimSelectAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlimSelectAPI.swift; sourceTree = "<group>"; };
+		77EB42222797D1CE00C726D8 /* FilmSelectService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmSelectService.swift; sourceTree = "<group>"; };
+		77EB42252797DAFD00C726D8 /* FilmResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmResponse.swift; sourceTree = "<group>"; };
 		864A552B88FE473B50DE4171 /* Pods-Fillin-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fillin-iOS.debug.xcconfig"; path = "Target Support Files/Pods-Fillin-iOS/Pods-Fillin-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		F33300C623DFF466AFCE2914 /* Pods_Fillin_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fillin_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -357,10 +363,10 @@
 		6F3B86FF27968AEB00A4BD07 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				6F3B870027968AEB00A4BD07 /* PhotosResponse.swift */,
-				6F3B870127968AEB00A4BD07 /* Map */,
 				6F3B870327968AEB00A4BD07 /* NetworkResult.swift */,
 				6F3B870427968AEB00A4BD07 /* GenericResponse.swift */,
+				6F3B870027968AEB00A4BD07 /* PhotosResponse.swift */,
+				6F3B870127968AEB00A4BD07 /* Map */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -382,6 +388,7 @@
 				6F3B870B27968AEB00A4BD07 /* User */,
 				6F3B871127968AEB00A4BD07 /* AddPhoto */,
 				6F3B871827968AEB00A4BD07 /* FilmRoll */,
+				77EB421F2797D16500C726D8 /* FilmSelect */,
 				6F3B871427968AEB00A4BD07 /* StudioMap */,
 				6F3B870E27968AEB00A4BD07 /* MyPage */,
 			);
@@ -391,8 +398,8 @@
 		6F3B870627968AEB00A4BD07 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				6F3B870727968AEB00A4BD07 /* HomeService.swift */,
 				6F3B870827968AEB00A4BD07 /* HomeAPI.swift */,
+				6F3B870727968AEB00A4BD07 /* HomeService.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -453,19 +460,19 @@
 		6F3B871B27968AEB00A4BD07 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				77EB4212279736C200C726D8 /* FilmSelectViewController */,
-				6F3B871C27968AEB00A4BD07 /* StudioMapSearchViewController */,
-				6F3B872127968AEB00A4BD07 /* OnboardingViewController */,
 				6F3B872527968AEB00A4BD07 /* SplashViewController */,
-				6F3B872827968AEB00A4BD07 /* MyPageViewController */,
-				6F3B872C27968AEB00A4BD07 /* StudioMapViewController */,
-				6F3B873227968AEB00A4BD07 /* AddPhotoPopUpViewController */,
-				6F3B873527968AEB00A4BD07 /* AddPhotoViewController */,
-				6F3B873827968AEB00A4BD07 /* FilmRollClickViewController */,
-				6F3B873B27968AEB00A4BD07 /* FilmRollViewController */,
+				6F3B872127968AEB00A4BD07 /* OnboardingViewController */,
 				6F3B876627968AEB00A4BD07 /* LoginViewController */,
-				6F3B874F27968AEB00A4BD07 /* StudioMapBottomSheetViewController */,
 				6F3B875227968AEB00A4BD07 /* HomeViewController */,
+				6F3B873527968AEB00A4BD07 /* AddPhotoViewController */,
+				6F3B873227968AEB00A4BD07 /* AddPhotoPopUpViewController */,
+				6F3B873B27968AEB00A4BD07 /* FilmRollViewController */,
+				6F3B873827968AEB00A4BD07 /* FilmRollClickViewController */,
+				77EB4212279736C200C726D8 /* FilmSelectViewController */,
+				6F3B872C27968AEB00A4BD07 /* StudioMapViewController */,
+				6F3B874F27968AEB00A4BD07 /* StudioMapBottomSheetViewController */,
+				6F3B871C27968AEB00A4BD07 /* StudioMapSearchViewController */,
+				6F3B872827968AEB00A4BD07 /* MyPageViewController */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -473,10 +480,10 @@
 		6F3B871C27968AEB00A4BD07 /* StudioMapSearchViewController */ = {
 			isa = PBXGroup;
 			children = (
-				6F3B871D27968AEB00A4BD07 /* StudioMapSearchTableViewCell.xib */,
 				6F3B871E27968AEB00A4BD07 /* StudioMapSearchTableViewCell.swift */,
-				6F3B871F27968AEB00A4BD07 /* StudioMapSearchViewController.xib */,
+				6F3B871D27968AEB00A4BD07 /* StudioMapSearchTableViewCell.xib */,
 				6F3B872027968AEB00A4BD07 /* StudioMapSearchViewController.swift */,
+				6F3B871F27968AEB00A4BD07 /* StudioMapSearchViewController.xib */,
 			);
 			path = StudioMapSearchViewController;
 			sourceTree = "<group>";
@@ -514,8 +521,8 @@
 			isa = PBXGroup;
 			children = (
 				6F8B71F72796F30000F88EB3 /* DataModel */,
-				6F3B872D27968AEB00A4BD07 /* StudioMapViewController.xib */,
 				6F3B872E27968AEB00A4BD07 /* StudioMapViewController.swift */,
+				6F3B872D27968AEB00A4BD07 /* StudioMapViewController.xib */,
 			);
 			path = StudioMapViewController;
 			sourceTree = "<group>";
@@ -532,8 +539,8 @@
 		6F3B873527968AEB00A4BD07 /* AddPhotoViewController */ = {
 			isa = PBXGroup;
 			children = (
-				6F3B873627968AEB00A4BD07 /* AddPhotoViewController.xib */,
 				6F3B873727968AEB00A4BD07 /* AddPhotoViewController.swift */,
+				6F3B873627968AEB00A4BD07 /* AddPhotoViewController.xib */,
 			);
 			path = AddPhotoViewController;
 			sourceTree = "<group>";
@@ -553,8 +560,8 @@
 				77EB421C27974AE300C726D8 /* DataModel */,
 				6F3B874227968AEB00A4BD07 /* Cell */,
 				6F3B873D27968AEB00A4BD07 /* FilmRollCollectionView */,
-				6F3B873C27968AEB00A4BD07 /* FilmRollViewController.xib */,
 				6F3B874127968AEB00A4BD07 /* FilmRollViewController.swift */,
+				6F3B873C27968AEB00A4BD07 /* FilmRollViewController.xib */,
 			);
 			path = FilmRollViewController;
 			sourceTree = "<group>";
@@ -562,9 +569,9 @@
 		6F3B873D27968AEB00A4BD07 /* FilmRollCollectionView */ = {
 			isa = PBXGroup;
 			children = (
+				6F3B873F27968AEB00A4BD07 /* FilmRollSection.swift */,
 				6F3B874027968AEB00A4BD07 /* FilmRollViewController+Layout.swift */,
 				6F3B873E27968AEB00A4BD07 /* FilmRollViewController+DataSource.swift */,
-				6F3B873F27968AEB00A4BD07 /* FilmRollSection.swift */,
 			);
 			path = FilmRollCollectionView;
 			sourceTree = "<group>";
@@ -572,9 +579,9 @@
 		6F3B874227968AEB00A4BD07 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				6F3B874627968AEB00A4BD07 /* FilmCurationCollectionViewCell */,
-				6F3B874927968AEB00A4BD07 /* FilmCurationFirstCollectionViewCell */,
 				6F3B874C27968AEB00A4BD07 /* FilmCurationCollectionReusableView */,
+				6F3B874927968AEB00A4BD07 /* FilmCurationFirstCollectionViewCell */,
+				6F3B874627968AEB00A4BD07 /* FilmCurationCollectionViewCell */,
 				6F3B874327968AEB00A4BD07 /* FilmTypeCollectionViewCell */,
 			);
 			path = Cell;
@@ -592,8 +599,8 @@
 		6F3B874627968AEB00A4BD07 /* FilmCurationCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				6F3B874727968AEB00A4BD07 /* FilmCurationCollectionViewCell.xib */,
 				6F3B874827968AEB00A4BD07 /* FilmCurationCollectionViewCell.swift */,
+				6F3B874727968AEB00A4BD07 /* FilmCurationCollectionViewCell.xib */,
 			);
 			path = FilmCurationCollectionViewCell;
 			sourceTree = "<group>";
@@ -601,8 +608,8 @@
 		6F3B874927968AEB00A4BD07 /* FilmCurationFirstCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				6F3B874A27968AEB00A4BD07 /* FilmCurationFirstCollectionViewCell.xib */,
 				6F3B874B27968AEB00A4BD07 /* FilmCurationFirstCollectionViewCell.swift */,
+				6F3B874A27968AEB00A4BD07 /* FilmCurationFirstCollectionViewCell.xib */,
 			);
 			path = FilmCurationFirstCollectionViewCell;
 			sourceTree = "<group>";
@@ -610,8 +617,8 @@
 		6F3B874C27968AEB00A4BD07 /* FilmCurationCollectionReusableView */ = {
 			isa = PBXGroup;
 			children = (
-				6F3B874D27968AEB00A4BD07 /* FilmCurationCollectionReusableView.xib */,
 				6F3B874E27968AEB00A4BD07 /* FilmCurationCollectionReusableView.swift */,
+				6F3B874D27968AEB00A4BD07 /* FilmCurationCollectionReusableView.xib */,
 			);
 			path = FilmCurationCollectionReusableView;
 			sourceTree = "<group>";
@@ -620,8 +627,8 @@
 			isa = PBXGroup;
 			children = (
 				6F3B87DA27968D3000A4BD07 /* StudioMapContentViewController */,
-				6F3B875027968AEB00A4BD07 /* StudioMapBottomSheetViewController.xib */,
 				6F3B875127968AEB00A4BD07 /* StudioMapBottomSheetViewController.swift */,
+				6F3B875027968AEB00A4BD07 /* StudioMapBottomSheetViewController.xib */,
 			);
 			path = StudioMapBottomSheetViewController;
 			sourceTree = "<group>";
@@ -630,8 +637,8 @@
 			isa = PBXGroup;
 			children = (
 				6F3B875527968AEB00A4BD07 /* Cell */,
-				6F3B875327968AEB00A4BD07 /* HomeViewController.xib */,
 				6F3B875427968AEB00A4BD07 /* HomeViewController.swift */,
+				6F3B875327968AEB00A4BD07 /* HomeViewController.xib */,
 			);
 			path = HomeViewController;
 			sourceTree = "<group>";
@@ -650,8 +657,8 @@
 		6F3B875627968AEB00A4BD07 /* TabBarTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				6F3B875727968AEB00A4BD07 /* TabBarTableViewCell.xib */,
 				6F3B875827968AEB00A4BD07 /* TabBarTableViewCell.swift */,
+				6F3B875727968AEB00A4BD07 /* TabBarTableViewCell.xib */,
 			);
 			path = TabBarTableViewCell;
 			sourceTree = "<group>";
@@ -659,12 +666,12 @@
 		6F3B875927968AEB00A4BD07 /* PhotosTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				6F3B875A27968AEB00A4BD07 /* PhotosCollectionViewCell.xib */,
 				6F3B875B27968AEB00A4BD07 /* PhotosCollectionViewCell.swift */,
+				6F3B875A27968AEB00A4BD07 /* PhotosCollectionViewCell.xib */,
 				6F3B875C27968AEB00A4BD07 /* PhotosTableViewCell.swift */,
-				6F3B875D27968AEB00A4BD07 /* ArrowCollectionViewCell.xib */,
-				6F3B875E27968AEB00A4BD07 /* ArrowCollectionViewCell.swift */,
 				6F3B875F27968AEB00A4BD07 /* PhotosTableViewCell.xib */,
+				6F3B875E27968AEB00A4BD07 /* ArrowCollectionViewCell.swift */,
+				6F3B875D27968AEB00A4BD07 /* ArrowCollectionViewCell.xib */,
 			);
 			path = PhotosTableViewCell;
 			sourceTree = "<group>";
@@ -672,8 +679,8 @@
 		6F3B876027968AEB00A4BD07 /* MapTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				6F3B876127968AEB00A4BD07 /* MapTableViewCell.xib */,
 				6F3B876227968AEB00A4BD07 /* MapTableViewCell.swift */,
+				6F3B876127968AEB00A4BD07 /* MapTableViewCell.xib */,
 			);
 			path = MapTableViewCell;
 			sourceTree = "<group>";
@@ -714,9 +721,9 @@
 		6F3B87DA27968D3000A4BD07 /* StudioMapContentViewController */ = {
 			isa = PBXGroup;
 			children = (
+				6F3B87DD27968D3000A4BD07 /* StudioMapCollectionViewCell.swift */,
 				6F3B87DB27968D3000A4BD07 /* StudioMapCollectionViewCell.xib */,
 				6F3B87DC27968D3000A4BD07 /* StudioMapContentViewController.swift */,
-				6F3B87DD27968D3000A4BD07 /* StudioMapCollectionViewCell.swift */,
 				6F3B87DE27968D3000A4BD07 /* StudioMapContentViewController.xib */,
 			);
 			path = StudioMapContentViewController;
@@ -753,6 +760,7 @@
 		77EB4212279736C200C726D8 /* FilmSelectViewController */ = {
 			isa = PBXGroup;
 			children = (
+				77EB42242797D9D300C726D8 /* DataModel */,
 				77EB421727973BFF00C726D8 /* Cell */,
 				77EB4213279736F700C726D8 /* FilmSelectViewController.swift */,
 				77EB4214279736F700C726D8 /* FilmSelectViewController.xib */,
@@ -773,6 +781,23 @@
 			isa = PBXGroup;
 			children = (
 				77EB421D27974B0900C726D8 /* CurationResponse.swift */,
+			);
+			path = DataModel;
+			sourceTree = "<group>";
+		};
+		77EB421F2797D16500C726D8 /* FilmSelect */ = {
+			isa = PBXGroup;
+			children = (
+				77EB42202797D17600C726D8 /* FlimSelectAPI.swift */,
+				77EB42222797D1CE00C726D8 /* FilmSelectService.swift */,
+			);
+			path = FilmSelect;
+			sourceTree = "<group>";
+		};
+		77EB42242797D9D300C726D8 /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				77EB42252797DAFD00C726D8 /* FilmResponse.swift */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -963,6 +988,7 @@
 			files = (
 				6F3B87CB27968AEB00A4BD07 /* LoginViewController.swift in Sources */,
 				6F3B878927968AEB00A4BD07 /* GenericResponse.swift in Sources */,
+				77EB42212797D17600C726D8 /* FlimSelectAPI.swift in Sources */,
 				6F3B879627968AEB00A4BD07 /* FilmRollService.swift in Sources */,
 				6F3B87CD27968AEB00A4BD07 /* FillinNavigationBar.swift in Sources */,
 				6F3B87C527968AEB00A4BD07 /* ArrowCollectionViewCell.swift in Sources */,
@@ -999,6 +1025,7 @@
 				6F3B87B027968AEB00A4BD07 /* FilmRollSection.swift in Sources */,
 				6F3B87E027968D3000A4BD07 /* StudioMapContentViewController.swift in Sources */,
 				6F3B87C227968AEB00A4BD07 /* PhotosCollectionViewCell.swift in Sources */,
+				77EB42232797D1CE00C726D8 /* FilmSelectService.swift in Sources */,
 				6F3B879B27968AEB00A4BD07 /* StudioMapSearchViewController.swift in Sources */,
 				6F3B879327968AEB00A4BD07 /* StudioMapAPI.swift in Sources */,
 				6F3B877027968AEB00A4BD07 /* Assets+Generated.swift in Sources */,
@@ -1011,6 +1038,7 @@
 				6F3B87CC27968AEB00A4BD07 /* AppDelegate.swift in Sources */,
 				6F3B878C27968AEB00A4BD07 /* MoyaLoggerPlugin.swift in Sources */,
 				6F3B87A527968AEB00A4BD07 /* StudioMapViewController.swift in Sources */,
+				77EB42262797DAFD00C726D8 /* FilmResponse.swift in Sources */,
 				6F3B878627968AEB00A4BD07 /* PhotosResponse.swift in Sources */,
 				6F3B87C027968AEB00A4BD07 /* TabBarTableViewCell.swift in Sources */,
 				6F3B877827968AEB00A4BD07 /* UIFont+Extension.swift in Sources */,
