@@ -1,18 +1,18 @@
 //
-//  FilmRollService.swift
+//  FilmSelectService.swift
 //  Fillin-iOS
 //
-//  Created by Yi Joon Choi on 2022/01/17.
+//  Created by Yi Joon Choi on 2022/01/19.
 //
 
 import Foundation
 import Moya
 
-enum FilmRollService {
-    case curation
+enum FilmSelectService {
+    case listOfFilms(styleId: Int)
 }
 
-extension FilmRollService: TargetType {
+extension FilmSelectService: TargetType {
 
     var baseURL: URL {
         return URL(string: Const.URL.baseURL)!
@@ -20,14 +20,14 @@ extension FilmRollService: TargetType {
     
     var path: String {
         switch self {
-        case .curation:
-            return "/curation"
+        case .listOfFilms(let styleId):
+            return "/film/\(styleId)"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .curation:
+        case .listOfFilms:
             return .get
         }
     }
@@ -38,14 +38,14 @@ extension FilmRollService: TargetType {
     
     var task: Task {
         switch self {
-        case .curation:
+        case .listOfFilms:
             return .requestPlain
         }
     }
     
     var headers: [String: String]? {
         switch self {
-        case .curation:
+        case .listOfFilms:
             return Const.Header.tokenHeader
         }
     }
