@@ -7,10 +7,11 @@
 
 import UIKit
 
+import SafariServices
+
 class StudioMapContentViewController: UIViewController {
   
   // MARK: - Properties
-  var serverStudioInfo: StudioInfoResponse?
   let studioScrollview = UIScrollView()
   let studioScrollContainverView = UIView()
   let studioLabel = UILabel()
@@ -34,7 +35,6 @@ class StudioMapContentViewController: UIViewController {
     layout.scrollDirection = .vertical
     let collectionView = UICollectionView(frame: .zero,
                                           collectionViewLayout: layout)
-    collectionView.isScrollEnabled = false
     collectionView.translatesAutoresizingMaskIntoConstraints = false
     return collectionView
   }()
@@ -45,7 +45,6 @@ class StudioMapContentViewController: UIViewController {
     setupAttribute()
     setupUI()
     register()
-    studioInfoWithAPI()
   }
   
   // MARK: - Func
@@ -60,7 +59,6 @@ class StudioMapContentViewController: UIViewController {
   }
   
   func setupUI() {
-    
     // 스크롤뷰
     view.add(studioScrollview) {
       $0.backgroundColor = .clear
@@ -84,9 +82,7 @@ class StudioMapContentViewController: UIViewController {
     
     // label
     studioScrollContainverView.add(studioLabel) {
-      
-      print(self.serverStudioInfo?.studio.name ?? "none data")
-      $0.text = self.serverStudioInfo?.studio.name
+      $0.text = StudioMapBottomSheetViewController.name
       $0.textColor = .white
       $0.font = .headline
       $0.snp.makeConstraints {
@@ -112,7 +108,66 @@ class StudioMapContentViewController: UIViewController {
         $0.height.equalTo(1)
       }
     }
-    
+    // Label
+    studioScrollContainverView.add(locationLabel) {
+      $0.text = StudioMapBottomSheetViewController.address
+      $0.numberOfLines = 0
+      $0.font = .body2
+      $0.textColor = .grey1
+      $0.lineBreakMode = .byCharWrapping
+      $0.snp.makeConstraints {
+        $0.top.equalTo(self.studioLabel.snp.bottom).offset(25)
+        $0.leading.equalTo(self.studioScrollContainverView.snp.leading).offset(48)
+        $0.trailing.equalTo(self.studioScrollContainverView.snp.trailing).offset(-25)
+      }
+    }
+    studioScrollContainverView.add(timeLabel) {
+      $0.text = StudioMapBottomSheetViewController.time
+      $0.numberOfLines = 0
+      $0.font = .body2
+      $0.textColor = .grey1
+      $0.lineBreakMode = .byCharWrapping
+      $0.snp.makeConstraints {
+        $0.top.equalTo(self.locationLabel.snp.bottom).offset(8)
+        $0.leading.equalTo(self.studioScrollContainverView.snp.leading).offset(48)
+        $0.trailing.equalTo(self.studioScrollContainverView.snp.trailing).offset(-25)
+      }
+    }
+    studioScrollContainverView.add(callLabel) {
+      $0.text = StudioMapBottomSheetViewController.tel
+      $0.numberOfLines = 0
+      $0.font = .body2
+      $0.textColor = .grey1
+      $0.lineBreakMode = .byCharWrapping
+      $0.snp.makeConstraints {
+        $0.top.equalTo(self.timeLabel.snp.bottom).offset(8)
+        $0.leading.equalTo(self.studioScrollContainverView.snp.leading).offset(48)
+        $0.trailing.equalTo(self.studioScrollContainverView.snp.trailing).offset(-25)
+      }
+    }
+    studioScrollContainverView.add(priceLabel) {
+      $0.text = StudioMapBottomSheetViewController.price
+      $0.numberOfLines = 0
+      $0.font = .body2
+      $0.textColor = .grey1
+      $0.lineBreakMode = .byWordWrapping
+      $0.snp.makeConstraints {
+        $0.top.equalTo(self.callLabel.snp.bottom).offset(18)
+        $0.leading.equalTo(self.studioScrollContainverView.snp.leading).offset(48)
+        $0.trailing.equalTo(self.studioScrollContainverView.snp.trailing).offset(-25)
+      }
+    }
+    studioScrollContainverView.add(linkButton) {
+      $0.setTitle("웹사이트로 이동", for: .normal)
+      $0.setTitleColor(.fillinRed, for: .normal)
+      $0.titleLabel?.font =  .body1
+      $0.snp.makeConstraints {
+        $0.top.equalTo(self.priceLabel.snp.bottom).offset(18)
+        $0.leading.equalTo(self.studioScrollContainverView.snp.leading).offset(48)
+        $0.height.equalTo(18)
+      }
+      self.linkButton.addTarget(self, action: #selector(self.touchLinkButton), for: .touchUpInside)
+    }
     // 아이콘
     studioScrollContainverView.add(locationImageView) {
       $0.image = Asset.icnPlaceSmall.image
@@ -125,7 +180,7 @@ class StudioMapContentViewController: UIViewController {
     studioScrollContainverView.add(timeImageView) {
       $0.image = Asset.icnTime.image
       $0.snp.makeConstraints {
-        $0.top.equalTo(self.locationImageView.snp.bottom).offset(52)
+        $0.top.equalTo(self.timeLabel.snp.top)
         $0.leading.equalTo(self.studioScrollContainverView.snp.leading).offset(18)
         $0.width.height.equalTo(22)
       }
@@ -133,7 +188,7 @@ class StudioMapContentViewController: UIViewController {
     studioScrollContainverView.add(callImageView) {
       $0.image = Asset.icnCall.image
       $0.snp.makeConstraints {
-        $0.top.equalTo(self.timeImageView.snp.bottom).offset(96)
+        $0.top.equalTo(self.callLabel.snp.top)
         $0.leading.equalTo(self.studioScrollContainverView.snp.leading).offset(18)
         $0.width.height.equalTo(22)
       }
@@ -141,7 +196,7 @@ class StudioMapContentViewController: UIViewController {
     studioScrollContainverView.add(priceImageView) {
       $0.image = Asset.icnPrice.image
       $0.snp.makeConstraints {
-        $0.top.equalTo(self.callImageView.snp.bottom).offset(18)
+        $0.top.equalTo(self.priceLabel.snp.top)
         $0.leading.equalTo(self.studioScrollContainverView.snp.leading).offset(18)
         $0.width.height.equalTo(22)
       }
@@ -149,71 +204,12 @@ class StudioMapContentViewController: UIViewController {
     studioScrollContainverView.add(linkImageView) {
       $0.image = Asset.icnLink.image
       $0.snp.makeConstraints {
-        $0.top.equalTo(self.priceImageView.snp.bottom).offset(62)
+        $0.top.equalTo(self.linkButton.snp.top)
         $0.leading.equalTo(self.studioScrollContainverView.snp.leading).offset(18)
         $0.width.height.equalTo(22)
       }
     }
     
-    // Label
-    studioScrollContainverView.add(locationLabel) {
-      $0.text = "서울특별시 영등포구 여의도동 21-3 가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가"
-      $0.font = .body2
-      $0.textColor = .grey1
-      $0.numberOfLines = 0
-      $0.lineBreakMode = .byCharWrapping
-      $0.snp.makeConstraints {
-        $0.top.equalTo(self.studioLabel.snp.bottom).offset(25)
-        $0.leading.equalTo(self.locationImageView.snp.trailing).offset(8)
-        $0.trailing.equalTo(self.studioScrollContainverView.snp.trailing).offset(-25)
-      }
-    }
-    studioScrollContainverView.add(timeLabel) {
-      $0.text = "매일 10:30 ~ 22:00 가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가가"
-      $0.numberOfLines = 0
-      $0.font = .body2
-      $0.textColor = .grey1
-      $0.lineBreakMode = .byCharWrapping
-      $0.snp.makeConstraints {
-        $0.top.equalTo(self.timeImageView.snp.top)
-        $0.leading.equalTo(self.timeImageView.snp.trailing).offset(8)
-        $0.trailing.equalTo(self.studioScrollContainverView.snp.trailing).offset(-25)
-      }
-    }
-    studioScrollContainverView.add(callLabel) {
-      $0.text = "010-2929-2020"
-      $0.numberOfLines = 0
-      $0.font = .body2
-      $0.textColor = .grey1
-      $0.lineBreakMode = .byCharWrapping
-      $0.snp.makeConstraints {
-        $0.top.equalTo(self.callImageView.snp.top)
-        $0.leading.equalTo(self.callImageView.snp.trailing).offset(8)
-        $0.trailing.equalTo(self.studioScrollContainverView.snp.trailing).offset(-25)
-      }
-    }
-    studioScrollContainverView.add(priceLabel) {
-      $0.text = "컬러 스캔: 4,000원 가가가가가가가가가가가가가\n흑백 스캔: 5,000원 가가가가가가가가가가가가가\n4롤 스캔 시 10,000원 가가가가가가가가가가가가"
-      $0.numberOfLines = 3
-      $0.font = .body2
-      $0.textColor = .grey1
-      $0.lineBreakMode = .byWordWrapping
-      $0.snp.makeConstraints {
-        $0.top.equalTo(self.priceImageView.snp.top)
-        $0.leading.equalTo(self.priceImageView.snp.trailing).offset(8)
-        $0.trailing.equalTo(self.studioScrollContainverView.snp.trailing).offset(-25)
-      }
-    }
-    studioScrollContainverView.add(linkButton) {
-      $0.setTitle("웹사이트로 이동", for: .normal)
-      $0.setTitleColor(.fillinRed, for: .normal)
-      $0.titleLabel?.font =  .body1
-      $0.snp.makeConstraints {
-        $0.top.equalTo(self.priceImageView.snp.bottom).offset(62)
-        $0.leading.equalTo(self.linkImageView.snp.trailing).offset(8)
-        $0.height.equalTo(18)
-      }
-    }
     studioScrollContainverView.add(underlineView) {
       $0.backgroundColor = .fillinRed
       $0.snp.makeConstraints {
@@ -254,30 +250,15 @@ class StudioMapContentViewController: UIViewController {
       }
     }
   }
+  
+  // MARK: - @objc
+  @objc func touchLinkButton() {
+    let studioUrl = NSURL(string: StudioMapBottomSheetViewController.site ?? "none site")
+    let studioSafariView: SFSafariViewController = SFSafariViewController(url: studioUrl! as URL)
+    self.present(studioSafariView, animated: true, completion: nil)
+  }
 }
 
-// MARK: - Network
-extension StudioMapContentViewController {
-    func studioInfoWithAPI() {
-      StudioMapAPI.shared.infoStudio { response in
-            switch response {
-            case .success(let data):
-                if let studioinfo = data as? StudioInfoResponse {
-                  self.serverStudioInfo = studioinfo
-                }
-            case .requestErr(let message):
-                print("studioInfoWithAPI - requestErr: \(message)")
-            case .pathErr:
-                print("studioInfoWithAPI - pathErr")
-            case .serverErr:
-                print("studioInfoWithAPI - serverErr")
-            case .networkFail:
-                print("studioInfoWithAPI - networkFail")
-            }
-        }
-    }
-}
- 
 // MARK: - UICollectionView
 extension StudioMapContentViewController: UICollectionViewDelegate {
   

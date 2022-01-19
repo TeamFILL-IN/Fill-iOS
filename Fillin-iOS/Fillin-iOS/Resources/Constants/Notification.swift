@@ -12,4 +12,5 @@ extension Notification.Name {
     static let pushToFilmSelectViewController = Notification.Name("pushToFilmSelectViewController")
     static let updateSelectedFilmType = Notification.Name("updateSelectedFilmType")
     static let changeMarker = Notification.Name("changeMarker")
+    static let pushIdToContentViewController = Notification.Name("pushIdToContentViewController")
 }

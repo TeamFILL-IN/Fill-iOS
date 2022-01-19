@@ -31,8 +31,8 @@ public class StudioMapAPI {
     }
   }
   
-  func infoStudio(completion: @escaping (NetworkResult<Any>) -> Void) {
-    studioMapProvider.request(.totalStudio) { (result) in
+  func infoStudio(studioID: Int, completion: @escaping (NetworkResult<Any>) -> Void) {
+    studioMapProvider.request(.infoStudio(studioID: studioID)) { (result) in
       switch result {
       case .success(let response):
         let statusCode = response.statusCode
