@@ -8,6 +8,6 @@
 import Foundation
 extension Const {
     struct URL {
-        static let baseURL = "https://fill-in-13efb.web.app/api"
+        static let baseURL = "https://asia-northeast3-fill-in-13efb.cloudfunctions.net/app/api"
     }
 }

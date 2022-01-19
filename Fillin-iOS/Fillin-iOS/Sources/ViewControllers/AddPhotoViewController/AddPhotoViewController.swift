@@ -207,21 +207,45 @@ extension AddPhotoViewController {
     
   }
   @objc func touchaddPhotoButton() {
-    let secondVC = SecondAddPhotoPopUpViewController()
-    secondVC.modalPresentationStyle = .overCurrentContext
-    secondVC.modalTransitionStyle = .crossDissolve
-    self.present(secondVC, animated: false, completion: nil)
+    addPhotosWithAPI(studioId: 6, filmId: 1, img: self.photobackgroundView.image ?? UIImage())
   }
 }
 
 // MARK: - ImagePicker Extension
 extension AddPhotoViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
   func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+//    let options = PHContentEditingInputRequestOptions()
+//    options.isNetworkAccessAllowed = true
     if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
       photobackgroundView.image = image
       photobackgroundView.contentMode = .scaleAspectFit
       photoIcon.isHidden = true
     }
     dismiss(animated: true, completion: nil)
+  }
+}
+
+// MARK: - Network
+extension AddPhotoViewController {
+  func addPhotosWithAPI(studioId: Int, filmId: Int, img: UIImage) {
+    AddPhotoAPI.shared.addPhotos(studioId: studioId, filmId: filmId, img: img) { response in
+      switch response {
+      case .success:
+        print("성공티비")
+        let secondVC = SecondAddPhotoPopUpViewController()
+        secondVC.modalPresentationStyle = .overCurrentContext
+        secondVC.modalTransitionStyle = .crossDissolve
+        self.present(secondVC, animated: false, completion: nil)
+      case .requestErr(let message):
+        print("addPhotosWithAPI - requestErr: \(message)")
+      case .pathErr:
+        print("addPhotosWithAPI - pathErr")
+      case .serverErr:
+        print("addPhotosWithAPI - serverErr")
+      case .networkFail:
+        print("addPhotosWithAPI - networkFail")
+      }
+    }
+    
   }
 }
