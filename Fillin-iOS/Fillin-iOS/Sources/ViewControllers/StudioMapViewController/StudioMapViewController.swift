@@ -98,21 +98,13 @@ extension StudioMapViewController {
       marker.iconImage = NMFOverlayImage(image: Asset.icnPlaceBig2.image)
       
       marker.touchHandler = { [weak self] (overlay: NMFOverlay) -> Bool in
-        switch self?.markerState {
-        case 0: // 마커 안눌린 상태
-          self?.markerState = 1
-          self?.selectedMarker = marker
-          self?.selectedMarkerInfo  = markerInfo
-          marker.iconImage = NMFOverlayImage(image: Asset.icnPlaceBig.image)
-          self?.setNotification()
-          StudioMapViewController.selectedMarkerID = markerInfo.id
-          self?.studioInfoWithAPI(studioID: markerInfo.id)
-        case 1: // 마커 눌려진 상태
-          self?.markerState = 0
-          marker.iconImage = NMFOverlayImage(image: Asset.icnPlaceBig2.image)
-        default:
-          print("no")
-        }
+        self?.markerState = 1
+        self?.selectedMarker = marker
+        self?.selectedMarkerInfo  = markerInfo
+        marker.iconImage = NMFOverlayImage(image: Asset.icnPlaceBig.image)
+        self?.setNotification()
+        StudioMapViewController.selectedMarkerID = markerInfo.id
+        self?.studioInfoWithAPI(studioID: markerInfo.id)
         return true
       }
       marker.mapView = self.mapView.mapView
@@ -126,8 +118,6 @@ extension StudioMapViewController {
     StudioMapViewController.tel = self.serverStudioInfo?.studio.tel
     StudioMapViewController.price = self.serverStudioInfo?.studio.price
     StudioMapViewController.site = self.serverStudioInfo?.studio.site
-    print(StudioMapViewController.name, "인스튜디오handler에서 static변수 nameprint")
-    print(StudioMapViewController.address, "인스튜디오handler에서 static변수 address프린트")
     
     let nextVC = StudioMapBottomSheetViewController(contentViewController: StudioMapContentViewController())
     nextVC.modalPresentationStyle = .overCurrentContext
@@ -289,8 +279,6 @@ extension StudioMapViewController {
               print(data)
                 if let studioinfo = data as? StudioInfoResponse {
                   self.serverStudioInfo = studioinfo
-                  print(studioinfo, "인스튜디오studioinfo")
-                  print(studioinfo.studio.name, "인스튜디오studioinfo.studio.name")
                   self.presentBottomSheetAfterInfo()
                 }
             case .requestErr(let message):
@@ -305,4 +293,3 @@ extension StudioMapViewController {
         }
     }
 }
- 

@@ -12,7 +12,7 @@ import SafariServices
 class StudioMapContentViewController: UIViewController {
   
   // MARK: - Properties
-  var serverStudioPhotos : PhotosResponse?
+  var serverStudioPhotos: PhotosResponse?
   let studioScrollview = UIScrollView()
   let studioScrollContainverView = UIView()
   let studioLabel = UILabel()
@@ -66,6 +66,7 @@ class StudioMapContentViewController: UIViewController {
       $0.backgroundColor = .clear
       $0.translatesAutoresizingMaskIntoConstraints = false
       $0.showsVerticalScrollIndicator = false
+      $0.isScrollEnabled = true
       $0.snp.makeConstraints {
         $0.top.equalTo(self.view.snp.top).offset(29)
         $0.centerX.leading.trailing.bottom.equalToSuperview()
@@ -78,7 +79,8 @@ class StudioMapContentViewController: UIViewController {
       $0.snp.makeConstraints {
         $0.centerX.top.leading.equalToSuperview()
         $0.bottom.equalTo(self.studioScrollview.snp.bottom)
-        $0.height.equalTo((UIScreen.main.bounds.height*(500/812)+10*(UIScreen.main.bounds.width-36)/3 + 9) - 9)
+        $0.width.equalTo(self.view)
+        $0.height.equalTo(self.view).priority(250)
       }
     }
     // label
@@ -90,7 +92,6 @@ class StudioMapContentViewController: UIViewController {
         $0.top.equalTo(self.studioScrollContainverView.snp.top)
         $0.leading.equalTo(self.studioScrollContainverView.snp.leading).offset(18)
         $0.trailing.equalTo(self.studioScrollContainverView.snp.trailing).offset(30)
-        $0.height.equalTo(30)
       }
     }
     studioScrollContainverView.add(scrapButton) {
@@ -107,7 +108,7 @@ class StudioMapContentViewController: UIViewController {
         $0.top.equalTo(self.studioLabel.snp.bottom).offset(12)
         $0.leading.equalTo(self.studioScrollContainverView.snp.leading)
         $0.trailing.equalTo(self.studioScrollContainverView.snp.trailing)
-        $0.height.equalTo(1)
+        $0.height.equalTo(2)
       }
     }
     // Label
@@ -121,7 +122,6 @@ class StudioMapContentViewController: UIViewController {
         $0.top.equalTo(self.studioLabel.snp.bottom).offset(25)
         $0.leading.equalTo(self.studioScrollContainverView.snp.leading).offset(48)
         $0.trailing.equalTo(self.studioScrollContainverView.snp.trailing).offset(-25)
-        $0.height.equalTo(66)
       }
     }
     studioScrollContainverView.add(timeLabel) {
@@ -228,7 +228,7 @@ class StudioMapContentViewController: UIViewController {
         $0.top.equalTo(self.underlineView.snp.bottom).offset(18.5)
         $0.leading.equalTo(self.studioScrollContainverView.snp.leading)
         $0.trailing.equalTo(self.studioScrollContainverView.snp.trailing)
-        $0.height.equalTo(1)
+        $0.height.equalTo(3)
       }
     }
     studioScrollContainverView.add(photoReviewLabel) {
@@ -240,11 +240,10 @@ class StudioMapContentViewController: UIViewController {
         $0.leading.equalTo(self.studioScrollContainverView.snp.leading).offset(19)
       }
     }
-    
     // 컬렉션뷰
     studioScrollContainverView.add(studioCollectionview) {
       $0.backgroundColor = .clear
-      $0.isUserInteractionEnabled = true
+      $0.isUserInteractionEnabled = false
       $0.snp.makeConstraints {
         $0.top.equalTo(self.photoReviewLabel.snp.bottom).offset(12)
         $0.centerX.equalToSuperview()
@@ -269,7 +268,6 @@ extension StudioMapContentViewController: UICollectionViewDelegate {
 
 extension StudioMapContentViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    print(serverStudioPhotos?.photos.count,"dfdfdfdfs")
     return serverStudioPhotos?.photos.count ?? 0
   }
   
@@ -304,8 +302,6 @@ extension StudioMapContentViewController {
         if let photos = data as? PhotosResponse {
           self.serverStudioPhotos = photos
           let photosCount = ceil(Double(photos.photos.count)/3)
-          let intPhotosCount = Int(photosCount)
-          self.studioCollectionview.heightAnchor.constraint(equalToConstant: CGFloat((intPhotosCount*(Int(UIScreen.main.bounds.width)-36)/3 + 9))+30).isActive = true
           self.studioCollectionview.reloadData()
         }
       case .requestErr(let message):
