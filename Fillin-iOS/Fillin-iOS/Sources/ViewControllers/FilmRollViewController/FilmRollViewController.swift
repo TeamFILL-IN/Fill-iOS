@@ -6,11 +6,29 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 
 class FilmRollViewController: UIViewController {
     
     // MARK: - Properties
     let dataSource = FilmRollViewControllerDataSource()
+    
+    lazy var loadingBgView: UIView = {
+        let bgView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+        bgView.backgroundColor = .backgroundCover
+        
+        return bgView
+    }()
+    
+    lazy var activityIndicator: NVActivityIndicatorView = {
+        let activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40),
+                                                        type: .ballBeat,
+                                                        color: .fillinRed,
+                                                        padding: .zero)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        
+        return activityIndicator
+    }()
     
     // MARK: - @IBOutlet Properties
     @IBOutlet weak var navigationBar: FilinNavigationBar!
@@ -31,6 +49,7 @@ class FilmRollViewController: UIViewController {
         registerXib()
         setNotification()
         curationWithAPI()
+        setActivityIndicator()
         filmStylePhotosWithAPI(styleId: 1)
     }
     
@@ -66,6 +85,18 @@ extension FilmRollViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(selectedFilmIdAPI), name: Notification.Name.selectedFilmIdAPI, object: nil)
     }
     
+    private func setActivityIndicator() {
+        view.addSubview(loadingBgView)
+        loadingBgView.addSubview(activityIndicator)
+        
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+        
+        activityIndicator.startAnimating()
+    }
+    
     @objc func pushToFilmTypeViewController(_ notification: Notification) {
         let selectedFilmDict = notification.object as? NSDictionary
         let nextVC = FilmSelectViewController()
@@ -75,6 +106,7 @@ extension FilmRollViewController {
     }
     
     @objc func selectedFilmAPI(_ notification: Notification) {
+        setActivityIndicator()
         let selectedStyleId = notification.object as? Int ?? 1
         filmStylePhotosWithAPI(styleId: selectedStyleId)
     }
@@ -113,6 +145,8 @@ extension FilmRollViewController {
                 if let photos = data as? PhotosResponse {
                     self.dataSource.serverPhotos = photos
                     self.filmRollCollectionView.reloadData()
+                    self.activityIndicator.stopAnimating()
+                    self.loadingBgView.removeFromSuperview()
                 }
             case .requestErr(let message):
                 print("filmStylePhotosWithAPI - requestErr: \(message)")
