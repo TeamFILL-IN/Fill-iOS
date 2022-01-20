@@ -9,5 +9,7 @@ import Foundation
 
 // MARK: - LoginResponse
 struct LoginResponse: Codable {
-    let type, email, accessToken, refreshToken: String
+    let type, email: String
+    let nickname: String?
+    let accessToken, refreshToken: String
 }

@@ -39,7 +39,9 @@ extension UserService: TargetType {
     var task: Task {
         switch self {
         case .login(let loginRequest):
-            return .requestJSONEncodable(loginRequest)
+            return .requestParameters(parameters: ["token": loginRequest.token,
+                                                   "social": loginRequest.social,
+                                                   "idKey": loginRequest.idKey], encoding: URLEncoding.httpBody)
         }
     }
     
