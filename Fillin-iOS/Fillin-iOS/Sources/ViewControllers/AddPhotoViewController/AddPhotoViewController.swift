@@ -74,7 +74,18 @@ extension AddPhotoViewController {
   func layoutNavigationBar() {
     view.add(navigationBar) {
       self.navigationBar.popViewController = {
-        self.navigationController?.popViewController(animated: true)
+        // 제스쳐로 Pop되는 것 막기
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+        // 추가된 내용이 있을 때, 뒤로가기 하면 팝업 띄우기
+        if (self.photobackgroundView.image != Asset.photoInsert.image) || (self.filmchooseButton.titleLabel?.text != "어떤 필름을 사용했나요?") || (self.studiochooseButton.titleLabel?.text != "어떤 현상소에서 현상했나요?") {
+          let firstPopupVC = FirstAddPhotoPopUpViewController()
+          firstPopupVC.modalTransitionStyle = .crossDissolve
+          firstPopupVC.modalPresentationStyle = .overCurrentContext
+          self.present(firstPopupVC, animated: true, completion: nil)
+          
+        } else {
+          self.navigationController?.popViewController(animated: true)
+        }
       }
       $0.snp.makeConstraints {
         $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)

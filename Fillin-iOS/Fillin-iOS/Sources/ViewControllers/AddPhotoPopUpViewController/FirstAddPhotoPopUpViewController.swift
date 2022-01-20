@@ -125,8 +125,11 @@ extension FirstAddPhotoPopUpViewController {
     }
   }
   @objc func touchCancelButton() {
-    // 정보를 삭제하면서 dismiss
-    self.dismiss(animated: false, completion: nil)
+    // 현재 올라와있는 모달을 dismiss 하고 Pop
+    guard let parentVC = presentingViewController as? UINavigationController else { return }
+    dismiss(animated: true) {
+      parentVC.popViewController(animated: true)
+    }
   }
   @objc func touchContinueButton() {
     // 정보를 그대로 놔두고 dismiss
