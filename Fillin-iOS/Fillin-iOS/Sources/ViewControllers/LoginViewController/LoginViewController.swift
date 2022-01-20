@@ -126,10 +126,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
             let userToken = String(data: appleIDCredential.identityToken!, encoding: .utf8) ?? ""
             let userIdentifier = appleIDCredential.user
             loginWithAPI(loginRequest: LoginRequest(token: userToken, social: "apple", idKey: userIdentifier))
-            //      postUserSignUpWithAPI(request: userIdentifier)
-            //      UserDefaults.standard.set(true, forKey: Const.UserDefaultsKey.isAppleLogin)
-            //      UserDefaults.standard.set(false, forKey: Const.UserDefaultsKey.isKakaoLogin)
-            
+            UserDefaults.standard.set(userIdentifier, forKey: Const.UserDefaultsKey.userID)
         default:
             break
         }
@@ -149,9 +146,9 @@ extension LoginViewController {
             case .success(let loginData):
                 if let userData = loginData as? LoginResponse {
                     print("loginWithAPI - success")
-                    //                    UserDefaults.standard.set(userData.nickname, forKey: Const.UserDefaultsKey.nickname)
-                    //                    UserDefaults.standard.set(userData.accessToken, forKey: Const.UserDefaultsKey.accessToken)
-                    //                    UserDefaults.standard.set(userData.refreshToken, forKey: Const.UserDefaultsKey.refreshToken)
+                    UserDefaults.standard.set(userData.nickname, forKey: Const.UserDefaultsKey.nickname)
+                    UserDefaults.standard.set(userData.accessToken, forKey: Const.UserDefaultsKey.accessToken)
+                    UserDefaults.standard.set(userData.refreshToken, forKey: Const.UserDefaultsKey.refreshToken)
                     self.presentToMain()
                 }
             case .requestErr(let message):
