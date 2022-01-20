@@ -107,7 +107,7 @@ extension LoginViewController {
     let homeVC = HomeViewController()
     homeVC.modalPresentationStyle = .overFullScreen
     self.present(homeVC, animated: true) {
-//      UserDefaults.standard.set(false, forKey: Const.UserDefaultsKey.isOnboarding)
+      //      UserDefaults.standard.set(false, forKey: Const.UserDefaultsKey.isOnboarding)
     }
   }
 }
@@ -121,13 +121,14 @@ extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
   // Apple ID 연동 성공 시
   func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
     switch authorization.credential {
-//      Apple ID
+      //      Apple ID
     case let appleIDCredential as ASAuthorizationAppleIDCredential:
-      
+      let userToken = String(data: appleIDCredential.identityToken!, encoding: .utf8) ?? ""
       let userIdentifier = appleIDCredential.user
-//      postUserSignUpWithAPI(request: userIdentifier)
-//      UserDefaults.standard.set(true, forKey: Const.UserDefaultsKey.isAppleLogin)
-//      UserDefaults.standard.set(false, forKey: Const.UserDefaultsKey.isKakaoLogin)
+        loginWithAPI(loginRequest: LoginRequest(token: userToken, social: "apple", idKey: userIdentifier))
+      //      postUserSignUpWithAPI(request: userIdentifier)
+      //      UserDefaults.standard.set(true, forKey: Const.UserDefaultsKey.isAppleLogin)
+      //      UserDefaults.standard.set(false, forKey: Const.UserDefaultsKey.isKakaoLogin)
       
     default:
       break
@@ -141,28 +142,27 @@ extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
 }
 
 // MARK: - Network
-// extension LoginViewController {
-//  func postUserSignUpWithAPI(request: String) {
-//    UserAPI.shared.userSocialSignUp(request: request) { response in
-//      switch response {
-//      case .success(let loginData):
-//        print("postUserSignUpWithAPI - success")
-//        if let userData = loginData as? UserWithTokenRequest {
-//          UserDefaults.standard.set(userData.user.userID, forKey: Const.UserDefaultsKey.userID)
-//          UserDefaults.standard.set(userData.user.token.accessToken, forKey: Const.UserDefaultsKey.accessToken)
-//          UserDefaults.standard.set(userData.user.token.refreshToken, forKey: Const.UserDefaultsKey.refreshToken)
-//          self.presentToMain()
-//        }
-//      case .requestErr(let message):
-//        print("postUserSignUpWithAPI - requestErr: \(message)")
-//      case .pathErr:
-//        print("postUserSignUpWithAPI - pathErr")
-//      case .serverErr:
-//        print("postUserSignUpWithAPI - serverErr")
-//      case .networkFail:
-//        print("postUserSignUpWithAPI - networkFail")
-//      }
-//    }
-//  }
-//
-// }
+extension LoginViewController {
+    func loginWithAPI(loginRequest: LoginRequest) {
+        UserAPI.shared.login(loginRequest: loginRequest) { response in
+            switch response {
+            case .success(let loginData):
+                if let userData = loginData as? LoginResponse {
+                    print("loginWithAPI - success")
+//                    UserDefaults.standard.set(userData.user.userID, forKey: Const.UserDefaultsKey.userID)
+//                    UserDefaults.standard.set(userData.user.token.accessToken, forKey: Const.UserDefaultsKey.accessToken)
+//                    UserDefaults.standard.set(userData.user.token.refreshToken, forKey: Const.UserDefaultsKey.refreshToken)
+                    self.presentToMain()
+                }
+            case .requestErr(let message):
+                print("loginWithAPI - requestErr: \(message)")
+            case .pathErr:
+                print("loginWithAPI - pathErr")
+            case .serverErr:
+                print("loginWithAPI - serverErr")
+            case .networkFail:
+                print("loginWithAPI - networkFail")
+            }
+        }
+    }
+}
