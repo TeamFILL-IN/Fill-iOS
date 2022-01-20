@@ -91,7 +91,7 @@ extension FilmRollViewController {
         let shorterItem = NSCollectionLayoutItem(
             layoutSize: NSCollectionLayoutSize(
                 widthDimension: .fractionalWidth(1),
-                heightDimension: .absolute(165)
+                heightDimension: .absolute(124)
             )
         )
         shorterItem.contentInsets = .init(
@@ -111,21 +111,21 @@ extension FilmRollViewController {
         let leftGroup = NSCollectionLayoutGroup.vertical(
             layoutSize: NSCollectionLayoutSize(
                 widthDimension: .fractionalWidth(0.5),
-                heightDimension: .absolute(165*5)
+                heightDimension: .absolute(256)
             ),
-            subitem: shorterItem, count: 5)
+            subitem: shorterItem, count: 2)
         
         let rightGroup = NSCollectionLayoutGroup.vertical(
             layoutSize: NSCollectionLayoutSize(
                 widthDimension: .fractionalWidth(0.5),
-                heightDimension: .absolute(256*5)
+                heightDimension: .absolute(256)
             ),
-            subitem: longerItem, count: 5)
+            subitem: longerItem, count: 1)
         
         let group = NSCollectionLayoutGroup.horizontal(
             layoutSize: NSCollectionLayoutSize(
                 widthDimension: .fractionalWidth(1),
-                heightDimension: .absolute(256*5)
+                heightDimension: .absolute(256)
             ),
             subitems: [leftGroup, rightGroup])
 

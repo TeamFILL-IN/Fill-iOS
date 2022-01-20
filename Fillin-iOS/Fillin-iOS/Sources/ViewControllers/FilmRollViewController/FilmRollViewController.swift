@@ -100,9 +100,8 @@ extension FilmRollViewController {
             switch response {
             case .success(let data):
                 if let photos = data as? PhotosResponse {
-                    print(photos)
-//                    self.dataSource.serverPhotos = photos
-//                    self.filmRollCollectionView.reloadData()
+                    self.dataSource.serverPhotos = photos
+                    self.filmRollCollectionView.reloadData()
                 }
             case .requestErr(let message):
                 print("latestPhotosWithAPI - requestErr: \(message)")
