@@ -17,4 +17,3 @@ struct Studios: Codable {
     let id: Int
     let name, address: String
 }
-

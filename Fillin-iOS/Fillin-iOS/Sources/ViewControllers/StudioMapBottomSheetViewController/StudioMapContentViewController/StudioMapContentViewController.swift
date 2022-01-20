@@ -39,6 +39,11 @@ class StudioMapContentViewController: UIViewController {
     collectionView.translatesAutoresizingMaskIntoConstraints = false
     return collectionView
   }()
+  let alert = UIAlertController(title: "등록된 사이트가 없습니다.",
+      message: "확인버튼을 눌러주시기 바랍니다",
+      preferredStyle: UIAlertController.Style.alert)
+  let cancle = UIAlertAction(title: "취소", style: .default, handler: nil)
+  let ok = UIAlertAction(title: "확인", style: .destructive, handler: nil)
   
   // MARK: - View Cycle
   override func viewDidLoad() {
@@ -113,7 +118,11 @@ class StudioMapContentViewController: UIViewController {
     }
     // Label
     studioScrollContainverView.add(locationLabel) {
-      $0.text = StudioMapViewController.address
+      if StudioMapViewController.address == nil {
+        $0.text = "등록된 주소가 없습니다."
+      } else {
+        $0.text = StudioMapViewController.address
+      }
       $0.numberOfLines = 0
       $0.font = .body2
       $0.textColor = .grey1
@@ -125,7 +134,11 @@ class StudioMapContentViewController: UIViewController {
       }
     }
     studioScrollContainverView.add(timeLabel) {
-      $0.text = StudioMapViewController.time
+      if StudioMapViewController.time == nil {
+        $0.text = "등록된 운영시간이 없습니다."
+      } else {
+        $0.text = StudioMapViewController.time
+      }
       $0.numberOfLines = 0
       $0.font = .body2
       $0.textColor = .grey1
@@ -137,7 +150,11 @@ class StudioMapContentViewController: UIViewController {
       }
     }
     studioScrollContainverView.add(callLabel) {
-      $0.text = StudioMapViewController.tel
+      if StudioMapViewController.tel == nil {
+        $0.text = "등록된 전화번호가 없습니다."
+      } else {
+        $0.text = StudioMapViewController.tel
+      }
       $0.numberOfLines = 0
       $0.font = .body2
       $0.textColor = .grey1
@@ -149,7 +166,11 @@ class StudioMapContentViewController: UIViewController {
       }
     }
     studioScrollContainverView.add(priceLabel) {
-      $0.text = StudioMapViewController.price
+      if StudioMapViewController.price == nil {
+        $0.text = "등록된 가격정보가 없습니다."
+      } else {
+        $0.text = StudioMapViewController.price
+      }
       $0.numberOfLines = 0
       $0.font = .body2
       $0.textColor = .grey1
@@ -169,7 +190,12 @@ class StudioMapContentViewController: UIViewController {
         $0.leading.equalTo(self.studioScrollContainverView.snp.leading).offset(48)
         $0.height.equalTo(18)
       }
-      self.linkButton.addTarget(self, action: #selector(self.touchLinkButton), for: .touchUpInside)
+      if StudioMapViewController.site == nil {
+        print("등록된 사이트 없음")
+        self.linkButton.addTarget(self, action: #selector(self.touchNoSiteLinkButton), for: .touchUpInside)
+      } else {
+        self.linkButton.addTarget(self, action: #selector(self.touchLinkButton), for: .touchUpInside)
+      }
     }
     // 아이콘
     studioScrollContainverView.add(locationImageView) {
@@ -258,6 +284,13 @@ class StudioMapContentViewController: UIViewController {
     let studioUrl = NSURL(string: StudioMapViewController.site ?? "none site")
     let studioSafariView: SFSafariViewController = SFSafariViewController(url: studioUrl! as URL)
     self.present(studioSafariView, animated: true, completion: nil)
+  }
+  
+  @objc func touchNoSiteLinkButton() {
+    let alert = UIAlertController(title: "사이트 미등록", message: "해당 현상소의 등록된 사이트가 없습니다.", preferredStyle: UIAlertController.Style.alert)
+    let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+    alert.addAction(okAction)
+    present(alert, animated: false, completion: nil)
   }
 }
 
