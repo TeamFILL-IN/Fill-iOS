@@ -59,6 +59,7 @@ class FilmRollViewController: UIViewController {
 extension FilmRollViewController {
     private func setUI() {
         filmRollCollectionView.dataSource = dataSource
+        filmRollCollectionView.delegate = self
         filmRollCollectionView.collectionViewLayout = createLayout()
     }
     
@@ -113,6 +114,20 @@ extension FilmRollViewController {
     
     @objc func selectedFilmIdAPI(_ notification: Notification) {
         filmIdPhotosWithAPI(filmId: FilmSelectViewController.selectedId)
+    }
+}
+
+extension FilmRollViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let photoPopupVC = FilmRollClickViewController()
+        photoPopupVC.modalPresentationStyle = .overCurrentContext
+        photoPopupVC.modalTransitionStyle = .crossDissolve
+        photoPopupVC.userprofile = dataSource.serverPhotos?.photos[indexPath.row].userImageURL ?? ""
+        photoPopupVC.username = dataSource.serverPhotos?.photos[indexPath.row].nickname ?? ""
+        photoPopupVC.filmname = dataSource.serverPhotos?.photos[indexPath.row].filmName ?? ""
+        photoPopupVC.photoImage = dataSource.serverPhotos?.photos[indexPath.row].imageURL ?? ""
+        photoPopupVC.likeCount = dataSource.serverPhotos?.photos[indexPath.row].likeCount ?? 0
+        self.present(photoPopupVC, animated: true, completion: nil)
     }
 }
 
