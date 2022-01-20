@@ -63,6 +63,7 @@ extension FilmRollViewController {
     private func setNotification() {
         NotificationCenter.default.addObserver(self, selector: #selector(pushToFilmTypeViewController), name: Notification.Name.pushToFilmSelectViewController, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(selectedFilmAPI), name: Notification.Name.selectedFilmAPI, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(selectedFilmIdAPI), name: Notification.Name.selectedFilmIdAPI, object: nil)
     }
     
     @objc func pushToFilmTypeViewController(_ notification: Notification) {
@@ -76,6 +77,10 @@ extension FilmRollViewController {
     @objc func selectedFilmAPI(_ notification: Notification) {
         let selectedStyleId = notification.object as? Int ?? 1
         filmStylePhotosWithAPI(styleId: selectedStyleId)
+    }
+    
+    @objc func selectedFilmIdAPI(_ notification: Notification) {
+        filmIdPhotosWithAPI(filmId: FilmSelectViewController.selectedId)
     }
 }
 
@@ -117,6 +122,26 @@ extension FilmRollViewController {
                 print("filmStylePhotosWithAPI - serverErr")
             case .networkFail:
                 print("filmStylePhotosWithAPI - networkFail")
+            }
+        }
+    }
+    
+    func filmIdPhotosWithAPI(filmId: Int) {
+        FilmRollAPI.shared.filmIdPhotos(filmId: filmId) { response in
+            switch response {
+            case .success(let data):
+                if let photos = data as? PhotosResponse {
+                    self.dataSource.serverPhotos = photos
+                    self.filmRollCollectionView.reloadData()
+                }
+            case .requestErr(let message):
+                print("filmIdPhotosWithAPI - requestErr: \(message)")
+            case .pathErr:
+                print("filmIdPhotosWithAPI - pathErr")
+            case .serverErr:
+                print("filmIdPhotosWithAPI - serverErr")
+            case .networkFail:
+                print("filmIdPhotosWithAPI - networkFail")
             }
         }
     }
