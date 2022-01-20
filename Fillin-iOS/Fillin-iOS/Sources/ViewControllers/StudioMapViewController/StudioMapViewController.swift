@@ -22,6 +22,7 @@ class StudioMapViewController: UIViewController {
   static var tel: String?
   static var price: String?
   static var site: String?
+  static var selectedMarkerID: Int?
   
   var serverStudioInfo: StudioInfoResponse?
   var serverStudios: StudioResponse?
@@ -104,6 +105,7 @@ extension StudioMapViewController {
           self?.selectedMarkerInfo  = markerInfo
           marker.iconImage = NMFOverlayImage(image: Asset.icnPlaceBig.image)
           self?.setNotification()
+          StudioMapViewController.selectedMarkerID = markerInfo.id
           self?.studioInfoWithAPI(studioID: markerInfo.id)
         case 1: // 마커 눌려진 상태
           self?.markerState = 0
@@ -124,6 +126,8 @@ extension StudioMapViewController {
     StudioMapViewController.tel = self.serverStudioInfo?.studio.tel
     StudioMapViewController.price = self.serverStudioInfo?.studio.price
     StudioMapViewController.site = self.serverStudioInfo?.studio.site
+    print(StudioMapViewController.name, "인스튜디오handler에서 static변수 nameprint")
+    print(StudioMapViewController.address, "인스튜디오handler에서 static변수 address프린트")
     
     let nextVC = StudioMapBottomSheetViewController(contentViewController: StudioMapContentViewController())
     nextVC.modalPresentationStyle = .overCurrentContext
@@ -285,6 +289,8 @@ extension StudioMapViewController {
               print(data)
                 if let studioinfo = data as? StudioInfoResponse {
                   self.serverStudioInfo = studioinfo
+                  print(studioinfo, "인스튜디오studioinfo")
+                  print(studioinfo.studio.name, "인스튜디오studioinfo.studio.name")
                   self.presentBottomSheetAfterInfo()
                 }
             case .requestErr(let message):

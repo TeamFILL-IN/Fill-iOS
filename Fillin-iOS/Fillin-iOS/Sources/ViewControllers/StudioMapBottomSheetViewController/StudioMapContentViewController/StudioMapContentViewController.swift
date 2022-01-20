@@ -12,6 +12,7 @@ import SafariServices
 class StudioMapContentViewController: UIViewController {
   
   // MARK: - Properties
+  var serverStudioPhotos : PhotosResponse?
   let studioScrollview = UIScrollView()
   let studioScrollContainverView = UIView()
   let studioLabel = UILabel()
@@ -45,6 +46,7 @@ class StudioMapContentViewController: UIViewController {
     setupAttribute()
     setupUI()
     register()
+    studioPhotosWithAPI(studioID: StudioMapViewController.selectedMarkerID ?? 0)
   }
   
   // MARK: - Func
@@ -79,7 +81,6 @@ class StudioMapContentViewController: UIViewController {
         $0.height.equalTo((UIScreen.main.bounds.height*(500/812)+10*(UIScreen.main.bounds.width-36)/3 + 9) - 9)
       }
     }
-    
     // label
     studioScrollContainverView.add(studioLabel) {
       $0.text = StudioMapViewController.name
@@ -89,6 +90,7 @@ class StudioMapContentViewController: UIViewController {
         $0.top.equalTo(self.studioScrollContainverView.snp.top)
         $0.leading.equalTo(self.studioScrollContainverView.snp.leading).offset(18)
         $0.trailing.equalTo(self.studioScrollContainverView.snp.trailing).offset(30)
+        $0.height.equalTo(30)
       }
     }
     studioScrollContainverView.add(scrapButton) {
@@ -119,6 +121,7 @@ class StudioMapContentViewController: UIViewController {
         $0.top.equalTo(self.studioLabel.snp.bottom).offset(25)
         $0.leading.equalTo(self.studioScrollContainverView.snp.leading).offset(48)
         $0.trailing.equalTo(self.studioScrollContainverView.snp.trailing).offset(-25)
+        $0.height.equalTo(66)
       }
     }
     studioScrollContainverView.add(timeLabel) {
@@ -266,11 +269,13 @@ extension StudioMapContentViewController: UICollectionViewDelegate {
 
 extension StudioMapContentViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 30
+    print(serverStudioPhotos?.photos.count,"dfdfdfdfs")
+    return serverStudioPhotos?.photos.count ?? 0
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     guard let myphotoCell = collectionView.dequeueReusableCell(withReuseIdentifier: StudioMapCollectionViewCell.identifier, for: indexPath) as? StudioMapCollectionViewCell else {return UICollectionViewCell() }
+    myphotoCell.photoReviewImageView.updateServerImage(serverStudioPhotos?.photos[indexPath.row].imageURL ?? "")
     myphotoCell.awakeFromNib()
     return myphotoCell
   }
@@ -288,5 +293,30 @@ extension StudioMapContentViewController: UICollectionViewDelegateFlowLayout {
   }
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
     return 9
+  }
+}
+
+extension StudioMapContentViewController {
+  func studioPhotosWithAPI(studioID: Int) {
+    StudioMapAPI.shared.photoStudio(studioID: studioID) { response in
+      switch response {
+      case .success(let data):
+        if let photos = data as? PhotosResponse {
+          self.serverStudioPhotos = photos
+          let photosCount = ceil(Double(photos.photos.count)/3)
+          let intPhotosCount = Int(photosCount)
+          self.studioCollectionview.heightAnchor.constraint(equalToConstant: CGFloat((intPhotosCount*(Int(UIScreen.main.bounds.width)-36)/3 + 9))+30).isActive = true
+          self.studioCollectionview.reloadData()
+        }
+      case .requestErr(let message):
+        print("studioPhotosWithAPI - requestErr: \(message)")
+      case .pathErr:
+        print("studioPhotosWithAPI - pathErr")
+      case .serverErr:
+        print("studioPhotosWithAPI - serverErr")
+      case .networkFail:
+        print("studioPhotosWithAPI - networkFail")
+      }
+    }
   }
 }
