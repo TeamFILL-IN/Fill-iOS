@@ -10,7 +10,6 @@ import UIKit
 import SnapKit
 import Then
 import Photos
-import SwiftUI
 
 // MARK: - ADddPhotoViewController
 class AddPhotoViewController: UIViewController {
@@ -26,6 +25,11 @@ class AddPhotoViewController: UIViewController {
   let addphotoBackground = UIView()
   let addphotoButton = UIButton()
   let imagePickerController = UIImagePickerController()
+  
+  var status: Status = .addPhotoVC
+  
+  var selectedId = 0
+  var selectedFilm = ""
   
   // MARK: - LifeCycle
   override func viewDidLoad() {
@@ -45,9 +49,14 @@ class AddPhotoViewController: UIViewController {
     setNotification()
   }
   override func viewWillAppear(_ animated: Bool) {
-    self.photobackgroundView.image = Asset.photoInsert.image
-    self.filmchooseButton.setTitle("어떤 필름을 사용했나요?", for: .normal)
-    self.studiochooseButton.setTitle("어떤 현상소에서 현상했나요?", for: .normal)
+    self.filmchooseButton.titleLabel?.text = selectedFilm
+    
+    // 이미지와 스튜디오가 있어야 버튼 활성화 되도록 분기처리
+    if (self.photobackgroundView.image != Asset.photoInsert.image) && (self.filmchooseButton.titleLabel?.text != "어떤 필름을 사용했나요?") {
+      self.addphotoBackground.backgroundColor = .fillinRed
+    } else {
+      self.addphotoBackground.backgroundColor = .grey3
+    }
   }
 }
 // MARK: - Extension
@@ -106,7 +115,7 @@ extension AddPhotoViewController {
       $0.setBorder(borderColor: .fillinRed, borderWidth: 1)
       $0.contentHorizontalAlignment = .left
       $0.contentEdgeInsets = UIEdgeInsets(top: 0, left: 18, bottom: 0, right: 0)
-      $0.addTarget(self, action: #selector(self.touchfilmChooseButton), for: .touchUpInside)
+      $0.addTarget(self, action: #selector(self.touchFilmChooseButton), for: .touchUpInside)
       $0.snp.makeConstraints {
         $0.top.equalTo(self.filmLabel.snp.bottom).offset(9)
         $0.centerX.equalToSuperview()
@@ -137,7 +146,7 @@ extension AddPhotoViewController {
       $0.setBorder(borderColor: .fillinRed, borderWidth: 1)
       $0.contentHorizontalAlignment = .left
       $0.contentEdgeInsets = UIEdgeInsets(top: 0, left: 18, bottom: 0, right: 0)
-      $0.addTarget(self, action: #selector(self.touchstudioChooseButton), for: .touchUpInside)
+      $0.addTarget(self, action: #selector(self.touchStudioChooseButton), for: .touchUpInside)
       $0.snp.makeConstraints {
         $0.top.equalTo(self.studioLabel.snp.bottom).offset(9)
         $0.centerX.equalToSuperview()
@@ -148,7 +157,7 @@ extension AddPhotoViewController {
   }
   func layoutAddPhotoBackground() {
     view.add(addphotoBackground) {
-      $0.backgroundColor = .fillinRed
+      $0.backgroundColor = .grey3
       $0.snp.makeConstraints {
         $0.leading.trailing.equalToSuperview()
         $0.bottom.equalToSuperview()
@@ -161,7 +170,7 @@ extension AddPhotoViewController {
       $0.setTitle("Add Photo", for: .normal)
       $0.titleLabel?.font = .engBighead
       $0.setTitleColor(.fillinBlack, for: .normal)
-      $0.addTarget(self, action: #selector(self.touchaddPhotoButton), for: .touchUpInside)
+      $0.addTarget(self, action: #selector(self.touchAddPhotoButton), for: .touchUpInside)
       $0.snp.makeConstraints {
         $0.top.equalToSuperview().offset(15)
         $0.centerX.equalToSuperview()
@@ -201,24 +210,30 @@ extension AddPhotoViewController {
       break
     }
   }
-  @objc func touchfilmChooseButton() {
-    let filmselectVC = FilmSelectViewController()
-    self.present(filmselectVC, animated: false, completion: nil)
+  @objc func touchFilmChooseButton() {
+    let filmSelectVC = FilmSelectViewController()
+    filmSelectVC.status = .addPhotoVC
+    self.navigationController?.pushViewController(filmSelectVC, animated: true)
   }
-  @objc func touchstudioChooseButton() {
-    let studiochooseVC = StudioMapSearchViewController()
-    self.present(studiochooseVC, animated: false, completion: nil)
+  @objc func touchStudioChooseButton() {
+    let studioChooseVC = StudioMapSearchViewController()
+    self.navigationController?.pushViewController(studioChooseVC, animated: true)
   }
-  @objc func touchaddPhotoButton() {
-    // addPhoto클릭하면 서버통신
-    addPhotosWithAPI(studioId: 6, filmId: 1, img: self.photobackgroundView.image ?? UIImage())
+  @objc func touchAddPhotoButton() {
+    if self.addphotoBackground.backgroundColor == .fillinRed {
+      addPhotosWithAPI(studioId: 6, filmId: selectedId, img: self.photobackgroundView.image ?? UIImage())
+    } else {
+    }
   }
+  // MARK: - Notification
   private func setNotification() {
-    NotificationCenter.default.addObserver(self, selector: #selector(pushToFilmSelectViewController(_:)), name: .pushToFilmSelectViewController, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(updateSelectedFilmType), name: Notification.Name.pushToAddPhotoViewController, object: nil)
   }
-  @objc func pushToFilmSelectViewController(_ notification: Notification) {
-    modalPresentationStyle = .fullScreen
-    self.present(FilmSelectViewController(), animated: true, completion: nil)
+  @objc func updateSelectedFilmType(_ notification: Notification) {
+    let selectedFilmDict = notification.object as? NSDictionary
+    selectedId = selectedFilmDict?["selectedId"] as? Int ?? 0
+    selectedFilm = selectedFilmDict?["selectedFilm"] as? String ?? ""
+    self.filmchooseButton.setTitle(selectedFilm, for: .normal)
   }
 }
 
