@@ -6,11 +6,29 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 
 class FilmRollViewController: UIViewController {
     
     // MARK: - Properties
     let dataSource = FilmRollViewControllerDataSource()
+    
+    lazy var loadingBgView: UIView = {
+        let bgView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+        bgView.backgroundColor = .backgroundCover
+        
+        return bgView
+    }()
+    
+    lazy var activityIndicator: NVActivityIndicatorView = {
+        let activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40),
+                                                        type: .ballBeat,
+                                                        color: .fillinRed,
+                                                        padding: .zero)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        
+        return activityIndicator
+    }()
     
     // MARK: - @IBOutlet Properties
     @IBOutlet weak var navigationBar: FilinNavigationBar!
@@ -31,6 +49,7 @@ class FilmRollViewController: UIViewController {
         registerXib()
         setNotification()
         curationWithAPI()
+        setActivityIndicator()
         filmStylePhotosWithAPI(styleId: 1)
     }
     
@@ -63,6 +82,19 @@ extension FilmRollViewController {
     private func setNotification() {
         NotificationCenter.default.addObserver(self, selector: #selector(pushToFilmTypeViewController), name: Notification.Name.pushToFilmSelectViewController, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(selectedFilmAPI), name: Notification.Name.selectedFilmAPI, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(selectedFilmIdAPI), name: Notification.Name.selectedFilmIdAPI, object: nil)
+    }
+    
+    private func setActivityIndicator() {
+        view.addSubview(loadingBgView)
+        loadingBgView.addSubview(activityIndicator)
+        
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+        
+        activityIndicator.startAnimating()
     }
     
     @objc func pushToFilmTypeViewController(_ notification: Notification) {
@@ -74,8 +106,13 @@ extension FilmRollViewController {
     }
     
     @objc func selectedFilmAPI(_ notification: Notification) {
+        setActivityIndicator()
         let selectedStyleId = notification.object as? Int ?? 1
         filmStylePhotosWithAPI(styleId: selectedStyleId)
+    }
+    
+    @objc func selectedFilmIdAPI(_ notification: Notification) {
+        filmIdPhotosWithAPI(filmId: FilmSelectViewController.selectedId)
     }
 }
 
@@ -108,6 +145,8 @@ extension FilmRollViewController {
                 if let photos = data as? PhotosResponse {
                     self.dataSource.serverPhotos = photos
                     self.filmRollCollectionView.reloadData()
+                    self.activityIndicator.stopAnimating()
+                    self.loadingBgView.removeFromSuperview()
                 }
             case .requestErr(let message):
                 print("filmStylePhotosWithAPI - requestErr: \(message)")
@@ -117,6 +156,26 @@ extension FilmRollViewController {
                 print("filmStylePhotosWithAPI - serverErr")
             case .networkFail:
                 print("filmStylePhotosWithAPI - networkFail")
+            }
+        }
+    }
+    
+    func filmIdPhotosWithAPI(filmId: Int) {
+        FilmRollAPI.shared.filmIdPhotos(filmId: filmId) { response in
+            switch response {
+            case .success(let data):
+                if let photos = data as? PhotosResponse {
+                    self.dataSource.serverPhotos = photos
+                    self.filmRollCollectionView.reloadData()
+                }
+            case .requestErr(let message):
+                print("filmIdPhotosWithAPI - requestErr: \(message)")
+            case .pathErr:
+                print("filmIdPhotosWithAPI - pathErr")
+            case .serverErr:
+                print("filmIdPhotosWithAPI - serverErr")
+            case .networkFail:
+                print("filmIdPhotosWithAPI - networkFail")
             }
         }
     }
