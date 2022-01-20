@@ -22,6 +22,8 @@ struct Photo: Codable {
     let filmID: Int
     let filmName: String
     let likeCount: Int
+    let isGaro: Bool?
+    let isLiked: Bool?
 
     enum CodingKeys: String, CodingKey {
         case studioName, nickname
@@ -29,6 +31,6 @@ struct Photo: Codable {
         case photoID = "photoId"
         case imageURL = "imageUrl"
         case filmID = "filmId"
-        case filmName, likeCount
+        case filmName, likeCount, isGaro, isLiked
     }
 }
