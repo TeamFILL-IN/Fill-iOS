@@ -258,6 +258,16 @@ extension MyPageViewController: UICollectionViewDataSource {
     myphotoCell.awakeFromNib()
     return myphotoCell
   }
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    let photoPopupVC = FilmRollClickViewController()
+    photoPopupVC.modalPresentationStyle = .overCurrentContext
+    photoPopupVC.modalTransitionStyle = .crossDissolve
+    photoPopupVC.userprofile = serverNewPhotos?.photos[indexPath.row].userImageURL ?? ""
+    photoPopupVC.username = serverNewPhotos?.photos[indexPath.row].nickname ?? ""
+    photoPopupVC.filmname = serverNewPhotos?.photos[indexPath.row].filmName ?? ""
+    photoPopupVC.photoImage = serverNewPhotos?.photos[indexPath.row].imageURL ?? ""
+    self.present(photoPopupVC, animated: true, completion: nil)
+  }
 }
 
 extension MyPageViewController: UICollectionViewDelegateFlowLayout {

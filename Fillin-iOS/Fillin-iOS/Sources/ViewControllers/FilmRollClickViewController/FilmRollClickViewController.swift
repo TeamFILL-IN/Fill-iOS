@@ -8,7 +8,13 @@
 import UIKit
 
 class FilmRollClickViewController: UIViewController {
-
+  
+  var userprofile = ""
+  var username = ""
+  var filmname = ""
+  var photoImage = ""
+  
+  
     // MARK: - @IBOutlet Properties
     @IBOutlet weak var dimmedBackView: UIView!
     @IBOutlet weak var popUpView: UIView!
@@ -49,6 +55,10 @@ extension FilmRollClickViewController {
         likeButton.layer.borderWidth = 1
         likeButton.layer.borderColor = UIColor.darkGrey1.cgColor
         likeButton.setInsets(forContentPadding: UIEdgeInsets(top: 0, left: 7, bottom: 0, right: 7), imageTitlePadding: CGFloat(6))
+      profileImage.updateServerImage(userprofile)
+      profileNameLabel.text = username
+      filmNameLabel.text = filmname
+      photoImageView.updateServerImage(photoImage)
     }
     
     private func setupGestureRecognizer() {

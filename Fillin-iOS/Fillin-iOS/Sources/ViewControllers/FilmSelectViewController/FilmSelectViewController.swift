@@ -141,15 +141,16 @@ extension FilmSelectViewController: UITableViewDelegate {
     selectedFilm = filmCell?.filmNameLabel.text ?? ""
     selectedId = filmCell?.filmId ?? 0
     switch status {
+      //FilmVC에서 들어올 때는 FilmVC안에 셀에 내용이 들어가게
     case .originFilmVC :
       let selectedFilmDict = ["selectedTag": selectedTag,
                               "selectedLeading": selectedLeading,
                               "selectedFilm": selectedFilm] as [String: Any]
       NotificationCenter.default.post(name: NSNotification.Name.updateSelectedFilmType, object: selectedFilmDict, userInfo: nil)
       self.navigationController?.popViewController(animated: true)
+      //AddPhotoVC에서 들어올 때는 다시 AddPhotoVC로 돌아오게 
     case .addPhotoVC:
       let selectedFilmDict = ["selectedId": selectedId, "selectedFilm": selectedFilm] as [String: Any]
-      // Todo - 나는 노티에다가 이거 담아서 add photo 에다가 보내면댐
       NotificationCenter.default.post(name: NSNotification.Name.pushToAddPhotoViewController, object: selectedFilmDict, userInfo: nil)
       self.navigationController?.popViewController(animated: true)
     case .originStudioVC:
