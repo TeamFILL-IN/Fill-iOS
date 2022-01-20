@@ -47,6 +47,22 @@ public class FilmRollAPI {
         }
     }
     
+    func filmIdPhotos(filmId: Int, completion: @escaping (NetworkResult<Any>) -> Void) {
+        filmRollProvider.request(.filmIdPhotos(filmId: filmId)) { (result) in
+            switch result {
+            case .success(let response):
+                let statusCode = response.statusCode
+                let data = response.data
+                
+                let networkResult = self.judgeFilmStylePhotosStatus(by: statusCode, data)
+                completion(networkResult)
+                
+            case .failure(let err):
+                print(err)
+            }
+        }
+    }
+    
     private func judgeStatus(by statusCode: Int, _ data: Data) -> NetworkResult<Any> {
         
         let decoder = JSONDecoder()
