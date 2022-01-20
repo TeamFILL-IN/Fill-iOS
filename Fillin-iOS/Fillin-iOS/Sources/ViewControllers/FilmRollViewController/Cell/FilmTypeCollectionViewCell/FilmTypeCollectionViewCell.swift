@@ -40,6 +40,7 @@ class FilmTypeCollectionViewCell: UICollectionViewCell {
             chosenViewLeading.constant = selectedLeading
             
             setSelectedFilm()
+            NotificationCenter.default.post(name: .selectedFilmAPI, object: selectedTag + 1)
         }
     }
     

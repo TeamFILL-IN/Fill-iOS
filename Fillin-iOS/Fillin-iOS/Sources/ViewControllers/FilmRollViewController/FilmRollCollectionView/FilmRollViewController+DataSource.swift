@@ -11,6 +11,7 @@ import UIKit
 class FilmRollViewControllerDataSource: NSObject, UICollectionViewDataSource {
     
     var serverCuration: CurationResponse?
+    var serverPhotos: PhotosResponse?
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         3
@@ -23,7 +24,7 @@ class FilmRollViewControllerDataSource: NSObject, UICollectionViewDataSource {
         case .filmType:
             return 1
         case .filmRoll:
-            return 10
+            return serverPhotos?.photos.count ?? 1
         }
     }
     
@@ -52,6 +53,7 @@ class FilmRollViewControllerDataSource: NSObject, UICollectionViewDataSource {
         case .filmRoll:
             guard let filmRollCell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Xib.filmCurationCollectionViewCell, for: indexPath) as? FilmCurationCollectionViewCell else { return UICollectionViewCell() }
 
+            filmRollCell.filmCurationImageView.updateServerImage(serverPhotos?.photos[indexPath.row].imageURL ?? "")
             return filmRollCell
         }
     }

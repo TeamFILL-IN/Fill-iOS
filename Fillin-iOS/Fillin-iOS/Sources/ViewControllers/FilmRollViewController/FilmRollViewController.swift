@@ -31,6 +31,7 @@ class FilmRollViewController: UIViewController {
         registerXib()
         setNotification()
         curationWithAPI()
+        filmStylePhotosWithAPI(styleId: 1)
     }
     
 }
@@ -61,6 +62,7 @@ extension FilmRollViewController {
     
     private func setNotification() {
         NotificationCenter.default.addObserver(self, selector: #selector(pushToFilmTypeViewController), name: Notification.Name.pushToFilmSelectViewController, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(selectedFilmAPI), name: Notification.Name.selectedFilmAPI, object: nil)
     }
     
     @objc func pushToFilmTypeViewController(_ notification: Notification) {
@@ -69,6 +71,11 @@ extension FilmRollViewController {
         nextVC.selectedTag = selectedFilmDict?["selectedTag"] as? Int ?? 0
         nextVC.selectedLeading = selectedFilmDict?["selectedLeading"] as? CGFloat ?? 0
         self.navigationController?.pushViewController(nextVC, animated: true)
+    }
+    
+    @objc func selectedFilmAPI(_ notification: Notification) {
+        let selectedStyleId = notification.object as? Int ?? 1
+        filmStylePhotosWithAPI(styleId: selectedStyleId)
     }
 }
 
@@ -83,13 +90,33 @@ extension FilmRollViewController {
                     self.filmRollCollectionView.reloadData()
                 }
             case .requestErr(let message):
-                print("latestPhotosWithAPI - requestErr: \(message)")
+                print("curationWithAPI - requestErr: \(message)")
             case .pathErr:
-                print("latestPhotosWithAPI - pathErr")
+                print("curationWithAPI - pathErr")
             case .serverErr:
-                print("latestPhotosWithAPI - serverErr")
+                print("curationWithAPI - serverErr")
             case .networkFail:
-                print("latestPhotosWithAPI - networkFail")
+                print("curationWithAPI - networkFail")
+            }
+        }
+    }
+    
+    func filmStylePhotosWithAPI(styleId: Int) {
+        FilmRollAPI.shared.filmStylePhotos(styleId: styleId) { response in
+            switch response {
+            case .success(let data):
+                if let photos = data as? PhotosResponse {
+                    self.dataSource.serverPhotos = photos
+                    self.filmRollCollectionView.reloadData()
+                }
+            case .requestErr(let message):
+                print("filmStylePhotosWithAPI - requestErr: \(message)")
+            case .pathErr:
+                print("filmStylePhotosWithAPI - pathErr")
+            case .serverErr:
+                print("filmStylePhotosWithAPI - serverErr")
+            case .networkFail:
+                print("filmStylePhotosWithAPI - networkFail")
             }
         }
     }
