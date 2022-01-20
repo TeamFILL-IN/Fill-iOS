@@ -22,6 +22,7 @@ class StudioMapViewController: UIViewController {
   static var tel: String?
   static var price: String?
   static var site: String?
+  static var selectedMarkerID: Int?
   
   var serverStudioInfo: StudioInfoResponse?
   var serverStudios: StudioResponse?
@@ -97,20 +98,13 @@ extension StudioMapViewController {
       marker.iconImage = NMFOverlayImage(image: Asset.icnPlaceBig2.image)
       
       marker.touchHandler = { [weak self] (overlay: NMFOverlay) -> Bool in
-        switch self?.markerState {
-        case 0: // 마커 안눌린 상태
-          self?.markerState = 1
-          self?.selectedMarker = marker
-          self?.selectedMarkerInfo  = markerInfo
-          marker.iconImage = NMFOverlayImage(image: Asset.icnPlaceBig.image)
-          self?.setNotification()
-          self?.studioInfoWithAPI(studioID: markerInfo.id)
-        case 1: // 마커 눌려진 상태
-          self?.markerState = 0
-          marker.iconImage = NMFOverlayImage(image: Asset.icnPlaceBig2.image)
-        default:
-          print("no")
-        }
+        self?.markerState = 1
+        self?.selectedMarker = marker
+        self?.selectedMarkerInfo  = markerInfo
+        marker.iconImage = NMFOverlayImage(image: Asset.icnPlaceBig.image)
+        self?.setNotification()
+        StudioMapViewController.selectedMarkerID = markerInfo.id
+        self?.studioInfoWithAPI(studioID: markerInfo.id)
         return true
       }
       marker.mapView = self.mapView.mapView
@@ -299,4 +293,3 @@ extension StudioMapViewController {
         }
     }
 }
- 

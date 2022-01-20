@@ -11,6 +11,7 @@ import Moya
 enum StudioMapService {
   case totalStudio
   case infoStudio(studioID: Int)
+  case photoStudio(studioID: Int)
 }
 
 extension StudioMapService: TargetType {
@@ -25,6 +26,8 @@ extension StudioMapService: TargetType {
           return "/studio"
         case .infoStudio(let studioID):
           return "/studio/detail/\(studioID)"
+        case .photoStudio(let studioID):
+          return "/photo/studio/\(studioID)"
         }
     }
     
@@ -34,7 +37,8 @@ extension StudioMapService: TargetType {
           return .get
         case .infoStudio:
           return .get
-
+        case .photoStudio:
+          return .get
         }
     }
     
@@ -48,6 +52,8 @@ extension StudioMapService: TargetType {
           return .requestPlain
         case .infoStudio:
           return .requestPlain
+        case .photoStudio:
+          return .requestPlain
         }
     }
     
@@ -56,6 +62,8 @@ extension StudioMapService: TargetType {
         case .totalStudio:
           return Const.Header.tokenHeader
         case .infoStudio:
+          return Const.Header.tokenHeader
+        case .photoStudio:
           return Const.Header.tokenHeader
         }
     }

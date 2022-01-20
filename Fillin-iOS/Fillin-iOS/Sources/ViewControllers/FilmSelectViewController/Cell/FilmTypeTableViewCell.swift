@@ -8,6 +8,8 @@
 import UIKit
 
 class FilmTypeTableViewCell: UITableViewCell {
+  
+  var filmId: Int?
     
     // MARK: - @IBOutlet Properties
     @IBOutlet weak var filmBackView: UIView!

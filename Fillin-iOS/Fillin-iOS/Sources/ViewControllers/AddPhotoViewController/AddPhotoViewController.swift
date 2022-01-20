@@ -10,7 +10,6 @@ import UIKit
 import SnapKit
 import Then
 import Photos
-import SwiftUI
 
 // MARK: - ADddPhotoViewController
 class AddPhotoViewController: UIViewController {
@@ -27,6 +26,11 @@ class AddPhotoViewController: UIViewController {
   let addphotoButton = UIButton()
   let imagePickerController = UIImagePickerController()
   
+  var status: Status = .addPhotoVC
+  
+  var selectedId = 0
+  var selectedFilm = ""
+  
   // MARK: - LifeCycle
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -42,11 +46,17 @@ class AddPhotoViewController: UIViewController {
     self.photobackgroundView.isUserInteractionEnabled = true
     self.photobackgroundView.addGestureRecognizer(tapGestureRecognizer)
     layout()
+    setNotification()
   }
   override func viewWillAppear(_ animated: Bool) {
-    self.photobackgroundView.image = Asset.photoInsert.image
-    self.filmchooseButton.setTitle("어떤 필름을 사용했나요?", for: .normal)
-    self.studiochooseButton.setTitle("어떤 현상소에서 현상했나요?", for: .normal)
+    self.filmchooseButton.titleLabel?.text = selectedFilm
+    
+    // 이미지와 스튜디오가 있어야 버튼 활성화 되도록 분기처리
+    if (self.photobackgroundView.image != Asset.photoInsert.image) && (self.filmchooseButton.titleLabel?.text != "어떤 필름을 사용했나요?") {
+      self.addphotoBackground.backgroundColor = .fillinRed
+    } else {
+      self.addphotoBackground.backgroundColor = .grey3
+    }
   }
 }
 // MARK: - Extension
@@ -64,7 +74,18 @@ extension AddPhotoViewController {
   func layoutNavigationBar() {
     view.add(navigationBar) {
       self.navigationBar.popViewController = {
-        self.navigationController?.popViewController(animated: true)
+        // 제스쳐로 Pop되는 것 막기
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+        // 추가된 내용이 있을 때, 뒤로가기 하면 팝업 띄우기
+        if (self.photobackgroundView.image != Asset.photoInsert.image) || (self.filmchooseButton.titleLabel?.text != "어떤 필름을 사용했나요?") || (self.studiochooseButton.titleLabel?.text != "어떤 현상소에서 현상했나요?") {
+          let firstPopupVC = FirstAddPhotoPopUpViewController()
+          firstPopupVC.modalTransitionStyle = .crossDissolve
+          firstPopupVC.modalPresentationStyle = .overCurrentContext
+          self.present(firstPopupVC, animated: true, completion: nil)
+          
+        } else {
+          self.navigationController?.popViewController(animated: true)
+        }
       }
       $0.snp.makeConstraints {
         $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
@@ -105,7 +126,7 @@ extension AddPhotoViewController {
       $0.setBorder(borderColor: .fillinRed, borderWidth: 1)
       $0.contentHorizontalAlignment = .left
       $0.contentEdgeInsets = UIEdgeInsets(top: 0, left: 18, bottom: 0, right: 0)
-      $0.addTarget(self, action: #selector(self.touchfilmChooseButton), for: .touchUpInside)
+      $0.addTarget(self, action: #selector(self.touchFilmChooseButton), for: .touchUpInside)
       $0.snp.makeConstraints {
         $0.top.equalTo(self.filmLabel.snp.bottom).offset(9)
         $0.centerX.equalToSuperview()
@@ -136,7 +157,7 @@ extension AddPhotoViewController {
       $0.setBorder(borderColor: .fillinRed, borderWidth: 1)
       $0.contentHorizontalAlignment = .left
       $0.contentEdgeInsets = UIEdgeInsets(top: 0, left: 18, bottom: 0, right: 0)
-      $0.addTarget(self, action: #selector(self.touchstudioChooseButton), for: .touchUpInside)
+      $0.addTarget(self, action: #selector(self.touchStudioChooseButton), for: .touchUpInside)
       $0.snp.makeConstraints {
         $0.top.equalTo(self.studioLabel.snp.bottom).offset(9)
         $0.centerX.equalToSuperview()
@@ -147,7 +168,7 @@ extension AddPhotoViewController {
   }
   func layoutAddPhotoBackground() {
     view.add(addphotoBackground) {
-      $0.backgroundColor = .fillinRed
+      $0.backgroundColor = .grey3
       $0.snp.makeConstraints {
         $0.leading.trailing.equalToSuperview()
         $0.bottom.equalToSuperview()
@@ -160,34 +181,22 @@ extension AddPhotoViewController {
       $0.setTitle("Add Photo", for: .normal)
       $0.titleLabel?.font = .engBighead
       $0.setTitleColor(.fillinBlack, for: .normal)
-      $0.addTarget(self, action: #selector(self.touchaddPhotoButton), for: .touchUpInside)
+      $0.addTarget(self, action: #selector(self.touchAddPhotoButton), for: .touchUpInside)
       $0.snp.makeConstraints {
         $0.top.equalToSuperview().offset(15)
         $0.centerX.equalToSuperview()
       }
     }
   }
-  // 사용자가 권한 deny 눌렀을 경우 Settings로 보내도록
-  func settingAlert() {
-    if let appName = Bundle.main.infoDictionary!["CFBunldName"] as? String {
-      let alert = UIAlertController(title: "설정", message: "\(appName)이(가) 카메라 접근 허용이 되어있지 않습니다. 설정화면으로 가시겠습니까?", preferredStyle: .alert)
-      let cancelAction = UIAlertAction(title: "취소", style: .default) { (action) in
-      }
-      let confirmAction = UIAlertAction(title: "확인", style: .default) { (action) in UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
-      }
-      alert.addAction(cancelAction)
-      alert.addAction(confirmAction)
-      self.present(alert, animated: true, completion: nil)
-    } else {
-      
-    }
-  }
   @objc func touchimageView() {
-    print("어쩔티비")
     switch PHPhotoLibrary.authorizationStatus() {
     case .denied:
-      settingAlert()
-      print("omg")
+      makeOKCancelAlert(title: "갤러리 권한이 허용되어 있지 않습니다.",
+                              message: "필름 사진 이미지 저장을 위해 갤러리 권한이 필요합니다. 앱 설정으로 이동해 허용해 주세요.",
+                              okAction: { _ in UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)},
+                              cancelAction: nil,
+                              completion: nil)
+      print("거절")
     case .restricted:
       break
     case .authorized:
@@ -212,17 +221,30 @@ extension AddPhotoViewController {
       break
     }
   }
-  @objc func touchfilmChooseButton() {
-    
+  @objc func touchFilmChooseButton() {
+    let filmSelectVC = FilmSelectViewController()
+    filmSelectVC.status = .addPhotoVC
+    self.navigationController?.pushViewController(filmSelectVC, animated: true)
   }
-  @objc func touchstudioChooseButton() {
-    
+  @objc func touchStudioChooseButton() {
+    let studioChooseVC = StudioMapSearchViewController()
+    self.navigationController?.pushViewController(studioChooseVC, animated: true)
   }
-  @objc func touchaddPhotoButton() {
-    let secondVC = SecondAddPhotoPopUpViewController()
-    secondVC.modalPresentationStyle = .overCurrentContext
-    secondVC.modalTransitionStyle = .crossDissolve
-    self.present(secondVC, animated: false, completion: nil)
+  @objc func touchAddPhotoButton() {
+    if self.addphotoBackground.backgroundColor == .fillinRed {
+      addPhotosWithAPI(studioId: 6, filmId: selectedId, img: self.photobackgroundView.image ?? UIImage())
+    } else {
+    }
+  }
+  // MARK: - Notification
+  private func setNotification() {
+    NotificationCenter.default.addObserver(self, selector: #selector(updateSelectedFilmType), name: Notification.Name.pushToAddPhotoViewController, object: nil)
+  }
+  @objc func updateSelectedFilmType(_ notification: Notification) {
+    let selectedFilmDict = notification.object as? NSDictionary
+    selectedId = selectedFilmDict?["selectedId"] as? Int ?? 0
+    selectedFilm = selectedFilmDict?["selectedFilm"] as? String ?? ""
+    self.filmchooseButton.setTitle(selectedFilm, for: .normal)
   }
 }
 
@@ -235,5 +257,29 @@ extension AddPhotoViewController: UIImagePickerControllerDelegate, UINavigationC
       photoIcon.isHidden = true
     }
     dismiss(animated: true, completion: nil)
+  }
+}
+
+// MARK: - Network
+extension AddPhotoViewController {
+  func addPhotosWithAPI(studioId: Int, filmId: Int, img: UIImage) {
+    AddPhotoAPI.shared.addPhotos(studioId: studioId, filmId: filmId, img: img) { response in
+      switch response {
+      case .success:
+        let secondVC = SecondAddPhotoPopUpViewController()
+        secondVC.modalPresentationStyle = .overCurrentContext
+        secondVC.modalTransitionStyle = .crossDissolve
+        self.present(secondVC, animated: false, completion: nil)
+      case .requestErr(let message):
+        print("addPhotosWithAPI - requestErr: \(message)")
+      case .pathErr:
+        print("addPhotosWithAPI - pathErr")
+      case .serverErr:
+        print("addPhotosWithAPI - serverErr")
+      case .networkFail:
+        print("addPhotosWithAPI - networkFail")
+      }
+    }
+    
   }
 }
