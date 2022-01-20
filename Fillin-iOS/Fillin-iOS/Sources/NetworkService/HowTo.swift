@@ -51,7 +51,7 @@ import Foundation
  그 다음엔 request에요!
  - 우리가 서버에게 보내는것 (request)가 없다면 : .requestPlain
  - 우리가 서버에게 보내는 것 (request)가 있다면 : .requestJSONEncodable(자신이 만든 requestModel)
- - 쿼리 (query) 가 있다면 :
+ - 파라미터 가 있다면 :
  case .cardListFetchInGroup(let cardListInGroupRequest):
      return .requestParameters(parameters: ["userId": cardListInGroupRequest.userId,
                                             "groupId": cardListInGroupRequest.groupId,
