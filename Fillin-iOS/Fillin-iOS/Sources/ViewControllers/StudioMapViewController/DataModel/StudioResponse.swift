@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: - StudioResponse
 struct StudioResponse: Codable {
-    let studio: [Studio]
+    let studios: [Studio]
 }
 
 // MARK: - Studio
