@@ -91,7 +91,7 @@ extension StudioMapViewController {
   private func setUpMarkerInfo() {
     self.mapView.mapView.touchDelegate = self
     
-    serverStudios?.studio.forEach {
+    serverStudios?.studios.forEach {
       let marker = NMFMarker(position: NMGLatLng(lat: $0.lati, lng: $0.long))
       let markerInfo = Studio(id: $0.id, lati: $0.lati, long: $0.long)
       marker.iconImage = NMFOverlayImage(image: Asset.icnPlaceBig2.image)
