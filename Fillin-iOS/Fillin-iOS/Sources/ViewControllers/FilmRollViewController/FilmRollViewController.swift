@@ -31,6 +31,7 @@ class FilmRollViewController: UIViewController {
         registerXib()
         setNotification()
         curationWithAPI()
+        filmStylePhotosWithAPI(styleId: 1)
     }
     
 }
@@ -81,6 +82,27 @@ extension FilmRollViewController {
                 if let curations = data as? CurationResponse {
                     self.dataSource.serverCuration = curations
                     self.filmRollCollectionView.reloadData()
+                }
+            case .requestErr(let message):
+                print("latestPhotosWithAPI - requestErr: \(message)")
+            case .pathErr:
+                print("latestPhotosWithAPI - pathErr")
+            case .serverErr:
+                print("latestPhotosWithAPI - serverErr")
+            case .networkFail:
+                print("latestPhotosWithAPI - networkFail")
+            }
+        }
+    }
+    
+    func filmStylePhotosWithAPI(styleId: Int) {
+        FilmRollAPI.shared.filmStylePhotos(styleId: styleId) { response in
+            switch response {
+            case .success(let data):
+                if let photos = data as? PhotosResponse {
+                    print(photos)
+//                    self.dataSource.serverPhotos = photos
+//                    self.filmRollCollectionView.reloadData()
                 }
             case .requestErr(let message):
                 print("latestPhotosWithAPI - requestErr: \(message)")

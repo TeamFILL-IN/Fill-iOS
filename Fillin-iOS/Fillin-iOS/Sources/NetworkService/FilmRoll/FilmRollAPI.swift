@@ -38,7 +38,7 @@ public class FilmRollAPI {
                 let statusCode = response.statusCode
                 let data = response.data
                 
-                let networkResult = self.judgeCurationStatus(by: statusCode, data)
+                let networkResult = self.judgeFilmStylePhotosStatus(by: statusCode, data)
                 completion(networkResult)
                 
             case .failure(let err):
@@ -71,6 +71,26 @@ public class FilmRollAPI {
         guard let decodedData = try? decoder.decode(GenericResponse<CurationResponse>.self, from: data)
         else { return .pathErr }
         
+        switch statusCode {
+        case 200:
+            return .success(decodedData.data ?? "None-Data")
+        case 400..<500:
+            return .requestErr(decodedData.message)
+        case 500:
+            return .serverErr
+        default:
+            return .networkFail
+        }
+    }
+    
+    private func judgeFilmStylePhotosStatus(by statusCode: Int, _ data: Data) -> NetworkResult<Any> {
+
+        let decoder = JSONDecoder()
+        guard let decodedData = try? decoder.decode(GenericResponse<PhotosResponse>.self, from: data)
+        else {
+            return .pathErr
+        }
+
         switch statusCode {
         case 200:
             return .success(decodedData.data ?? "None-Data")

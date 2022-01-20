@@ -23,8 +23,8 @@ extension FilmRollService: TargetType {
         switch self {
         case .curation:
             return "/curation"
-        case .filmStylePhotos:
-            return "/photo/style"
+        case .filmStylePhotos(let styleId):
+            return "/photo/style/\(styleId)"
         }
     }
     
@@ -43,8 +43,8 @@ extension FilmRollService: TargetType {
         switch self {
         case .curation:
             return .requestPlain
-        case .filmStylePhotos(let styleId):
-            return .requestParameters(parameters: ["styleId": styleId], encoding: URLEncoding.queryString)
+        case .filmStylePhotos:
+            return .requestPlain
         }
     }
     
