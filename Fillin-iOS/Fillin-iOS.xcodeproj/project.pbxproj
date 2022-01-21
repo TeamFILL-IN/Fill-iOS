@@ -107,9 +107,11 @@
 		6F3B87E227968D3000A4BD07 /* StudioMapContentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F3B87DE27968D3000A4BD07 /* StudioMapContentViewController.xib */; };
 		6F8B71F92796F33A00F88EB3 /* StudioResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8B71F82796F33A00F88EB3 /* StudioResponse.swift */; };
 		6F8B72012797291300F88EB3 /* StudioInfoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8B72002797291300F88EB3 /* StudioInfoResponse.swift */; };
+		770CB4632799E550006004BB /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770CB4622799E550006004BB /* LoginResponse.swift */; };
 		6F9365872799856A0037557F /* StudioSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9365862799856A0037557F /* StudioSearchResponse.swift */; };
 		775C965E278ACDE200A9BEA0 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 775C965D278ACDE200A9BEA0 /* .swiftlint.yml */; };
 		775C96AA278B2E1100A9BEA0 /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = 775C96A9278B2E1100A9BEA0 /* swiftgen.yml */; };
+		77B75C012799E2AB004302A1 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B75C002799E2AB004302A1 /* LoginRequest.swift */; };
 		77EB4215279736F700C726D8 /* FilmSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77EB4213279736F700C726D8 /* FilmSelectViewController.swift */; };
 		77EB4216279736F700C726D8 /* FilmSelectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77EB4214279736F700C726D8 /* FilmSelectViewController.xib */; };
 		77EB421A27973C1500C726D8 /* FilmTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77EB421827973C1500C726D8 /* FilmTypeTableViewCell.swift */; };
@@ -227,10 +229,12 @@
 		6F3B87DE27968D3000A4BD07 /* StudioMapContentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StudioMapContentViewController.xib; sourceTree = "<group>"; };
 		6F8B71F82796F33A00F88EB3 /* StudioResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudioResponse.swift; sourceTree = "<group>"; };
 		6F8B72002797291300F88EB3 /* StudioInfoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudioInfoResponse.swift; sourceTree = "<group>"; };
+		770CB4622799E550006004BB /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		6F9365862799856A0037557F /* StudioSearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudioSearchResponse.swift; sourceTree = "<group>"; };
 		775C9645278ACBEA00A9BEA0 /* Fillin-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fillin-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		775C965D278ACDE200A9BEA0 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		775C96A9278B2E1100A9BEA0 /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
+		77B75C002799E2AB004302A1 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		77EB4213279736F700C726D8 /* FilmSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmSelectViewController.swift; sourceTree = "<group>"; };
 		77EB4214279736F700C726D8 /* FilmSelectViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilmSelectViewController.xib; sourceTree = "<group>"; };
 		77EB421827973C1500C726D8 /* FilmTypeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmTypeTableViewCell.swift; sourceTree = "<group>"; };
@@ -707,6 +711,7 @@
 		6F3B876627968AEB00A4BD07 /* LoginViewController */ = {
 			isa = PBXGroup;
 			children = (
+				77B75BFF2799E29F004302A1 /* DataModel */,
 				6F3B876727968AEB00A4BD07 /* LoginViewController.swift */,
 			);
 			path = LoginViewController;
@@ -767,6 +772,15 @@
 				775C9645278ACBEA00A9BEA0 /* Fillin-iOS.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		77B75BFF2799E29F004302A1 /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				77B75C002799E2AB004302A1 /* LoginRequest.swift */,
+				770CB4622799E550006004BB /* LoginResponse.swift */,
+			);
+			path = DataModel;
 			sourceTree = "<group>";
 		};
 		77EB4212279736C200C726D8 /* FilmSelectViewController */ = {
@@ -1053,6 +1067,7 @@
 				6F3B87CC27968AEB00A4BD07 /* AppDelegate.swift in Sources */,
 				6F3B878C27968AEB00A4BD07 /* MoyaLoggerPlugin.swift in Sources */,
 				6F3B87A527968AEB00A4BD07 /* StudioMapViewController.swift in Sources */,
+				770CB4632799E550006004BB /* LoginResponse.swift in Sources */,
 				77EB42262797DAFD00C726D8 /* FilmResponse.swift in Sources */,
 				6F3B878627968AEB00A4BD07 /* PhotosResponse.swift in Sources */,
 				6F3B87C027968AEB00A4BD07 /* TabBarTableViewCell.swift in Sources */,
@@ -1063,6 +1078,7 @@
 				6F3B879427968AEB00A4BD07 /* StudioMapService.swift in Sources */,
 				6F3B87AC27968AEB00A4BD07 /* FilmRollClickViewController.swift in Sources */,
 				6F3B878527968AEB00A4BD07 /* TempClass.swift in Sources */,
+				77B75C012799E2AB004302A1 /* LoginRequest.swift in Sources */,
 				6F3B879127968AEB00A4BD07 /* AddPhotoAPI.swift in Sources */,
 				6F8B72012797291300F88EB3 /* StudioInfoResponse.swift in Sources */,
 				6F3B87C327968AEB00A4BD07 /* PhotosTableViewCell.swift in Sources */,

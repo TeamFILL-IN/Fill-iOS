@@ -11,5 +11,7 @@ extension Const {
     struct UserDefaultsKey {
         static let accessToken = "accessToken"
         static let refreshToken = "refreshToken"
+        static let nickname = "nickname"
+        static let userID = "userID"
     }
 }
