@@ -75,38 +75,23 @@ extension PhotosTableViewCell: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        switch indexPath.row {
-//        case 8:
-//            guard let arrowCell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Xib.arrowCollectionViewCell, for: indexPath) as? ArrowCollectionViewCell else {
-//                return UICollectionViewCell()
-//            }
-//
-//            return arrowCell
-//        default:
-//            guard let photoCell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Xib.photosCollectionViewCell, for: indexPath) as? PhotosCollectionViewCell else {
-//                return UICollectionViewCell()
-//            }
-//
-//            photoCell.photoImageView.updateServerImage(serverNewPhotos[indexPath.row].imageURL)
+        switch indexPath.row {
+        case 8:
+            guard let arrowCell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Xib.arrowCollectionViewCell, for: indexPath) as? ArrowCollectionViewCell else {
+                return UICollectionViewCell()
+            }
+
+            return arrowCell
+        default:
+            guard let photoCell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Xib.photosCollectionViewCell, for: indexPath) as? PhotosCollectionViewCell else {
+                return UICollectionViewCell()
+            }
+            if !serverNewPhotos.isEmpty {
+                photoCell.photoImageView.updateServerImage(serverNewPhotos[indexPath.row%5].imageURL)
+            }
             
-//            photoCell.photoImageView.updateServerImage("https://mblogthumb-phinf.pstatic.net/MjAxODAzMTRfMjcz/MDAxNTIwOTU0NTM4MDY1.5WmSbdqE3GMfHq8dwgRjPUFFUVf6Q5XwpIFc-_JZfpkg.vZDTqlsDfLQOAB7qQfdNHhEuGNk6umQox1WRjKPWriYg.JPEG.kj_8/20160901_57c7ce9428fe6.jpg?type=w2")
-
-        if !serverNewPhotos.isEmpty {
-            guard let photoCell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Xib.photosCollectionViewCell, for: indexPath) as? PhotosCollectionViewCell else {
-                return UICollectionViewCell()
-            }
-
-//            photoCell.photoImageView.updateServerImage(serverNewPhotos[indexPath.row].imageURL)
-            print(indexPath.row)
-            return photoCell
-        } else {
-            guard let photoCell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Xib.photosCollectionViewCell, for: indexPath) as? PhotosCollectionViewCell else {
-                return UICollectionViewCell()
-            }
             return photoCell
         }
-//        photoCell.photoImageView.updateServerImage("https://mblogthumb-phinf.pstatic.net/MjAxODAzMTRfMjcz/MDAxNTIwOTU0NTM4MDY1.5WmSbdqE3GMfHq8dwgRjPUFFUVf6Q5XwpIFc-_JZfpkg.vZDTqlsDfLQOAB7qQfdNHhEuGNk6umQox1WRjKPWriYg.JPEG.kj_8/20160901_57c7ce9428fe6.jpg?type=w2")
-//        print(serverNewPhotos)
             
     }
     
