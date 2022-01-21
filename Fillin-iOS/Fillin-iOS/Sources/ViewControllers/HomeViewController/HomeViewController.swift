@@ -93,7 +93,8 @@ extension HomeViewController: UITableViewDataSource {
             guard let welcomeCell = tableView.dequeueReusableCell(withIdentifier: Const.Xib.welcomeTableViewCell, for: indexPath) as? WelcomeTableViewCell else {
                 return UITableViewCell()
             }
-            
+//            welcomeCell.nickNameLabel.text = ("\(UserDefaults.standard.string(forKey: Const.UserDefaultsKey.nickname) ?? "")님 , 좋은 아침이에요!")
+            welcomeCell.nickNameLabel.text = "찰칵찰칵 이필린님, 좋은 아침이에요!"
             return welcomeCell
         case 1 :
             guard let tabBarCell = tableView.dequeueReusableCell(withIdentifier: Const.Xib.tabBarTableViewCell, for: indexPath) as? TabBarTableViewCell else {
