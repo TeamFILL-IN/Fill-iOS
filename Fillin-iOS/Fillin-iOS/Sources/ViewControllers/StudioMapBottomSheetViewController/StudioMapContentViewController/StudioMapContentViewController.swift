@@ -48,6 +48,10 @@ class StudioMapContentViewController: UIViewController {
     studioPhotosWithAPI(studioID: StudioMapViewController.selectedMarkerID ?? 0)
   }
   
+  override func viewDidAppear(_ animated: Bool) {
+    studioPhotosWithAPI(studioID: StudioMapViewController.selectedMarkerID ?? 0)
+  }
+  
   // MARK: - Func
   func setupAttribute() {
     self.studioCollectionview.delegate = self

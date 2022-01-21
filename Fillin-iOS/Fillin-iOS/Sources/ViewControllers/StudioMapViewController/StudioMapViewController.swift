@@ -23,6 +23,8 @@ class StudioMapViewController: UIViewController {
   static var price: String?
   static var site: String?
   static var selectedMarkerID: Int?
+  static var lati: Double?
+  static var long: Double?
   
   var serverStudioInfo: StudioInfoResponse?
   var serverStudios: StudioResponse?
@@ -59,6 +61,7 @@ class StudioMapViewController: UIViewController {
     showNaverMarker()
     totalStudioWithAPI()
     setNotification()
+    setLatLngNotification()
   }
 }
 
@@ -95,9 +98,10 @@ extension StudioMapViewController {
     serverStudios?.studios.forEach {
       let marker = NMFMarker(position: NMGLatLng(lat: $0.lati, lng: $0.long))
       let markerInfo = Studio(id: $0.id, lati: $0.lati, long: $0.long)
-      marker.iconImage = NMFOverlayImage(image: Asset.icnPlaceBig2.image)
+      marker.iconImage = NMFOverlayImage(image: Asset.icnPlaceBig.image)
       
       marker.touchHandler = { [weak self] (overlay: NMFOverlay) -> Bool in
+        
         self?.markerState = 1
         self?.selectedMarker = marker
         self?.selectedMarkerInfo  = markerInfo
@@ -180,6 +184,18 @@ extension StudioMapViewController {
     }
   }
   
+  func setLatLngNotification() {
+    NotificationCenter.default.addObserver(self, selector: #selector(getLatLng(_:)), name: Notification.Name("GetLatLng"), object: nil)
+  }
+  
+  @objc func getLatLng(_ notification: Notification) {
+    let selectedStudioId = notification.object as? Int ?? 0
+    studioInfoWithAPI(studioID: selectedStudioId)
+
+    let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: StudioMapViewController.lati ?? 0, lng: StudioMapViewController.long ?? 0))
+    mapView.mapView.moveCamera(cameraUpdate)
+  }
+  
   @objc func textFieldDidBeginEditing(_ textField: UITextField) {
     let newVC = StudioMapSearchViewController()
     newVC.modalTransitionStyle = .crossDissolve
@@ -188,15 +204,11 @@ extension StudioMapViewController {
   }
   
   @objc func changeMarkerObserver(_ notification: Notification) {
-    selectedMarker?.iconImage = NMFOverlayImage(image: Asset.icnPlaceBig2.image)
+    selectedMarker?.iconImage = NMFOverlayImage(image: Asset.icnPlaceBig.image)
     selectedMarker = nil
     markerState = 0
   }
-}
 
-// MARK: - @objc
-extension StudioMapViewController {
-  
   @objc func touchLocationButton(_ sender: UIButton) {
     sender.isSelected = !sender.isSelected
     mapView.mapView.positionMode = .direction
@@ -205,7 +217,6 @@ extension StudioMapViewController {
 
 // MARK: - Extension - UITextField
 extension UITextField {
-  
   func addLeftPadding() {
     let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 24, height: self.frame.height))
     self.leftView = paddingView
@@ -276,9 +287,14 @@ extension StudioMapViewController {
     StudioMapAPI.shared.infoStudio(studioID: studioID) { response in
       switch response {
       case .success(let data):
-        print(data)
         if let studioinfo = data as? StudioInfoResponse {
           self.serverStudioInfo = studioinfo
+          StudioMapViewController.lati = studioinfo.studio.lati
+          StudioMapViewController.long = studioinfo.studio.long
+    
+          let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: StudioMapViewController.lati ?? 0, lng: StudioMapViewController.long ?? 0))
+          self.mapView.mapView.moveCamera(cameraUpdate)
+          
           self.presentBottomSheetAfterInfo()
         }
       case .requestErr(let message):
