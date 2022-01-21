@@ -11,7 +11,7 @@ import Kingfisher
 class PhotosTableViewCell: UITableViewCell {
 
     // MARK: - Properties
-    var serverNewPhotos: PhotosResponse?
+    var serverNewPhotos: [Photo] = []
     
     // MARK: - @IBOutlet Properties
     @IBOutlet weak var titleLabel: UILabel!
@@ -71,8 +71,7 @@ extension PhotosTableViewCell: UICollectionViewDelegateFlowLayout {
 // MARK: - UICollectionViewDataSource
 extension PhotosTableViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return 1 + (serverNewPhotos?.photos.count ?? 0)
-        return 9
+        return 1 + serverNewPhotos.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -81,20 +80,19 @@ extension PhotosTableViewCell: UICollectionViewDataSource {
             guard let arrowCell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Xib.arrowCollectionViewCell, for: indexPath) as? ArrowCollectionViewCell else {
                 return UICollectionViewCell()
             }
-            
+
             return arrowCell
         default:
             guard let photoCell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Xib.photosCollectionViewCell, for: indexPath) as? PhotosCollectionViewCell else {
                 return UICollectionViewCell()
             }
+            if !serverNewPhotos.isEmpty {
+                photoCell.photoImageView.updateServerImage(serverNewPhotos[indexPath.row%5].imageURL)
+            }
             
-//            photoCell.photoImageView.updateServerImage(serverNewPhotos?.photos[indexPath.row].imageURL ?? "")
-            
-            photoCell.photoImageView.updateServerImage("https://mblogthumb-phinf.pstatic.net/MjAxODAzMTRfMjcz/MDAxNTIwOTU0NTM4MDY1.5WmSbdqE3GMfHq8dwgRjPUFFUVf6Q5XwpIFc-_JZfpkg.vZDTqlsDfLQOAB7qQfdNHhEuGNk6umQox1WRjKPWriYg.JPEG.kj_8/20160901_57c7ce9428fe6.jpg?type=w2")
-
             return photoCell
         }
-        
+            
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -115,7 +113,7 @@ extension PhotosTableViewCell: UICollectionViewDelegate {
 
 // MARK: - Network
 extension PhotosTableViewCell {
-    func updateNewPhotos(data: PhotosResponse) {
+    func updateNewPhotos(data: [Photo]) {
         serverNewPhotos = data
         photosCollectionView.reloadData()
     }

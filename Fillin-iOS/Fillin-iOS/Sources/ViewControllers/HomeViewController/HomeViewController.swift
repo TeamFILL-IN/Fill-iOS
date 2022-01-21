@@ -128,7 +128,7 @@ extension HomeViewController: UITableViewDataSource {
             }
             
             photosCell.selectionStyle = .none
-            photosCell.updateNewPhotos(data: serverNewPhotos ?? PhotosResponse(photos: []))
+            photosCell.updateNewPhotos(data: serverNewPhotos?.photos ?? [])
             return photosCell
         default:
             return UITableViewCell()
