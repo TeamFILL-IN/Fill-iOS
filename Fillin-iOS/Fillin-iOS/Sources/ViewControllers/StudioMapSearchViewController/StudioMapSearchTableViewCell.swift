@@ -32,6 +32,7 @@ class StudioMapSearchTableViewCell: UITableViewCell {
         $0.top.equalTo(self.contentView).offset(18)
         $0.leading.equalTo(self.contentView).offset(18)
         $0.height.equalTo(22)
+        $0.width.equalTo(22)
       }
     }
     contentView.add(nameStudioLabel) {

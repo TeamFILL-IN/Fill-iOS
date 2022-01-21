@@ -18,4 +18,8 @@ extension UILabel {
     self.textColor = color
     self.textAlignment = align ?? .left
   }
+  
+  func updateServerLabel(name: String) {
+    self.text = name
+  }
 }

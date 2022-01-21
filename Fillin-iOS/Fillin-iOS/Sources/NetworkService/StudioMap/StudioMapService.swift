@@ -29,8 +29,8 @@ extension StudioMapService: TargetType {
           return "/studio/detail/\(studioID)"
         case .photoStudio(let studioID):
           return "/photo/studio/\(studioID)"
-        case .searchStudio(let keyword):
-          return "/studio/search?keyword=\(keyword)"
+        case .searchStudio:
+          return "/studio/search"
         }
     }
     
@@ -59,8 +59,9 @@ extension StudioMapService: TargetType {
           return .requestPlain
         case .photoStudio:
           return .requestPlain
-        case .searchStudio:
-          return .requestPlain
+        case .searchStudio(let keyword):
+          return .requestParameters(parameters: [
+            "keyword": keyword], encoding: URLEncoding.queryString)
         }
     }
     

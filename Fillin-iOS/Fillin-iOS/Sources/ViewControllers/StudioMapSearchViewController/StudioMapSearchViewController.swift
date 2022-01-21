@@ -10,8 +10,6 @@ import UIKit
 class StudioMapSearchViewController: UIViewController {
   
   // MARK: - Properties
-  var searchBar: UISearchBar!
-  //var filteredData: [Keepin?] = []
   var serverSearchStudios: StudioSearchResponse?
   let backGroundView = UIView()
   let magnifyingGlassButton = UIButton()
@@ -28,7 +26,6 @@ class StudioMapSearchViewController: UIViewController {
     layoutNavigaionBar()
     layoutDividerView()
     makeTableView()
-    setupSearch()
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -72,28 +69,6 @@ class StudioMapSearchViewController: UIViewController {
       }
     }
   }
-  // searchBar
-//  func setSearchBar(){
-//    searchBar.delegate = self
-//    searchBar.barTintColor = .white
-//    searchBar.setImage(UIImage(named: "icSearch"), for: .search, state: .normal)
-//    searchBar.autocapitalizationType = .none
-//    if let textfield = searchBar.value(forKey: "searchField") as? UITextField {
-//      //서치바 백그라운드 컬러
-//      textfield.backgroundColor = .white
-//      //플레이스홀더 글씨 색 정하기
-//      textfield.attributedPlaceholder = NSAttributedString(string: textfield.placeholder ?? "", attributes: [NSAttributedString.Key.foregroundColor : UIColor.keepinGray3])
-//      //서치바 텍스트입력시 색 정하기
-//      textfield.textColor = .black
-//      
-//      if let leftView = textfield.leftView as? UIImageView {
-//        leftView.image = leftView.image?.withRenderingMode(.alwaysTemplate)
-//        //이미지 틴트컬러 정하기
-//        leftView.tintColor = UIColor.keepinGray3
-//      }
-//    }
-//    searchBar.backgroundImage = UIImage()
-//  }
   
   private func setUpTextField() {
     searchPlaceTextField.becomeFirstResponder()
@@ -154,15 +129,8 @@ class StudioMapSearchViewController: UIViewController {
     tableView.register(StudioMapSearchTableViewCell.self, forCellReuseIdentifier: Const.Xib.studioSearchTableViewCell)
   }
   
-  func setupSearch() {
-    searchController.searchResultsUpdater = self
-    searchController.obscuresBackgroundDuringPresentation = false
-    searchController.searchBar.placeholder = "Search Candies"
-    navigationItem.searchController = searchController
-    definesPresentationContext = true
-  }
-  
   @objc func touchSearchButton(_ sender: UIButton) {
+    searchStudiosWithAPI(keyword: searchPlaceTextField.text ?? "")
   }
 }
 
@@ -170,20 +138,14 @@ class StudioMapSearchViewController: UIViewController {
 extension StudioMapSearchViewController: UITableViewDataSource, UITableViewDelegate {
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//    if filteredData.isEmpty && load{
-//      stackview.isHidden = true
-//      noSearchView.isHidden = false
-//      return 0
-//    }
-//    else{
-//      stackview.isHidden = false
-//      noSearchView.isHidden = true
-//      return filteredData.count
     return serverSearchStudios?.studios.count ?? 0
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     guard let cell = tableView.dequeueReusableCell(withIdentifier: Const.Xib.studioSearchTableViewCell, for: indexPath) as? StudioMapSearchTableViewCell else { return UITableViewCell() }
+    cell.nameStudioLabel.updateServerLabel(name: serverSearchStudios?.studios[indexPath.row].name ?? "")
+    cell.locationStudionLabel.updateServerLabel(name: serverSearchStudios?.studios[indexPath.row].address ?? "")
+    cell.awakeFromNib()
     return cell
   }
   
@@ -203,6 +165,7 @@ extension StudioMapSearchViewController {
       case .success(let data):
         if let search = data as? StudioSearchResponse {
           self.serverSearchStudios = search
+          print(search)
           self.tableView.reloadData()
         }
       case .requestErr(let message):
@@ -215,12 +178,5 @@ extension StudioMapSearchViewController {
         print("searchStudioWithAPI - networkFail")
       }
     }
-  }
-}
-
-// 검색창 기능 구현
-extension StudioMapSearchViewController: UISearchResultsUpdating {
-  func updateSearchResults(for searchController: UISearchController) {
-
   }
 }

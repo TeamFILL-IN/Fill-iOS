@@ -6,7 +6,6 @@
 //
 
 import UIKit
-
 import SafariServices
 
 class StudioMapContentViewController: UIViewController {
@@ -39,11 +38,6 @@ class StudioMapContentViewController: UIViewController {
     collectionView.translatesAutoresizingMaskIntoConstraints = false
     return collectionView
   }()
-  let alert = UIAlertController(title: "등록된 사이트가 없습니다.",
-      message: "확인버튼을 눌러주시기 바랍니다",
-      preferredStyle: UIAlertController.Style.alert)
-  let cancle = UIAlertAction(title: "취소", style: .default, handler: nil)
-  let ok = UIAlertAction(title: "확인", style: .destructive, handler: nil)
   
   // MARK: - View Cycle
   override func viewDidLoad() {
@@ -55,7 +49,6 @@ class StudioMapContentViewController: UIViewController {
   }
   
   // MARK: - Func
-  
   func setupAttribute() {
     self.studioCollectionview.delegate = self
     self.studioCollectionview.dataSource = self
@@ -88,7 +81,7 @@ class StudioMapContentViewController: UIViewController {
         $0.height.equalTo(self.view).priority(250)
       }
     }
-    // label
+    // Label
     studioScrollContainverView.add(studioLabel) {
       $0.text = StudioMapViewController.name
       $0.textColor = .white
@@ -295,15 +288,10 @@ class StudioMapContentViewController: UIViewController {
 }
 
 // MARK: - UICollectionView
-extension StudioMapContentViewController: UICollectionViewDelegate {
-  
-}
-
 extension StudioMapContentViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return serverStudioPhotos?.photos.count ?? 0
   }
-  
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     guard let myphotoCell = collectionView.dequeueReusableCell(withReuseIdentifier: StudioMapCollectionViewCell.identifier, for: indexPath) as? StudioMapCollectionViewCell else {return UICollectionViewCell() }
     myphotoCell.photoReviewImageView.updateServerImage(serverStudioPhotos?.photos[indexPath.row].imageURL ?? "")
@@ -327,6 +315,10 @@ extension StudioMapContentViewController: UICollectionViewDelegateFlowLayout {
   }
 }
 
+extension StudioMapContentViewController: UICollectionViewDelegate {
+  
+}
+
 extension StudioMapContentViewController {
   func studioPhotosWithAPI(studioID: Int) {
     StudioMapAPI.shared.photoStudio(studioID: studioID) { response in
@@ -334,7 +326,6 @@ extension StudioMapContentViewController {
       case .success(let data):
         if let photos = data as? PhotosResponse {
           self.serverStudioPhotos = photos
-          let photosCount = ceil(Double(photos.photos.count)/3)
           self.studioCollectionview.reloadData()
         }
       case .requestErr(let message):
