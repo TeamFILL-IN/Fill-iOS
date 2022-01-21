@@ -117,6 +117,8 @@ extension MyPageViewController {
       $0.setBorder(borderColor: .fillinWhite, borderWidth: 1)
       $0.setRounded(radius: 27.5)
       $0.image = UIImage(asset: Asset.appleLogo)
+      $0.contentMode = .scaleAspectFill
+      $0.clipsToBounds = true
       $0.snp.makeConstraints {
         $0.top.equalTo(self.mypageScrollContainverView.snp.top).offset(14)
         $0.leading.equalToSuperview().offset(18)
