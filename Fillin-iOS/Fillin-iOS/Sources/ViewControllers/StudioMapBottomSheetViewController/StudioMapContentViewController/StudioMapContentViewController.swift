@@ -56,6 +56,7 @@ class StudioMapContentViewController: UIViewController {
   func setupAttribute() {
     self.studioCollectionview.delegate = self
     self.studioCollectionview.dataSource = self
+    NotificationCenter.default.addObserver(self, selector: #selector(notiStudioPhotoswithAPI(_:)), name: NSNotification.Name("StudioPhotoswithAPI"), object: nil)
   }
   
   func register() {
@@ -105,7 +106,7 @@ class StudioMapContentViewController: UIViewController {
       }
     }
     studioScrollContainverView.add(firstdividerView) {
-      $0.backgroundColor = .darkGrey3
+      $0.backgroundColor = .fillinBlack
       $0.snp.makeConstraints {
         $0.top.equalTo(self.studioLabel.snp.bottom).offset(12)
         $0.leading.equalTo(self.studioScrollContainverView.snp.leading)
@@ -246,7 +247,7 @@ class StudioMapContentViewController: UIViewController {
       }
     }
     studioScrollContainverView.add(seconddividerView) {
-      $0.backgroundColor = .darkGrey3
+      $0.backgroundColor = .fillinBlack
       $0.snp.makeConstraints {
         $0.top.equalTo(self.underlineView.snp.bottom).offset(18.5)
         $0.leading.equalTo(self.studioScrollContainverView.snp.leading)
@@ -288,6 +289,10 @@ class StudioMapContentViewController: UIViewController {
     let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
     alert.addAction(okAction)
     present(alert, animated: false, completion: nil)
+  }
+  
+  @objc func notiStudioPhotoswithAPI(_ notification: Notification) {
+    studioPhotosWithAPI(studioID: StudioMapViewController.selectedMarkerID ?? 0)
   }
 }
 

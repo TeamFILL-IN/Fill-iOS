@@ -101,7 +101,7 @@ extension StudioMapViewController {
       marker.iconImage = NMFOverlayImage(image: Asset.icnPlaceBig.image)
       
       marker.touchHandler = { [weak self] (overlay: NMFOverlay) -> Bool in
-        
+        // NotificationCenter.default.post(name: Notification.Name("StudioPhotoswithAPI"), object: nil)
         self?.markerState = 1
         self?.selectedMarker = marker
         self?.selectedMarkerInfo  = markerInfo
@@ -294,7 +294,7 @@ extension StudioMapViewController {
     
           let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: StudioMapViewController.lati ?? 0, lng: StudioMapViewController.long ?? 0))
           self.mapView.mapView.moveCamera(cameraUpdate)
-          
+          NotificationCenter.default.post(name: Notification.Name("StudioPhotoswithAPI"), object: nil)
           self.presentBottomSheetAfterInfo()
         }
       case .requestErr(let message):
