@@ -68,7 +68,7 @@ class StudioMapContentViewController: UIViewController {
       $0.backgroundColor = .clear
       $0.translatesAutoresizingMaskIntoConstraints = false
       $0.showsVerticalScrollIndicator = false
-      $0.isScrollEnabled = true
+      $0.isScrollEnabled = false
       $0.snp.makeConstraints {
         $0.top.equalTo(self.view.snp.top).offset(29)
         $0.centerX.leading.trailing.bottom.equalToSuperview()
