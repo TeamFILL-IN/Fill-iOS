@@ -133,6 +133,8 @@ extension FilmRollViewController: UICollectionViewDelegate {
                 self.present(photoPopupVC, animated: true, completion: nil)
             }
         case .filmType:
+            print("nothing")
+        case .filmRoll:
             photoPopupVC.userprofile = dataSource.serverPhotos?.photos[indexPath.row].userImageURL ?? ""
             photoPopupVC.username = dataSource.serverPhotos?.photos[indexPath.row].nickname ?? ""
             photoPopupVC.filmname = dataSource.serverPhotos?.photos[indexPath.row].filmName ?? ""
@@ -140,8 +142,6 @@ extension FilmRollViewController: UICollectionViewDelegate {
             photoPopupVC.likeCount = dataSource.serverPhotos?.photos[indexPath.row].likeCount ?? 0
             photoPopupVC.isLiked = dataSource.serverPhotos?.photos[indexPath.row].isLiked ?? false
             self.present(photoPopupVC, animated: true, completion: nil)
-        case .filmRoll:
-            print("nothing")
         }
     }
 }
