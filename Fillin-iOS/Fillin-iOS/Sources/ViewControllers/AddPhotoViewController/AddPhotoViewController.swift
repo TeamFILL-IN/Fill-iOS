@@ -55,8 +55,11 @@ class AddPhotoViewController: UIViewController {
     // 이미지와 스튜디오가 있어야 버튼 활성화 되도록 분기처리
     if (self.photobackgroundView.image != Asset.photoInsert.image) && (self.filmchooseButton.titleLabel?.text != "어떤 필름을 사용했나요?") {
       self.addphotoBackground.backgroundColor = .fillinRed
+      self.addphotoButton.titleLabel?.textColor = .fillinBlack
+      
     } else {
-      self.addphotoBackground.backgroundColor = .darkGrey1
+      self.addphotoBackground.backgroundColor = .darkGrey2
+      self.addphotoButton.titleLabel?.textColor = .darkGrey1
     }
   }
 }
@@ -199,7 +202,7 @@ extension AddPhotoViewController {
   }
   func layoutAddPhotoBackground() {
     addPhotoScrollContainerView.add(addphotoBackground) {
-      $0.backgroundColor = .darkGrey1
+      $0.backgroundColor = .darkGrey2
       $0.snp.makeConstraints {
         $0.leading.trailing.equalToSuperview()
         $0.bottom.equalTo(self.addPhotoScrollContainerView.snp.bottom)
@@ -211,7 +214,7 @@ extension AddPhotoViewController {
     addphotoBackground.add(addphotoButton) {
       $0.setTitle("Add Photo", for: .normal)
       $0.titleLabel?.font = .engBighead
-      $0.setTitleColor(.grey3, for: .normal)
+      $0.setTitleColor(.darkGrey1, for: .normal)
       $0.addTarget(self, action: #selector(self.touchAddPhotoButton), for: .touchUpInside)
       $0.snp.makeConstraints {
         $0.top.equalToSuperview().offset(15)
