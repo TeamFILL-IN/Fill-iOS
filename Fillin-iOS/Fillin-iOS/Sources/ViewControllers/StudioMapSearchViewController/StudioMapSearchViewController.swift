@@ -130,6 +130,7 @@ class StudioMapSearchViewController: UIViewController {
   }
   
   @objc func touchSearchButton(_ sender: UIButton) {
+    self.view.endEditing(true)
     searchStudiosWithAPI(keyword: searchPlaceTextField.text ?? "")
   }
 }
@@ -159,8 +160,6 @@ extension StudioMapSearchViewController: UITableViewDataSource, UITableViewDeleg
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.deselectRow(at: indexPath, animated: true)
-    print(serverSearchStudios?.studios[indexPath.row].id)
-    self.view.endEditing(true)
     var searchStudioID = serverSearchStudios?.studios[indexPath.row].id
     self.dismiss(animated: true, completion: nil)
     NotificationCenter.default.post(name: NSNotification.Name("GetLatLng"), object: searchStudioID , userInfo: nil)
