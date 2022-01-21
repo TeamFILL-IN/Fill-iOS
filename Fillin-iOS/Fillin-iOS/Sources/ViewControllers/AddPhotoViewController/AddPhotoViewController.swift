@@ -31,24 +31,26 @@ class AddPhotoViewController: UIViewController {
   var status: Status = .addPhotoVC
   
   var selectedId = 0
+  var selectedStudioId = 0
   var selectedFilm = ""
+  var selectedStudio = ""
+  
+  lazy var loadingBgView: UIView = {
+    let bgView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+    bgView.backgroundColor = .backgroundCover
     
-    lazy var loadingBgView: UIView = {
-        let bgView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
-        bgView.backgroundColor = .backgroundCover
-        
-        return bgView
-    }()
+    return bgView
+  }()
+  
+  lazy var activityIndicator: NVActivityIndicatorView = {
+    let activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40),
+                                                    type: .ballBeat,
+                                                    color: .fillinRed,
+                                                    padding: .zero)
+    activityIndicator.translatesAutoresizingMaskIntoConstraints = false
     
-    lazy var activityIndicator: NVActivityIndicatorView = {
-        let activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40),
-                                                        type: .ballBeat,
-                                                        color: .fillinRed,
-                                                        padding: .zero)
-        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
-        
-        return activityIndicator
-    }()
+    return activityIndicator
+  }()
   
   // MARK: - LifeCycle
   override func viewDidLoad() {
@@ -65,7 +67,8 @@ class AddPhotoViewController: UIViewController {
     self.photobackgroundView.isUserInteractionEnabled = true
     self.photobackgroundView.addGestureRecognizer(tapGestureRecognizer)
     layout()
-    setNotification()
+    setFilmNotification()
+    setStudioNotification()
   }
   override func viewWillAppear(_ animated: Bool) {
     self.filmchooseButton.titleLabel?.text = selectedFilm
@@ -280,17 +283,19 @@ extension AddPhotoViewController {
   }
   @objc func touchStudioChooseButton() {
     let studioChooseVC = StudioMapSearchViewController()
+    studioChooseVC.status = .addPhotoVC
     self.navigationController?.pushViewController(studioChooseVC, animated: true)
   }
   @objc func touchAddPhotoButton() {
     if self.addphotoBackground.backgroundColor == .fillinRed {
-        setActivityIndicator()
-      addPhotosWithAPI(studioId: 6, filmId: selectedId, img: self.photobackgroundView.image ?? UIImage())
+      setActivityIndicator()
+      addPhotosWithAPI(studioId: selectedStudioId, filmId: selectedId, img: self.photobackgroundView.image ?? UIImage())
     } else {
     }
   }
   // MARK: - Notification
-  private func setNotification() {
+  //Film 고르기
+  private func setFilmNotification() {
     NotificationCenter.default.addObserver(self, selector: #selector(updateSelectedFilmType), name: Notification.Name.pushToAddPhotoViewController, object: nil)
   }
   @objc func updateSelectedFilmType(_ notification: Notification) {
@@ -299,18 +304,29 @@ extension AddPhotoViewController {
     selectedFilm = selectedFilmDict?["selectedFilm"] as? String ?? ""
     self.filmchooseButton.setTitle(selectedFilm, for: .normal)
   }
+  //Studio 고르기
+  private func setStudioNotification() {
+    NotificationCenter.default.addObserver(self, selector: #selector(updateSelectedStudioType), name: Notification.Name.selectedStudioIdAPI, object: nil)
+  }
+  @objc func updateSelectedStudioType(_ notification: Notification) {
+    let selectedStudioDict = notification.object as? NSDictionary
+    selectedStudioId = selectedStudioDict?["selectedStudioId"] as? Int ?? 0
+    selectedStudio = selectedStudioDict?["selectedStudio"] as? String ?? ""
+    self.studiochooseButton.setTitle(selectedStudio, for: .normal)
+    print(selectedStudioId)
+  }
+  
+  private func setActivityIndicator() {
+    view.addSubview(loadingBgView)
+    loadingBgView.addSubview(activityIndicator)
     
-    private func setActivityIndicator() {
-        view.addSubview(loadingBgView)
-        loadingBgView.addSubview(activityIndicator)
-        
-        NSLayoutConstraint.activate([
-            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-        ])
-        
-        activityIndicator.startAnimating()
-    }
+    NSLayoutConstraint.activate([
+      activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+      activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+    ])
+    
+    activityIndicator.startAnimating()
+  }
 }
 
 // MARK: - ImagePicker Extension
@@ -330,8 +346,8 @@ extension AddPhotoViewController {
     AddPhotoAPI.shared.addPhotos(studioId: studioId, filmId: filmId, img: img) { response in
       switch response {
       case .success:
-          self.activityIndicator.stopAnimating()
-          self.loadingBgView.removeFromSuperview()
+        self.activityIndicator.stopAnimating()
+        self.loadingBgView.removeFromSuperview()
         let secondVC = SecondAddPhotoPopUpViewController()
         secondVC.modalPresentationStyle = .overCurrentContext
         secondVC.modalTransitionStyle = .crossDissolve

@@ -15,6 +15,8 @@ class StudioMapSearchTableViewCell: UITableViewCell {
   let locationStudionLabel = UILabel()
   let cellDividerView = UIView()
   
+  var studioId: Int?
+  
   // MARK: - View Life Cycle
   override func awakeFromNib() {
     super.awakeFromNib()

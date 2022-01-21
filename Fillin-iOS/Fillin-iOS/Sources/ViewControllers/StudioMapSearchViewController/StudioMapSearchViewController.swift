@@ -19,6 +19,10 @@ class StudioMapSearchViewController: UIViewController {
   let navigationBar = FilinNavigationBar()
   let searchController = UISearchController(searchResultsController: nil)
   
+  var status: Status = .originStudioVC
+  var selectedStudio = ""
+  static var selectedStudioId = 0
+  
   // MARK: - View Life Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -80,10 +84,20 @@ class StudioMapSearchViewController: UIViewController {
   
   private func layoutNavigaionBar() {
     view.add(navigationBar) {
-      self.navigationBar.popViewController = {
-        print("버튼 누름")
-        self.view.endEditing(true)
-        self.dismiss(animated: true, completion: nil)
+      switch self.status {
+      case .originStudioVC :
+        self.navigationBar.popViewController = {
+          print("버튼 누름")
+          self.view.endEditing(true)
+          self.dismiss(animated: true, completion: nil)
+        }
+      case .addPhotoVC :
+        self.navigationBar.popViewController = {
+          self.view.endEditing(true)
+          self.navigationController?.popViewController(animated: true)
+        }
+      case .originFilmVC :
+        return
       }
       $0.snp.makeConstraints {
         $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
@@ -146,6 +160,8 @@ extension StudioMapSearchViewController: UITableViewDataSource, UITableViewDeleg
     guard let cell = tableView.dequeueReusableCell(withIdentifier: Const.Xib.studioSearchTableViewCell, for: indexPath) as? StudioMapSearchTableViewCell else { return UITableViewCell() }
     cell.nameStudioLabel.updateServerLabel(name: serverSearchStudios?.studios[indexPath.row].name ?? "", keyword: searchPlaceTextField.text ?? "")
     cell.locationStudionLabel.updateServerLabel(name: serverSearchStudios?.studios[indexPath.row].address ?? "", keyword: searchPlaceTextField.text ?? "")
+    cell.nameStudioLabel.text = serverSearchStudios?.studios[indexPath.row].name
+    cell.studioId = serverSearchStudios?.studios[indexPath.row].id
     cell.awakeFromNib()
     return cell
   }
@@ -160,9 +176,26 @@ extension StudioMapSearchViewController: UITableViewDataSource, UITableViewDeleg
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.deselectRow(at: indexPath, animated: true)
-    var searchStudioID = serverSearchStudios?.studios[indexPath.row].id
-    self.dismiss(animated: true, completion: nil)
-    NotificationCenter.default.post(name: NSNotification.Name("GetLatLng"), object: searchStudioID , userInfo: nil)
+    let studioCell = tableView.cellForRow(at: indexPath) as? StudioMapSearchTableViewCell
+    studioCell?.isSelected = true
+    selectedStudio = studioCell?.nameStudioLabel.text ?? ""
+    StudioMapSearchViewController.selectedStudioId = studioCell?.studioId ?? 0
+    //studioVC에서 들어올때, addPhoto에서 들어올 때 분기처리
+    switch status {
+    case .originStudioVC :
+      var searchStudioID = serverSearchStudios?.studios[indexPath.row].id
+      self.dismiss(animated: true, completion: nil)
+      NotificationCenter.default.post(name: NSNotification.Name("GetLatLng"), object: searchStudioID , userInfo: nil)
+      
+    case .addPhotoVC :
+      let selectedStudioDict = ["selectedStudioId": StudioMapSearchViewController.selectedStudioId, "selectedStudio": selectedStudio] as [String:Any]
+      NotificationCenter.default.post(name: NSNotification.Name.selectedStudioIdAPI, object: selectedStudioDict, userInfo: nil)
+      self.navigationController?.popViewController(animated: true)
+      
+    case .originFilmVC:
+      return
+    }
+    
   }
 }
 

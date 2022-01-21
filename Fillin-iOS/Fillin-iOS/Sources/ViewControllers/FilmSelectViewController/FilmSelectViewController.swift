@@ -136,29 +136,28 @@ extension FilmSelectViewController: UITableViewDataSource {
 
 // MARK: - UITableViewDelegate
 extension FilmSelectViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let filmCell = tableView.cellForRow(at: indexPath) as? FilmTypeTableViewCell
-        filmCell?.isSelected = true
-        selectedFilm = filmCell?.filmNameLabel.text ?? ""
-        FilmSelectViewController.selectedId = filmCell?.filmId ?? 0
-        switch status {
-            //FilmVC에서 들어올 때는 FilmVC안에 셀에 내용이 들어가게
-        case .originFilmVC :
-            let selectedFilmDict = ["selectedTag": selectedTag,
-                                    "selectedLeading": selectedLeading,
-                                    "selectedFilm": selectedFilm] as [String: Any]
-            NotificationCenter.default.post(name: NSNotification.Name.updateSelectedFilmType, object: selectedFilmDict, userInfo: nil)
-            NotificationCenter.default.post(name: NSNotification.Name.selectedFilmIdAPI, object: nil)
-            self.navigationController?.popViewController(animated: true)
-            //AddPhotoVC에서 들어올 때는 다시 AddPhotoVC로 돌아오게
-        case .addPhotoVC:
-            let selectedFilmDict = ["selectedId": FilmSelectViewController.selectedId, "selectedFilm": selectedFilm] as [String: Any]
-            NotificationCenter.default.post(name: NSNotification.Name.pushToAddPhotoViewController, object: selectedFilmDict, userInfo: nil)
-            self.navigationController?.popViewController(animated: true)
-        case .originStudioVC:
-            return
-        }
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let filmCell = tableView.cellForRow(at: indexPath) as? FilmTypeTableViewCell
+    filmCell?.isSelected = true
+    selectedFilm = filmCell?.filmNameLabel.text ?? ""
+    FilmSelectViewController.selectedId = filmCell?.filmId ?? 0
+    switch status {
+      //FilmVC에서 들어올 때는 FilmVC안에 셀에 내용이 들어가게
+    case .originFilmVC :
+      let selectedFilmDict = ["selectedTag": selectedTag,
+                              "selectedLeading": selectedLeading,
+                              "selectedFilm": selectedFilm] as [String: Any]
+      NotificationCenter.default.post(name: NSNotification.Name.updateSelectedFilmType, object: selectedFilmDict, userInfo: nil)
+      self.navigationController?.popViewController(animated: true)
+      //AddPhotoVC에서 들어올 때는 다시 AddPhotoVC로 돌아오게
+    case .addPhotoVC:
+      let selectedFilmDict = ["selectedId": FilmSelectViewController.selectedId, "selectedFilm": selectedFilm] as [String: Any]
+      NotificationCenter.default.post(name: NSNotification.Name.pushToAddPhotoViewController, object: selectedFilmDict, userInfo: nil)
+      self.navigationController?.popViewController(animated: true)
+    case .originStudioVC:
+      return
     }
+  }
 }
 
 // MARK: - Network
