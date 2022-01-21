@@ -10,6 +10,7 @@ import UIKit
 import SnapKit
 import Then
 import Photos
+import NVActivityIndicatorView
 
 // MARK: - ADddPhotoViewController
 class AddPhotoViewController: UIViewController {
@@ -31,6 +32,23 @@ class AddPhotoViewController: UIViewController {
   
   var selectedId = 0
   var selectedFilm = ""
+    
+    lazy var loadingBgView: UIView = {
+        let bgView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+        bgView.backgroundColor = .backgroundCover
+        
+        return bgView
+    }()
+    
+    lazy var activityIndicator: NVActivityIndicatorView = {
+        let activityIndicator = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40),
+                                                        type: .ballBeat,
+                                                        color: .fillinRed,
+                                                        padding: .zero)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        
+        return activityIndicator
+    }()
   
   // MARK: - LifeCycle
   override func viewDidLoad() {
@@ -55,8 +73,11 @@ class AddPhotoViewController: UIViewController {
     // 이미지와 스튜디오가 있어야 버튼 활성화 되도록 분기처리
     if (self.photobackgroundView.image != Asset.photoInsert.image) && (self.filmchooseButton.titleLabel?.text != "어떤 필름을 사용했나요?") {
       self.addphotoBackground.backgroundColor = .fillinRed
+      self.addphotoButton.titleLabel?.textColor = .fillinBlack
+      
     } else {
-      self.addphotoBackground.backgroundColor = .darkGrey1
+      self.addphotoBackground.backgroundColor = .darkGrey2
+      self.addphotoButton.titleLabel?.textColor = .darkGrey1
     }
   }
 }
@@ -199,7 +220,7 @@ extension AddPhotoViewController {
   }
   func layoutAddPhotoBackground() {
     addPhotoScrollContainerView.add(addphotoBackground) {
-      $0.backgroundColor = .darkGrey1
+      $0.backgroundColor = .darkGrey2
       $0.snp.makeConstraints {
         $0.leading.trailing.equalToSuperview()
         $0.bottom.equalTo(self.addPhotoScrollContainerView.snp.bottom)
@@ -211,7 +232,7 @@ extension AddPhotoViewController {
     addphotoBackground.add(addphotoButton) {
       $0.setTitle("Add Photo", for: .normal)
       $0.titleLabel?.font = .engBighead
-      $0.setTitleColor(.grey3, for: .normal)
+      $0.setTitleColor(.darkGrey1, for: .normal)
       $0.addTarget(self, action: #selector(self.touchAddPhotoButton), for: .touchUpInside)
       $0.snp.makeConstraints {
         $0.top.equalToSuperview().offset(15)
@@ -263,6 +284,7 @@ extension AddPhotoViewController {
   }
   @objc func touchAddPhotoButton() {
     if self.addphotoBackground.backgroundColor == .fillinRed {
+        setActivityIndicator()
       addPhotosWithAPI(studioId: 6, filmId: selectedId, img: self.photobackgroundView.image ?? UIImage())
     } else {
     }
@@ -277,6 +299,18 @@ extension AddPhotoViewController {
     selectedFilm = selectedFilmDict?["selectedFilm"] as? String ?? ""
     self.filmchooseButton.setTitle(selectedFilm, for: .normal)
   }
+    
+    private func setActivityIndicator() {
+        view.addSubview(loadingBgView)
+        loadingBgView.addSubview(activityIndicator)
+        
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+        
+        activityIndicator.startAnimating()
+    }
 }
 
 // MARK: - ImagePicker Extension
@@ -296,6 +330,8 @@ extension AddPhotoViewController {
     AddPhotoAPI.shared.addPhotos(studioId: studioId, filmId: filmId, img: img) { response in
       switch response {
       case .success:
+          self.activityIndicator.stopAnimating()
+          self.loadingBgView.removeFromSuperview()
         let secondVC = SecondAddPhotoPopUpViewController()
         secondVC.modalPresentationStyle = .overCurrentContext
         secondVC.modalTransitionStyle = .crossDissolve
