@@ -274,22 +274,22 @@ extension StudioMapViewController {
 extension StudioMapViewController {
   func studioInfoWithAPI(studioID: Int) {
     StudioMapAPI.shared.infoStudio(studioID: studioID) { response in
-            switch response {
-            case .success(let data):
-              print(data)
-                if let studioinfo = data as? StudioInfoResponse {
-                  self.serverStudioInfo = studioinfo
-                  self.presentBottomSheetAfterInfo()
-                }
-            case .requestErr(let message):
-                print("studioInfoWithAPI - requestErr: \(message)")
-            case .pathErr:
-                print("studioInfoWithAPI - pathErr")
-            case .serverErr:
-                print("studioInfoWithAPI - serverErr")
-            case .networkFail:
-                print("studioInfoWithAPI - networkFail")
-            }
+      switch response {
+      case .success(let data):
+        print(data)
+        if let studioinfo = data as? StudioInfoResponse {
+          self.serverStudioInfo = studioinfo
+          self.presentBottomSheetAfterInfo()
         }
+      case .requestErr(let message):
+        print("studioInfoWithAPI - requestErr: \(message)")
+      case .pathErr:
+        print("studioInfoWithAPI - pathErr")
+      case .serverErr:
+        print("studioInfoWithAPI - serverErr")
+      case .networkFail:
+        print("studioInfoWithAPI - networkFail")
+      }
     }
+  }
 }

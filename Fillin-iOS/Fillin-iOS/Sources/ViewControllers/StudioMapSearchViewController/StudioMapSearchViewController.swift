@@ -10,12 +10,14 @@ import UIKit
 class StudioMapSearchViewController: UIViewController {
   
   // MARK: - Properties
+  var serverSearchStudios: StudioSearchResponse?
   let backGroundView = UIView()
   let magnifyingGlassButton = UIButton()
-  let searchPlaceTextField = UITextField()
+  let searchPlaceTextField = UITextField() // searchBar
   let tableView = UITableView()
   let dividerView = UIView()
   let navigationBar = FilinNavigationBar()
+  let searchController = UISearchController(searchResultsController: nil)
   
   // MARK: - View Life Cycle
   override func viewDidLoad() {
@@ -128,6 +130,7 @@ class StudioMapSearchViewController: UIViewController {
   }
   
   @objc func touchSearchButton(_ sender: UIButton) {
+    searchStudiosWithAPI(keyword: searchPlaceTextField.text ?? "")
   }
 }
 
@@ -135,11 +138,14 @@ class StudioMapSearchViewController: UIViewController {
 extension StudioMapSearchViewController: UITableViewDataSource, UITableViewDelegate {
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 10 // 임시 값
+    return serverSearchStudios?.studios.count ?? 0
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     guard let cell = tableView.dequeueReusableCell(withIdentifier: Const.Xib.studioSearchTableViewCell, for: indexPath) as? StudioMapSearchTableViewCell else { return UITableViewCell() }
+    cell.nameStudioLabel.updateServerLabel(name: serverSearchStudios?.studios[indexPath.row].name ?? "")
+    cell.locationStudionLabel.updateServerLabel(name: serverSearchStudios?.studios[indexPath.row].address ?? "")
+    cell.awakeFromNib()
     return cell
   }
   
@@ -149,5 +155,28 @@ extension StudioMapSearchViewController: UITableViewDataSource, UITableViewDeleg
   
   func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
     cell.backgroundColor = UIColor.clear
+  }
+}
+
+extension StudioMapSearchViewController {
+  func searchStudiosWithAPI(keyword: String) {
+    StudioMapAPI.shared.searchStudio(keyword: keyword) { response in
+      switch response {
+      case .success(let data):
+        if let search = data as? StudioSearchResponse {
+          self.serverSearchStudios = search
+          print(search)
+          self.tableView.reloadData()
+        }
+      case .requestErr(let message):
+        print("searchStudioWithAPI - requestErr: \(message)")
+      case .pathErr:
+        print("searchStudioWithAPI - pathErr")
+      case .serverErr:
+        print("searchStudioWithAPI - serverErr")
+      case .networkFail:
+        print("searchStudioWithAPI - networkFail")
+      }
+    }
   }
 }
