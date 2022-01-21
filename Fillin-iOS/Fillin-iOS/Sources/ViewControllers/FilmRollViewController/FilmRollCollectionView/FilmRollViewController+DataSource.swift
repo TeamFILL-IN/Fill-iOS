@@ -42,6 +42,7 @@ class FilmRollViewControllerDataSource: NSObject, UICollectionViewDataSource {
                 guard let curationCell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Xib.filmCurationCollectionViewCell, for: indexPath) as? FilmCurationCollectionViewCell else { return UICollectionViewCell() }
                 
                 curationCell.filmCurationImageView.updateServerImage(serverCuration?.photos[indexPath.row-1].imageURL ?? "")
+                curationCell.isLiked = serverCuration?.photos[indexPath.row-1].isLiked ?? false
                 return curationCell
             }
             
@@ -54,6 +55,7 @@ class FilmRollViewControllerDataSource: NSObject, UICollectionViewDataSource {
             guard let filmRollCell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Xib.filmCurationCollectionViewCell, for: indexPath) as? FilmCurationCollectionViewCell else { return UICollectionViewCell() }
 
             filmRollCell.filmCurationImageView.updateServerImage(serverPhotos?.photos[indexPath.row].imageURL ?? "")
+            filmRollCell.photoLikeButton.isSelected = serverPhotos?.photos[indexPath.row].isLiked ?? false
             return filmRollCell
         }
     }
