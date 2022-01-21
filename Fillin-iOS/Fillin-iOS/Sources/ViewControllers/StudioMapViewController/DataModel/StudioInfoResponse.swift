@@ -14,10 +14,10 @@ struct StudioInfoResponse: Codable {
 
 // MARK: - Studio
 struct StudioInfo: Codable {
-    let id: Int
+    let id: Int?
     let name, address, price, time: String?
     let tel: String?
-    let lati, long: Double
+    let lati, long: Double?
     let etc: String?
     let isDeleted: Bool
     let site: String?

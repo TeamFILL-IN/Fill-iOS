@@ -143,8 +143,8 @@ extension StudioMapSearchViewController: UITableViewDataSource, UITableViewDeleg
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     guard let cell = tableView.dequeueReusableCell(withIdentifier: Const.Xib.studioSearchTableViewCell, for: indexPath) as? StudioMapSearchTableViewCell else { return UITableViewCell() }
-    cell.nameStudioLabel.updateServerLabel(name: serverSearchStudios?.studios[indexPath.row].name ?? "")
-    cell.locationStudionLabel.updateServerLabel(name: serverSearchStudios?.studios[indexPath.row].address ?? "")
+    cell.nameStudioLabel.updateServerLabel(name: serverSearchStudios?.studios[indexPath.row].name ?? "", keyword: searchPlaceTextField.text ?? "")
+    cell.locationStudionLabel.updateServerLabel(name: serverSearchStudios?.studios[indexPath.row].address ?? "", keyword: searchPlaceTextField.text ?? "")
     cell.awakeFromNib()
     return cell
   }
@@ -156,6 +156,15 @@ extension StudioMapSearchViewController: UITableViewDataSource, UITableViewDeleg
   func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
     cell.backgroundColor = UIColor.clear
   }
+  
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    tableView.deselectRow(at: indexPath, animated: true)
+    print(serverSearchStudios?.studios[indexPath.row].id)
+    self.view.endEditing(true)
+    var searchStudioID = serverSearchStudios?.studios[indexPath.row].id
+    self.dismiss(animated: true, completion: nil)
+    NotificationCenter.default.post(name: NSNotification.Name("GetLatLng"), object: searchStudioID , userInfo: nil)
+  }
 }
 
 extension StudioMapSearchViewController {
@@ -165,7 +174,6 @@ extension StudioMapSearchViewController {
       case .success(let data):
         if let search = data as? StudioSearchResponse {
           self.serverSearchStudios = search
-          print(search)
           self.tableView.reloadData()
         }
       case .requestErr(let message):
