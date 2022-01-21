@@ -104,11 +104,10 @@ extension LoginViewController {
         authorizationController.performRequests()
     }
     func presentToMain() {
-        let homeVC = HomeViewController()
-        homeVC.modalPresentationStyle = .overFullScreen
-        self.present(homeVC, animated: true) {
-            //      UserDefaults.standard.set(false, forKey: Const.UserDefaultsKey.isOnboarding)
-        }
+        let mainNavigationController = UINavigationController(rootViewController: HomeViewController())
+        mainNavigationController.modalPresentationStyle = .fullScreen
+        mainNavigationController.modalTransitionStyle = .crossDissolve
+        self.present(mainNavigationController, animated: true, completion: nil)
     }
 }
 
