@@ -98,7 +98,7 @@ extension StudioMapViewController {
     serverStudios?.studios.forEach {
       let marker = NMFMarker(position: NMGLatLng(lat: $0.lati, lng: $0.long))
       let markerInfo = Studio(id: $0.id, lati: $0.lati, long: $0.long)
-      marker.iconImage = NMFOverlayImage(image: Asset.icnPlaceBig2.image)
+      marker.iconImage = NMFOverlayImage(image: Asset.icnPlaceBig.image)
       
       marker.touchHandler = { [weak self] (overlay: NMFOverlay) -> Bool in
         
@@ -204,7 +204,7 @@ extension StudioMapViewController {
   }
   
   @objc func changeMarkerObserver(_ notification: Notification) {
-    selectedMarker?.iconImage = NMFOverlayImage(image: Asset.icnPlaceBig2.image)
+    selectedMarker?.iconImage = NMFOverlayImage(image: Asset.icnPlaceBig.image)
     selectedMarker = nil
     markerState = 0
   }
@@ -291,12 +291,7 @@ extension StudioMapViewController {
           self.serverStudioInfo = studioinfo
           StudioMapViewController.lati = studioinfo.studio.lati
           StudioMapViewController.long = studioinfo.studio.long
-          
-//          let marker = NMFMarker(position: NMGLatLng(lat: StudioMapViewController.lati ?? 0, lng: StudioMapViewController.long ?? 0))
-//          self.selectedMarker = marker
-//          self.selectedMarker?.iconImage = NMFOverlayImage(image: Asset.icnPlaceBig.image)
-//          self.markerState = 1
-          
+    
           let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: StudioMapViewController.lati ?? 0, lng: StudioMapViewController.long ?? 0))
           self.mapView.mapView.moveCamera(cameraUpdate)
           
