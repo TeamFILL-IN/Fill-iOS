@@ -147,8 +147,8 @@ extension StudioMapViewController {
     view.addSubview(myLocationButton)
     myLocationButton.setImage(Asset.icnMyLocation.image, for: .normal)
     myLocationButton.snp.makeConstraints {
-      $0.top.equalTo(self.view).inset(708)
-      $0.leading.equalTo(self.view).inset(299)
+      $0.trailing.equalToSuperview().offset(-20)
+      $0.bottom.equalToSuperview().offset(-48)
     }
     myLocationButton.addTarget(self, action: #selector(touchLocationButton), for: .touchUpInside)
   }

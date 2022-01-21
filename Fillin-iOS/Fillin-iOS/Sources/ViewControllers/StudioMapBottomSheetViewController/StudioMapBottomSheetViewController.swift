@@ -134,16 +134,15 @@ class StudioMapBottomSheetViewController: UIViewController {
       let bottomPadding: CGFloat = view.safeAreaInsets.bottom
       bottomSheetViewTopConstraint.constant = (safeAreaHeight + bottomPadding) - defaultHeight
     } else {
+      changeScrollEnabled()
       bottomSheetViewTopConstraint.constant = bottomSheetPanMinTopConstant
     }
-    
     UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseIn, animations: {
       self.view.layoutIfNeeded()
     }, completion: { _ in
       self.bottomSheetCoverView.isHidden = true
     })
   }
-  
   func hideBottomSheetAndGoBack() {
     let safeAreaHeight = view.safeAreaLayoutGuide.layoutFrame.height
     let bottomPadding = view.safeAreaInsets.bottom
@@ -166,6 +165,12 @@ class StudioMapBottomSheetViewController: UIViewController {
   
   func setNotification() {
     NotificationCenter.default.post(name: NSNotification.Name.changeMarker, object: nil, userInfo: nil)
+  }
+  // BottomSheet Scroll
+  func changeScrollEnabled() {
+    let contentVC = children.first as? StudioMapContentViewController
+    contentVC?.studioScrollview.isScrollEnabled = true
+    
   }
   
   // MARK: - @objc
