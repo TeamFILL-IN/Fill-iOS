@@ -81,5 +81,8 @@ extension UIColor {
   @nonobjc class var backgroundCover: UIColor {
       return UIColor(white: 0.0, alpha: 0.5)
   }
+  @nonobjc class var photobackgroundCover: UIColor {
+    return UIColor(white: 0.0, alpha: 0.7)
+  }
 
 }
