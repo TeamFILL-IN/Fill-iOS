@@ -32,5 +32,9 @@ class FilmCurationCollectionViewCell: UICollectionViewCell {
     private func setUI() {
         photoLikeButton.isSelected = isLiked
     }
+    
+    override func prepareForReuse() {
+        photoLikeButton.isSelected = false
+    }
 
 }
