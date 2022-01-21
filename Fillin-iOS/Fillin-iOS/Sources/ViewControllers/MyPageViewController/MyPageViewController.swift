@@ -266,6 +266,7 @@ extension MyPageViewController: UICollectionViewDataSource {
     photoPopupVC.username = serverNewPhotos?.photos[indexPath.row].nickname ?? ""
     photoPopupVC.filmname = serverNewPhotos?.photos[indexPath.row].filmName ?? ""
     photoPopupVC.photoImage = serverNewPhotos?.photos[indexPath.row].imageURL ?? ""
+    photoPopupVC.likeCount = serverNewPhotos?.photos[indexPath.row].likeCount ?? 0
     self.present(photoPopupVC, animated: true, completion: nil)
   }
 }
