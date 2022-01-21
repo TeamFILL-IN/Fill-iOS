@@ -126,6 +126,7 @@ extension FilmRollViewController: UICollectionViewDelegate {
         photoPopupVC.filmname = dataSource.serverPhotos?.photos[indexPath.row].filmName ?? ""
         photoPopupVC.photoImage = dataSource.serverPhotos?.photos[indexPath.row].imageURL ?? ""
         photoPopupVC.likeCount = dataSource.serverPhotos?.photos[indexPath.row].likeCount ?? 0
+        photoPopupVC.isLiked = dataSource.serverPhotos?.photos[indexPath.row].isLiked ?? false
         self.present(photoPopupVC, animated: true, completion: nil)
     }
 }
