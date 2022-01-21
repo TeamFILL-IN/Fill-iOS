@@ -38,7 +38,11 @@ class FilmTypeCollectionViewCell: UICollectionViewCell {
             selectedTag = sender.tag
             selectedLeading = (viewWidth/4) * CGFloat(sender.tag)
             chosenViewLeading.constant = selectedLeading
-            
+            setSelectedFilm()
+            NotificationCenter.default.post(name: .selectedFilmAPI, object: selectedTag + 1)
+        } else {
+            selectedFilm[selectedTag] = "필름 종류를 선택하세요"
+            selectedIcon[selectedTag] = Asset.icnCategory.image
             setSelectedFilm()
             NotificationCenter.default.post(name: .selectedFilmAPI, object: selectedTag + 1)
         }

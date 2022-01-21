@@ -11,6 +11,7 @@ import Moya
 enum FilmRollService {
     case curation
     case filmStylePhotos(styleId: Int)
+    case filmIdPhotos(filmId: Int)
 }
 
 extension FilmRollService: TargetType {
@@ -25,12 +26,14 @@ extension FilmRollService: TargetType {
             return "/curation"
         case .filmStylePhotos(let styleId):
             return "/photo/style/\(styleId)"
+        case .filmIdPhotos(let filmId):
+            return "/photo/film/\(filmId)"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .curation, .filmStylePhotos:
+        case .curation, .filmStylePhotos, .filmIdPhotos:
             return .get
         }
     }
@@ -41,16 +44,14 @@ extension FilmRollService: TargetType {
     
     var task: Task {
         switch self {
-        case .curation:
-            return .requestPlain
-        case .filmStylePhotos:
+        case .curation, .filmStylePhotos, .filmIdPhotos:
             return .requestPlain
         }
     }
     
     var headers: [String: String]? {
         switch self {
-        case .curation, .filmStylePhotos:
+        case .curation, .filmStylePhotos, .filmIdPhotos:
             return Const.Header.tokenHeader
         }
     }

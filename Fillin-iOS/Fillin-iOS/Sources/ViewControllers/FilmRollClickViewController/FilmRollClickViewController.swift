@@ -8,13 +8,13 @@
 import UIKit
 
 class FilmRollClickViewController: UIViewController {
-  
-  var userprofile = ""
-  var username = ""
-  var filmname = ""
-  var photoImage = ""
-  
-  
+    
+    var userprofile = ""
+    var username = ""
+    var filmname = ""
+    var photoImage = ""
+    var likeCount = 0
+    
     // MARK: - @IBOutlet Properties
     @IBOutlet weak var dimmedBackView: UIView!
     @IBOutlet weak var popUpView: UIView!
@@ -33,8 +33,7 @@ class FilmRollClickViewController: UIViewController {
     
     @IBAction func touchLikeButton(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
-        // TODO: 23 실제 값+1 으로 채워넣기
-        sender.setTitle("23", for: .selected)
+        sender.setTitle(String(likeCount+1), for: .selected)
     }
     
     // MARK: - View Life Cycle
@@ -43,7 +42,7 @@ class FilmRollClickViewController: UIViewController {
         setUI()
         setupGestureRecognizer()
     }
-
+    
 }
 
 // MARK: - Extensions
@@ -51,14 +50,15 @@ extension FilmRollClickViewController {
     private func setUI() {
         profileNameLabel.font = .body2
         filmNameLabel.font = .engDisplay2Book
+        likeButton.setTitle(String(likeCount), for: .normal)
         likeButton.titleLabel?.font = .body2
         likeButton.layer.borderWidth = 1
         likeButton.layer.borderColor = UIColor.darkGrey1.cgColor
         likeButton.setInsets(forContentPadding: UIEdgeInsets(top: 0, left: 7, bottom: 0, right: 7), imageTitlePadding: CGFloat(6))
-      profileImage.updateServerImage(userprofile)
-      profileNameLabel.text = username
-      filmNameLabel.text = filmname
-      photoImageView.updateServerImage(photoImage)
+        profileImage.updateServerImage(userprofile)
+        profileNameLabel.text = username
+        filmNameLabel.text = filmname
+        photoImageView.updateServerImage(photoImage)
     }
     
     private func setupGestureRecognizer() {
