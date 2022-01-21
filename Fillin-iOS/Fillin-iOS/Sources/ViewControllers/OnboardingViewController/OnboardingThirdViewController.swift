@@ -123,8 +123,12 @@ extension OnboardingThirdViewController {
     }
   }
   @objc func touchstartButton() {
-    let loginVC = LoginViewController()
-    loginVC.modalPresentationStyle = .fullScreen
-    self.present(loginVC, animated: true, completion: nil)
+//    let loginVC = LoginViewController()  
+//    loginVC.modalPresentationStyle = .fullScreen
+//    self.present(loginVC, animated: true, completion: nil)
+      let mainNavigationController = UINavigationController(rootViewController: HomeViewController())
+      mainNavigationController.modalPresentationStyle = .fullScreen
+      mainNavigationController.modalTransitionStyle = .crossDissolve
+      self.present(mainNavigationController, animated: true, completion: nil)
   }
 }

@@ -25,6 +25,10 @@
                         <rect key="frame" x="133" y="92" width="24" height="24"/>
                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                         <state key="normal" image="btnLike"/>
+                        <state key="selected" image="btnLiked"/>
+                        <connections>
+                            <action selector="touchLikeButton:" destination="gTV-IL-0wX" eventType="touchUpInside" id="3yU-sZ-zRh"/>
+                        </connections>
                     </button>
                 </subviews>
             </view>
@@ -40,12 +44,14 @@
             <size key="customSize" width="265" height="205"/>
             <connections>
                 <outlet property="filmCurationImageView" destination="kZ6-6Z-S5W" id="jgp-bP-spz"/>
+                <outlet property="photoLikeButton" destination="uF4-mj-3Zd" id="qVy-nr-c2v"/>
             </connections>
-            <point key="canvasLocation" x="293.47826086956525" y="152.34375"/>
+            <point key="canvasLocation" x="293.47826086956525" y="152.00892857142856"/>
         </collectionViewCell>
     </objects>
     <resources>
         <image name="btnLike" width="24" height="24"/>
+        <image name="btnLiked" width="24" height="24"/>
         <namedColor name="Dark grey 2">
             <color red="0.13725490196078433" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

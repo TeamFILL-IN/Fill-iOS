@@ -69,7 +69,7 @@ class StudioMapContentViewController: UIViewController {
       $0.backgroundColor = .clear
       $0.translatesAutoresizingMaskIntoConstraints = false
       $0.showsVerticalScrollIndicator = false
-      $0.isScrollEnabled = true
+      $0.isScrollEnabled = false
       $0.snp.makeConstraints {
         $0.top.equalTo(self.view.snp.top).offset(29)
         $0.centerX.leading.trailing.bottom.equalToSuperview()
@@ -335,6 +335,10 @@ extension StudioMapContentViewController {
       case .success(let data):
         if let photos = data as? PhotosResponse {
           self.serverStudioPhotos = photos
+          // /3을 하게 되면 1,2개일 때는 제대로 나오지 않기 때문에 소수점 올림 해주기
+          let photosCount = ceil(Double(photos.photos.count)/3)
+          let intPhotosCount = Int(photosCount)
+          self.studioCollectionview.heightAnchor.constraint(equalToConstant: CGFloat((intPhotosCount*(Int(UIScreen.main.bounds.width)-36)/3 + 9))+30).isActive = true
           self.studioCollectionview.reloadData()
         }
       case .requestErr(let message):

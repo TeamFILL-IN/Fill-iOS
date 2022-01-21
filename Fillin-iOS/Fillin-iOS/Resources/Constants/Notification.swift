@@ -15,5 +15,6 @@ extension Notification.Name {
     static let pushIdToContentViewController = Notification.Name("pushIdToContentViewController")
     static let pushToAddPhotoViewController = Notification.Name("pushToAddPhotoViewController")
     static let selectedFilmAPI = Notification.Name("selectedFilmAPI")
-    static let selectedFilmIdAPI = Notification.Name("selectedFilmIdAPI")
+  static let selectedFilmIdAPI = Notification.Name("selectedFilmIdAPI")
+    static let selectedStudioIdAPI = Notification.Name("selectedStudioIdAPI")
 }

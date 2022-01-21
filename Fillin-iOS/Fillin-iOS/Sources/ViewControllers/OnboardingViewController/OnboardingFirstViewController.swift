@@ -146,6 +146,6 @@ extension OnboardingFirstViewController {
   }
   @objc func touchNextButton() {
     let onboarding2VC = OnboardingSecondViewController()
-    self.navigationController?.pushViewController(onboarding2VC, animated: true)
+    self.navigationController?.pushViewController(onboarding2VC, animated: false)
   }
 }

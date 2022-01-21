@@ -83,7 +83,6 @@ extension FilmRollViewController {
     private func setNotification() {
         NotificationCenter.default.addObserver(self, selector: #selector(pushToFilmTypeViewController), name: Notification.Name.pushToFilmSelectViewController, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(selectedFilmAPI), name: Notification.Name.selectedFilmAPI, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(selectedFilmIdAPI), name: Notification.Name.selectedFilmIdAPI, object: nil)
     }
     
     private func setActivityIndicator() {
@@ -122,12 +121,28 @@ extension FilmRollViewController: UICollectionViewDelegate {
         let photoPopupVC = FilmRollClickViewController()
         photoPopupVC.modalPresentationStyle = .overCurrentContext
         photoPopupVC.modalTransitionStyle = .crossDissolve
-        photoPopupVC.userprofile = dataSource.serverPhotos?.photos[indexPath.row].userImageURL ?? ""
-        photoPopupVC.username = dataSource.serverPhotos?.photos[indexPath.row].nickname ?? ""
-        photoPopupVC.filmname = dataSource.serverPhotos?.photos[indexPath.row].filmName ?? ""
-        photoPopupVC.photoImage = dataSource.serverPhotos?.photos[indexPath.row].imageURL ?? ""
-        photoPopupVC.likeCount = dataSource.serverPhotos?.photos[indexPath.row].likeCount ?? 0
-        self.present(photoPopupVC, animated: true, completion: nil)
+        switch FilmRollSection.allCases[indexPath.section] {
+        case .filmCuration:
+            if indexPath.row > 0 {
+                photoPopupVC.userprofile = dataSource.serverCuration?.photos[indexPath.row-1].userImageURL ?? ""
+                photoPopupVC.username = dataSource.serverCuration?.photos[indexPath.row-1].nickname ?? ""
+                photoPopupVC.filmname = dataSource.serverCuration?.photos[indexPath.row-1].filmName ?? ""
+                photoPopupVC.photoImage = dataSource.serverCuration?.photos[indexPath.row-1].imageURL ?? ""
+                photoPopupVC.likeCount = dataSource.serverCuration?.photos[indexPath.row-1].likeCount ?? 0
+                photoPopupVC.isLiked = dataSource.serverCuration?.photos[indexPath.row-1].isLiked ?? false
+                self.present(photoPopupVC, animated: true, completion: nil)
+            }
+        case .filmType:
+            print("nothing")
+        case .filmRoll:
+            photoPopupVC.userprofile = dataSource.serverPhotos?.photos[indexPath.row].userImageURL ?? ""
+            photoPopupVC.username = dataSource.serverPhotos?.photos[indexPath.row].nickname ?? ""
+            photoPopupVC.filmname = dataSource.serverPhotos?.photos[indexPath.row].filmName ?? ""
+            photoPopupVC.photoImage = dataSource.serverPhotos?.photos[indexPath.row].imageURL ?? ""
+            photoPopupVC.likeCount = dataSource.serverPhotos?.photos[indexPath.row].likeCount ?? 0
+            photoPopupVC.isLiked = dataSource.serverPhotos?.photos[indexPath.row].isLiked ?? false
+            self.present(photoPopupVC, animated: true, completion: nil)
+        }
     }
 }
 

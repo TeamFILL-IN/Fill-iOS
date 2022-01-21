@@ -18,21 +18,21 @@ class SplashViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-         super.viewWillAppear(animated)
-        
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-            if self.appDelegate?.isLogin == true {
-                self.presentToMain()
-            } else {
-                if UserDefaults.standard.object(forKey: Const.UserDefaultsKey.accessToken) != nil {
-                    self.presentToLogin()
-                } else {
-                    self.presentToOnboarding()
-                }
-            }
-        }
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//         super.viewWillAppear(animated)
+//        
+//        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+//            if self.appDelegate?.isLogin == true {
+//                self.presentToMain()
+//            } else {
+//                if UserDefaults.standard.object(forKey: Const.UserDefaultsKey.accessToken) != nil {
+//                    self.presentToLogin()
+//                } else {
+//                    self.presentToOnboarding()
+//                }
+//            }
+//        }
+//    }
 }
 
 extension SplashViewController {

@@ -1,6 +1,8 @@
 # 📸Fill-iOS
 
 <img width="1280" alt="iMac - 1" src="https://user-images.githubusercontent.com/63863135/148956606-59192e40-64ea-4c04-a0cf-07edc80492db.jpg">
+<img src="https://user-images.githubusercontent.com/54793607/150477388-7589d8f1-7a20-49d8-a3e8-0cef7a0a3392.gif">
+<br>
 
 ## <img width=25px src=https://user-images.githubusercontent.com/63863135/148947996-b33a1bca-b668-4331-93b2-dcf78d3c63f5.png>  Project
 **Fill-in your Film, Fill-IN**
@@ -203,15 +205,29 @@ pop, push, present, dismiss
 </details>
 <br>
 
+## 🍎 FILL-IN iOS Notion
 
+### 👉 [FILL-IN iOS Notion 바로가기](https://66jxndoe.notion.site/FILL-IN-iOS-427dc5904bf24a5eb62daebf6b4f783d)
+
+<br>
+
+## 🍎 FILL-IN iOS KANBAN BOARD
+
+### 👉 [FILL-IN KANBAN BOARD 바로가기](https://github.com/TeamFILL-IN/Fill-iOS/projects/1)
+
+<br>
 
 ## 필린이들의 Task분배
 
 | 기능 | 개발 여부 | 담당자 |
 |:----------|:----------:|:----:|
-| 홈 || 최이준 |
-| 지도맵 |📸| 임주민 |
-| 필름롤 || 최이준 |
-| 마이페이지 || 김지수 |
+| Main Home | 📸 | 이준 |
+| Home Map | 📸 | 이준 |
+| Add Photo | 📸 | 지수 |
+| Film Roll | 📸 | 이준 |
+| Studio Map | 📸 | 주민 |
+| Add Photo | 📸 | 지수 |
+| My Page | 📸 | 지수 |
+
 
 <br>
