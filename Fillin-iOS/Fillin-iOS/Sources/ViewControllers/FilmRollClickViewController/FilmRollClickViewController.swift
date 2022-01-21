@@ -14,6 +14,7 @@ class FilmRollClickViewController: UIViewController {
   var filmname = ""
   var photoImage = ""
     var likeCount = 0
+    var isLiked = false
   
   
   // MARK: - @IBOutlet Properties
@@ -62,6 +63,7 @@ extension FilmRollClickViewController {
     likeButton.layer.borderWidth = 1
     likeButton.layer.borderColor = UIColor.darkGrey1.cgColor
     likeButton.setInsets(forContentPadding: UIEdgeInsets(top: 0, left: 7, bottom: 0, right: 7), imageTitlePadding: CGFloat(6))
+      likeButton.isSelected = isLiked
     profileImage.updateServerImage(userprofile)
     profileNameLabel.text = username
     filmNameLabel.text = filmname
