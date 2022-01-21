@@ -9,7 +9,7 @@ import Foundation
 import Moya
 
 enum UserService {
-    
+    case login(loginRequest: LoginRequest)
 }
 
 extension UserService: TargetType {
@@ -20,13 +20,15 @@ extension UserService: TargetType {
     
     var path: String {
         switch self {
-
+        case .login:
+            return "/auth"
         }
     }
     
     var method: Moya.Method {
         switch self {
-
+        case .login:
+            return .post
         }
     }
     
@@ -36,13 +38,17 @@ extension UserService: TargetType {
     
     var task: Task {
         switch self {
-
+        case .login(let loginRequest):
+            return .requestParameters(parameters: ["token": loginRequest.token,
+                                                   "social": loginRequest.social,
+                                                   "idKey": loginRequest.idKey], encoding: URLEncoding.httpBody)
         }
     }
     
     var headers: [String: String]? {
         switch self {
-
+        case .login:
+          return Const.Header.loginHeader
         }
     }
 }

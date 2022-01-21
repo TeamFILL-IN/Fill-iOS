@@ -22,7 +22,7 @@ public class FlimSelectAPI {
                 let statusCode = response.statusCode
                 let data = response.data
                 
-                let networkResult = self.judgelistOfFilmsStatus(by: statusCode, data)
+                let networkResult = self.judgeListOfFilmsStatus(by: statusCode, data)
                 completion(networkResult)
                 
             case .failure(let err):
@@ -31,7 +31,7 @@ public class FlimSelectAPI {
         }
     }
     
-    private func judgelistOfFilmsStatus(by statusCode: Int, _ data: Data) -> NetworkResult<Any> {
+    private func judgeListOfFilmsStatus(by statusCode: Int, _ data: Data) -> NetworkResult<Any> {
 
         let decoder = JSONDecoder()
         guard let decodedData = try? decoder.decode(GenericResponse<FilmResponse>.self, from: data)

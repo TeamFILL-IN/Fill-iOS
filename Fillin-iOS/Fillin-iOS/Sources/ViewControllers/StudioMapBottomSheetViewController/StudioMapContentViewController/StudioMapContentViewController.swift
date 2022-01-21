@@ -6,7 +6,6 @@
 //
 
 import UIKit
-
 import SafariServices
 
 class StudioMapContentViewController: UIViewController {
@@ -50,7 +49,6 @@ class StudioMapContentViewController: UIViewController {
   }
   
   // MARK: - Func
-  
   func setupAttribute() {
     self.studioCollectionview.delegate = self
     self.studioCollectionview.dataSource = self
@@ -83,7 +81,7 @@ class StudioMapContentViewController: UIViewController {
         $0.height.equalTo(self.view).priority(250)
       }
     }
-    // label
+    // Label
     studioScrollContainverView.add(studioLabel) {
       $0.text = StudioMapViewController.name
       $0.textColor = .white
@@ -113,7 +111,11 @@ class StudioMapContentViewController: UIViewController {
     }
     // Label
     studioScrollContainverView.add(locationLabel) {
-      $0.text = StudioMapViewController.address
+      if StudioMapViewController.address == nil {
+        $0.text = "등록된 주소가 없습니다."
+      } else {
+        $0.text = StudioMapViewController.address
+      }
       $0.numberOfLines = 0
       $0.font = .body2
       $0.textColor = .grey1
@@ -125,7 +127,11 @@ class StudioMapContentViewController: UIViewController {
       }
     }
     studioScrollContainverView.add(timeLabel) {
-      $0.text = StudioMapViewController.time
+      if StudioMapViewController.time == nil {
+        $0.text = "등록된 운영시간이 없습니다."
+      } else {
+        $0.text = StudioMapViewController.time
+      }
       $0.numberOfLines = 0
       $0.font = .body2
       $0.textColor = .grey1
@@ -137,7 +143,11 @@ class StudioMapContentViewController: UIViewController {
       }
     }
     studioScrollContainverView.add(callLabel) {
-      $0.text = StudioMapViewController.tel
+      if StudioMapViewController.tel == nil {
+        $0.text = "등록된 전화번호가 없습니다."
+      } else {
+        $0.text = StudioMapViewController.tel
+      }
       $0.numberOfLines = 0
       $0.font = .body2
       $0.textColor = .grey1
@@ -149,7 +159,11 @@ class StudioMapContentViewController: UIViewController {
       }
     }
     studioScrollContainverView.add(priceLabel) {
-      $0.text = StudioMapViewController.price
+      if StudioMapViewController.price == nil {
+        $0.text = "등록된 가격정보가 없습니다."
+      } else {
+        $0.text = StudioMapViewController.price
+      }
       $0.numberOfLines = 0
       $0.font = .body2
       $0.textColor = .grey1
@@ -169,7 +183,12 @@ class StudioMapContentViewController: UIViewController {
         $0.leading.equalTo(self.studioScrollContainverView.snp.leading).offset(48)
         $0.height.equalTo(18)
       }
-      self.linkButton.addTarget(self, action: #selector(self.touchLinkButton), for: .touchUpInside)
+      if StudioMapViewController.site == nil {
+        print("등록된 사이트 없음")
+        self.linkButton.addTarget(self, action: #selector(self.touchNoSiteLinkButton), for: .touchUpInside)
+      } else {
+        self.linkButton.addTarget(self, action: #selector(self.touchLinkButton), for: .touchUpInside)
+      }
     }
     // 아이콘
     studioScrollContainverView.add(locationImageView) {
@@ -259,18 +278,20 @@ class StudioMapContentViewController: UIViewController {
     let studioSafariView: SFSafariViewController = SFSafariViewController(url: studioUrl! as URL)
     self.present(studioSafariView, animated: true, completion: nil)
   }
+  
+  @objc func touchNoSiteLinkButton() {
+    let alert = UIAlertController(title: "사이트 미등록", message: "해당 현상소의 등록된 사이트가 없습니다.", preferredStyle: UIAlertController.Style.alert)
+    let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+    alert.addAction(okAction)
+    present(alert, animated: false, completion: nil)
+  }
 }
 
 // MARK: - UICollectionView
-extension StudioMapContentViewController: UICollectionViewDelegate {
-  
-}
-
 extension StudioMapContentViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return serverStudioPhotos?.photos.count ?? 0
   }
-  
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     guard let myphotoCell = collectionView.dequeueReusableCell(withReuseIdentifier: StudioMapCollectionViewCell.identifier, for: indexPath) as? StudioMapCollectionViewCell else {return UICollectionViewCell() }
     myphotoCell.photoReviewImageView.updateServerImage(serverStudioPhotos?.photos[indexPath.row].imageURL ?? "")
@@ -294,6 +315,10 @@ extension StudioMapContentViewController: UICollectionViewDelegateFlowLayout {
   }
 }
 
+extension StudioMapContentViewController: UICollectionViewDelegate {
+  
+}
+
 extension StudioMapContentViewController {
   func studioPhotosWithAPI(studioID: Int) {
     StudioMapAPI.shared.photoStudio(studioID: studioID) { response in
@@ -301,7 +326,6 @@ extension StudioMapContentViewController {
       case .success(let data):
         if let photos = data as? PhotosResponse {
           self.serverStudioPhotos = photos
-          let photosCount = ceil(Double(photos.photos.count)/3)
           self.studioCollectionview.reloadData()
         }
       case .requestErr(let message):

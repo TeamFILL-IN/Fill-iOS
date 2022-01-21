@@ -13,7 +13,7 @@ extension Notification.Name {
     static let updateSelectedFilmType = Notification.Name("updateSelectedFilmType")
     static let changeMarker = Notification.Name("changeMarker")
     static let pushIdToContentViewController = Notification.Name("pushIdToContentViewController")
-  static let  pushToAddPhotoViewController =
-  Notification.Name("pushToAddPhotoViewController")
+    static let pushToAddPhotoViewController = Notification.Name("pushToAddPhotoViewController")
     static let selectedFilmAPI = Notification.Name("selectedFilmAPI")
+    static let selectedFilmIdAPI = Notification.Name("selectedFilmIdAPI")
 }

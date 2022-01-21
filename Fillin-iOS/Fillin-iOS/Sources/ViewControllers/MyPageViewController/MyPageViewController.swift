@@ -243,7 +243,7 @@ extension MyPageViewController {
   }
 }
 // MARK: - UICollectionView
-extension MyPageViewController : UICollectionViewDelegate {
+extension MyPageViewController: UICollectionViewDelegate {
   
 }
 

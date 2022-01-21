@@ -12,6 +12,7 @@ enum StudioMapService {
   case totalStudio
   case infoStudio(studioID: Int)
   case photoStudio(studioID: Int)
+  case searchStudio(keyword: String)
 }
 
 extension StudioMapService: TargetType {
@@ -28,6 +29,8 @@ extension StudioMapService: TargetType {
           return "/studio/detail/\(studioID)"
         case .photoStudio(let studioID):
           return "/photo/studio/\(studioID)"
+        case .searchStudio:
+          return "/studio/search"
         }
     }
     
@@ -38,6 +41,8 @@ extension StudioMapService: TargetType {
         case .infoStudio:
           return .get
         case .photoStudio:
+          return .get
+        case .searchStudio:
           return .get
         }
     }
@@ -54,6 +59,9 @@ extension StudioMapService: TargetType {
           return .requestPlain
         case .photoStudio:
           return .requestPlain
+        case .searchStudio(let keyword):
+          return .requestParameters(parameters: [
+            "keyword": keyword], encoding: URLEncoding.queryString)
         }
     }
     
@@ -64,6 +72,8 @@ extension StudioMapService: TargetType {
         case .infoStudio:
           return Const.Header.tokenHeader
         case .photoStudio:
+          return Const.Header.tokenHeader
+        case .searchStudio:
           return Const.Header.tokenHeader
         }
     }
