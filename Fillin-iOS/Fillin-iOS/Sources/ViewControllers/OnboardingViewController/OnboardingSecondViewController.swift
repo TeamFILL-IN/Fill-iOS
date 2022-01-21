@@ -146,6 +146,6 @@ extension OnboardingSecondViewController {
   }
   @objc func touchNextButton() {
     let onboarding3VC = OnboardingThirdViewController()
-    self.navigationController?.pushViewController(onboarding3VC, animated: true)
+    self.navigationController?.pushViewController(onboarding3VC, animated: false)
   }
 }
