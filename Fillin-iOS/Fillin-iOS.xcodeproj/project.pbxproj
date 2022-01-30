@@ -107,8 +107,8 @@
 		6F3B87E227968D3000A4BD07 /* StudioMapContentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F3B87DE27968D3000A4BD07 /* StudioMapContentViewController.xib */; };
 		6F8B71F92796F33A00F88EB3 /* StudioResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8B71F82796F33A00F88EB3 /* StudioResponse.swift */; };
 		6F8B72012797291300F88EB3 /* StudioInfoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8B72002797291300F88EB3 /* StudioInfoResponse.swift */; };
-		770CB4632799E550006004BB /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770CB4622799E550006004BB /* LoginResponse.swift */; };
 		6F9365872799856A0037557F /* StudioSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9365862799856A0037557F /* StudioSearchResponse.swift */; };
+		770CB4632799E550006004BB /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770CB4622799E550006004BB /* LoginResponse.swift */; };
 		775C965E278ACDE200A9BEA0 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 775C965D278ACDE200A9BEA0 /* .swiftlint.yml */; };
 		775C96AA278B2E1100A9BEA0 /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = 775C96A9278B2E1100A9BEA0 /* swiftgen.yml */; };
 		77B75C012799E2AB004302A1 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B75C002799E2AB004302A1 /* LoginRequest.swift */; };
@@ -229,8 +229,8 @@
 		6F3B87DE27968D3000A4BD07 /* StudioMapContentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StudioMapContentViewController.xib; sourceTree = "<group>"; };
 		6F8B71F82796F33A00F88EB3 /* StudioResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudioResponse.swift; sourceTree = "<group>"; };
 		6F8B72002797291300F88EB3 /* StudioInfoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudioInfoResponse.swift; sourceTree = "<group>"; };
-		770CB4622799E550006004BB /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		6F9365862799856A0037557F /* StudioSearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudioSearchResponse.swift; sourceTree = "<group>"; };
+		770CB4622799E550006004BB /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		775C9645278ACBEA00A9BEA0 /* Fillin-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fillin-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		775C965D278ACDE200A9BEA0 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		775C96A9278B2E1100A9BEA0 /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
@@ -1250,6 +1250,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1286,6 +1287,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -17,10 +17,6 @@ class MyPageViewController: UIViewController {
   let navigationBar = FilinNavigationBar()
   let mypageScrollview = UIScrollView()
   let mypageScrollContainverView = UIView()
-  //  let navigationBar : UIView = {
-  //    let view = FilinNavigationBar()
-  //    return view
-  //  }()
   let userImageview = UIImageView()
   let userNameLabel = UILabel()
   let userCameraIcon = UIButton()
@@ -301,7 +297,7 @@ extension MyPageViewController {
           // /3을 하게 되면 1,2개일 때는 제대로 나오지 않기 때문에 소수점 올림 해주기
           let photosCount = ceil(Double(photos.photos.count)/3)
           let intPhotosCount = Int(photosCount)
-          self.myphotoCollectionview.heightAnchor.constraint(equalToConstant: CGFloat((intPhotosCount*(Int(UIScreen.main.bounds.width)-36)/3 + 9))+30).isActive = true
+          self.myphotoCollectionview.heightAnchor.constraint(equalToConstant: CGFloat((intPhotosCount*(Int(UIScreen.main.bounds.width)-36)/3 + 9))+90).isActive = true
           self.myphotoCollectionview.reloadData()
         }
       case .requestErr(let message):
