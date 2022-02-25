@@ -98,14 +98,14 @@ extension StudioMapViewController {
     serverStudios?.studios.forEach {
       let marker = NMFMarker(position: NMGLatLng(lat: $0.lati, lng: $0.long))
       let markerInfo = Studio(id: $0.id, lati: $0.lati, long: $0.long)
-      marker.iconImage = NMFOverlayImage(image: Asset.icnPlaceBig.image)
+      marker.iconImage = NMFOverlayImage(image: Asset.icnStudio.image)
       
       marker.touchHandler = { [weak self] (overlay: NMFOverlay) -> Bool in
         // NotificationCenter.default.post(name: Notification.Name("StudioPhotoswithAPI"), object: nil)
         self?.markerState = 1
         self?.selectedMarker = marker
         self?.selectedMarkerInfo  = markerInfo
-        marker.iconImage = NMFOverlayImage(image: Asset.icnPlaceBig.image)
+        marker.iconImage = NMFOverlayImage(image: Asset.icnStudio.image)
         self?.setNotification()
         StudioMapViewController.selectedMarkerID = markerInfo.id
         self?.studioInfoWithAPI(studioID: markerInfo.id)
