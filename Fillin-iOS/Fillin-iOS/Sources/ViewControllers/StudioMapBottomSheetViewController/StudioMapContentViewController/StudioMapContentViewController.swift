@@ -127,7 +127,7 @@ class StudioMapContentViewController: UIViewController {
       $0.textColor = .grey1
       $0.lineBreakMode = .byCharWrapping
       $0.snp.makeConstraints {
-        $0.top.equalTo(self.studioScrollContainverView.snp.top).offset(25)
+        $0.top.equalTo(self.studioScrollContainverView.snp.top).offset(20)
         $0.leading.equalTo(self.studioScrollContainverView.snp.leading).offset(48)
         $0.trailing.equalTo(self.studioScrollContainverView.snp.trailing).offset(-25)
       }
@@ -200,7 +200,7 @@ class StudioMapContentViewController: UIViewController {
     studioScrollContainverView.add(locationImageView) {
       $0.image = Asset.icnPlaceSmall.image
       $0.snp.makeConstraints {
-        $0.top.equalTo(self.studioScrollContainverView.snp.top).offset(25)
+        $0.top.equalTo(self.studioScrollContainverView.snp.top).offset(20)
         $0.leading.equalTo(self.studioScrollContainverView.snp.leading).offset(18)
         $0.width.height.equalTo(22)
       }
@@ -250,7 +250,7 @@ class StudioMapContentViewController: UIViewController {
     studioScrollContainverView.add(seconddividerView) {
       $0.backgroundColor = .fillinBlack
       $0.snp.makeConstraints {
-        $0.top.equalTo(self.underlineView.snp.bottom).offset(18.5)
+        $0.top.equalTo(self.underlineView.snp.bottom).offset(19)
         $0.leading.equalTo(self.studioScrollContainverView.snp.leading)
         $0.trailing.equalTo(self.studioScrollContainverView.snp.trailing)
         $0.height.equalTo(2)
