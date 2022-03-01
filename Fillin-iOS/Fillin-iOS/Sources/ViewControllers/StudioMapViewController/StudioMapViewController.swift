@@ -78,8 +78,7 @@ extension StudioMapViewController {
       if self?.clickCount == 1 { /// 이미 마커가 클릭된 경우 (중복 클릭 허용안함)
         self?.clickCount = 0
         markertmp.iconImage = NMFOverlayImage(image: Asset.icnStudio.image)
-      }
-      else {
+      } else {
         self?.clickCount = 1
         markertmp.iconImage = NMFOverlayImage(image: Asset.icnStudioSelected.image)
       }
@@ -114,8 +113,7 @@ extension StudioMapViewController {
         if self?.clickCount == 1 { /// 이미 마커가 클릭된 경우 (중복 클릭 허용안함)
           self?.clickCount = 0
           marker.iconImage = NMFOverlayImage(image: Asset.icnStudio.image)
-        }
-        else {
+        } else {
           self?.clickCount = 1
           self?.selectedMarker = marker
           self?.selectedMarkerInfo  = markerInfo
