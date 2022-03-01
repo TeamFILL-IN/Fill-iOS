@@ -24,8 +24,8 @@ class StudioMapViewController: UIViewController {
   private let contentViewController: UIViewController
   private var bottomSheetViewTopConstraint: NSLayoutConstraint!
   var bottomSheetPanMinTopConstant: CGFloat = 50.0
-  var bottomHeight: CGFloat = 210
-  let defaultHeight: CGFloat = 210
+  var bottomHeight: CGFloat = 310 /// 바텀시트의 길이를 전체 비율로 나타낼 수 있는 방법 찾아보기
+  let defaultHeight: CGFloat = 310
   private lazy var bottomSheetPanStartingTopConstant: CGFloat = bottomSheetPanMinTopConstant
   
   let bottomSheetView: UIView = {
