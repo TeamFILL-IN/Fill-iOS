@@ -17,6 +17,7 @@ class FirstAddPhotoPopUpViewController: UIViewController {
   let dimmedBackView = UIView()
   let backgroundView = UIView()
   let explainLabel = UILabel()
+  let subExplainLabel = UILabel()
   let trashIcon = UIImageView()
   let buttonContainerView = UIView()
   let cancelButton = UIButton()
@@ -35,6 +36,7 @@ extension FirstAddPhotoPopUpViewController {
     layoutDimmedView()
     layoutBackgroundView()
     layoutExplainLabel()
+    layoutSubExplainLabel()
     layoutTrashIcon()
     layoutButtonContainerView()
     layoutCancelButton()
@@ -50,37 +52,48 @@ extension FirstAddPhotoPopUpViewController {
   }
   func layoutBackgroundView() {
     view.add(backgroundView) {
-      $0.backgroundColor = .darkGrey3
-      $0.setBorder(borderColor: .darkGrey1, borderWidth: 1)
+      $0.backgroundColor = .darkGrey2
+      $0.setBorder(borderColor: .darkGrey2, borderWidth: 1)
       $0.snp.makeConstraints {
-        $0.top.equalToSuperview().offset(256)
+        $0.top.equalToSuperview().offset(237)
         $0.centerX.equalToSuperview()
         $0.leading.equalToSuperview().offset(18)
-        $0.height.equalTo(300)
+        $0.height.equalTo(338)
       }
     }
   }
   func layoutExplainLabel() {
     backgroundView.add(explainLabel) {
-      $0.setupLabel(text: "사진추가를 취소할까요?\n입력하신 정보가 모두 삭제됩니다.",
+      $0.setupLabel(text: "사진추가를 취소하고 나갈까요?",
                     color: .white,
                     font: .body3)
-      $0.textAlignment = .center
-      $0.numberOfLines = 2
       $0.snp.makeConstraints {
-        $0.top.equalTo(self.backgroundView.snp.top).offset(44)
+        $0.top.equalTo(self.backgroundView.snp.top).offset(56)
         $0.centerX.equalTo(self.backgroundView.snp.centerX)
+      }
+    }
+  }
+  func layoutSubExplainLabel() {
+    backgroundView.add(subExplainLabel) {
+      $0.setupLabel(text: "지금까지 입력된 정보들이\n저장되지 않고 모두 사라져요.",
+                    color: .grey2,
+                    font: .body2)
+      $0.numberOfLines = 2
+      $0.textAlignment = .center
+      $0.snp.makeConstraints {
+        $0.top.equalTo(self.explainLabel.snp.bottom).offset(12)
+        $0.centerX.equalToSuperview()
       }
     }
   }
   func layoutTrashIcon() {
     backgroundView.add(trashIcon) {
-      $0.image = UIImage(asset: Asset.imgTrash)
+      $0.image = UIImage(asset: Asset.imgtrashRed)
       $0.snp.makeConstraints {
-        $0.top.equalTo(self.explainLabel.snp.bottom).offset(26)
+        $0.top.equalTo(self.subExplainLabel.snp.bottom).offset(24)
         $0.centerX.equalTo(self.backgroundView.snp.centerX)
-        $0.width.equalTo(90)
-        $0.height.equalTo(90)
+        $0.width.equalTo(59)
+        $0.height.equalTo(78)
       }
     }
   }
@@ -89,15 +102,15 @@ extension FirstAddPhotoPopUpViewController {
       $0.backgroundColor = .clear
       $0.snp.makeConstraints {
         $0.leading.trailing.bottom.equalToSuperview()
-        $0.height.equalTo(60)
+        $0.height.equalTo(64)
       }
     }
   }
   func layoutCancelButton() {
     buttonContainerView.add(cancelButton) {
-      $0.setupButton(title: "취소하기",
-                     color: .grey3,
-                     font: .subhead3,
+      $0.setupButton(title: "나가기",
+                     color: .grey2,
+                     font: .body3,
                      backgroundColor: .darkGrey2,
                      state: .normal,
                      radius: 0)
@@ -105,22 +118,23 @@ extension FirstAddPhotoPopUpViewController {
       $0.addTarget(self, action: #selector(self.touchCancelButton), for: .touchUpInside)
       $0.snp.makeConstraints {
         $0.top.leading.bottom.equalToSuperview()
-        $0.width.equalTo((UIScreen.main.bounds.width-36)*0.4)
+        $0.trailing.equalTo(self.buttonContainerView.snp.centerX)
       }
     }
   }
   func layoutContinueButton() {
     buttonContainerView.add(continueButton) {
       $0.setupButton(title: "이어서 추가하기",
-                     color: .fillinBlack,
-                     font: .subhead3,
-                     backgroundColor: .fillinRed,
+                     color: .fillinWhite,
+                     font: .body3,
+                     backgroundColor: .clear,
                      state: .normal,
                      radius: 0)
+      $0.setBorder(borderColor: .darkGrey1, borderWidth: 1)
       $0.addTarget(self, action: #selector(self.touchContinueButton), for: .touchUpInside)
       $0.snp.makeConstraints {
         $0.top.trailing.bottom.equalToSuperview()
-        $0.width.equalTo((UIScreen.main.bounds.width-36)*0.6)
+        $0.leading.equalTo(self.buttonContainerView.snp.centerX)
       }
     }
   }
