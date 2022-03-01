@@ -72,7 +72,7 @@ class StudioMapContentViewController: UIViewController {
       $0.showsVerticalScrollIndicator = false
       $0.isScrollEnabled = false
       $0.snp.makeConstraints {
-        $0.top.equalTo(self.view.snp.top).offset(29)
+        $0.top.equalTo(self.view.snp.top).offset(80)
         $0.centerX.leading.trailing.bottom.equalToSuperview()
       }
     }
@@ -88,28 +88,28 @@ class StudioMapContentViewController: UIViewController {
       }
     }
     // Label
-    studioScrollContainverView.add(studioLabel) {
+    view.add(studioLabel) {
       $0.text = StudioMapViewController.name
       $0.textColor = .white
       $0.font = .headline
       $0.snp.makeConstraints {
-        $0.top.equalTo(self.studioScrollContainverView.snp.top)
-        $0.leading.equalTo(self.studioScrollContainverView.snp.leading).offset(18)
-        $0.trailing.equalTo(self.studioScrollContainverView.snp.trailing).offset(30)
+        $0.top.equalTo(self.view.snp.top).offset(37)
+        $0.leading.equalTo(self.view.snp.leading).offset(18)
+        $0.trailing.equalTo(self.view.snp.trailing).offset(30)
       }
     }
-    studioScrollContainverView.add(scrapButton) {
+    view.add(scrapButton) {
       $0.setImage(Asset.btnScrap.image, for: .normal)
       $0.snp.makeConstraints {
-        $0.top.equalTo(self.studioScrollContainverView.snp.top)
-        $0.trailing.equalTo(self.studioScrollContainverView.snp.trailing).offset(-18)
+        $0.top.equalTo(self.view.snp.top).offset(36)
+        $0.trailing.equalTo(self.view.snp.trailing).offset(-18)
         $0.width.height.equalTo(32)
       }
     }
     studioScrollContainverView.add(firstdividerView) {
       $0.backgroundColor = .darkGrey3
       $0.snp.makeConstraints {
-        $0.top.equalTo(self.studioLabel.snp.bottom).offset(12)
+        $0.top.equalTo(self.studioScrollContainverView.snp.top)
         $0.leading.equalTo(self.studioScrollContainverView.snp.leading)
         $0.trailing.equalTo(self.studioScrollContainverView.snp.trailing)
         $0.height.equalTo(2)
@@ -127,7 +127,7 @@ class StudioMapContentViewController: UIViewController {
       $0.textColor = .grey1
       $0.lineBreakMode = .byCharWrapping
       $0.snp.makeConstraints {
-        $0.top.equalTo(self.studioLabel.snp.bottom).offset(25)
+        $0.top.equalTo(self.studioScrollContainverView.snp.top).offset(25)
         $0.leading.equalTo(self.studioScrollContainverView.snp.leading).offset(48)
         $0.trailing.equalTo(self.studioScrollContainverView.snp.trailing).offset(-25)
       }
@@ -200,7 +200,7 @@ class StudioMapContentViewController: UIViewController {
     studioScrollContainverView.add(locationImageView) {
       $0.image = Asset.icnPlaceSmall.image
       $0.snp.makeConstraints {
-        $0.top.equalTo(self.studioLabel.snp.bottom).offset(25)
+        $0.top.equalTo(self.studioScrollContainverView.snp.top).offset(25)
         $0.leading.equalTo(self.studioScrollContainverView.snp.leading).offset(18)
         $0.width.height.equalTo(22)
       }
