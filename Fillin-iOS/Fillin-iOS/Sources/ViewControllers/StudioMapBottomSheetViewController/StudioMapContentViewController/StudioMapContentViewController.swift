@@ -181,8 +181,6 @@ class StudioMapContentViewController: UIViewController {
       }
     }
     studioScrollContainverView.add(linkButton) {
-      $0.setTitle("웹사이트로 이동", for: .normal)
-      $0.setTitleColor(.fillinRed, for: .normal)
       $0.titleLabel?.font =  .body1
       $0.snp.makeConstraints {
         $0.top.equalTo(self.priceLabel.snp.bottom).offset(18)
@@ -190,9 +188,11 @@ class StudioMapContentViewController: UIViewController {
         $0.height.equalTo(18)
       }
       if StudioMapViewController.site == nil {
-        print("등록된 사이트 없음")
-        self.linkButton.addTarget(self, action: #selector(self.touchNoSiteLinkButton), for: .touchUpInside)
+        $0.setTitle("웹사이트가 없습니다 ", for: .normal)
+        $0.setTitleColor(.grey4, for: .normal)
       } else {
+        $0.setTitle("웹사이트로 이동", for: .normal)
+        $0.setTitleColor(.fillinRed, for: .normal)
         self.linkButton.addTarget(self, action: #selector(self.touchLinkButton), for: .touchUpInside)
       }
     }
@@ -239,12 +239,21 @@ class StudioMapContentViewController: UIViewController {
     }
   
     studioScrollContainverView.add(underlineView) {
-      $0.backgroundColor = .fillinRed
       $0.snp.makeConstraints {
         $0.top.equalTo(self.linkButton.snp.bottom).offset(2.5)
         $0.leading.equalTo(self.linkButton.snp.leading)
-        $0.width.equalTo(80)
         $0.height.equalTo(1)
+      }
+      if StudioMapViewController.site == nil {
+        $0.backgroundColor = .grey4
+        $0.snp.makeConstraints {
+          $0.width.equalTo(106)
+        }
+      } else {
+        $0.backgroundColor = .fillinRed
+        $0.snp.makeConstraints {
+          $0.width.equalTo(80)
+        }
       }
     }
     studioScrollContainverView.add(seconddividerView) {
@@ -283,13 +292,6 @@ class StudioMapContentViewController: UIViewController {
     let studioUrl = NSURL(string: StudioMapViewController.site ?? "none site")
     let studioSafariView: SFSafariViewController = SFSafariViewController(url: studioUrl! as URL)
     self.present(studioSafariView, animated: true, completion: nil)
-  }
-  
-  @objc func touchNoSiteLinkButton() {
-    let alert = UIAlertController(title: "사이트 미등록", message: "해당 현상소의 등록된 사이트가 없습니다.", preferredStyle: UIAlertController.Style.alert)
-    let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-    alert.addAction(okAction)
-    present(alert, animated: false, completion: nil)
   }
   
   @objc func notiStudioPhotoswithAPI(_ notification: Notification) {
