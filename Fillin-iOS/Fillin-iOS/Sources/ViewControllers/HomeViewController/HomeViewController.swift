@@ -109,7 +109,7 @@ extension HomeViewController: UITableViewDataSource {
             }
             
             tabBarCell.pushToStudioMapViewController = {
-                self.navigationController?.pushViewController(StudioMapViewController(), animated: true)
+              self.navigationController?.pushViewController(StudioMapViewController(contentViewController: StudioMapContentViewController()), animated: true)
             }
             
             tabBarCell.pushToMyPageViewController = {
@@ -143,12 +143,11 @@ extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 2 :
-            self.navigationController?.pushViewController(StudioMapViewController(), animated: true)
+          self.navigationController?.pushViewController(StudioMapViewController(contentViewController: StudioMapContentViewController()), animated: true)
         default:
             return 
         }
     }
-    
 }
 
 // MARK: - Network

@@ -15,6 +15,34 @@ import MapKit
 
 class StudioMapViewController: UIViewController {
   
+  // MARK: - Properties (BottomSheet)
+  enum BottomSheetViewState {
+    case expanded
+    case normal
+  }
+  
+  private let contentViewController: UIViewController
+  private var bottomSheetViewTopConstraint: NSLayoutConstraint!
+  var bottomSheetPanMinTopConstant: CGFloat = 50.0
+  var bottomHeight: CGFloat = 210
+  let defaultHeight: CGFloat = 210
+  private lazy var bottomSheetPanStartingTopConstant: CGFloat = bottomSheetPanMinTopConstant
+  
+  let bottomSheetView: UIView = {
+    let view = UIView()
+    view.backgroundColor = .darkGrey2
+    
+    return view
+  }()
+  
+  private let dismissIndicatorView: UIView = {
+    let view = UIView()
+    view.backgroundColor = .darkGrey1
+    view.layer.cornerRadius = 3
+    
+    return view
+  }()
+  
   // MARK: - Properties
   static var name: String?
   static var address: String?
@@ -60,7 +88,24 @@ class StudioMapViewController: UIViewController {
     layoutNavigaionBar()
     totalStudioWithAPI()
     setLatLngNotification()
-    showtmpStudioMarker() ///서버 부활될 때 까지 현상소 표시할 임시 함수
+    showtmpStudioMarker()
+    setupBottomSheetUI()
+    setupBottomSheetGestureRecognizer()
+    getBottomSheetInfo()
+  }
+  
+  override func viewDidAppear(_ animated: Bool) {
+    getBottomSheetInfo()
+  }
+  
+  // MARK: - init
+  init(contentViewController: UIViewController) {
+    self.contentViewController = contentViewController
+    super.init(nibName: nil, bundle: nil)
+  }
+  
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
   }
 }
 
@@ -78,9 +123,11 @@ extension StudioMapViewController {
       if self?.clickCount == 1 { /// 이미 마커가 클릭된 경우 (중복 클릭 허용안함)
         self?.clickCount = 0
         markertmp.iconImage = NMFOverlayImage(image: Asset.icnStudio.image)
+        self?.hideBottomSheetAndGoBack()
       } else {
         self?.clickCount = 1
         markertmp.iconImage = NMFOverlayImage(image: Asset.icnStudioSelected.image)
+        self?.showBottomSheet()
       }
       return true
     }
@@ -112,6 +159,7 @@ extension StudioMapViewController {
       marker.touchHandler = { [weak self] (overlay: NMFOverlay) -> Bool in
         if self?.clickCount == 1 { /// 이미 마커가 클릭된 경우 (중복 클릭 허용안함)
           self?.clickCount = 0
+          self?.hideBottomSheetAndGoBack()
           marker.iconImage = NMFOverlayImage(image: Asset.icnStudio.image)
         } else {
           self?.clickCount = 1
@@ -126,18 +174,20 @@ extension StudioMapViewController {
     }
   }
   
-  func presentBottomSheetAfterInfo() {
-    StudioMapViewController.name = self.serverStudioInfo?.studio.name
-    StudioMapViewController.address = self.serverStudioInfo?.studio.address
-    StudioMapViewController.time = self.serverStudioInfo?.studio.time
-    StudioMapViewController.tel = self.serverStudioInfo?.studio.tel
-    StudioMapViewController.price = self.serverStudioInfo?.studio.price
-    StudioMapViewController.site = self.serverStudioInfo?.studio.site
+  func getBottomSheetInfo() {
+    StudioMapViewController.name = "필린 현상소"
+    StudioMapViewController.address = "솝트시 앱잼구 필린동 아요로 12번길 13"
+    StudioMapViewController.time = "open 10:00-21:00"
+    StudioMapViewController.tel = "010-1234-5678"
+    StudioMapViewController.price = "컬러 5000원"
+    StudioMapViewController.site = ""
     
-    let nextVC = StudioMapBottomSheetViewController(contentViewController: StudioMapContentViewController())
-    nextVC.modalPresentationStyle = .overCurrentContext
-    nextVC.modalTransitionStyle = .crossDissolve
-    self.present(nextVC, animated: false, completion: nil)
+//    StudioMapViewController.name = self.serverStudioInfo?.studio.name
+//    StudioMapViewController.address = self.serverStudioInfo?.studio.address
+//    StudioMapViewController.time = self.serverStudioInfo?.studio.time
+//    StudioMapViewController.tel = self.serverStudioInfo?.studio.tel
+//    StudioMapViewController.price = self.serverStudioInfo?.studio.price
+//    StudioMapViewController.site = self.serverStudioInfo?.studio.site
   }
   
   private func setUpNavigationBar() {
@@ -199,6 +249,7 @@ extension StudioMapViewController {
     NotificationCenter.default.addObserver(self, selector: #selector(getLatLng(_:)), name: Notification.Name("GetLatLng"), object: nil)
   }
   
+  // MARK: - @objc
   @objc func getLatLng(_ notification: Notification) {
     let selectedStudioId = notification.object as? Int ?? 0
     studioInfoWithAPI(studioID: selectedStudioId)
@@ -214,11 +265,11 @@ extension StudioMapViewController {
     self.present(newVC, animated: true, completion: nil)
   }
   
-//  @objc func changeMarkerObserver(_ notification: Notification) {
-//    selectedMarker?.iconImage = NMFOverlayImage(image: Asset.icnPlaceBig.image)
-//    selectedMarker = nil
-//    clickCount = 0
-//  }
+  @objc func changeMarkerObserver(_ notification: Notification) {
+    selectedMarker?.iconImage = NMFOverlayImage(image: Asset.icnPlaceBig.image)
+    selectedMarker = nil
+    clickCount = 0
+  }
 
   @objc func touchLocationButton(_ sender: UIButton) {
     sender.isSelected = !sender.isSelected
@@ -243,7 +294,7 @@ extension UITextField {
   }
 }
 
-// MARK: - Extension
+// MARK: - Extension - CLLocationManagerDelegate
 extension StudioMapViewController: CLLocationManagerDelegate {
   
   func getLocationUsagePermission() {
@@ -267,9 +318,11 @@ extension StudioMapViewController: CLLocationManagerDelegate {
   }
 }
 
+// MARK: - Extension - NMFMapBiewTouchDelegate
 extension StudioMapViewController: NMFMapViewTouchDelegate {
 }
 
+// MARK: - Extension - Network
 extension StudioMapViewController {
   func totalStudioWithAPI() {
     StudioMapAPI.shared.totalStudio { response in
@@ -292,7 +345,6 @@ extension StudioMapViewController {
   }
 }
 
-// MARK: - Network
 extension StudioMapViewController {
   func studioInfoWithAPI(studioID: Int) {
     StudioMapAPI.shared.infoStudio(studioID: studioID) { response in
@@ -306,7 +358,7 @@ extension StudioMapViewController {
           let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: StudioMapViewController.lati ?? 0, lng: StudioMapViewController.long ?? 0))
           self.mapView.mapView.moveCamera(cameraUpdate)
           NotificationCenter.default.post(name: Notification.Name("StudioPhotoswithAPI"), object: nil)
-          self.presentBottomSheetAfterInfo()
+          self.showBottomSheet()
         }
       case .requestErr(let message):
         print("studioInfoWithAPI - requestErr: \(message)")
@@ -317,6 +369,144 @@ extension StudioMapViewController {
       case .networkFail:
         print("studioInfoWithAPI - networkFail")
       }
+    }
+  }
+}
+
+// MARK: - Extension - BottomSheet
+extension StudioMapViewController {
+
+  private func setupBottomSheetUI() {
+    addChild(contentViewController)
+    bottomSheetView.addSubview(contentViewController.view)
+    contentViewController.didMove(toParent: self)
+    view.addSubviews([bottomSheetView, dismissIndicatorView])
+
+    let viewPan = UIPanGestureRecognizer(target: self, action: #selector(viewPanned(_:)))
+    
+    viewPan.delaysTouchesBegan = false
+    viewPan.delaysTouchesEnded = false
+    view.addGestureRecognizer(viewPan)
+    
+    setupBottomSheetLayout()
+  }
+  
+  private func setupBottomSheetGestureRecognizer() {
+    let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(panGesture))
+    swipeGesture.direction = .down
+    view.addGestureRecognizer(swipeGesture)
+  }
+  
+  private func setupBottomSheetLayout() {
+    contentViewController.view.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      contentViewController.view.topAnchor.constraint(equalTo: bottomSheetView.topAnchor),
+      contentViewController.view.leadingAnchor.constraint(equalTo: bottomSheetView.leadingAnchor),
+      contentViewController.view.trailingAnchor.constraint(equalTo: bottomSheetView.trailingAnchor),
+      contentViewController.view.bottomAnchor.constraint(equalTo: bottomSheetView.bottomAnchor)
+    ])
+    
+    bottomSheetView.translatesAutoresizingMaskIntoConstraints = false
+    let topConstant = view.safeAreaInsets.bottom + view.safeAreaLayoutGuide.layoutFrame.height
+    bottomSheetViewTopConstraint = bottomSheetView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: topConstant)
+    NSLayoutConstraint.activate([
+      bottomSheetView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+      bottomSheetView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+      bottomSheetView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+      bottomSheetViewTopConstraint
+    ])
+    
+    dismissIndicatorView.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      dismissIndicatorView.widthAnchor.constraint(equalToConstant: 40),
+      dismissIndicatorView.heightAnchor.constraint(equalToConstant: 3),
+      dismissIndicatorView.topAnchor.constraint(equalTo: bottomSheetView.topAnchor, constant: 12),
+      dismissIndicatorView.centerXAnchor.constraint(equalTo: bottomSheetView.centerXAnchor)
+    ])
+  }
+  
+  private func showBottomSheet(atState: BottomSheetViewState = .normal) {
+    getBottomSheetInfo()
+    if atState == .normal {
+      let safeAreaHeight: CGFloat = view.safeAreaLayoutGuide.layoutFrame.height
+      let bottomPadding: CGFloat = view.safeAreaInsets.bottom
+      bottomSheetViewTopConstraint.constant = (safeAreaHeight + bottomPadding) - defaultHeight
+    } else {
+      changeScrollEnabled()
+      bottomSheetViewTopConstraint.constant = bottomSheetPanMinTopConstant
+    }
+    UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseIn, animations: {
+      self.view.layoutIfNeeded()
+    }, completion: nil)
+  }
+  
+  func hideBottomSheetAndGoBack() {
+    let safeAreaHeight = view.safeAreaLayoutGuide.layoutFrame.height
+    let bottomPadding = view.safeAreaInsets.bottom
+    bottomSheetViewTopConstraint.constant = safeAreaHeight + bottomPadding
+    UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
+      self.view.layoutIfNeeded()
+    })
+  }
+
+  func nearest(to number: CGFloat, inValues values: [CGFloat]) -> CGFloat {
+    guard let nearestVal = values.min(by: { abs(number - $0) < abs(number - $1) })
+    else { return number }
+    return nearestVal
+  }
+  
+  func setNotification() {
+    NotificationCenter.default.post(name: NSNotification.Name.changeMarker, object: nil, userInfo: nil)
+  }
+
+  func changeScrollEnabled() {
+    let contentVC = children.first as? StudioMapContentViewController
+    contentVC?.studioScrollview.isScrollEnabled = true
+  }
+  
+  // MARK: - @objc
+  @objc func panGesture(_ recognizer: UISwipeGestureRecognizer) {
+    if recognizer.state == .ended {
+      switch recognizer.direction {
+      case .down:
+        hideBottomSheetAndGoBack()
+      default:
+        break
+      }
+    }
+  }
+  
+  @objc private func viewPanned(_ panGestureRecognizer: UIPanGestureRecognizer) {
+    let translation = panGestureRecognizer.translation(in: self.view)
+    let velocity = panGestureRecognizer.velocity(in: view)
+    
+    switch panGestureRecognizer.state {
+    case .began:
+      bottomSheetPanStartingTopConstant = bottomSheetViewTopConstraint.constant
+    case .changed:
+      if bottomSheetPanStartingTopConstant + translation.y > bottomSheetPanMinTopConstant {
+        bottomSheetViewTopConstraint.constant = bottomSheetPanStartingTopConstant + translation.y
+      }
+    case .ended:
+      if velocity.y > 1500 {
+        setNotification()
+        hideBottomSheetAndGoBack()
+        return
+      }
+      let safeAreaHeight = view.safeAreaLayoutGuide.layoutFrame.height
+      let bottomPadding = view.safeAreaInsets.bottom
+      let defaultPadding = safeAreaHeight + bottomPadding - defaultHeight
+      let nearestValue = nearest(to: bottomSheetViewTopConstraint.constant, inValues: [bottomSheetPanMinTopConstant + 200, defaultPadding, safeAreaHeight + bottomPadding])
+      if nearestValue == bottomSheetPanMinTopConstant + 200 {
+        showBottomSheet(atState: .expanded)
+      } else if nearestValue == defaultPadding {
+        showBottomSheet(atState: .normal)
+      } else {
+        setNotification()
+        hideBottomSheetAndGoBack()
+      }
+    default:
+      break
     }
   }
 }
