@@ -51,9 +51,6 @@
 		6F3B879927968AEB00A4BD07 /* StudioMapSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3B871E27968AEB00A4BD07 /* StudioMapSearchTableViewCell.swift */; };
 		6F3B879A27968AEB00A4BD07 /* StudioMapSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F3B871F27968AEB00A4BD07 /* StudioMapSearchViewController.xib */; };
 		6F3B879B27968AEB00A4BD07 /* StudioMapSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3B872027968AEB00A4BD07 /* StudioMapSearchViewController.swift */; };
-		6F3B879C27968AEB00A4BD07 /* OnboardingFirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3B872227968AEB00A4BD07 /* OnboardingFirstViewController.swift */; };
-		6F3B879D27968AEB00A4BD07 /* OnboardingThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3B872327968AEB00A4BD07 /* OnboardingThirdViewController.swift */; };
-		6F3B879E27968AEB00A4BD07 /* OnboardingSecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3B872427968AEB00A4BD07 /* OnboardingSecondViewController.swift */; };
 		6F3B879F27968AEB00A4BD07 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3B872627968AEB00A4BD07 /* SplashViewController.swift */; };
 		6F3B87A027968AEB00A4BD07 /* SplashViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F3B872727968AEB00A4BD07 /* SplashViewController.xib */; };
 		6F3B87A127968AEB00A4BD07 /* MyPagePhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3B872927968AEB00A4BD07 /* MyPagePhotoCollectionViewCell.swift */; };
@@ -174,9 +171,6 @@
 		6F3B871E27968AEB00A4BD07 /* StudioMapSearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudioMapSearchTableViewCell.swift; sourceTree = "<group>"; };
 		6F3B871F27968AEB00A4BD07 /* StudioMapSearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StudioMapSearchViewController.xib; sourceTree = "<group>"; };
 		6F3B872027968AEB00A4BD07 /* StudioMapSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudioMapSearchViewController.swift; sourceTree = "<group>"; };
-		6F3B872227968AEB00A4BD07 /* OnboardingFirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingFirstViewController.swift; sourceTree = "<group>"; };
-		6F3B872327968AEB00A4BD07 /* OnboardingThirdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingThirdViewController.swift; sourceTree = "<group>"; };
-		6F3B872427968AEB00A4BD07 /* OnboardingSecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingSecondViewController.swift; sourceTree = "<group>"; };
 		6F3B872627968AEB00A4BD07 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		6F3B872727968AEB00A4BD07 /* SplashViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SplashViewController.xib; sourceTree = "<group>"; };
 		6F3B872927968AEB00A4BD07 /* MyPagePhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPagePhotoCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -513,9 +507,6 @@
 			children = (
 				E89934FB27CD2BB200DCB1A8 /* Cell */,
 				E89934F827CD2A9C00DCB1A8 /* DataModel */,
-				6F3B872227968AEB00A4BD07 /* OnboardingFirstViewController.swift */,
-				6F3B872327968AEB00A4BD07 /* OnboardingThirdViewController.swift */,
-				6F3B872427968AEB00A4BD07 /* OnboardingSecondViewController.swift */,
 				E89934F627CD1EDE00DCB1A8 /* OnboardingViewController.swift */,
 			);
 			path = OnboardingViewController;
@@ -1043,7 +1034,6 @@
 				6F3B879627968AEB00A4BD07 /* FilmRollService.swift in Sources */,
 				6F3B87CD27968AEB00A4BD07 /* FillinNavigationBar.swift in Sources */,
 				6F3B87C527968AEB00A4BD07 /* ArrowCollectionViewCell.swift in Sources */,
-				6F3B879E27968AEB00A4BD07 /* OnboardingSecondViewController.swift in Sources */,
 				6F8B71F92796F33A00F88EB3 /* StudioResponse.swift in Sources */,
 				6F3B877A27968AEB00A4BD07 /* UILabel+Extension.swift in Sources */,
 				6F3B87AF27968AEB00A4BD07 /* FilmRollViewController+DataSource.swift in Sources */,
@@ -1061,7 +1051,6 @@
 				6F3B879727968AEB00A4BD07 /* FilmRollAPI.swift in Sources */,
 				6F9365872799856A0037557F /* StudioSearchResponse.swift in Sources */,
 				6F3B877727968AEB00A4BD07 /* UIImageView+Extension.swift in Sources */,
-				6F3B879C27968AEB00A4BD07 /* OnboardingFirstViewController.swift in Sources */,
 				6F3B878E27968AEB00A4BD07 /* UserService.swift in Sources */,
 				6F3B87A927968AEB00A4BD07 /* SecondAddPhotoPopUpViewController.swift in Sources */,
 				77EB4215279736F700C726D8 /* FilmSelectViewController.swift in Sources */,
@@ -1120,7 +1109,6 @@
 				6F3B87C827968AEB00A4BD07 /* MapTableViewCell.swift in Sources */,
 				6F3B87E127968D3000A4BD07 /* StudioMapCollectionViewCell.swift in Sources */,
 				6F3B87C927968AEB00A4BD07 /* WelcomeTableViewCell.swift in Sources */,
-				6F3B879D27968AEB00A4BD07 /* OnboardingThirdViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
