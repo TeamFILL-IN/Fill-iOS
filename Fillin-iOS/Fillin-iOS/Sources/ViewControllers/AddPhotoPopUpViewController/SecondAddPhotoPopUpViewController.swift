@@ -47,7 +47,7 @@ extension SecondAddPhotoPopUpViewController {
   }
   func layoutBackgroundView() {
     view.add(backgroundView) {
-      $0.backgroundColor = .darkGrey3
+      $0.backgroundColor = .darkGrey2
       $0.setBorder(borderColor: .darkGrey1, borderWidth: 1)
       $0.snp.makeConstraints {
         $0.top.equalToSuperview().offset(256)
