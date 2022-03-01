@@ -45,7 +45,7 @@ class StudioMapViewController: UIViewController {
     $0.setPlaceHolder()
     $0.addLeftPadding()
   }
-  var markerState = 0
+  var clickCount = 0
   var locationManager = CLLocationManager()
   let navigationBar = FilinNavigationBar()
   
@@ -58,20 +58,35 @@ class StudioMapViewController: UIViewController {
     layoutMyLocationButton()
     layoutSearchView()
     layoutNavigaionBar()
-    showNaverMarker()
     totalStudioWithAPI()
-    setNotification()
     setLatLngNotification()
+    showtmpStudioMarker() ///서버 부활될 때 까지 현상소 표시할 임시 함수
   }
 }
 
 // MARK: - Extensions
 extension StudioMapViewController {
   
-  func setNotification() {
-    NotificationCenter.default.addObserver(self, selector: #selector(changeMarkerObserver(_:)), name: NSNotification.Name.changeMarker, object: nil)
+  /// 서버 부활되기 전까지 현상소 관련 기능 테스트할 임시 함수 (네이버 그린팩토리에 현상소 표시해줌)
+  func showtmpStudioMarker() {
+    let markertmp = NMFMarker(position: NMGLatLng(lat: 37.35940010181669, lng: 127.10475679570187))
+    markertmp.iconImage = NMFOverlayImage(image: Asset.icnStudio.image)
+    markertmp.mapView = self.mapView.mapView
+    
+    /// 클릭 시 이벤트 설정
+    markertmp.touchHandler = { [weak self] (overlay: NMFOverlay) -> Bool in
+      if self?.clickCount == 1 { /// 이미 마커가 클릭된 경우 (중복 클릭 허용안함)
+        self?.clickCount = 0
+        markertmp.iconImage = NMFOverlayImage(image: Asset.icnStudio.image)
+      }
+      else {
+        self?.clickCount = 1
+        markertmp.iconImage = NMFOverlayImage(image: Asset.icnStudioSelected.image)
+      }
+      return true
+    }
   }
-  
+    
   private func setUpMapView() {
     view.addSubview(mapView)
     let locationOverlay = mapView.mapView.locationOverlay
@@ -86,11 +101,6 @@ extension StudioMapViewController {
     locationManager.delegate = self
     self.locationManager.requestWhenInUseAuthorization()
   }
-  
-  func showNaverMarker() {
-    let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: 37.35940010181669, lng: 127.10475679570187))
-    mapView.mapView.moveCamera(cameraUpdate)
-  }
 
   private func setUpMarkerInfo() {
     self.mapView.mapView.touchDelegate = self
@@ -101,14 +111,17 @@ extension StudioMapViewController {
       marker.iconImage = NMFOverlayImage(image: Asset.icnStudio.image)
       
       marker.touchHandler = { [weak self] (overlay: NMFOverlay) -> Bool in
-        // NotificationCenter.default.post(name: Notification.Name("StudioPhotoswithAPI"), object: nil)
-        self?.markerState = 1
-        self?.selectedMarker = marker
-        self?.selectedMarkerInfo  = markerInfo
-        marker.iconImage = NMFOverlayImage(image: Asset.icnStudio.image)
-        self?.setNotification()
-        StudioMapViewController.selectedMarkerID = markerInfo.id
-        self?.studioInfoWithAPI(studioID: markerInfo.id)
+        if self?.clickCount == 1 { /// 이미 마커가 클릭된 경우 (중복 클릭 허용안함)
+          self?.clickCount = 0
+          marker.iconImage = NMFOverlayImage(image: Asset.icnStudio.image)
+        }
+        else {
+          self?.clickCount = 1
+          self?.selectedMarker = marker
+          self?.selectedMarkerInfo  = markerInfo
+          StudioMapViewController.selectedMarkerID = markerInfo.id
+          self?.studioInfoWithAPI(studioID: markerInfo.id)
+        }
         return true
       }
       marker.mapView = self.mapView.mapView
@@ -203,11 +216,11 @@ extension StudioMapViewController {
     self.present(newVC, animated: true, completion: nil)
   }
   
-  @objc func changeMarkerObserver(_ notification: Notification) {
-    selectedMarker?.iconImage = NMFOverlayImage(image: Asset.icnPlaceBig.image)
-    selectedMarker = nil
-    markerState = 0
-  }
+//  @objc func changeMarkerObserver(_ notification: Notification) {
+//    selectedMarker?.iconImage = NMFOverlayImage(image: Asset.icnPlaceBig.image)
+//    selectedMarker = nil
+//    clickCount = 0
+//  }
 
   @objc func touchLocationButton(_ sender: UIButton) {
     sender.isSelected = !sender.isSelected
