@@ -357,7 +357,7 @@ extension StudioMapViewController {
     
           let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: StudioMapViewController.lati ?? 0, lng: StudioMapViewController.long ?? 0))
           self.mapView.mapView.moveCamera(cameraUpdate)
-          NotificationCenter.default.post(name: Notification.Name("StudioPhotoswithAPI"), object: nil)
+          NotificationCenter.default.post(name: Notification.Name.studioPhotoswithAPI, object: nil)
           self.showBottomSheet()
         }
       case .requestErr(let message):
