@@ -24,8 +24,8 @@ class StudioMapViewController: UIViewController {
   private let contentViewController: UIViewController
   private var bottomSheetViewTopConstraint: NSLayoutConstraint!
   var bottomSheetPanMinTopConstant: CGFloat = 50.0
-  var bottomHeight: CGFloat = 210
-  let defaultHeight: CGFloat = 210
+  var bottomHeight: CGFloat = UIScreen.main.bounds.size.height*(3/7)
+  let defaultHeight: CGFloat = UIScreen.main.bounds.size.height*(3/7)
   private lazy var bottomSheetPanStartingTopConstant: CGFloat = bottomSheetPanMinTopConstant
   
   let bottomSheetView: UIView = {
@@ -428,6 +428,7 @@ extension StudioMapViewController {
   private func showBottomSheet(atState: BottomSheetViewState = .normal) {
     getBottomSheetInfo()
     if atState == .normal {
+      changeScrollDisabled()
       let safeAreaHeight: CGFloat = view.safeAreaLayoutGuide.layoutFrame.height
       let bottomPadding: CGFloat = view.safeAreaInsets.bottom
       bottomSheetViewTopConstraint.constant = (safeAreaHeight + bottomPadding) - defaultHeight
@@ -462,6 +463,11 @@ extension StudioMapViewController {
   func changeScrollEnabled() {
     let contentVC = children.first as? StudioMapContentViewController
     contentVC?.studioScrollview.isScrollEnabled = true
+  }
+  
+  func changeScrollDisabled() {
+    let contentVC = children.first as? StudioMapContentViewController
+    contentVC?.studioScrollview.isScrollEnabled = false
   }
   
   // MARK: - @objc
