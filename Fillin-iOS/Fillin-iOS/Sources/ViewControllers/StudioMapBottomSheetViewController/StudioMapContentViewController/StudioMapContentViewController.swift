@@ -64,6 +64,7 @@ class StudioMapContentViewController: UIViewController {
   }
   
   func setupUI() {
+    view.backgroundColor = .clear
     // 스크롤뷰
     view.add(studioScrollview) {
       $0.backgroundColor = .clear
@@ -106,7 +107,7 @@ class StudioMapContentViewController: UIViewController {
       }
     }
     studioScrollContainverView.add(firstdividerView) {
-      $0.backgroundColor = .fillinBlack
+      $0.backgroundColor = .darkGrey3
       $0.snp.makeConstraints {
         $0.top.equalTo(self.studioLabel.snp.bottom).offset(12)
         $0.leading.equalTo(self.studioScrollContainverView.snp.leading)
@@ -236,7 +237,7 @@ class StudioMapContentViewController: UIViewController {
         $0.width.height.equalTo(22)
       }
     }
-    
+  
     studioScrollContainverView.add(underlineView) {
       $0.backgroundColor = .fillinRed
       $0.snp.makeConstraints {
@@ -252,7 +253,7 @@ class StudioMapContentViewController: UIViewController {
         $0.top.equalTo(self.underlineView.snp.bottom).offset(18.5)
         $0.leading.equalTo(self.studioScrollContainverView.snp.leading)
         $0.trailing.equalTo(self.studioScrollContainverView.snp.trailing)
-        $0.height.equalTo(3)
+        $0.height.equalTo(2)
       }
     }
     studioScrollContainverView.add(photoReviewLabel) {

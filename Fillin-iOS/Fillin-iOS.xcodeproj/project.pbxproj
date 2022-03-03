@@ -77,8 +77,6 @@
 		6F3B87B827968AEB00A4BD07 /* FilmCurationFirstCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3B874B27968AEB00A4BD07 /* FilmCurationFirstCollectionViewCell.swift */; };
 		6F3B87B927968AEB00A4BD07 /* FilmCurationCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F3B874D27968AEB00A4BD07 /* FilmCurationCollectionReusableView.xib */; };
 		6F3B87BA27968AEB00A4BD07 /* FilmCurationCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3B874E27968AEB00A4BD07 /* FilmCurationCollectionReusableView.swift */; };
-		6F3B87BB27968AEB00A4BD07 /* StudioMapBottomSheetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F3B875027968AEB00A4BD07 /* StudioMapBottomSheetViewController.xib */; };
-		6F3B87BC27968AEB00A4BD07 /* StudioMapBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3B875127968AEB00A4BD07 /* StudioMapBottomSheetViewController.swift */; };
 		6F3B87BD27968AEB00A4BD07 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F3B875327968AEB00A4BD07 /* HomeViewController.xib */; };
 		6F3B87BE27968AEB00A4BD07 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3B875427968AEB00A4BD07 /* HomeViewController.swift */; };
 		6F3B87BF27968AEB00A4BD07 /* TabBarTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F3B875727968AEB00A4BD07 /* TabBarTableViewCell.xib */; };
@@ -197,8 +195,6 @@
 		6F3B874B27968AEB00A4BD07 /* FilmCurationFirstCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilmCurationFirstCollectionViewCell.swift; sourceTree = "<group>"; };
 		6F3B874D27968AEB00A4BD07 /* FilmCurationCollectionReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilmCurationCollectionReusableView.xib; sourceTree = "<group>"; };
 		6F3B874E27968AEB00A4BD07 /* FilmCurationCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilmCurationCollectionReusableView.swift; sourceTree = "<group>"; };
-		6F3B875027968AEB00A4BD07 /* StudioMapBottomSheetViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StudioMapBottomSheetViewController.xib; sourceTree = "<group>"; };
-		6F3B875127968AEB00A4BD07 /* StudioMapBottomSheetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudioMapBottomSheetViewController.swift; sourceTree = "<group>"; };
 		6F3B875327968AEB00A4BD07 /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		6F3B875427968AEB00A4BD07 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		6F3B875727968AEB00A4BD07 /* TabBarTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TabBarTableViewCell.xib; sourceTree = "<group>"; };
@@ -641,8 +637,6 @@
 			isa = PBXGroup;
 			children = (
 				6F3B87DA27968D3000A4BD07 /* StudioMapContentViewController */,
-				6F3B875127968AEB00A4BD07 /* StudioMapBottomSheetViewController.swift */,
-				6F3B875027968AEB00A4BD07 /* StudioMapBottomSheetViewController.xib */,
 			);
 			path = StudioMapBottomSheetViewController;
 			sourceTree = "<group>";
@@ -908,7 +902,6 @@
 			files = (
 				6F3B877E27968AEB00A4BD07 /* NotoSansKR-Medium.otf in Resources */,
 				6F3B87A027968AEB00A4BD07 /* SplashViewController.xib in Resources */,
-				6F3B87BB27968AEB00A4BD07 /* StudioMapBottomSheetViewController.xib in Resources */,
 				775C965E278ACDE200A9BEA0 /* .swiftlint.yml in Resources */,
 				6F3B87C627968AEB00A4BD07 /* PhotosTableViewCell.xib in Resources */,
 				6F3B87B727968AEB00A4BD07 /* FilmCurationFirstCollectionViewCell.xib in Resources */,
@@ -1042,7 +1035,6 @@
 				6F3B87B827968AEB00A4BD07 /* FilmCurationFirstCollectionViewCell.swift in Sources */,
 				6F3B877C27968AEB00A4BD07 /* UIView+Extension.swift in Sources */,
 				6F3B877327968AEB00A4BD07 /* Header.swift in Sources */,
-				6F3B87BC27968AEB00A4BD07 /* StudioMapBottomSheetViewController.swift in Sources */,
 				6F3B878727968AEB00A4BD07 /* MapLocation.swift in Sources */,
 				6F3B87AB27968AEB00A4BD07 /* AddPhotoViewController.swift in Sources */,
 				6F3B877427968AEB00A4BD07 /* Notification.swift in Sources */,
