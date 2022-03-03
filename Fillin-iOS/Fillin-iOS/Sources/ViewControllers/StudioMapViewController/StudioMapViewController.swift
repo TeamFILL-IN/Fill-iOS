@@ -181,26 +181,25 @@ extension StudioMapViewController {
       let markerInfo = Studio(id: $0.id, lati: $0.lati, long: $0.long)
       marker.iconImage = NMFOverlayImage(image: Asset.icnStudio.image)
       
+      self.selectedMarkerInfo  = markerInfo
+      StudioMapViewController.selectedMarkerID = markerInfo.id
+      self.studioInfoWithAPI(studioID: markerInfo.id)
+      
       marker.touchHandler = { [weak self] (overlay: NMFOverlay) -> Bool in
         if self?.selectedMarker == nil { /// 클릭했던 현상소가 없는 경우 (지도뷰 처음 들어올 떄)
           self?.selectedMarker = marker
           self?.selectedMarker?.iconImage = NMFOverlayImage(image: Asset.icnStudioSelected.image)
           self?.showBottomSheet()
-          self?.selectedMarkerInfo  = markerInfo
-          StudioMapViewController.selectedMarkerID = markerInfo.id
-          self?.studioInfoWithAPI(studioID: markerInfo.id)
-          // TODO: - 카메라 이동 (통신 필요)
         } else {
           if self?.selectedMarker == marker { /// 클릭했던 현상소를 다시 클릭하는 경우
-            self?.selectedMarker?.iconImage = NMFOverlayImage(image: Asset.icnStudio.image)
             self?.selectedMarker = nil
+            self?.selectedMarker?.iconImage = NMFOverlayImage(image: Asset.icnStudio.image)
             self?.hideBottomSheetAndGoBack()
           } else { /// 다른 현상소 클릭
             self?.selectedMarker?.iconImage = NMFOverlayImage(image: Asset.icnStudio.image)
             self?.selectedMarker = marker
             self?.selectedMarker?.iconImage = NMFOverlayImage(image: Asset.icnStudioSelected.image)
             self?.showBottomSheet()
-            // TODO: - 카메라 이동 (통신 필요)
           }
         }
         return true
