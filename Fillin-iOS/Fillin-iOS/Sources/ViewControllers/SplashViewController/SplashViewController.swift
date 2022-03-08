@@ -52,7 +52,7 @@ extension SplashViewController {
     }
     
     private func presentToOnboarding() {
-        let onboardingNavigationController = UINavigationController(rootViewController: OnboardingFirstViewController())
+        let onboardingNavigationController = UINavigationController(rootViewController: OnboardingViewController())
         onboardingNavigationController.modalPresentationStyle = .fullScreen
         onboardingNavigationController.modalTransitionStyle = .crossDissolve
         self.present(onboardingNavigationController, animated: true, completion: nil)

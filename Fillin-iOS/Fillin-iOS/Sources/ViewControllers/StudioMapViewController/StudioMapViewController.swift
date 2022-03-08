@@ -86,16 +86,12 @@ class StudioMapViewController: UIViewController {
     layoutMyLocationButton()
     layoutSearchView()
     layoutNavigaionBar()
+    getBottomSheetInfo()
     totalStudioWithAPI()
     setLatLngNotification()
-    showtmpStudioMarker()
+    tmpSetupMarker()
     setupBottomSheetUI()
     setupBottomSheetGestureRecognizer()
-    getBottomSheetInfo()
-  }
-  
-  override func viewDidAppear(_ animated: Bool) {
-    getBottomSheetInfo()
   }
   
   // MARK: - init
@@ -113,26 +109,55 @@ class StudioMapViewController: UIViewController {
 extension StudioMapViewController {
   
   /// 서버 부활되기 전까지 현상소 관련 기능 테스트할 임시 함수 (네이버 그린팩토리에 현상소 표시해줌)
-  func showtmpStudioMarker() {
+  func tmpSetupMarker() {
     let markertmp = NMFMarker(position: NMGLatLng(lat: 37.35940010181669, lng: 127.10475679570187))
     markertmp.iconImage = NMFOverlayImage(image: Asset.icnStudio.image)
     markertmp.mapView = self.mapView.mapView
     
-    /// 클릭 시 이벤트 설정
-    markertmp.touchHandler = { [weak self] (overlay: NMFOverlay) -> Bool in
-      if self?.clickCount == 1 { /// 이미 마커가 클릭된 경우 (중복 클릭 허용안함)
-        self?.clickCount = 0
-        markertmp.iconImage = NMFOverlayImage(image: Asset.icnStudio.image)
-        self?.hideBottomSheetAndGoBack()
-      } else {
-        self?.clickCount = 1
-        markertmp.iconImage = NMFOverlayImage(image: Asset.icnStudioSelected.image)
+    let secondMarkertmp = NMFMarker(position: NMGLatLng(lat: 37.36161841308457, lng: 127.10566240106306))
+    secondMarkertmp.iconImage = NMFOverlayImage(image: Asset.icnStudio.image)
+    secondMarkertmp.mapView = self.mapView.mapView
+    
+    secondMarkertmp.touchHandler = { [weak self] (overlay: NMFOverlay) -> Bool in
+      if self?.selectedMarker == nil { /// 클릭했던 현상소가 없는 경우 (지도뷰 처음 들어올 떄)
+        self?.selectedMarker = secondMarkertmp
+        self?.selectedMarker?.iconImage = NMFOverlayImage(image: Asset.icnStudioSelected.image)
         self?.showBottomSheet()
+      } else {
+        if self?.selectedMarker == secondMarkertmp { /// 클릭했던 현상소를 다시 클릭하는 경우
+          self?.selectedMarker?.iconImage = NMFOverlayImage(image: Asset.icnStudio.image)
+          self?.hideBottomSheetAndGoBack()
+        } else { /// 다른 현상소 클릭
+          self?.selectedMarker?.iconImage = NMFOverlayImage(image: Asset.icnStudio.image)
+          self?.selectedMarker = secondMarkertmp
+          self?.selectedMarker?.iconImage = NMFOverlayImage(image: Asset.icnStudioSelected.image)
+          self?.showBottomSheet()
+        }
+      }
+      return true
+    }
+  
+    markertmp.touchHandler = { [weak self] (overlay: NMFOverlay) -> Bool in
+      if self?.selectedMarker == nil { /// 클릭했던 현상소가 없는 경우 (지도뷰 처음 들어올 떄)
+        self?.selectedMarker = markertmp
+        self?.selectedMarker?.iconImage = NMFOverlayImage(image: Asset.icnStudioSelected.image)
+        self?.showBottomSheet()
+      } else {
+        if self?.selectedMarker == markertmp { /// 클릭했던 현상소를 다시 클릭하는 경우
+          self?.selectedMarker?.iconImage = NMFOverlayImage(image: Asset.icnStudio.image)
+          self?.selectedMarker = nil
+          self?.hideBottomSheetAndGoBack()
+        } else { /// 다른 현상소 클릭
+          self?.selectedMarker?.iconImage = NMFOverlayImage(image: Asset.icnStudio.image)
+          self?.selectedMarker = markertmp
+          self?.selectedMarker?.iconImage = NMFOverlayImage(image: Asset.icnStudioSelected.image)
+          self?.showBottomSheet()
+        }
       }
       return true
     }
   }
-    
+  
   private func setUpMapView() {
     view.addSubview(mapView)
     let locationOverlay = mapView.mapView.locationOverlay
@@ -156,17 +181,26 @@ extension StudioMapViewController {
       let markerInfo = Studio(id: $0.id, lati: $0.lati, long: $0.long)
       marker.iconImage = NMFOverlayImage(image: Asset.icnStudio.image)
       
+      self.selectedMarkerInfo  = markerInfo
+      StudioMapViewController.selectedMarkerID = markerInfo.id
+      self.studioInfoWithAPI(studioID: markerInfo.id)
+      
       marker.touchHandler = { [weak self] (overlay: NMFOverlay) -> Bool in
-        if self?.clickCount == 1 { /// 이미 마커가 클릭된 경우 (중복 클릭 허용안함)
-          self?.clickCount = 0
-          self?.hideBottomSheetAndGoBack()
-          marker.iconImage = NMFOverlayImage(image: Asset.icnStudio.image)
-        } else {
-          self?.clickCount = 1
+        if self?.selectedMarker == nil { /// 클릭했던 현상소가 없는 경우 (지도뷰 처음 들어올 떄)
           self?.selectedMarker = marker
-          self?.selectedMarkerInfo  = markerInfo
-          StudioMapViewController.selectedMarkerID = markerInfo.id
-          self?.studioInfoWithAPI(studioID: markerInfo.id)
+          self?.selectedMarker?.iconImage = NMFOverlayImage(image: Asset.icnStudioSelected.image)
+          self?.showBottomSheet()
+        } else {
+          if self?.selectedMarker == marker { /// 클릭했던 현상소를 다시 클릭하는 경우
+            self?.selectedMarker = nil
+            self?.selectedMarker?.iconImage = NMFOverlayImage(image: Asset.icnStudio.image)
+            self?.hideBottomSheetAndGoBack()
+          } else { /// 다른 현상소 클릭
+            self?.selectedMarker?.iconImage = NMFOverlayImage(image: Asset.icnStudio.image)
+            self?.selectedMarker = marker
+            self?.selectedMarker?.iconImage = NMFOverlayImage(image: Asset.icnStudioSelected.image)
+            self?.showBottomSheet()
+          }
         }
         return true
       }
@@ -177,9 +211,9 @@ extension StudioMapViewController {
   func getBottomSheetInfo() {
     StudioMapViewController.name = "필린 현상소"
     StudioMapViewController.address = "솝트시 앱잼구 필린동 아요로 12번길 13"
-    StudioMapViewController.time = "open 10:00-21:00"
+    StudioMapViewController.time = "open 00:00-24:00"
     StudioMapViewController.tel = "010-1234-5678"
-    StudioMapViewController.price = "컬러 5000원"
+    StudioMapViewController.price = "컬러 5000000000원"
     StudioMapViewController.site = ""
     
 //    StudioMapViewController.name = self.serverStudioInfo?.studio.name
@@ -263,12 +297,6 @@ extension StudioMapViewController {
     newVC.modalTransitionStyle = .crossDissolve
     newVC.modalPresentationStyle = .fullScreen
     self.present(newVC, animated: true, completion: nil)
-  }
-  
-  @objc func changeMarkerObserver(_ notification: Notification) {
-    selectedMarker?.iconImage = NMFOverlayImage(image: Asset.icnPlaceBig.image)
-    selectedMarker = nil
-    clickCount = 0
   }
 
   @objc func touchLocationButton(_ sender: UIButton) {
@@ -444,6 +472,8 @@ extension StudioMapViewController {
   func hideBottomSheetAndGoBack() {
     let safeAreaHeight = view.safeAreaLayoutGuide.layoutFrame.height
     let bottomPadding = view.safeAreaInsets.bottom
+    self.selectedMarker?.iconImage = NMFOverlayImage(image: Asset.icnStudio.image)
+    self.selectedMarker = nil
     bottomSheetViewTopConstraint.constant = safeAreaHeight + bottomPadding
     UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
       self.view.layoutIfNeeded()
@@ -454,10 +484,6 @@ extension StudioMapViewController {
     guard let nearestVal = values.min(by: { abs(number - $0) < abs(number - $1) })
     else { return number }
     return nearestVal
-  }
-  
-  func setNotification() {
-    NotificationCenter.default.post(name: NSNotification.Name.changeMarker, object: nil, userInfo: nil)
   }
 
   func changeScrollEnabled() {
@@ -495,7 +521,6 @@ extension StudioMapViewController {
       }
     case .ended:
       if velocity.y > 1500 {
-        setNotification()
         hideBottomSheetAndGoBack()
         return
       }
@@ -508,7 +533,6 @@ extension StudioMapViewController {
       } else if nearestValue == defaultPadding {
         showBottomSheet(atState: .normal)
       } else {
-        setNotification()
         hideBottomSheetAndGoBack()
       }
     default:
