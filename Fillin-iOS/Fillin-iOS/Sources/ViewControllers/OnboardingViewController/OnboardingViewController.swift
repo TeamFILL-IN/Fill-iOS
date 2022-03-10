@@ -125,16 +125,10 @@ extension OnboardingViewController {
     ])
   }
   @objc func skipButtonClicked() {
-    if currentPage == onboardingData.count - 1 {
-      let mainNavigationController = UINavigationController(rootViewController: HomeViewController())
-      mainNavigationController.modalPresentationStyle = .fullScreen
-      mainNavigationController.modalTransitionStyle = .crossDissolve
-      self.present(mainNavigationController, animated: true, completion: nil)
-    } else {
       let loginVC = LoginViewController()
       loginVC.modalPresentationStyle = .fullScreen
+      loginVC.modalTransitionStyle = .crossDissolve
       self.present(loginVC, animated: true, completion: nil)
-    }
   }
 }
 // MARK: - CollectionView Delegate, DataSource
