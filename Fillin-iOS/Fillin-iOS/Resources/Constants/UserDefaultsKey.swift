@@ -13,5 +13,6 @@ extension Const {
         static let refreshToken = "refreshToken"
         static let nickname = "nickname"
         static let userID = "userID"
+        static let isOnboarding = "isOnboarding"
     }
 }

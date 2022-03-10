@@ -107,7 +107,9 @@ extension LoginViewController {
         let mainNavigationController = UINavigationController(rootViewController: HomeViewController())
         mainNavigationController.modalPresentationStyle = .fullScreen
         mainNavigationController.modalTransitionStyle = .crossDissolve
-        self.present(mainNavigationController, animated: true, completion: nil)
+        self.present(mainNavigationController, animated: true) {
+            UserDefaults.standard.set(false, forKey: Const.UserDefaultsKey.isOnboarding)
+        }
     }
 }
 

@@ -37,6 +37,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             }
         }
+        
+        // 앱 실행 중 애플 ID 강제로 연결 취소 시
+        NotificationCenter.default.addObserver(forName: ASAuthorizationAppleIDProvider.credentialRevokedNotification, object: nil, queue: nil) { (Notification) in
+            print("Revoked Notification")
+            self.isLogin = false
+        }
+        
         return true
     }
 
