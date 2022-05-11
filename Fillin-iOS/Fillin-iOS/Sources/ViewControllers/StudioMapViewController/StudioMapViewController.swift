@@ -318,7 +318,7 @@ extension UITextField {
       NSAttributedString.Key.foregroundColor: UIColor.grey2,
       NSAttributedString.Key.font: UIFont(name: "NotoSansKR-Regular", size: 14)!
     ]
-    self.attributedPlaceholder = NSAttributedString(string: "추억을 현상할 현상소를 검색해보세요", attributes: attributes)
+    self.attributedPlaceholder = NSAttributedString(string: "현상소 이름 또는 주소로 검색해보세요", attributes: attributes)
   }
 }
 

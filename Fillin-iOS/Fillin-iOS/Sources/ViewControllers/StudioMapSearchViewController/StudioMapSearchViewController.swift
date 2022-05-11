@@ -86,7 +86,6 @@ class StudioMapSearchViewController: UIViewController {
       switch self.status {
       case .originStudioVC :
         self.navigationBar.popViewController = {
-          print("버튼 누름")
           self.view.endEditing(true)
           self.dismiss(animated: true, completion: nil)
         }
