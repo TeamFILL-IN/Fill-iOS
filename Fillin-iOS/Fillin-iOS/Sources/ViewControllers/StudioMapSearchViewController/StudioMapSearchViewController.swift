@@ -16,6 +16,7 @@ class StudioMapSearchViewController: UIViewController {
   let searchPlaceTextField = UITextField() // searchBar
   let tableView = UITableView()
   let dividerView = UIView()
+  let noSearchImageView = UIImageView()
   let navigationBar = FilinNavigationBar()
   let searchController = UISearchController(searchResultsController: nil)
   
@@ -133,12 +134,27 @@ class StudioMapSearchViewController: UIViewController {
   func setUpTextField() { /// 수정
     searchPlaceTextField.becomeFirstResponder()
   }
+  
+  func changeEmptySearchView() {
+    print("call")
+    view.add(noSearchImageView) {
+      $0.image = UIImage(named: "noSearch")
+      $0.snp.makeConstraints {
+        $0.top.equalTo(self.searchPlaceTextField.snp.bottom).offset(135)
+        $0.centerX.equalTo(self.view.snp.centerX)
+        $0.height.equalTo(223)
+        $0.width.equalTo(246)
+      }
+    }
+  }
+      
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
     self.view.endEditing(true)
   }
   
   @objc func touchSearchButton(_ sender: UIButton) {
     self.view.endEditing(true)
+    changeEmptySearchView() /// (임시로 실행) 토큰 나오면 이 줄 삭제하기
     searchStudiosWithAPI(keyword: searchPlaceTextField.text ?? "")
   }
 }
@@ -199,7 +215,11 @@ extension StudioMapSearchViewController {
       case .success(let data):
         if let search = data as? StudioSearchResponse {
           self.serverSearchStudios = search
-          self.tableView.reloadData()
+          if ((self.serverSearchStudios?.studios.isEmpty) != nil) {
+            self.changeEmptySearchView()
+          } else {
+            self.tableView.reloadData()
+          }
         }
       case .requestErr(let message):
         print("searchStudioWithAPI - requestErr: \(message)")

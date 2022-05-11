@@ -80,6 +80,7 @@ internal enum Asset {
   internal static let iosStatusbar = ImageAsset(name: "iosStatusbar")
   internal static let loginLogo = ImageAsset(name: "loginLogo")
   internal static let logo = ImageAsset(name: "logo")
+  internal static let noSearch = ImageAsset(name: "noSearch")
   internal static let photoInsert = ImageAsset(name: "photo_insert")
   internal static let profile = ImageAsset(name: "profile")
 }
