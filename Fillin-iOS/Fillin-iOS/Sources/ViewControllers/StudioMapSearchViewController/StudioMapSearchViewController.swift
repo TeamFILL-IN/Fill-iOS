@@ -13,7 +13,8 @@ class StudioMapSearchViewController: UIViewController {
   var serverSearchStudios: StudioSearchResponse?
   let backGroundView = UIView()
   let magnifyingGlassButton = UIButton()
-  let searchPlaceTextField = UITextField() // searchBar
+  let clearButton = UIButton()
+  let searchPlaceTextField = UITextField()
   let tableView = UITableView()
   let dividerView = UIView()
   let noSearchImageView = UIImageView()
@@ -55,6 +56,10 @@ class StudioMapSearchViewController: UIViewController {
       $0.font = .body2
       $0.setPlaceHolder()
       $0.addLeftPadding()
+      $0.addTarget(self, action: #selector(self.textFieldDidChange(textField:)),
+          for: .editingDidBegin)
+      $0.addTarget(self, action: #selector(self.textFieldDidChange(textField:)),
+          for: .editingChanged)
       $0.snp.makeConstraints {
         $0.top.equalTo(self.view.safeAreaLayoutGuide).inset(68)
         $0.leading.equalTo(self.view).inset(18)
@@ -72,6 +77,17 @@ class StudioMapSearchViewController: UIViewController {
         $0.trailing.equalTo(self.searchPlaceTextField).inset(18)
       }
     }
+    view.add(clearButton) {
+      $0.setImage(Asset.icnClear.image, for: .normal)
+      $0.addTarget(self, action: #selector(self.touchClearButton), for: .touchUpInside)
+      $0.snp.makeConstraints {
+        $0.top.equalTo(self.searchPlaceTextField).inset(11)
+        $0.leading.equalTo(self.searchPlaceTextField).inset(295)
+        $0.bottom.equalTo(self.searchPlaceTextField).inset(11)
+        $0.trailing.equalTo(self.searchPlaceTextField).inset(18)
+      }
+    }
+    clearButton.isHidden = true
     view.add(dividerView) {
       $0.backgroundColor = .darkGrey3
       $0.snp.makeConstraints {
@@ -130,12 +146,11 @@ class StudioMapSearchViewController: UIViewController {
     tableView.register(StudioMapSearchTableViewCell.self, forCellReuseIdentifier: Const.Xib.studioSearchTableViewCell)
   }
   
-  func setUpTextField() { /// 수정
+  func setUpTextField() {
     searchPlaceTextField.becomeFirstResponder()
   }
   
   func changeEmptySearchView() {
-    print("call")
     view.add(noSearchImageView) {
       $0.image = UIImage(named: "noSearch")
       $0.snp.makeConstraints {
@@ -151,10 +166,23 @@ class StudioMapSearchViewController: UIViewController {
     self.view.endEditing(true)
   }
   
+  // MARK: - @objc
+  @objc func textFieldDidChange(textField: UITextField) {
+    clearButton.isHidden = (searchPlaceTextField.text?.isEmpty) ?? true
+    magnifyingGlassButton.isHidden = !(clearButton.isHidden)
+    
+  }
+  
   @objc func touchSearchButton(_ sender: UIButton) {
     self.view.endEditing(true)
     changeEmptySearchView() /// (임시로 실행) 토큰 나오면 이 줄 삭제하기
     searchStudiosWithAPI(keyword: searchPlaceTextField.text ?? "")
+  }
+  
+  @objc func touchClearButton(_ sender: UIButton) {
+    searchPlaceTextField.text = ""
+    magnifyingGlassButton.isHidden = false
+    clearButton.isHidden = true
   }
 }
 
