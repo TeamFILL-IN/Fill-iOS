@@ -17,4 +17,5 @@ extension Notification.Name {
     static let selectedFilmAPI = Notification.Name("selectedFilmAPI")
   static let selectedFilmIdAPI = Notification.Name("selectedFilmIdAPI")
     static let selectedStudioIdAPI = Notification.Name("selectedStudioIdAPI")
+  static let studioPhotoswithAPI = Notification.Name("StudioPhotoswithAPI")
 }
