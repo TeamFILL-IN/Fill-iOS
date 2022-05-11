@@ -96,6 +96,16 @@ class StudioMapSearchViewController: UIViewController {
         $0.height.equalTo(2)
       }
     }
+    view.add(noSearchImageView) {
+      $0.image = UIImage(named: "noSearch")
+      $0.snp.makeConstraints {
+        $0.top.equalTo(self.searchPlaceTextField.snp.bottom).offset(135)
+        $0.centerX.equalTo(self.view.snp.centerX)
+        $0.height.equalTo(223)
+        $0.width.equalTo(246)
+      }
+    }
+    noSearchImageView.isHidden = true
   }
   private func layoutNavigaionBar() {
     view.add(navigationBar) {
@@ -151,15 +161,7 @@ class StudioMapSearchViewController: UIViewController {
   }
   
   func changeEmptySearchView() {
-    view.add(noSearchImageView) {
-      $0.image = UIImage(named: "noSearch")
-      $0.snp.makeConstraints {
-        $0.top.equalTo(self.searchPlaceTextField.snp.bottom).offset(135)
-        $0.centerX.equalTo(self.view.snp.centerX)
-        $0.height.equalTo(223)
-        $0.width.equalTo(246)
-      }
-    }
+    noSearchImageView.isHidden = false
   }
       
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -170,17 +172,22 @@ class StudioMapSearchViewController: UIViewController {
   @objc func textFieldDidChange(textField: UITextField) {
     clearButton.isHidden = (searchPlaceTextField.text?.isEmpty) ?? true
     magnifyingGlassButton.isHidden = !(clearButton.isHidden)
-    
+    if !(searchPlaceTextField.text?.isEmpty ?? true) {
+      searchStudiosWithAPI(keyword: searchPlaceTextField.text ?? "")
+      changeEmptySearchView()
+    } else {
+      noSearchImageView.isHidden = true
+    }
   }
   
   @objc func touchSearchButton(_ sender: UIButton) {
     self.view.endEditing(true)
-    changeEmptySearchView() /// (임시로 실행) 토큰 나오면 이 줄 삭제하기
-    searchStudiosWithAPI(keyword: searchPlaceTextField.text ?? "")
+    changeEmptySearchView()
   }
   
   @objc func touchClearButton(_ sender: UIButton) {
     searchPlaceTextField.text = ""
+    noSearchImageView.isHidden = true
     magnifyingGlassButton.isHidden = false
     clearButton.isHidden = true
   }
