@@ -28,7 +28,6 @@ class StudioMapSearchViewController: UIViewController {
     super.viewDidLoad()
     layoutSearchView()
     layoutNavigaionBar()
-    layoutDividerView()
     makeTableView()
   }
   
@@ -36,7 +35,7 @@ class StudioMapSearchViewController: UIViewController {
     setUpTextField()
   }
   
-  // MARK: - Custom Func
+  // MARK: - layout
   private func layoutSearchView() {
     view.add(backGroundView) {
       $0.backgroundColor = .darkGrey2
@@ -72,16 +71,15 @@ class StudioMapSearchViewController: UIViewController {
         $0.trailing.equalTo(self.searchPlaceTextField).inset(18)
       }
     }
+    view.add(dividerView) {
+      $0.backgroundColor = .darkGrey3
+      $0.snp.makeConstraints {
+        $0.top.equalTo(self.searchPlaceTextField.snp.bottom).offset(18)
+        $0.leading.trailing.equalToSuperview()
+        $0.height.equalTo(2)
+      }
+    }
   }
-  
-  private func setUpTextField() {
-    searchPlaceTextField.becomeFirstResponder()
-  }
-  
-  override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-    self.view.endEditing(true)
-  }
-  
   private func layoutNavigaionBar() {
     view.add(navigationBar) {
       switch self.status {
@@ -106,21 +104,10 @@ class StudioMapSearchViewController: UIViewController {
       }
     }
   }
-  
-  private func layoutDividerView() {
-    view.add(dividerView) {
-      $0.backgroundColor = .darkGrey3
-      $0.snp.makeConstraints {
-        $0.top.equalTo(self.searchPlaceTextField.snp.bottom).offset(18)
-        $0.leading.trailing.equalToSuperview()
-        $0.height.equalTo(2)
-      }
-    }
-  }
-  
   private func layoutTableView() {
     view.add(tableView) {
       $0.backgroundColor = .clear
+      $0.showsVerticalScrollIndicator = false
       $0.snp.makeConstraints {
         $0.top.equalTo(self.dividerView.snp.bottom)
         $0.leading.equalTo(self.view.safeAreaLayoutGuide.snp.leading)
@@ -130,10 +117,10 @@ class StudioMapSearchViewController: UIViewController {
     }
   }
   
+  // MARK: - Custom Method
   func makeTableView() {
     tableView.dataSource = self
     tableView.delegate = self
-    tableView.showsVerticalScrollIndicator = false
     
     registerXib()
     layoutTableView()
@@ -141,6 +128,13 @@ class StudioMapSearchViewController: UIViewController {
   
   func registerXib() {
     tableView.register(StudioMapSearchTableViewCell.self, forCellReuseIdentifier: Const.Xib.studioSearchTableViewCell)
+  }
+  
+  func setUpTextField() { /// 수정
+    searchPlaceTextField.becomeFirstResponder()
+  }
+  override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    self.view.endEditing(true)
   }
   
   @objc func touchSearchButton(_ sender: UIButton) {
@@ -180,22 +174,21 @@ extension StudioMapSearchViewController: UITableViewDataSource, UITableViewDeleg
     studioCell?.isSelected = true
     selectedStudio = studioCell?.nameStudioLabel.text ?? ""
     StudioMapSearchViewController.selectedStudioId = studioCell?.studioId ?? 0
-    //studioVC에서 들어올때, addPhoto에서 들어올 때 분기처리
+    /// studioVC에서 들어올때, addPhoto에서 들어올 때 분기처리
     switch status {
     case .originStudioVC :
-      var searchStudioID = serverSearchStudios?.studios[indexPath.row].id
+      let searchStudioID = serverSearchStudios?.studios[indexPath.row].id
       self.dismiss(animated: true, completion: nil)
-      NotificationCenter.default.post(name: NSNotification.Name("GetLatLng"), object: searchStudioID , userInfo: nil)
+      NotificationCenter.default.post(name: NSNotification.Name("GetLatLng"), object: searchStudioID, userInfo: nil)
       
     case .addPhotoVC :
-      let selectedStudioDict = ["selectedStudioId": StudioMapSearchViewController.selectedStudioId, "selectedStudio": selectedStudio] as [String:Any]
+      let selectedStudioDict = ["selectedStudioId": StudioMapSearchViewController.selectedStudioId, "selectedStudio": selectedStudio] as [String: Any]
       NotificationCenter.default.post(name: NSNotification.Name.selectedStudioIdAPI, object: selectedStudioDict, userInfo: nil)
       self.navigationController?.popViewController(animated: true)
       
     case .originFilmVC:
       return
     }
-    
   }
 }
 
