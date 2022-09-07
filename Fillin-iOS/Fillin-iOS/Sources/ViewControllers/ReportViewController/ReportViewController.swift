@@ -147,7 +147,7 @@ extension ReportViewController {
   }
   func layoutShopReportImage() {
     self.shopreportContainerView.add(shopreportImage) {
-      $0.image = UIImage(asset: Asset.iconFilmroll)
+      $0.image = UIImage(asset: Asset.icnMap)
       $0.snp.makeConstraints { make in
         make.top.leading.bottom.equalToSuperview()
         make.width.height.equalTo(24)
@@ -174,7 +174,7 @@ extension ReportViewController {
   }
   func layoutExtraReportIcon() {
     self.view.add(extrareportIcon) {
-      $0.setImage(UIImage(asset: Asset.iconFilmroll),
+      $0.setImage(UIImage(asset: Asset.goRightIcon),
                   for: .normal)
       $0.snp.makeConstraints { make in
         make.centerY.equalTo(self.extrareportButton)
