@@ -39,7 +39,21 @@ class ReportViewController: UIViewController {
 // MARK: - Extension
 extension ReportViewController {
   func layout() {
-    
+    layoutNavigaionBar()
+    layoutTitleLabel()
+    layoutSubTitleLabel()
+    layoutContainerView()
+    layoutFilmReportView()
+    layoutFilmReportContainerView()
+    layoutFilmReportImage()
+    layoutFilmReportLabel()
+    layoutShopReportView()
+    layoutShopReportContainerView()
+    layoutShopReportImage()
+    layoutShopReportLabel()
+    layoutExtraReportButton()
+    layoutExtraReportIcon()
+    layoutUnderLineView()
   }
   func layoutNavigaionBar() {
     self.view.add(navigationBar) {
@@ -140,7 +154,7 @@ extension ReportViewController {
       $0.backgroundColor = .clear
       $0.snp.makeConstraints { make in
         make.centerX.centerY.equalToSuperview()
-        make.width.equalTo(97)
+        make.width.equalTo(112)
         make.height.equalTo(26)
       }
     }
@@ -169,6 +183,7 @@ extension ReportViewController {
       $0.setupButton(title: "기타 문의/건의", color: .grey2, font: .body1, backgroundColor: .clear, state: .normal, radius: 0)
       $0.snp.makeConstraints { make in
         make.top.equalTo(self.containerView.snp.bottom).offset(18)
+        make.leading.equalToSuperview().offset(18)
       }
     }
   }
@@ -177,8 +192,8 @@ extension ReportViewController {
       $0.setImage(UIImage(asset: Asset.goRightIcon),
                   for: .normal)
       $0.snp.makeConstraints { make in
-        make.centerY.equalTo(self.extrareportButton)
-        make.leading.equalTo(self.extrareportButton).offset(2)
+        make.centerY.equalTo(self.extrareportButton).offset(1)
+        make.leading.equalTo(self.extrareportButton.snp.trailing).offset(2)
         make.width.height.equalTo(13)
       }
     }
