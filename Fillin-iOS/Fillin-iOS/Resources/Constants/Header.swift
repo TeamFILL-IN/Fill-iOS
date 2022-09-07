@@ -9,15 +9,15 @@ import Foundation
 
 extension Const {
   struct Header {
-      static var tokenHeader = ["Content-Type": "application/json",
-                                "token": accessToken]
-      static var multiTokenHeader = ["Content-Type": "multipart/form-data",
-                                "token": accessToken]
-      static let loginHeader = ["Content-Type": "application/x-www-form-urlencoded"]
-//    static var tokenHeader = ["Content-Type": "application/json",
-//                              "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiZW1haWwiOm51bGwsImlhdCI6MTY0NjMyNjgxNCwiZXhwIjoxNjQ3NTM2NDE0LCJpc3MiOiJmaWxsaW4ifQ.BqXKeusdrBVWzt0HsIAM6wlG-VxcHw8qMEF9BSn0aEs"]
-//    static var multiTokenHeader = [
-//      "Content-Type": "multipart/form-data",
-//      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiZW1haWwiOm51bGwsImlhdCI6MTY0NjMyNjgxNCwiZXhwIjoxNjQ3NTM2NDE0LCJpc3MiOiJmaWxsaW4ifQ.BqXKeusdrBVWzt0HsIAM6wlG-VxcHw8qMEF9BSn0aEs"]
+//      static var tokenHeader = ["Content-Type": "application/json",
+//                                "token": accessToken]
+//      static var multiTokenHeader = ["Content-Type": "multipart/form-data",
+//                                "token": accessToken]
+//      static let loginHeader = ["Content-Type": "application/x-www-form-urlencoded"]
+    static var tokenHeader = ["Content-Type": "application/json",
+                              "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDEsImVtYWlsIjoidGVzdEBnbWFpbC5jb20iLCJpYXQiOjE2NjE2ODI2NDYsImV4cCI6MTY2Mjg5MjI0NiwiaXNzIjoiZmlsbGluIn0.eMdMGx1snCx2RkbV-_aVP7or8wYyG0Gc4M5beH-Vthk"]
+    static var multiTokenHeader = [
+      "Content-Type": "multipart/form-data",
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDEsImVtYWlsIjoidGVzdEBnbWFpbC5jb20iLCJpYXQiOjE2NjE2ODI2NDYsImV4cCI6MTY2Mjg5MjI0NiwiaXNzIjoiZmlsbGluIn0.eMdMGx1snCx2RkbV-_aVP7or8wYyG0Gc4M5beH-Vthk"]
   }
 }
