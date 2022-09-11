@@ -58,7 +58,7 @@ extension ReportlabViewController {
     self.view.add(reportTextView) {
       $0.autocorrectionType = .no
       $0.autocapitalizationType = .none
-      $0.backgroundColor = UIColor(red: 29.0 / 255.0, green: 29.0 / 255.0, blue: 29.0 / 255.0, alpha: 1.0)
+      $0.backgroundColor = .textviewGrey
       $0.textContainerInset = UIEdgeInsets(top: 18, left: 18, bottom: 18, right: 18)
       $0.font = .body2
       $0.snp.makeConstraints { make in
@@ -71,7 +71,12 @@ extension ReportlabViewController {
   }
   func layoutSendButton() {
     self.view.add(sendButton) {
-      $0.setupButton(title: "보내기", color: .grey4, font: .headline, backgroundColor: UIColor(red: 29.0 / 255.0, green: 29.0 / 255.0, blue: 29.0 / 255.0, alpha: 1.0), state: .normal, radius: 0)
+      $0.setupButton(title: "보내기",
+                     color: .grey4,
+                     font: .headline,
+                     backgroundColor: .textviewGrey,
+                     state: .normal,
+                     radius: 0)
       $0.snp.makeConstraints { make in
         make.centerX.equalToSuperview()
         make.leading.trailing.equalToSuperview()
