@@ -30,9 +30,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 homeNavigationController = UINavigationController(rootViewController: HomeViewController())
             } else {
                 if UserDefaults.standard.object(forKey: Const.UserDefaultsKey.isOnboarding) != nil {
-                    homeNavigationController = UINavigationController(rootViewController: LoginViewController())
+                    homeNavigationController = UINavigationController(rootViewController: HomeViewController())
                 } else {
-                    homeNavigationController = UINavigationController(rootViewController: OnboardingViewController())
+                    homeNavigationController = UINavigationController(rootViewController: HomeViewController())
                 }
             }
             self.window?.rootViewController = homeNavigationController

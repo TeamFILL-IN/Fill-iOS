@@ -112,7 +112,8 @@ extension HomeViewController: UITableViewDataSource {
             }
             
             tabBarCell.pushToMyPageViewController = {
-                self.navigationController?.pushViewController(MyPageViewController(), animated: true)
+//                self.navigationController?.pushViewController(MyPageViewController(), animated: true)
+              self.navigationController?.pushViewController(ReportlabViewController(), animated: true)
             }
             return tabBarCell
         case 2 :
