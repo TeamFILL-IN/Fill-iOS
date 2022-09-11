@@ -291,9 +291,14 @@ extension MyPageViewController {
       switch response {
       case .success(let data):
         if let photos = data as? PhotosResponse {
-          self.serverNewPhotos = photos
-          self.userImageview.updateServerImage(photos.photos[0].userImageURL)
-          self.userNameLabel.text = photos.photos[0].nickname
+          // 마이페이지 사진 없을 시 분기처리
+          if photos.photos.isEmpty == true {
+            self.userImageview.updateServerImage("icnCall")
+            self.userNameLabel.text = "수정해야damm~~"
+          } else {
+            self.userImageview.updateServerImage(photos.photos[0].userImageURL)
+            self.userNameLabel.text = photos.photos[0].nickname
+          }
           // /3을 하게 되면 1,2개일 때는 제대로 나오지 않기 때문에 소수점 올림 해주기
           let photosCount = ceil(Double(photos.photos.count)/3)
           let intPhotosCount = Int(photosCount)
