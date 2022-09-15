@@ -24,6 +24,11 @@ class ReportlabViewController: UIViewController {
     super.viewDidLoad()
     self.reportTextView.delegate = self
     layout()
+    let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.handleTap))
+    tapRecognizer.numberOfTapsRequired = 1
+    tapRecognizer.isEnabled = true
+    tapRecognizer.cancelsTouchesInView = false
+    self.view.addGestureRecognizer(tapRecognizer)
   }
 }
 // MARK: - Extension
@@ -91,8 +96,10 @@ extension ReportlabViewController {
     }
   }
   //TODO: View 터치 시 Keyboard dismiss 추가하기
+  @objc func handleTap() {
+    reportTextView.resignFirstResponder() // dismiss keyoard
+  }
 }
-
 extension ReportlabViewController: UITextViewDelegate {
   func textViewDidBeginEditing(_ textView: UITextView) {
     if textView.textColor == UIColor.grey2 {
