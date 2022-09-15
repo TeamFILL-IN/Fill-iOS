@@ -24,6 +24,7 @@ class ReportlabViewController: UIViewController {
     super.viewDidLoad()
     self.reportTextView.delegate = self
     layout()
+    setUI()
     let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.handleTap))
     tapRecognizer.numberOfTapsRequired = 1
     tapRecognizer.isEnabled = true
@@ -38,6 +39,9 @@ extension ReportlabViewController {
     layoutTitleLabel()
     layoutReportTextView()
     layoutSendButton()
+  }
+  func setUI() {
+    self.view.backgroundColor = .fillinBlack
   }
   func layoutNavigaionBar() {
     self.view.add(navigationBar) {
