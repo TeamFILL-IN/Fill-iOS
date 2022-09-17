@@ -117,7 +117,7 @@ extension ReportlabViewController: UITextViewDelegate {
   
   func textViewDidEndEditing(_ textView: UITextView) {
     if textView.text.isEmpty {
-      textView.text = "찰칵찰칵 필린이님만 아는 필름 정보가 있다면 필린에게도 제보해주세요! 필린님의 소중한 제보가 필린을 성장하게 합니다."
+      textView.text = "찰칵찰칵 필린이님만 아는 현상소 정보가 있다면 필린에게도 제보해주세요! 필린님의 소중한 제보가 필린을 성장하게 합니다."
       textView.textColor = UIColor.grey2
     } else {
       //TextView에 내용 있을 때 버튼 활성화
