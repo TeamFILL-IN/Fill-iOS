@@ -91,6 +91,8 @@ extension ReportlabViewController {
                      backgroundColor: .textviewGrey,
                      state: .normal,
                      radius: 0)
+      $0.isUserInteractionEnabled = false
+      $0.addTarget(self, action: #selector(self.sendButtonClicked), for: .touchUpInside)
       $0.snp.makeConstraints { make in
         make.centerX.equalToSuperview()
         make.leading.trailing.equalToSuperview()
@@ -99,9 +101,10 @@ extension ReportlabViewController {
       }
     }
   }
-  //TODO: View 터치 시 Keyboard dismiss 추가하기
   @objc func handleTap() {
-    reportTextView.resignFirstResponder() // dismiss keyoard
+    reportTextView.resignFirstResponder()
+  }
+  @objc func sendButtonClicked() {
   }
 }
 extension ReportlabViewController: UITextViewDelegate {
@@ -116,6 +119,15 @@ extension ReportlabViewController: UITextViewDelegate {
     if textView.text.isEmpty {
       textView.text = "찰칵찰칵 필린이님만 아는 현상소 정보가 있다면 필린에게도 제보해주세요! 필린님의 소중한 제보가 필린을 성장하게 합니다."
       textView.textColor = UIColor.grey2
+    } else {
+      //TextView에 내용 있을 때 버튼 활성화
+      sendButton.setupButton(title: "보내기",
+                             color: .fillinBlack,
+                             font: .headline,
+                             backgroundColor: .fillinRed,
+                             state: .normal,
+                             radius: 0)
+      sendButton.isUserInteractionEnabled = true
     }
   }
 }
