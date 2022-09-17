@@ -73,7 +73,7 @@ extension ReportlabViewController {
       $0.backgroundColor = .textviewGrey
       $0.textContainerInset = UIEdgeInsets(top: 18, left: 18, bottom: 18, right: 18)
       $0.font = .body2
-      $0.text = "찰칵찰칵 필린이님만 아는 현상소 정보가 있다면 필린\n에게도 제보해주세요! 필린님의 소중한 제보가 필린\n을 성장하게 합니다."
+      $0.text = "찰칵찰칵 필린이님만 아는 현상소 정보가 있다면 필린에게도 제보해주세요! 필린님의 소중한 제보가 필린을 성장하게 합니다."
       $0.textColor = .grey2
       $0.snp.makeConstraints { make in
         make.top.equalTo(self.titleLabel.snp.bottom).offset(15)
@@ -117,7 +117,7 @@ extension ReportlabViewController: UITextViewDelegate {
   
   func textViewDidEndEditing(_ textView: UITextView) {
     if textView.text.isEmpty {
-      textView.text = "찰칵찰칵 필린이님만 아는 현상소 정보가 있다면 필린에게도 제보해주세요! 필린님의 소중한 제보가 필린을 성장하게 합니다."
+      textView.text = "찰칵찰칵 필린이님만 아는 필름 정보가 있다면 필린에게도 제보해주세요! 필린님의 소중한 제보가 필린을 성장하게 합니다."
       textView.textColor = UIColor.grey2
     } else {
       //TextView에 내용 있을 때 버튼 활성화
