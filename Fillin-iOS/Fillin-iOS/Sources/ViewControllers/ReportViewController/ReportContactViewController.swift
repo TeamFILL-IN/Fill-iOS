@@ -25,11 +25,7 @@ class ReportContactViewController: UIViewController {
     self.reportTextView.delegate = self
     layout()
     setUI()
-    let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.handleTap))
-    tapRecognizer.numberOfTapsRequired = 1
-    tapRecognizer.isEnabled = true
-    tapRecognizer.cancelsTouchesInView = false
-    self.view.addGestureRecognizer(tapRecognizer)
+    tapRecognizer()
   }
 }
 // MARK: - Extension
@@ -100,6 +96,13 @@ extension ReportContactViewController {
         make.height.equalTo(80)
       }
     }
+  }
+  func tapRecognizer() {
+    let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.handleTap))
+    tapRecognizer.numberOfTapsRequired = 1
+    tapRecognizer.isEnabled = true
+    tapRecognizer.cancelsTouchesInView = false
+    self.view.addGestureRecognizer(tapRecognizer)
   }
   @objc func handleTap() {
     reportTextView.resignFirstResponder()

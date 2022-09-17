@@ -34,18 +34,8 @@ class ReportViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     layout()
-    // 필름제보 탭 클릭 시
-    let filmTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.handleFilmTap))
-    filmTapRecognizer.numberOfTapsRequired = 1
-    filmTapRecognizer.isEnabled = true
-    filmTapRecognizer.cancelsTouchesInView = false
-    self.filmreportView.addGestureRecognizer(filmTapRecognizer)
-    // 현상소 제보 탭 클릭 시
-    let labTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.handleLabTap))
-    labTapRecognizer.numberOfTapsRequired = 1
-    labTapRecognizer.isEnabled = true
-    labTapRecognizer.cancelsTouchesInView = false
-    self.shopreportView.addGestureRecognizer(labTapRecognizer)
+    filmTapRecognizer()
+    labTapRecognizer()
   }
 }
 // MARK: - Extension
@@ -221,6 +211,22 @@ extension ReportViewController {
         make.height.equalTo(1)
       }
     }
+  }
+  func filmTapRecognizer() {
+    // 필름제보 탭 클릭 시
+    let filmTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.handleFilmTap))
+    filmTapRecognizer.numberOfTapsRequired = 1
+    filmTapRecognizer.isEnabled = true
+    filmTapRecognizer.cancelsTouchesInView = false
+    self.filmreportView.addGestureRecognizer(filmTapRecognizer)
+  }
+  func labTapRecognizer() {
+    // 현상소 제보 탭 클릭 시
+    let labTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.handleLabTap))
+    labTapRecognizer.numberOfTapsRequired = 1
+    labTapRecognizer.isEnabled = true
+    labTapRecognizer.cancelsTouchesInView = false
+    self.shopreportView.addGestureRecognizer(labTapRecognizer)
   }
   @objc func handleFilmTap() {
     self.navigationController?.pushViewController(ReportFilmViewController(), animated: false)
