@@ -23,22 +23,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.rootViewController = SplashViewController()
         window?.makeKeyAndVisible()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            var homeNavigationController: UINavigationController
-            
-            if self.appDelegate?.isLogin == true {
-                homeNavigationController = UINavigationController(rootViewController: HomeViewController())
-            } else {
-                if UserDefaults.standard.object(forKey: Const.UserDefaultsKey.isOnboarding) != nil {
-                    homeNavigationController = UINavigationController(rootViewController: LoginViewController())
-                } else {
-                    homeNavigationController = UINavigationController(rootViewController: OnboardingViewController())
-                }
-            }
-            self.window?.rootViewController = homeNavigationController
-            self.window?.makeKeyAndVisible()
-        }
-    }
+      DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+          var homeNavigationController: UINavigationController
+          
+          if self.appDelegate?.isLogin == true {
+              homeNavigationController = UINavigationController(rootViewController: HomeViewController())
+          } else {
+              if UserDefaults.standard.object(forKey: Const.UserDefaultsKey.isOnboarding) != nil {
+                  homeNavigationController = UINavigationController(rootViewController: LoginViewController())
+              } else {
+                  homeNavigationController = UINavigationController(rootViewController: OnboardingViewController())
+              }
+          }
+          self.window?.rootViewController = homeNavigationController
+          self.window?.makeKeyAndVisible()
+      }
+  }
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.

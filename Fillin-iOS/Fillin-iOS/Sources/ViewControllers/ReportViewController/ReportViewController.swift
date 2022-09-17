@@ -34,6 +34,8 @@ class ReportViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     layout()
+    filmTapRecognizer()
+    labTapRecognizer()
   }
 }
 // MARK: - Extension
@@ -181,6 +183,7 @@ extension ReportViewController {
   func layoutExtraReportButton() {
     self.view.add(extrareportButton) {
       $0.setupButton(title: "기타 문의/건의", color: .grey2, font: .body1, backgroundColor: .clear, state: .normal, radius: 0)
+      $0.addTarget(self, action: #selector(self.extraReportButtonClicked), for: .touchUpInside)
       $0.snp.makeConstraints { make in
         make.top.equalTo(self.containerView.snp.bottom).offset(18)
         make.leading.equalToSuperview().offset(18)
@@ -208,5 +211,30 @@ extension ReportViewController {
         make.height.equalTo(1)
       }
     }
+  }
+  func filmTapRecognizer() {
+    // 필름제보 탭 클릭 시
+    let filmTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.handleFilmTap))
+    filmTapRecognizer.numberOfTapsRequired = 1
+    filmTapRecognizer.isEnabled = true
+    filmTapRecognizer.cancelsTouchesInView = false
+    self.filmreportView.addGestureRecognizer(filmTapRecognizer)
+  }
+  func labTapRecognizer() {
+    // 현상소 제보 탭 클릭 시
+    let labTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.handleLabTap))
+    labTapRecognizer.numberOfTapsRequired = 1
+    labTapRecognizer.isEnabled = true
+    labTapRecognizer.cancelsTouchesInView = false
+    self.shopreportView.addGestureRecognizer(labTapRecognizer)
+  }
+  @objc func handleFilmTap() {
+    self.navigationController?.pushViewController(ReportFilmViewController(), animated: false)
+  }
+  @objc func handleLabTap() {
+    self.navigationController?.pushViewController(ReportlabViewController(), animated: false)
+  }
+  @objc func extraReportButtonClicked() {
+    self.navigationController?.pushViewController(ReportContactViewController(), animated: false)
   }
 }
