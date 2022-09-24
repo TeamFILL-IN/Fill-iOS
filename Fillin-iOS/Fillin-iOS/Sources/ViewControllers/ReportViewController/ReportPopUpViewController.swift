@@ -94,7 +94,7 @@ extension ReportPopUpViewController {
   }
   func layoutCheckmarkIcon() {
     backgroundView.add(checkmarkIcon) {
-      $0.image = UIImage(asset: Asset.imgPhoto)
+      $0.image = UIImage(asset: Asset.imgFeedback)
       $0.snp.makeConstraints {
         $0.top.equalTo(self.subexplainLabel.snp.bottom).offset(41)
         $0.centerX.equalToSuperview()

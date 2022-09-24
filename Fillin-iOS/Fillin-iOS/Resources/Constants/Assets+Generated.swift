@@ -68,6 +68,7 @@ internal enum Asset {
   internal static let imgOnboardingDot3 = ImageAsset(name: "imgOnboardingDot3")
   internal static let imgPhoto = ImageAsset(name: "imgPhoto")
   internal static let imgTrash = ImageAsset(name: "imgTrash")
+  internal static let imgFeedback = ImageAsset(name: "img_feedback")
   internal static let imgonboarding1frame = ImageAsset(name: "imgonboarding1frame")
   internal static let imgonboarding2frame = ImageAsset(name: "imgonboarding2frame")
   internal static let imgonboarding3frame = ImageAsset(name: "imgonboarding3frame")
