@@ -40,7 +40,7 @@ extension LoginViewController {
     }
     func layoutFillinLogoIcon() {
         view.add(fillinLogoIcon) {
-            $0.image = UIImage(asset: Asset.loginLogo)
+          $0.image = Asset.loginLogo.image
             $0.snp.makeConstraints {
                 $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(60)
                 $0.leading.equalToSuperview().offset(30)

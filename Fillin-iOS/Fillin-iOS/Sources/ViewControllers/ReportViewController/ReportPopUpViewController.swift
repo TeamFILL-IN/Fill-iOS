@@ -58,7 +58,7 @@ extension ReportPopUpViewController {
   }
   func layoutDeleteButton() {
     backgroundView.add(deleteButton) {
-      $0.setImage(UIImage(asset: Asset.icnClosewhite), for: .normal)
+      $0.setImage(Asset.icnClosewhite.image, for: .normal)
       $0.addTarget(self, action: #selector(self.touchDeleteButton), for: .touchUpInside)
       $0.snp.makeConstraints {
         $0.top.equalToSuperview().offset(14)
@@ -94,7 +94,7 @@ extension ReportPopUpViewController {
   }
   func layoutCheckmarkIcon() {
     backgroundView.add(checkmarkIcon) {
-      $0.image = UIImage(asset: Asset.imgFeedback)
+      $0.image = Asset.imgFeedback.image
       $0.snp.makeConstraints {
         $0.top.equalTo(self.subexplainLabel.snp.bottom).offset(41)
         $0.centerX.equalToSuperview()
