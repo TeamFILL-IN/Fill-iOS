@@ -112,7 +112,7 @@ extension MyPageViewController {
     mypageScrollContainverView.add(userImageview) {
       $0.setBorder(borderColor: .fillinWhite, borderWidth: 1)
       $0.setRounded(radius: 27.5)
-      $0.image = UIImage(asset: Asset.appleLogo)
+      $0.image = Asset.appleLogo.image
       $0.contentMode = .scaleAspectFill
       $0.clipsToBounds = true
       $0.snp.makeConstraints {

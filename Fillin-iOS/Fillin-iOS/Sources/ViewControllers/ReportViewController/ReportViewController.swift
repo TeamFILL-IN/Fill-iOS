@@ -125,7 +125,7 @@ extension ReportViewController {
   }
   func layoutFilmReportImage() {
     self.filmreportContainerView.add(filmreportImage) {
-      $0.image = UIImage(asset: Asset.iconFilmroll)
+      $0.image = Asset.icnFilmRoll.image
       $0.snp.makeConstraints { make in
         make.top.leading.bottom.equalToSuperview()
         make.width.height.equalTo(24)
@@ -163,7 +163,7 @@ extension ReportViewController {
   }
   func layoutShopReportImage() {
     self.shopreportContainerView.add(shopreportImage) {
-      $0.image = UIImage(asset: Asset.icnMap)
+      $0.image = Asset.icnMap.image
       $0.snp.makeConstraints { make in
         make.top.leading.bottom.equalToSuperview()
         make.width.height.equalTo(24)

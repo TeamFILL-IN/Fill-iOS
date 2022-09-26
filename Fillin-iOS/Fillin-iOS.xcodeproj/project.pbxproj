@@ -125,6 +125,7 @@
 		E89934F727CD1EDE00DCB1A8 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89934F627CD1EDE00DCB1A8 /* OnboardingViewController.swift */; };
 		E89934FA27CD2AA600DCB1A8 /* OnboardingDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89934F927CD2AA600DCB1A8 /* OnboardingDataModel.swift */; };
 		E89934FD27CD2BCB00DCB1A8 /* OnboardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89934FC27CD2BCB00DCB1A8 /* OnboardingCollectionViewCell.swift */; };
+		E8DDE18528DEDECF00CC000D /* ReportPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DDE18428DEDECF00CC000D /* ReportPopUpViewController.swift */; };
 		E8EB7A5628C090AB0091DA22 /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EB7A5528C090AB0091DA22 /* TermsViewController.swift */; };
 		E8EB7A5828C093080091DA22 /* TermTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EB7A5728C093080091DA22 /* TermTableViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -252,6 +253,7 @@
 		E89934F627CD1EDE00DCB1A8 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		E89934F927CD2AA600DCB1A8 /* OnboardingDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingDataModel.swift; sourceTree = "<group>"; };
 		E89934FC27CD2BCB00DCB1A8 /* OnboardingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCollectionViewCell.swift; sourceTree = "<group>"; };
+		E8DDE18428DEDECF00CC000D /* ReportPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportPopUpViewController.swift; sourceTree = "<group>"; };
 		E8EB7A5528C090AB0091DA22 /* TermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
 		E8EB7A5728C093080091DA22 /* TermTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermTableViewCell.swift; sourceTree = "<group>"; };
 		F33300C623DFF466AFCE2914 /* Pods_Fillin_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fillin_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -844,6 +846,7 @@
 				E822163628C860E10090CEC5 /* ReportlabViewController.swift */,
 				E80A726928CDDA7E000A75B5 /* ReportContactViewController.swift */,
 				E80A726728CDDA66000A75B5 /* ReportFilmViewController.swift */,
+				E8DDE18428DEDECF00CC000D /* ReportPopUpViewController.swift */,
 			);
 			path = ReportViewController;
 			sourceTree = "<group>";
@@ -1083,6 +1086,7 @@
 				6F3B87A327968AEB00A4BD07 /* MyPageViewController.swift in Sources */,
 				E89934F727CD1EDE00DCB1A8 /* OnboardingViewController.swift in Sources */,
 				6F3B878A27968AEB00A4BD07 /* HomeService.swift in Sources */,
+				E8DDE18528DEDECF00CC000D /* ReportPopUpViewController.swift in Sources */,
 				6F3B87B227968AEB00A4BD07 /* FilmRollViewController.swift in Sources */,
 				6F3B877227968AEB00A4BD07 /* UserDefaultsKey.swift in Sources */,
 				E828BF9127991C14009C1475 /* Status.swift in Sources */,

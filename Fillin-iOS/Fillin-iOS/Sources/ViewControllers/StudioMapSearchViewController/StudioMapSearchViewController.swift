@@ -138,7 +138,7 @@ class StudioMapSearchViewController: UIViewController {
   func changeEmptySearchView() {
     print("call")
     view.add(noSearchImageView) {
-      $0.image = UIImage(named: "noSearch")
+      $0.image = Asset.noSearch.image
       $0.snp.makeConstraints {
         $0.top.equalTo(self.searchPlaceTextField.snp.bottom).offset(135)
         $0.centerX.equalTo(self.view.snp.centerX)
