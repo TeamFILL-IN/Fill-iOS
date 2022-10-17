@@ -209,9 +209,9 @@ extension EditProfileViewController {
   func attributePlaceholder() {
     nicknameTextField.attributedPlaceholder = NSAttributedString(string : "닉네임을 입력해주세요. (10자 이하)",
                                                                  attributes : [NSAttributedString.Key.foregroundColor: UIColor.grey4,
-                                                                             NSAttributedString.Key.font  : UIFont.body1])
+                                                                               NSAttributedString.Key.font  : UIFont.body1])
     cameraTextField.attributedPlaceholder = NSAttributedString(string : "사용 중인 카메라 이름을 입력해주세요.",
-                                                                 attributes : [NSAttributedString.Key.foregroundColor: UIColor.grey4,
+                                                               attributes : [NSAttributedString.Key.foregroundColor: UIColor.grey4,
                                                                              NSAttributedString.Key.font :UIFont.body1])
   }
   @objc func profileChangeButtonClicked() {
@@ -219,6 +219,10 @@ extension EditProfileViewController {
   }
   @objc func sendButtonClicked() {
     print("프로필 변경하기")
+  }
+  /// 빈 공간 터치하면 키보드 내려가게
+  override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    self.view.endEditing(true)
   }
 }
 
@@ -231,7 +235,6 @@ extension EditProfileViewController: UITextFieldDelegate {
     return true
   }
   /// nicknameTextField 글자수 세기, 제한
-  /// 빌드해서 Camera TextField 확인하기
   @objc private func textDidChange(_ notification: Notification) {
     if let textField = notification.object as? UITextField {
       if let nicknametext = nicknameTextField.text {
@@ -253,19 +256,22 @@ extension EditProfileViewController: UITextFieldDelegate {
             clearButton.setImage(Asset.btnClear.image, for: .normal)
           }
         }
+        if nicknametext.isEmpty == true {
+          self.changeProfileButton.setupButton(title: "프로필 변경",
+                                               color: .grey4,
+                                               font: .headline,
+                                               backgroundColor: .textviewGrey,
+                                               state: .normal,
+                                               radius: 0)
+        } else {
+          self.changeProfileButton.setupButton(title: "프로필 변경",
+                                               color: .fillinBlack,
+                                               font: .headline,
+                                               backgroundColor: .fillinRed,
+                                               state: .normal,
+                                               radius: 0)
+        }
       }
-//        self.changeProfileButton.setupButton(title: "프로필 변경",
-//                                             color: .fillinBlack,
-//                                             font: .headline,
-//                                             backgroundColor: .fillinRed,
-//                                             state: .normal,
-//                                             radius: 0)
-      self.changeProfileButton.setupButton(title: "프로필 변경",
-                                           color: .grey4,
-                                           font: .headline,
-                                           backgroundColor: .textviewGrey,
-                                           state: .normal,
-                                           radius: 0)
     }
   }
 }
