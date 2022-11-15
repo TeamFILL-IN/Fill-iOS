@@ -1,8 +1,8 @@
 //
-//  SecondAddPhotoPopUpViewController.swift
+//  ReportPopUpViewController.swift
 //  Fillin-iOS
 //
-//  Created by 김지수 on 2022/01/14.
+//  Created by 김지수 on 2022/09/24.
 //
 
 import UIKit
@@ -10,8 +10,8 @@ import UIKit
 import SnapKit
 import Then
 
-// MARK: - SecondAddPhotoPopUpViewController
-class SecondAddPhotoPopUpViewController: UIViewController {
+// MARK: - ReportPopUpViewController
+class ReportPopUpViewController: UIViewController {
   
   // MARK: - Components
   let dimmedBackView = UIView()
@@ -28,7 +28,7 @@ class SecondAddPhotoPopUpViewController: UIViewController {
   }
 }
 // MARK: - Extension
-extension SecondAddPhotoPopUpViewController {
+extension ReportPopUpViewController {
   func layout() {
     layoutDimmedView()
     layoutBackgroundView()
@@ -47,8 +47,7 @@ extension SecondAddPhotoPopUpViewController {
   }
   func layoutBackgroundView() {
     view.add(backgroundView) {
-      $0.backgroundColor = .darkGrey2
-      $0.setBorder(borderColor: .darkGrey1, borderWidth: 1)
+      $0.backgroundColor = .textviewGrey
       $0.snp.makeConstraints {
         $0.top.equalToSuperview().offset(256)
         $0.centerX.equalToSuperview()
@@ -59,7 +58,7 @@ extension SecondAddPhotoPopUpViewController {
   }
   func layoutDeleteButton() {
     backgroundView.add(deleteButton) {
-      $0.setImage(UIImage(asset: Asset.icnClosewhite), for: .normal)
+      $0.setImage(Asset.icnClosewhite.image, for: .normal)
       $0.addTarget(self, action: #selector(self.touchDeleteButton), for: .touchUpInside)
       $0.snp.makeConstraints {
         $0.top.equalToSuperview().offset(14)
@@ -71,7 +70,7 @@ extension SecondAddPhotoPopUpViewController {
   }
   func layoutExplainLabel() {
     backgroundView.add(explainLabel) {
-      $0.setupLabel(text: "사진 추가를 완료했어요!",
+      $0.setupLabel(text: "소중한 의견이 접수되었어요!",
                     color: .white,
                     font: .body3)
       $0.snp.makeConstraints {
@@ -82,7 +81,7 @@ extension SecondAddPhotoPopUpViewController {
   }
   func layoutSubExplainLabel() {
     backgroundView.add(subexplainLabel) {
-      $0.setupLabel(text: "마이페이지에서 내가 올린 사진들을\n확인할 수 있어요.",
+      $0.setupLabel(text: "필린에서 최대한 빠르게  반영해둘게요!",
                     color: .grey2,
                     font: .body2)
       $0.numberOfLines = 2
@@ -95,20 +94,21 @@ extension SecondAddPhotoPopUpViewController {
   }
   func layoutCheckmarkIcon() {
     backgroundView.add(checkmarkIcon) {
-      $0.image = Asset.imgPhoto.image
+      $0.image = Asset.imgFeedback.image
       $0.snp.makeConstraints {
         $0.top.equalTo(self.subexplainLabel.snp.bottom).offset(41)
         $0.centerX.equalToSuperview()
-        $0.width.equalTo(71)
-        $0.height.equalTo(71)
+        $0.width.equalTo(88)
+        $0.height.equalTo(88)
       }
     }
   }
   @objc func touchDeleteButton() {
-    // 현재 올라와있는 모달을 dismiss 하고 FilmRollVC 로 Push 하는 코드
+    // 현재 올라와있는 모달을 dismiss 하고 원래VC 로 Push 하는 코드
     guard let parentVC = presentingViewController as? UINavigationController else { return }
     dismiss(animated: true) {
       parentVC.popViewController(animated: true)
     }
   }
 }
+

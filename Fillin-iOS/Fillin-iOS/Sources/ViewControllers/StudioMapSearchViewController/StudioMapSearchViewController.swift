@@ -162,6 +162,16 @@ class StudioMapSearchViewController: UIViewController {
   
   func changeEmptySearchView() {
     noSearchImageView.isHidden = false
+    print("call")
+    view.add(noSearchImageView) {
+      $0.image = Asset.noSearch.image
+      $0.snp.makeConstraints {
+        $0.top.equalTo(self.searchPlaceTextField.snp.bottom).offset(135)
+        $0.centerX.equalTo(self.view.snp.centerX)
+        $0.height.equalTo(223)
+        $0.width.equalTo(246)
+      }
+    }
   }
       
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

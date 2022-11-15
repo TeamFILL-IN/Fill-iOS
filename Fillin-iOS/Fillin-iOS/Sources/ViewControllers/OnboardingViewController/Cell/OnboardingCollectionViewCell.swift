@@ -63,7 +63,7 @@ extension OnboardingCollectionViewCell {
   }
   func layoutOnboardingView() {
     self.contentView.add(onboardingView) {
-      $0.image = UIImage(named: "intro1")
+      $0.image = Asset.intro1.image
       $0.snp.makeConstraints {
         $0.top.equalTo(self.onboardingDescriptionLabel.snp.bottom).offset(67)
         $0.centerX.equalTo(self.contentView.snp.centerX)

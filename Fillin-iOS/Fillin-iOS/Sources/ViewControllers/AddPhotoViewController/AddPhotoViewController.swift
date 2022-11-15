@@ -147,7 +147,7 @@ extension AddPhotoViewController {
   }
   func layoutPhotoBackgroundView() {
     addPhotoScrollContainerView.add(photobackgroundView) {
-      $0.image = UIImage(asset: Asset.photoInsert)
+      $0.image = Asset.photoInsert.image
       $0.snp.makeConstraints {
         $0.top.equalTo(self.addPhotoScrollContainerView.snp.top)
         $0.centerX.equalToSuperview()
