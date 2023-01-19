@@ -259,7 +259,8 @@ extension StudioMapSearchViewController {
       case .success(let data):
         if let search = data as? StudioSearchResponse {
           self.serverSearchStudios = search
-          if ((self.serverSearchStudios?.studios.isEmpty) != nil) {
+          guard let isEmptyStudios = self.serverSearchStudios?.studios.isEmpty else { return }
+          if isEmptyStudios {
             self.changeEmptySearchView()
           } else {
             self.tableView.reloadData()
