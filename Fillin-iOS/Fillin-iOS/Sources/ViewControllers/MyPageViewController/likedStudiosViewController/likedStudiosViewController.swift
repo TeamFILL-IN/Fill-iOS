@@ -28,7 +28,6 @@ final class LikedStudiosViewController: UIViewController {
     return collectionView
   }()
   
-  private let upButton = UIButton().then {
   private let myStudioLabel = UILabel().then {
     $0.text = "My Studio"
     $0.font = UIFont(name: "FuturaStd-Book", size: 16)
@@ -49,7 +48,9 @@ final class LikedStudiosViewController: UIViewController {
     $0.backgroundColor = .darkGrey1
   }
   
+  private lazy var upButton = UIButton().then {
     $0.setImage(Asset.btnUp.image, for: .normal)
+    $0.addTarget(self, action: #selector(upButtonDidTap), for: .touchUpInside)
   }
   
   // MARK: - Life Cycle
@@ -62,10 +63,12 @@ final class LikedStudiosViewController: UIViewController {
   }
   
   // MARK: - @objc
+  @objc func upButtonDidTap(_ sender: UIButton) {
+    // TODO: - 버튼 액션 처리
+  }
   
   // MARK: - Custom Method
   private func setDummyData() {
-    for _ in 0..<20 {
     for _ in 0..<22 {
       likedStudiosList.append(contentsOf: [LikedStudio(id: 0, name: "필린 사진관", address: "서울특별시 영등포구 여의도동21-3 가가가가가가가가가가가가가가가가")])
     }
