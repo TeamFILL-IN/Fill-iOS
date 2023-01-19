@@ -170,7 +170,12 @@ extension LikedStudiosViewController {
 // MARK: - UICollectionViewDelegate
 extension LikedStudiosViewController: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    // TODO: - 뷰 전환
+    let selectedStudioId = likedStudiosList[indexPath.row].id
+    NotificationCenter.default.post(name: NSNotification.Name("GetLatLng"), object: selectedStudioId, userInfo: nil)
+    let studioMapViewController = StudioMapViewController(contentViewController: StudioMapContentViewController())
+    studioMapViewController.modalTransitionStyle = .coverVertical
+    studioMapViewController.modalPresentationStyle = .fullScreen
+    self.present(studioMapViewController, animated: true, completion: nil)
   }
   
   func scrollViewDidScroll(_ scrollView: UIScrollView) {
