@@ -16,6 +16,7 @@ final class LikedStudiosViewController: UIViewController {
   
   // MARK: - UI Properties
   private let navigationBar = FilinNavigationBar()
+  private let headerView = UIView()
   
   private lazy var studiosCollectionView: UICollectionView = {
     let layout = UICollectionViewFlowLayout()
@@ -28,6 +29,26 @@ final class LikedStudiosViewController: UIViewController {
   }()
   
   private let upButton = UIButton().then {
+  private let myStudioLabel = UILabel().then {
+    $0.text = "My Studio"
+    $0.font = UIFont(name: "FuturaStd-Book", size: 16)
+    $0.textColor = .fillinWhite
+  }
+  
+  private let backCircleView = UIView().then {
+    $0.backgroundColor = .fillinRed
+    $0.layer.cornerRadius = 12
+  }
+  
+  private var studioCountLabel = UILabel().then {
+    $0.font = UIFont(name: "FuturaStd-Book", size: 12)
+    $0.textColor = .fillinWhite
+  }
+  
+  private let borderLineView = UIView().then {
+    $0.backgroundColor = .darkGrey1
+  }
+  
     $0.setImage(Asset.btnUp.image, for: .normal)
   }
   
@@ -45,8 +66,10 @@ final class LikedStudiosViewController: UIViewController {
   // MARK: - Custom Method
   private func setDummyData() {
     for _ in 0..<20 {
+    for _ in 0..<22 {
       likedStudiosList.append(contentsOf: [LikedStudio(id: 0, name: "필린 사진관", address: "서울특별시 영등포구 여의도동21-3 가가가가가가가가가가가가가가가가")])
     }
+    studioCountLabel.text = "\(likedStudiosList.count)"
   }
 }
 
@@ -78,12 +101,13 @@ extension LikedStudiosViewController {
 extension LikedStudiosViewController {
   private func setLayout() {
     layoutNavigaionBar()
+    layoutHeaderView()
     layoutStudiosCollectionView()
     layoutFloatingUpButton()
   }
   
   private func layoutNavigaionBar() {
-    view.add(navigationBar)
+    view.addSubview(navigationBar)
     navigationBar.snp.makeConstraints {
       $0.top.equalTo(view.safeAreaLayoutGuide)
       $0.leading.trailing.equalToSuperview()
@@ -91,10 +115,36 @@ extension LikedStudiosViewController {
     }
   }
   
-  private func layoutStudiosCollectionView() {
-    view.add(studiosCollectionView)
-    studiosCollectionView.snp.makeConstraints {
+  private func layoutHeaderView() {
+    view.addSubview(headerView)
+    headerView.addSubviews([myStudioLabel, backCircleView, studioCountLabel, borderLineView])
+    headerView.snp.makeConstraints {
       $0.top.equalTo(navigationBar.snp.bottom)
+      $0.leading.trailing.equalToSuperview()
+      $0.height.equalTo(50)
+    }
+    myStudioLabel.snp.makeConstraints {
+      $0.centerY.equalToSuperview()
+      $0.leading.equalToSuperview().inset(19)
+    }
+    backCircleView.snp.makeConstraints {
+      $0.centerY.equalToSuperview()
+      $0.trailing.equalToSuperview().inset(18)
+      $0.width.height.equalTo(24)
+    }
+    studioCountLabel.snp.makeConstraints {
+      $0.center.equalTo(backCircleView)
+    }
+    borderLineView.snp.makeConstraints {
+      $0.leading.bottom.trailing.equalToSuperview()
+      $0.height.equalTo(1)
+    }
+  }
+  
+  private func layoutStudiosCollectionView() {
+    view.addSubview(studiosCollectionView)
+    studiosCollectionView.snp.makeConstraints {
+      $0.top.equalTo(headerView.snp.bottom)
       $0.leading.bottom.trailing.equalToSuperview()
     }
   }
@@ -111,10 +161,7 @@ extension LikedStudiosViewController {
 // MARK: - UICollectionViewDelegate
 extension LikedStudiosViewController: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    print(indexPath.row)
-    //      let studioMapViewController = StudioMapViewController(contentViewController: <#UIViewController#>)
-    //      detailMyDiaryViewController.diaryId = diaryList[indexPath.row].diaryId
-    //      self.navigationController?.pushViewController(studioMapViewController, animated: true)
+    // TODO: - 뷰 전환
   }
 }
 
