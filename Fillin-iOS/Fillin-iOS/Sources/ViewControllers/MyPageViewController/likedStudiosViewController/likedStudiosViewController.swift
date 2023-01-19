@@ -13,17 +13,21 @@ import Then
 final class LikedStudiosViewController: UIViewController {
   // MARK: - Properties
   var likedStudiosList: [LikedStudio] = []
+  var lastPanPositionOffset: CGFloat = 0
   
   // MARK: - UI Properties
   private let navigationBar = FilinNavigationBar()
-  private let headerView = UIView()
+  
+  private let headerView = UIView().then {
+    $0.backgroundColor = .fillinBlack
+  }
   
   private lazy var studiosCollectionView: UICollectionView = {
     let layout = UICollectionViewFlowLayout()
     
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
     collectionView.isScrollEnabled = true
-    collectionView.backgroundColor = .black
+    collectionView.backgroundColor = .fillinBlack
     
     return collectionView
   }()
@@ -64,7 +68,7 @@ final class LikedStudiosViewController: UIViewController {
   
   // MARK: - @objc
   @objc func upButtonDidTap(_ sender: UIButton) {
-    studiosCollectionView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+    studiosCollectionView.setContentOffset(.zero, animated: true)
   }
   
   // MARK: - Custom Method
@@ -107,6 +111,8 @@ extension LikedStudiosViewController {
     layoutHeaderView()
     layoutStudiosCollectionView()
     layoutFloatingUpButton()
+    view.bringSubviewToFront(headerView)
+    view.bringSubviewToFront(navigationBar)
   }
   
   private func layoutNavigaionBar() {
@@ -147,7 +153,7 @@ extension LikedStudiosViewController {
   private func layoutStudiosCollectionView() {
     view.addSubview(studiosCollectionView)
     studiosCollectionView.snp.makeConstraints {
-      $0.top.equalTo(headerView.snp.bottom)
+      $0.top.equalTo(navigationBar.snp.bottom)
       $0.leading.bottom.trailing.equalToSuperview()
     }
   }
@@ -165,6 +171,20 @@ extension LikedStudiosViewController {
 extension LikedStudiosViewController: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     // TODO: - 뷰 전환
+  }
+  
+  func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    let actualPosition = scrollView.panGestureRecognizer.translation(in: scrollView.superview)
+    var constantY: CGFloat
+    if actualPosition.y == lastPanPositionOffset {
+      constantY = 0
+    } else {
+      constantY = actualPosition.y < 0 ? -50 : 0
+    }
+    UIView.animate(withDuration: 0.25) {
+      self.headerView.transform = CGAffineTransform(translationX: 0, y: constantY)
+    }
+    lastPanPositionOffset = actualPosition.y
   }
 }
 
@@ -190,5 +210,9 @@ extension LikedStudiosViewController: UICollectionViewDelegateFlowLayout {
     let cellSize = CGSize(width: UIScreen.main.bounds.width, height: 85)
     
     return cellSize
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+    return UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0)
   }
 }
