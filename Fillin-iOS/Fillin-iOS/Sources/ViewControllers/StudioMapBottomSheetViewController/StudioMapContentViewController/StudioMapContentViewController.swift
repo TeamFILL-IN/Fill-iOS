@@ -27,9 +27,12 @@ class StudioMapContentViewController: UIViewController {
   let timeLabel = UILabel()
   let callLabel = UILabel()
   let priceLabel = UILabel()
-  let linkButton = UIButton()
   let photoReviewLabel = UILabel()
   let underlineView = UIView()
+  var linkButton = UIButton().then {
+    $0.titleLabel?.font = .body1
+  }
+  var selectedStudioInfo = StudioInfo(id: 0, name: "필린 사진관", address: "솝트시 앱잼구 필린로", price: "3000원", time: "11:00-12:00", tel: "010-0000-0000", lati: 0, long: 0, etc: "많관부~", isDeleted: false, site: "https://www.naver.com/")
   let studioCollectionview: UICollectionView = {
     let layout = UICollectionViewFlowLayout()
     layout.scrollDirection = .vertical
@@ -42,14 +45,15 @@ class StudioMapContentViewController: UIViewController {
   // MARK: - View Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
+    
     setupAttribute()
     setupUI()
     register()
-    studioPhotosWithAPI(studioID: StudioMapViewController.selectedMarkerID ?? 0)
+    studioPhotosWithAPI(studioID: selectedStudioInfo.id ?? 0)
   }
   
   override func viewDidAppear(_ animated: Bool) {
-    studioPhotosWithAPI(studioID: StudioMapViewController.selectedMarkerID ?? 0)
+    studioPhotosWithAPI(studioID: selectedStudioInfo.id ?? 0)
   }
   
   // MARK: - Func
@@ -89,7 +93,7 @@ class StudioMapContentViewController: UIViewController {
     }
     // Label
     view.add(studioLabel) {
-      $0.text = StudioMapViewController.name
+      $0.text = self.selectedStudioInfo.name
       $0.textColor = .white
       $0.font = .headline
       $0.snp.makeConstraints {
@@ -100,11 +104,13 @@ class StudioMapContentViewController: UIViewController {
     }
     view.add(scrapButton) {
       $0.setImage(Asset.btnScrap.image, for: .normal)
+      $0.setImage(Asset.btnScrapActive.image, for: .selected)
       $0.snp.makeConstraints {
         $0.top.equalTo(self.view.snp.top).offset(36)
         $0.trailing.equalTo(self.view.snp.trailing).offset(-18)
         $0.width.height.equalTo(32)
       }
+      $0.addTarget(self, action: #selector(self.scrapButtonDidTap), for: .touchUpInside)
     }
     studioScrollContainverView.add(firstdividerView) {
       $0.backgroundColor = .darkGrey3
@@ -117,10 +123,10 @@ class StudioMapContentViewController: UIViewController {
     }
     // Label
     studioScrollContainverView.add(locationLabel) {
-      if StudioMapViewController.address == nil {
+      if self.selectedStudioInfo.address == nil {
         $0.text = "등록된 주소가 없습니다."
       } else {
-        $0.text = StudioMapViewController.address
+        $0.text = self.selectedStudioInfo.address
       }
       $0.numberOfLines = 0
       $0.font = .body2
@@ -133,10 +139,10 @@ class StudioMapContentViewController: UIViewController {
       }
     }
     studioScrollContainverView.add(timeLabel) {
-      if StudioMapViewController.time == nil {
+      if self.selectedStudioInfo.time == nil {
         $0.text = "등록된 운영시간이 없습니다."
       } else {
-        $0.text = StudioMapViewController.time
+        $0.text = self.selectedStudioInfo.time
       }
       $0.numberOfLines = 0
       $0.font = .body2
@@ -149,10 +155,10 @@ class StudioMapContentViewController: UIViewController {
       }
     }
     studioScrollContainverView.add(callLabel) {
-      if StudioMapViewController.tel == nil {
+      if self.selectedStudioInfo.tel == nil {
         $0.text = "등록된 전화번호가 없습니다."
       } else {
-        $0.text = StudioMapViewController.tel
+        $0.text = self.selectedStudioInfo.tel
       }
       $0.numberOfLines = 0
       $0.font = .body2
@@ -165,10 +171,10 @@ class StudioMapContentViewController: UIViewController {
       }
     }
     studioScrollContainverView.add(priceLabel) {
-      if StudioMapViewController.price == nil {
+      if self.selectedStudioInfo.price == nil {
         $0.text = "등록된 가격정보가 없습니다."
       } else {
-        $0.text = StudioMapViewController.price
+        $0.text = self.selectedStudioInfo.price
       }
       $0.numberOfLines = 0
       $0.font = .body2
@@ -181,19 +187,18 @@ class StudioMapContentViewController: UIViewController {
       }
     }
     studioScrollContainverView.add(linkButton) {
-      $0.titleLabel?.font =  .body1
-      $0.snp.makeConstraints {
-        $0.top.equalTo(self.priceLabel.snp.bottom).offset(18)
-        $0.leading.equalTo(self.studioScrollContainverView.snp.leading).offset(48)
-        $0.height.equalTo(18)
-      }
-      if StudioMapViewController.site == nil {
+      if self.selectedStudioInfo.site == nil {
         $0.setTitle("웹사이트가 없습니다 ", for: .normal)
         $0.setTitleColor(.grey4, for: .normal)
       } else {
         $0.setTitle("웹사이트로 이동", for: .normal)
         $0.setTitleColor(.fillinRed, for: .normal)
         self.linkButton.addTarget(self, action: #selector(self.touchLinkButton), for: .touchUpInside)
+      }
+      $0.snp.makeConstraints {
+        $0.top.equalTo(self.priceLabel.snp.bottom).offset(18)
+        $0.leading.equalTo(self.studioScrollContainverView.snp.leading).offset(48)
+        $0.height.equalTo(18)
       }
     }
     // 아이콘
@@ -244,7 +249,7 @@ class StudioMapContentViewController: UIViewController {
         $0.leading.equalTo(self.linkButton.snp.leading)
         $0.height.equalTo(1)
       }
-      if StudioMapViewController.site == nil {
+      if self.selectedStudioInfo.site == nil {
         $0.backgroundColor = .grey4
         $0.snp.makeConstraints {
           $0.width.equalTo(106)
@@ -289,13 +294,15 @@ class StudioMapContentViewController: UIViewController {
   
   // MARK: - @objc
   @objc func touchLinkButton() {
-    let studioUrl = NSURL(string: StudioMapViewController.site ?? "none site")
+    let studioUrl = NSURL(string: selectedStudioInfo.site ?? "none site")
     let studioSafariView: SFSafariViewController = SFSafariViewController(url: studioUrl! as URL)
     self.present(studioSafariView, animated: true, completion: nil)
   }
-  
+  @objc func scrapButtonDidTap(_ sender: UIButton) {
+    sender.isSelected.toggle()
+  }
   @objc func notiStudioPhotoswithAPI(_ notification: Notification) {
-    studioPhotosWithAPI(studioID: StudioMapViewController.selectedMarkerID ?? 0)
+    studioPhotosWithAPI(studioID: selectedStudioInfo.id ?? 0)
   }
 }
 

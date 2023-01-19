@@ -146,7 +146,7 @@ extension OnboardingViewController: UICollectionViewDelegate, UICollectionViewDa
   
   func scrollViewDidScroll(_ scrollView: UIScrollView) {
     let width = scrollView.frame.width
-    currentPage = lroundl(scrollView.contentOffset.x / width)
+    currentPage = lroundl(Float80(scrollView.contentOffset.x / width))
   }
 }
 
