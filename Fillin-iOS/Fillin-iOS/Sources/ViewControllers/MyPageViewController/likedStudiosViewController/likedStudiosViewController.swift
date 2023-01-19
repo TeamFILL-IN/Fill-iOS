@@ -64,7 +64,7 @@ final class LikedStudiosViewController: UIViewController {
   
   // MARK: - @objc
   @objc func upButtonDidTap(_ sender: UIButton) {
-    // TODO: - 버튼 액션 처리
+    studiosCollectionView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
   }
   
   // MARK: - Custom Method
