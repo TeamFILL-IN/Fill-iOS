@@ -13,7 +13,8 @@ class StudioMapSearchViewController: UIViewController {
   var serverSearchStudios: StudioSearchResponse?
   let backGroundView = UIView()
   let magnifyingGlassButton = UIButton()
-  let searchPlaceTextField = UITextField() // searchBar
+  let clearButton = UIButton()
+  let searchPlaceTextField = UITextField()
   let tableView = UITableView()
   let dividerView = UIView()
   let noSearchImageView = UIImageView()
@@ -55,6 +56,10 @@ class StudioMapSearchViewController: UIViewController {
       $0.font = .body2
       $0.setPlaceHolder()
       $0.addLeftPadding()
+      $0.addTarget(self, action: #selector(self.textFieldDidChange(textField:)),
+          for: .editingDidBegin)
+      $0.addTarget(self, action: #selector(self.textFieldDidChange(textField:)),
+          for: .editingChanged)
       $0.snp.makeConstraints {
         $0.top.equalTo(self.view.safeAreaLayoutGuide).inset(68)
         $0.leading.equalTo(self.view).inset(18)
@@ -72,6 +77,17 @@ class StudioMapSearchViewController: UIViewController {
         $0.trailing.equalTo(self.searchPlaceTextField).inset(18)
       }
     }
+    view.add(clearButton) {
+      $0.setImage(Asset.icnClear.image, for: .normal)
+      $0.addTarget(self, action: #selector(self.touchClearButton), for: .touchUpInside)
+      $0.snp.makeConstraints {
+        $0.top.equalTo(self.searchPlaceTextField).inset(11)
+        $0.leading.equalTo(self.searchPlaceTextField).inset(295)
+        $0.bottom.equalTo(self.searchPlaceTextField).inset(11)
+        $0.trailing.equalTo(self.searchPlaceTextField).inset(18)
+      }
+    }
+    clearButton.isHidden = true
     view.add(dividerView) {
       $0.backgroundColor = .darkGrey3
       $0.snp.makeConstraints {
@@ -80,13 +96,22 @@ class StudioMapSearchViewController: UIViewController {
         $0.height.equalTo(2)
       }
     }
+    view.add(noSearchImageView) {
+      $0.image = UIImage(named: "noSearch")
+      $0.snp.makeConstraints {
+        $0.top.equalTo(self.searchPlaceTextField.snp.bottom).offset(135)
+        $0.centerX.equalTo(self.view.snp.centerX)
+        $0.height.equalTo(223)
+        $0.width.equalTo(246)
+      }
+    }
+    noSearchImageView.isHidden = true
   }
   private func layoutNavigaionBar() {
     view.add(navigationBar) {
       switch self.status {
       case .originStudioVC :
         self.navigationBar.popViewController = {
-          print("버튼 누름")
           self.view.endEditing(true)
           self.dismiss(animated: true, completion: nil)
         }
@@ -131,11 +156,12 @@ class StudioMapSearchViewController: UIViewController {
     tableView.register(StudioMapSearchTableViewCell.self, forCellReuseIdentifier: Const.Xib.studioSearchTableViewCell)
   }
   
-  func setUpTextField() { /// 수정
+  func setUpTextField() {
     searchPlaceTextField.becomeFirstResponder()
   }
   
   func changeEmptySearchView() {
+    noSearchImageView.isHidden = false
     print("call")
     view.add(noSearchImageView) {
       $0.image = Asset.noSearch.image
@@ -152,10 +178,28 @@ class StudioMapSearchViewController: UIViewController {
     self.view.endEditing(true)
   }
   
+  // MARK: - @objc
+  @objc func textFieldDidChange(textField: UITextField) {
+    clearButton.isHidden = (searchPlaceTextField.text?.isEmpty) ?? true
+    magnifyingGlassButton.isHidden = !(clearButton.isHidden)
+    if !(searchPlaceTextField.text?.isEmpty ?? true) {
+      searchStudiosWithAPI(keyword: searchPlaceTextField.text ?? "")
+      changeEmptySearchView()
+    } else {
+      noSearchImageView.isHidden = true
+    }
+  }
+  
   @objc func touchSearchButton(_ sender: UIButton) {
     self.view.endEditing(true)
-    changeEmptySearchView() /// (임시로 실행) 토큰 나오면 이 줄 삭제하기
-    searchStudiosWithAPI(keyword: searchPlaceTextField.text ?? "")
+    changeEmptySearchView()
+  }
+  
+  @objc func touchClearButton(_ sender: UIButton) {
+    searchPlaceTextField.text = ""
+    noSearchImageView.isHidden = true
+    magnifyingGlassButton.isHidden = false
+    clearButton.isHidden = true
   }
 }
 
@@ -215,7 +259,8 @@ extension StudioMapSearchViewController {
       case .success(let data):
         if let search = data as? StudioSearchResponse {
           self.serverSearchStudios = search
-          if ((self.serverSearchStudios?.studios.isEmpty) != nil) {
+          guard let isEmptyStudios = self.serverSearchStudios?.studios.isEmpty else { return }
+          if isEmptyStudios {
             self.changeEmptySearchView()
           } else {
             self.tableView.reloadData()

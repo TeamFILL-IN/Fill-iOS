@@ -103,6 +103,10 @@
 		6F8B71F92796F33A00F88EB3 /* StudioResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8B71F82796F33A00F88EB3 /* StudioResponse.swift */; };
 		6F8B72012797291300F88EB3 /* StudioInfoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8B72002797291300F88EB3 /* StudioInfoResponse.swift */; };
 		6F9365872799856A0037557F /* StudioSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9365862799856A0037557F /* StudioSearchResponse.swift */; };
+		6FBCF99E2979758A00047445 /* likedStudiosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBCF99C2979758A00047445 /* likedStudiosViewController.swift */; };
+		6FBCF99F2979758A00047445 /* likedStudiosViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FBCF99D2979758A00047445 /* likedStudiosViewController.xib */; };
+		6FBCF9A12979797F00047445 /* LikedStudiosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBCF9A02979797F00047445 /* LikedStudiosCollectionViewCell.swift */; };
+		6FBCF9A429797AF800047445 /* likedStudiosResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBCF9A329797AF800047445 /* likedStudiosResponse.swift */; };
 		770CB4632799E550006004BB /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770CB4622799E550006004BB /* LoginResponse.swift */; };
 		775C965E278ACDE200A9BEA0 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 775C965D278ACDE200A9BEA0 /* .swiftlint.yml */; };
 		775C96AA278B2E1100A9BEA0 /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = 775C96A9278B2E1100A9BEA0 /* swiftgen.yml */; };
@@ -231,6 +235,10 @@
 		6F8B71F82796F33A00F88EB3 /* StudioResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudioResponse.swift; sourceTree = "<group>"; };
 		6F8B72002797291300F88EB3 /* StudioInfoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudioInfoResponse.swift; sourceTree = "<group>"; };
 		6F9365862799856A0037557F /* StudioSearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudioSearchResponse.swift; sourceTree = "<group>"; };
+		6FBCF99C2979758A00047445 /* likedStudiosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = likedStudiosViewController.swift; sourceTree = "<group>"; };
+		6FBCF99D2979758A00047445 /* likedStudiosViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = likedStudiosViewController.xib; sourceTree = "<group>"; };
+		6FBCF9A02979797F00047445 /* LikedStudiosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedStudiosCollectionViewCell.swift; sourceTree = "<group>"; };
+		6FBCF9A329797AF800047445 /* likedStudiosResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = likedStudiosResponse.swift; sourceTree = "<group>"; };
 		770CB4622799E550006004BB /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		775C9645278ACBEA00A9BEA0 /* Fillin-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fillin-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		775C965D278ACDE200A9BEA0 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
@@ -537,6 +545,8 @@
 		6F3B872827968AEB00A4BD07 /* MyPageViewController */ = {
 			isa = PBXGroup;
 			children = (
+				6FBCF9A229797AE600047445 /* DataModel */,
+				6FBCF99B2979754400047445 /* likedStudiosViewController */,
 				6F3B872927968AEB00A4BD07 /* MyPagePhotoCollectionViewCell.swift */,
 				6F3B872A27968AEB00A4BD07 /* MyPageViewController.xib */,
 				6F3B872B27968AEB00A4BD07 /* MyPageViewController.swift */,
@@ -768,6 +778,24 @@
 			path = DataModel;
 			sourceTree = "<group>";
 		};
+		6FBCF99B2979754400047445 /* likedStudiosViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6FBCF99C2979758A00047445 /* likedStudiosViewController.swift */,
+				6FBCF99D2979758A00047445 /* likedStudiosViewController.xib */,
+				6FBCF9A02979797F00047445 /* LikedStudiosCollectionViewCell.swift */,
+			);
+			path = likedStudiosViewController;
+			sourceTree = "<group>";
+		};
+		6FBCF9A229797AE600047445 /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				6FBCF9A329797AF800047445 /* likedStudiosResponse.swift */,
+			);
+			path = DataModel;
+			sourceTree = "<group>";
+		};
 		775C963C278ACBEA00A9BEA0 = {
 			isa = PBXGroup;
 			children = (
@@ -934,6 +962,7 @@
 			files = (
 				6F3B877E27968AEB00A4BD07 /* NotoSansKR-Medium.otf in Resources */,
 				6F3B87A027968AEB00A4BD07 /* SplashViewController.xib in Resources */,
+				6FBCF99F2979758A00047445 /* likedStudiosViewController.xib in Resources */,
 				775C965E278ACDE200A9BEA0 /* .swiftlint.yml in Resources */,
 				6F3B87C627968AEB00A4BD07 /* PhotosTableViewCell.xib in Resources */,
 				6F3B87B727968AEB00A4BD07 /* FilmCurationFirstCollectionViewCell.xib in Resources */,
@@ -1100,10 +1129,12 @@
 				6F3B87E027968D3000A4BD07 /* StudioMapContentViewController.swift in Sources */,
 				6F3B87C227968AEB00A4BD07 /* PhotosCollectionViewCell.swift in Sources */,
 				77EB42232797D1CE00C726D8 /* FilmSelectService.swift in Sources */,
+				6FBCF99E2979758A00047445 /* likedStudiosViewController.swift in Sources */,
 				6F3B879B27968AEB00A4BD07 /* StudioMapSearchViewController.swift in Sources */,
 				6F3B879327968AEB00A4BD07 /* StudioMapAPI.swift in Sources */,
 				6F3B877027968AEB00A4BD07 /* Assets+Generated.swift in Sources */,
 				E89934FD27CD2BCB00DCB1A8 /* OnboardingCollectionViewCell.swift in Sources */,
+				6FBCF9A429797AF800047445 /* likedStudiosResponse.swift in Sources */,
 				6F3B877127968AEB00A4BD07 /* Xib.swift in Sources */,
 				6F3B87A827968AEB00A4BD07 /* FirstAddPhotoPopUpViewController.swift in Sources */,
 				6F3B879027968AEB00A4BD07 /* MyPageAPI.swift in Sources */,
@@ -1140,6 +1171,7 @@
 				6F3B877927968AEB00A4BD07 /* UIColor+Extension.swift in Sources */,
 				6F3B87C827968AEB00A4BD07 /* MapTableViewCell.swift in Sources */,
 				6F3B87E127968D3000A4BD07 /* StudioMapCollectionViewCell.swift in Sources */,
+				6FBCF9A12979797F00047445 /* LikedStudiosCollectionViewCell.swift in Sources */,
 				6F3B87C927968AEB00A4BD07 /* WelcomeTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
