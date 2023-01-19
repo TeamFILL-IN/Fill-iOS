@@ -174,7 +174,7 @@ extension StudioMapViewController {
   
   private func setUpNavigationBar() {
     self.navigationController?.navigationBar.isHidden = true
-    navigationBar.popViewController = { self.navigationController?.popViewController(animated: true) }
+    navigationBar.popViewController = { self.changeRootViewController(HomeViewController()) }
   }
  
   private func setLatLngNotification() {
