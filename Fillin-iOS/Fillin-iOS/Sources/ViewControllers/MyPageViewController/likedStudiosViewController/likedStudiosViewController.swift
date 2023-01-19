@@ -27,6 +27,10 @@ final class LikedStudiosViewController: UIViewController {
     return collectionView
   }()
   
+  private let upButton = UIButton().then {
+    $0.setImage(Asset.btnUp.image, for: .normal)
+  }
+  
   // MARK: - Life Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -56,7 +60,8 @@ extension LikedStudiosViewController {
   
   private func setUpNavigationBar() {
     self.navigationController?.navigationBar.isHidden = true
-    navigationBar.popViewController = { self.navigationController?.popViewController(animated: true) }
+    navigationBar.popViewController = { self.navigationController?.popViewController(animated: true)
+    }
   }
   
   private func registerCell() {
@@ -74,6 +79,7 @@ extension LikedStudiosViewController {
   private func setLayout() {
     layoutNavigaionBar()
     layoutStudiosCollectionView()
+    layoutFloatingUpButton()
   }
   
   private func layoutNavigaionBar() {
@@ -90,6 +96,14 @@ extension LikedStudiosViewController {
     studiosCollectionView.snp.makeConstraints {
       $0.top.equalTo(navigationBar.snp.bottom)
       $0.leading.bottom.trailing.equalToSuperview()
+    }
+  }
+  
+  private func layoutFloatingUpButton() {
+    view.addSubview(upButton)
+    upButton.snp.makeConstraints {
+      $0.bottom.equalToSuperview().inset(36)
+      $0.trailing.equalToSuperview().inset(18)
     }
   }
 }
