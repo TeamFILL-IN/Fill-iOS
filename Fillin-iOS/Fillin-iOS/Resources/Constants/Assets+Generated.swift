@@ -35,6 +35,7 @@ internal enum Asset {
   internal static let btnMore = ImageAsset(name: "btnMore")
   internal static let btnOpen = ImageAsset(name: "btnOpen")
   internal static let btnScrap = ImageAsset(name: "btnScrap")
+  internal static let btnScrapActive = ImageAsset(name: "btnScrapActive")
   internal static let btnlogin = ImageAsset(name: "btnlogin")
   internal static let goRightIcon = ImageAsset(name: "goRightIcon")
   internal static let icnAddPhotoBig = ImageAsset(name: "icnAddPhotoBig")
