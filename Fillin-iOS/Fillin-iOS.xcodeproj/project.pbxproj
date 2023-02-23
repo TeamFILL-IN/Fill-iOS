@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		60EEDCDC8F3EDA4BB80DBA48 /* Pods_Fillin_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC117782ADC4C5FD88BA24C4 /* Pods_Fillin_iOS.framework */; };
 		6F3B877027968AEB00A4BD07 /* Assets+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3B86E327968AEB00A4BD07 /* Assets+Generated.swift */; };
 		6F3B877127968AEB00A4BD07 /* Xib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3B86E427968AEB00A4BD07 /* Xib.swift */; };
 		6F3B877227968AEB00A4BD07 /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3B86E527968AEB00A4BD07 /* UserDefaultsKey.swift */; };
@@ -115,7 +116,6 @@
 		77EB42212797D17600C726D8 /* FlimSelectAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77EB42202797D17600C726D8 /* FlimSelectAPI.swift */; };
 		77EB42232797D1CE00C726D8 /* FilmSelectService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77EB42222797D1CE00C726D8 /* FilmSelectService.swift */; };
 		77EB42262797DAFD00C726D8 /* FilmResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77EB42252797DAFD00C726D8 /* FilmResponse.swift */; };
-		9ADF3537C1D51ED22F4C921B /* Pods_Fillin_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F33300C623DFF466AFCE2914 /* Pods_Fillin_iOS.framework */; };
 		E80A726828CDDA66000A75B5 /* ReportFilmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80A726728CDDA66000A75B5 /* ReportFilmViewController.swift */; };
 		E80A726A28CDDA7E000A75B5 /* ReportContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80A726928CDDA7E000A75B5 /* ReportContactViewController.swift */; };
 		E822163528C860CC0090CEC5 /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E822163428C860CC0090CEC5 /* ReportViewController.swift */; };
@@ -132,7 +132,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		18FC9C8D02E669D0F43E8733 /* Pods-Fillin-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fillin-iOS.release.xcconfig"; path = "Target Support Files/Pods-Fillin-iOS/Pods-Fillin-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		6F3B86E327968AEB00A4BD07 /* Assets+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Assets+Generated.swift"; sourceTree = "<group>"; };
 		6F3B86E427968AEB00A4BD07 /* Xib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Xib.swift; sourceTree = "<group>"; };
 		6F3B86E527968AEB00A4BD07 /* UserDefaultsKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
@@ -244,7 +243,9 @@
 		77EB42202797D17600C726D8 /* FlimSelectAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlimSelectAPI.swift; sourceTree = "<group>"; };
 		77EB42222797D1CE00C726D8 /* FilmSelectService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmSelectService.swift; sourceTree = "<group>"; };
 		77EB42252797DAFD00C726D8 /* FilmResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmResponse.swift; sourceTree = "<group>"; };
-		864A552B88FE473B50DE4171 /* Pods-Fillin-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fillin-iOS.debug.xcconfig"; path = "Target Support Files/Pods-Fillin-iOS/Pods-Fillin-iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		7AC7A673AAEC90C6FFB53103 /* Pods-Fillin-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fillin-iOS.debug.xcconfig"; path = "Target Support Files/Pods-Fillin-iOS/Pods-Fillin-iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		8707F5933C668371B1C58EBD /* Pods-Fillin-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fillin-iOS.release.xcconfig"; path = "Target Support Files/Pods-Fillin-iOS/Pods-Fillin-iOS.release.xcconfig"; sourceTree = "<group>"; };
+		BC117782ADC4C5FD88BA24C4 /* Pods_Fillin_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fillin_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E80A726728CDDA66000A75B5 /* ReportFilmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportFilmViewController.swift; sourceTree = "<group>"; };
 		E80A726928CDDA7E000A75B5 /* ReportContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportContactViewController.swift; sourceTree = "<group>"; };
 		E822163428C860CC0090CEC5 /* ReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
@@ -258,7 +259,6 @@
 		E8DDE18428DEDECF00CC000D /* ReportPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportPopUpViewController.swift; sourceTree = "<group>"; };
 		E8EB7A5528C090AB0091DA22 /* TermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
 		E8EB7A5728C093080091DA22 /* TermTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermTableViewCell.swift; sourceTree = "<group>"; };
-		F33300C623DFF466AFCE2914 /* Pods_Fillin_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fillin_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -266,26 +266,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9ADF3537C1D51ED22F4C921B /* Pods_Fillin_iOS.framework in Frameworks */,
+				60EEDCDC8F3EDA4BB80DBA48 /* Pods_Fillin_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		33B49427CA26D6FA968A16CD /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				F33300C623DFF466AFCE2914 /* Pods_Fillin_iOS.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		395998FF8B0904B6BF7C4A7B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				864A552B88FE473B50DE4171 /* Pods-Fillin-iOS.debug.xcconfig */,
-				18FC9C8D02E669D0F43E8733 /* Pods-Fillin-iOS.release.xcconfig */,
+				7AC7A673AAEC90C6FFB53103 /* Pods-Fillin-iOS.debug.xcconfig */,
+				8707F5933C668371B1C58EBD /* Pods-Fillin-iOS.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -776,7 +768,7 @@
 				6F3B86E027968AEB00A4BD07 /* Fillin-iOS */,
 				775C9646278ACBEA00A9BEA0 /* Products */,
 				395998FF8B0904B6BF7C4A7B /* Pods */,
-				33B49427CA26D6FA968A16CD /* Frameworks */,
+				E81C54AAC6AE9EB8007C3A5B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -842,6 +834,14 @@
 			path = DataModel;
 			sourceTree = "<group>";
 		};
+		E81C54AAC6AE9EB8007C3A5B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BC117782ADC4C5FD88BA24C4 /* Pods_Fillin_iOS.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E822163328C860AD0090CEC5 /* ReportViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -877,13 +877,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 775C9659278ACBEB00A9BEA0 /* Build configuration list for PBXNativeTarget "Fillin-iOS" */;
 			buildPhases = (
-				BA49CBAC8CB3ACAC9509ECE3 /* [CP] Check Pods Manifest.lock */,
+				0ECCB96FE26066C3770AFDB8 /* [CP] Check Pods Manifest.lock */,
 				775C96AE278B317100A9BEA0 /* SwiftGen Script */,
 				775C9641278ACBEA00A9BEA0 /* Sources */,
 				775C9642278ACBEA00A9BEA0 /* Frameworks */,
 				775C9643278ACBEA00A9BEA0 /* Resources */,
 				775C965C278ACCFD00A9BEA0 /* SwiftLint Script */,
-				D399231579ACE63785E41A32 /* [CP] Embed Pods Frameworks */,
+				2FBDE1B95EB70CD403CDBEF5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -971,6 +971,45 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0ECCB96FE26066C3770AFDB8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Fillin-iOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2FBDE1B95EB70CD403CDBEF5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Fillin-iOS/Pods-Fillin-iOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Fillin-iOS/Pods-Fillin-iOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Fillin-iOS/Pods-Fillin-iOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		775C965C278ACCFD00A9BEA0 /* SwiftLint Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1006,45 +1045,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if [[ -f \"${PODS_ROOT}/SwiftGen/bin/swiftgen\" ]]; then\n  \"${PODS_ROOT}/SwiftGen/bin/swiftgen\"\nelse\n  echo \"warning: SwiftGen is not installed. Run 'pod install --repo-update' to install it.\"\nfi\n";
-		};
-		BA49CBAC8CB3ACAC9509ECE3 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Fillin-iOS-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D399231579ACE63785E41A32 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Fillin-iOS/Pods-Fillin-iOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Fillin-iOS/Pods-Fillin-iOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Fillin-iOS/Pods-Fillin-iOS-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1278,7 +1278,7 @@
 		};
 		775C965A278ACBEB00A9BEA0 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 864A552B88FE473B50DE4171 /* Pods-Fillin-iOS.debug.xcconfig */;
+			baseConfigurationReference = 7AC7A673AAEC90C6FFB53103 /* Pods-Fillin-iOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1315,7 +1315,7 @@
 		};
 		775C965B278ACBEB00A9BEA0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 18FC9C8D02E669D0F43E8733 /* Pods-Fillin-iOS.release.xcconfig */;
+			baseConfigurationReference = 8707F5933C668371B1C58EBD /* Pods-Fillin-iOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

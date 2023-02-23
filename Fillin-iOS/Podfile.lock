@@ -1,18 +1,20 @@
 PODS:
-  - Alamofire (5.5.0)
-  - Kingfisher (7.1.2)
+  - Alamofire (5.6.4)
+  - Kingfisher (7.6.1)
   - Moya (14.0.0):
     - Moya/Core (= 14.0.0)
   - Moya/Core (14.0.0):
     - Alamofire (~> 5.0)
-  - NMapsMap (3.14.0)
+  - NMapsGeometry (1.0.1)
+  - NMapsMap (3.16.2):
+    - NMapsGeometry
   - NVActivityIndicatorView (5.1.1):
     - NVActivityIndicatorView/Base (= 5.1.1)
   - NVActivityIndicatorView/Base (5.1.1)
   - SnapKit (5.0.1)
-  - SwiftGen (6.5.1)
-  - SwiftLint (0.45.1)
-  - Then (2.7.0)
+  - SwiftGen (6.6.2)
+  - SwiftLint (0.50.3)
+  - Then (3.0.0)
 
 DEPENDENCIES:
   - Kingfisher (~> 7.0)
@@ -29,6 +31,7 @@ SPEC REPOS:
     - Alamofire
     - Kingfisher
     - Moya
+    - NMapsGeometry
     - NMapsMap
     - NVActivityIndicatorView
     - SnapKit
@@ -37,16 +40,17 @@ SPEC REPOS:
     - Then
 
 SPEC CHECKSUMS:
-  Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
-  Kingfisher: 44ed6a8504763f27bab46163adfac83f5deb240c
+  Alamofire: 4e95d97098eacb88856099c4fc79b526a299e48c
+  Kingfisher: 93a3c6d0d551658a31e19f21747e1d15cb39d525
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
-  NMapsMap: 61c2abfc409bbcdc91583ccc455a5b6f64c7414e
+  NMapsGeometry: 53c573ead66466681cf123f99f698dc8071a4b83
+  NMapsMap: aaa64717249b06ae82c3a3addb3a01f0e33100ab
   NVActivityIndicatorView: 1f6c5687f1171810aa27a3296814dc2d7dec3667
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
-  SwiftGen: a6d22010845f08fe18fbdf3a07a8e380fd22e0ea
-  SwiftLint: 06ac37e4d38c7068e0935bb30cda95f093bec761
-  Then: acfe0be7e98221c6204e12f8161459606d5d822d
+  SwiftGen: 1366a7f71aeef49954ca5a63ba4bef6b0f24138c
+  SwiftLint: 77f7cb2b9bb81ab4a12fcc86448ba3f11afa50c6
+  Then: 844265ae87834bbe1147d91d5d41a404da2ec27d
 
 PODFILE CHECKSUM: c9870ed3bef4faa80f8c3c313e3aa8d35e86e515
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.11.3
