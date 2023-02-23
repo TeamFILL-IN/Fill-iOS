@@ -117,6 +117,16 @@ fastlane/Preview.html
 fastlane/screenshots/**/*.png
 fastlane/test_output
 
+Fillin-iOS/fastlane/report.xml
+Fillin-iOS/fastlane/Preview.html
+Fillin-iOS/fastlane/test_output
+
+Fillin-iOS/fastlane/metadata/
+Fillin-iOS/fastlane/screenshots/
+
+
+Fillin-iOS/fastlane/APIkey.json
+
 # Code Injection
 # After new code Injection tools there's a generated folder /iOSInjectionProject
 # https://github.com/johnno1962/injectionforxcode
